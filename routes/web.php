@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CidadeController;
+use App\Http\Controllers\CityController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +26,4 @@ Route::get('/home', function() {
 })->name('home')->middleware('auth');
 
 Route::resource('cidade', CidadeController::class);
+Route::resource('city', CityController::class);
