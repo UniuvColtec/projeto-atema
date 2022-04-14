@@ -46,7 +46,7 @@ class CidadeController extends Controller
      */
     public function show(Cidade $cidade)
     {
-        echo ('deu certo');
+        echo $cidade->nome;
     }
 
     /**
