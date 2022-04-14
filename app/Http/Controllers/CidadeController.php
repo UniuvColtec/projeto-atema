@@ -35,7 +35,7 @@ class CidadeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        echo 'store';
     }
 
     /**
