@@ -3,6 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CidadeController;
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\PartnerTypeController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\TypicalFoodController;
+use App\Http\Controllers\ImageController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,4 +31,9 @@ Route::get('/home', function() {
 })->name('home')->middleware('auth');
 
 Route::resource('cidade', CidadeController::class);
+
 Route::resource('city', CityController::class);
+Route::resource('partner_type',PartnerTypeController::class);
+Route::resource('category', CategoryController::class);
+Route::resource('typical_food', TypicalFoodController::class);
+Route::resource('image', ImageController::class);
