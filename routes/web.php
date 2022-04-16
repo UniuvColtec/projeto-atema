@@ -7,7 +7,9 @@ use App\Http\Controllers\PartnerTypeController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TypicalFoodController;
 use App\Http\Controllers\ImageController;
-
+use App\Http\Controllers\PartnerController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\TouristSpotController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,3 +39,6 @@ Route::resource('partner_type',PartnerTypeController::class);
 Route::resource('category', CategoryController::class);
 Route::resource('typical_food', TypicalFoodController::class);
 Route::resource('image', ImageController::class);
+Route::resource('partner', PartnerController::class);
+Route::resource('event', EventController::class);
+Route::resource('tourist_spot', TouristSpotController::class);

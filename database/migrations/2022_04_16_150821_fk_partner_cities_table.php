@@ -13,11 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('partner_types', function (Blueprint $table) {
-            $table->id();
-            $table->string('name',100);
-            $table->enum('type',['Restaurante','Hotel','Companhia Aérea','Ônibus']);
-            $table->timestamps();
+        Schema::table('partner_cities', function (Blueprint $table) {
+            $table->foreign('partner_id')->references('id')->on('partners');
+            $table->foreign('city_id')->references('id')->on('cities');
         });
     }
 
@@ -28,6 +26,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('partner_types');
+        Schema::table('partner_cities', function (Blueprint $table) {
+            $table->dropForeign(['partner_id']);
+            $table->dropForeign(['city_id']);
+        });
     }
 };

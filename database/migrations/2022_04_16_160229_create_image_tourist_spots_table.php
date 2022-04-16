@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('partner_types', function (Blueprint $table) {
+        Schema::create('image_tourist_spots', function (Blueprint $table) {
             $table->id();
-            $table->string('name',100);
-            $table->enum('type',['Restaurante','Hotel','Companhia Aérea','Ônibus']);
+            $table->unsignedBigInteger('image_id');
+            $table->unsignedBigInteger('tourist_spot_id');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('partner_types');
+        Schema::dropIfExists('image_tourist_spots');
     }
 };
