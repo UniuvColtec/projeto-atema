@@ -17,12 +17,12 @@ return new class extends Migration
             $table->id();
             $table->string('name',100);
             $table->string('email',100);
-            $table->string('site',200);
+            $table->string('site',200)->nullable();;
             $table->string('telephone',20);
-            $table->string('address',255);
-            $table->string('district',255);
-            $table->string('latitude',100);
-            $table->string('longitude',100);
+            $table->string('address',255)->nullable();;
+            $table->string('district',255)->nullable();;
+            $table->string('latitude',100)->nullable();;
+            $table->string('longitude',100)->nullable();;
             $table->unsignedBigInteger('partner_type_id');
             $table->timestamps();
         });

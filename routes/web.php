@@ -10,6 +10,7 @@ use App\Http\Controllers\ImageController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\TouristSpotController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,3 +43,4 @@ Route::resource('image', ImageController::class);
 Route::resource('partner', PartnerController::class);
 Route::resource('event', EventController::class);
 Route::resource('tourist_spot', TouristSpotController::class);
+Route::resource('user', UserController::class);
