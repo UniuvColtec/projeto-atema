@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('district',255);
             $table->string('latitude',100);
             $table->string('longitude',100);
-            $table->enum('status',['Aprovado']);
+            $table->enum('status',['Aprovado', 'Reprovado'])->default('Aprovado');
             $table->timestamps();
         });
     }
