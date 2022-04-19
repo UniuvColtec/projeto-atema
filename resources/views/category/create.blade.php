@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('adminlte::page')
 
 @section('content')
     <div class="container">
@@ -24,7 +24,7 @@
                             <div class="form-group">
                                 <label for="name">Nome</label>
                                 <input type="text" class="form-control" id="name"
-                                       name="name" placeholder="Name" value="{{ old('Nome da Categoria') }}">
+                                       name="name" placeholder="Name" value="{{ old('name') }}">
                             </div>
                         </div>
 

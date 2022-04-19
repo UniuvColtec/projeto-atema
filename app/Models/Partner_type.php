@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Partner_type extends Model
 {
     use HasFactory;
-    use SoftDeletes;
     protected $fillable = [
         'name,type'];
     protected $hidden = ['deleted_at'];

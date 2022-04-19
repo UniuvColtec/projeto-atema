@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('adminlte::page')
 
 @section('content')
     <div class="container">
@@ -15,7 +15,7 @@
 
                     </thead>
                     <tbody>
-                    @foreach($categories as $category)
+                    @foreach($category as $category)
                         <tr>
                             <td>{{ $category->id }}</td>
                             <td>{{ $category->name }}</td>
