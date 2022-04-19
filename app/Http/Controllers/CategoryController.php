@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\City;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -14,7 +15,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $category = Category::all();
+        return view('category.index', compact('category'));
     }
 
     /**
@@ -24,7 +26,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('category.create');
     }
 
     /**
@@ -35,7 +37,10 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $category = new Category();
+        $category->name = $request->name;
+        $category->save();
+        return redirect('category');
     }
 
     /**
@@ -46,7 +51,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        return view('category.show', compact('category'));
     }
 
     /**
@@ -57,7 +62,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('category.edit', compact('category'));
     }
 
     /**
@@ -69,7 +74,9 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $category->name = $request->name;
+        $category->save();
+        return redirect('category');
     }
 
     /**
@@ -80,6 +87,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        return redirect('category');
     }
 }
