@@ -14,7 +14,8 @@ class EventController extends Controller
      */
     public function index()
     {
-        //
+        $event = Event::all();
+        return view('event.index', compact('event'));
     }
 
     /**
@@ -24,7 +25,7 @@ class EventController extends Controller
      */
     public function create()
     {
-        //
+        return view('event.create');
     }
 
     /**
@@ -35,7 +36,19 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $event= new Event();
+        $event->name = $request->name;
+        $event->description = $request->description;
+        $event->contact = $request->contact;
+        $event->start_date = $request->start_date;
+        $event->final_date = $request->final_date;
+        $event->address = $request->address;
+        $event->district= $request->district;
+        $event->latitude = $request->latitude;
+        $event->longitude = $request->longitude;
+        $event->status = $request->status;
+        $event->save();
+        return redirect('event');
     }
 
     /**
@@ -46,7 +59,7 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-     //
+        return view('event.show', compact('event'));
     }
 
     /**
@@ -57,7 +70,7 @@ class EventController extends Controller
      */
     public function edit(Event $event)
     {
-        //
+        return view('event.edit', compact('event'));
     }
 
     /**
@@ -69,7 +82,18 @@ class EventController extends Controller
      */
     public function update(Request $request, Event $event)
     {
-        //
+        $event->name = $request->name;
+        $event->description = $request->description;
+        $event->contact = $request->contact;
+        $event->start_date = $request->start_date;
+        $event->final_date = $request->final_date;
+        $event->address = $request->address;
+        $event->district= $request->district;
+        $event->latitude = $request->latitude;
+        $event->longitude = $request->longitude;
+        $event->status = $request->status;
+        $event->save();
+        return redirect('event');
     }
 
     /**
@@ -80,6 +104,7 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
-        //
+        $event->delete();
+        return redirect('event');
     }
 }

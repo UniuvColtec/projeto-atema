@@ -14,7 +14,8 @@ class PartnerController extends Controller
      */
     public function index()
     {
-        //
+        $partner = Partner::all();
+        return view('partner.index', compact('partner'));
     }
 
     /**
@@ -24,7 +25,7 @@ class PartnerController extends Controller
      */
     public function create()
     {
-        //
+        return view('partner.create');
     }
 
     /**
@@ -35,7 +36,18 @@ class PartnerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $partner = new Partner();
+        $partner->name = $request->name;
+        $partner->email = $request->email;
+        $partner->type = $request->type;
+        $partner->site = $request->site;
+        $partner->telephone = $request->telephone;
+        $partner->address = $request->address;
+        $partner->district = $request->district;
+        $partner->latitude = $request->latitude;
+        $partner->longitude = $request->longitude;
+        $partner->save();
+        return redirect('partner');
     }
 
     /**
@@ -46,7 +58,7 @@ class PartnerController extends Controller
      */
     public function show(Partner $partner)
     {
-        //
+        return view('partner.show', compact('partner'));
     }
 
     /**
@@ -57,7 +69,7 @@ class PartnerController extends Controller
      */
     public function edit(Partner $partner)
     {
-        //
+        return view('partner.edit', compact('partner'));
     }
 
     /**
@@ -69,7 +81,17 @@ class PartnerController extends Controller
      */
     public function update(Request $request, Partner $partner)
     {
-        //
+        $partner->name = $request->name;
+        $partner->email = $request->email;
+        $partner->type = $request->type;
+        $partner->site = $request->site;
+        $partner->telephone = $request->telephone;
+        $partner->address = $request->address;
+        $partner->district = $request->district;
+        $partner->latitude = $request->latitude;
+        $partner->longitude = $request->longitude;
+        $partner->save();
+        return redirect('partner');
     }
 
     /**
@@ -80,6 +102,7 @@ class PartnerController extends Controller
      */
     public function destroy(Partner $partner)
     {
-        //
+        $partner->delete();
+        return redirect('partner');
     }
 }

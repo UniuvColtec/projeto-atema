@@ -14,7 +14,8 @@ class UserController extends Controller
      */
     public function index()
     {
-       //
+        $user= User::all();
+        return view('user.index', compact('user'));
     }
 
     /**
@@ -24,7 +25,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('user.create');
     }
 
     /**
@@ -35,7 +36,12 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user= new User();
+        $user->name = $request->name;
+        $user->password= $request->password;
+        $user->email = $request->email;
+        $user->save();
+        return redirect('user');
     }
 
     /**
@@ -46,7 +52,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        return view('user.show', compact('user'));
     }
 
     /**
@@ -57,7 +63,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('user.edit', compact('user'));
     }
 
     /**
@@ -69,7 +75,11 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $user->name = $request->name;
+        $user->password= $request->password;
+        $user->email = $request->email;
+        $user->save();
+        return redirect('user');
     }
 
     /**
@@ -80,6 +90,7 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return redirect('user');
     }
 }

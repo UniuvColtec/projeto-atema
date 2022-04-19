@@ -14,7 +14,8 @@ class TypicalFoodController extends Controller
      */
     public function index()
     {
-        //
+        $typical_food= Typical_Food::all();
+        return view('typical_food.index', compact('typical_food'));
     }
 
     /**
@@ -24,7 +25,7 @@ class TypicalFoodController extends Controller
      */
     public function create()
     {
-        //
+        return view('typical_food.create');
     }
 
     /**
@@ -35,7 +36,12 @@ class TypicalFoodController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $typical_food= new Typical_food();
+        $typical_food->name = $request->name;
+        $typical_food->description = $request->description;
+        $typical_food->image = $request->image;
+        $typical_food->save();
+        return redirect('typical_food');
     }
 
     /**
@@ -46,7 +52,7 @@ class TypicalFoodController extends Controller
      */
     public function show(Typical_food $typical_food)
     {
-      //
+        return view('typical_food.show', compact('typical_food'));
     }
 
     /**
@@ -57,7 +63,7 @@ class TypicalFoodController extends Controller
      */
     public function edit(Typical_food $typical_food)
     {
-        //
+        return view('typical_food.edit', compact('typical_food'));
     }
 
     /**
@@ -69,7 +75,11 @@ class TypicalFoodController extends Controller
      */
     public function update(Request $request, Typical_food $typical_food)
     {
-        //
+        $typical_food->name = $request->name;
+        $typical_food->description = $request->description;
+        $typical_food->image = $request->image;
+        $typical_food->save();
+        return redirect('typical_food');
     }
 
     /**
@@ -80,6 +90,7 @@ class TypicalFoodController extends Controller
      */
     public function destroy(Typical_food $typical_food)
     {
-        //
+        $typical_food->delete();
+        return redirect('typical_food');
     }
 }

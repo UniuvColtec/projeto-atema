@@ -14,7 +14,8 @@ class ImageController extends Controller
      */
     public function index()
     {
-        //
+        $image = Image::all();
+        return view('image.index', compact('image'));
     }
 
     /**
@@ -24,7 +25,7 @@ class ImageController extends Controller
      */
     public function create()
     {
-        //
+        return view('image.create');
     }
 
     /**
@@ -35,7 +36,10 @@ class ImageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $image = new Image();
+        $image->address = $request->address;
+        $image->save();
+        return redirect('image');
     }
 
     /**
@@ -46,7 +50,7 @@ class ImageController extends Controller
      */
     public function show(Image $image)
     {
-       //
+        return view('image.show', compact('image'));
     }
 
     /**
@@ -57,7 +61,7 @@ class ImageController extends Controller
      */
     public function edit(Image $image)
     {
-        //
+        return view('image.edit', compact('image'));
     }
 
     /**
@@ -69,7 +73,10 @@ class ImageController extends Controller
      */
     public function update(Request $request, Image $image)
     {
-        //
+        $image->address = $request->address;
+        $image->address= $request->address;
+        $image->save();
+        return redirect('image');
     }
 
     /**
@@ -80,6 +87,7 @@ class ImageController extends Controller
      */
     public function destroy(Image $image)
     {
-        //
+        $image->delete();
+        return redirect('image');
     }
 }

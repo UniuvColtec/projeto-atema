@@ -14,7 +14,8 @@ class TouristSpotController extends Controller
      */
     public function index()
     {
-        //
+        $tourist_spot = Tourist_Spot::all();
+        return view('tourist_spot.index', compact('tourist_spot'));
     }
 
     /**
@@ -24,7 +25,7 @@ class TouristSpotController extends Controller
      */
     public function create()
     {
-        //
+        return view('tourist_spot.create');
     }
 
     /**
@@ -35,7 +36,14 @@ class TouristSpotController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $tourist_spot = new Partner();
+        $tourist_spot->name = $request->name;
+        $tourist_spot->description= $request->description;
+        $tourist_spot->address = $request->address;
+        $tourist_spot->district = $request->district;
+        $tourist_spot->latitude = $request->latitude;
+        $tourist_spot->longitude = $request->longitude;
+        $tourist_spot->save();
     }
 
     /**
@@ -46,7 +54,7 @@ class TouristSpotController extends Controller
      */
     public function show(Tourist_spot $tourist_spot)
     {
-       //
+        return view('tourist_spot.show', compact('tourist_spot'));
     }
 
     /**
@@ -57,7 +65,7 @@ class TouristSpotController extends Controller
      */
     public function edit(Tourist_spot $tourist_spot)
     {
-        //
+        return view('tourist_spot.edit', compact('tourist_spot'));
     }
 
     /**
@@ -69,7 +77,13 @@ class TouristSpotController extends Controller
      */
     public function update(Request $request, Tourist_spot $tourist_spot)
     {
-        //
+        $tourist_spot->name = $request->name;
+        $tourist_spot->description= $request->description;
+        $tourist_spot->address = $request->address;
+        $tourist_spot->district = $request->district;
+        $tourist_spot->latitude = $request->latitude;
+        $tourist_spot->longitude = $request->longitude;
+        $tourist_spot->save();
     }
 
     /**
@@ -80,6 +94,7 @@ class TouristSpotController extends Controller
      */
     public function destroy(Tourist_spot $tourist_spot)
     {
-        //
+        $tourist_spot->delete();
+        return redirect('tourist_spot');
     }
 }

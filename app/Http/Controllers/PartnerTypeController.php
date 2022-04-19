@@ -14,7 +14,8 @@ class PartnerTypeController extends Controller
      */
     public function index()
     {
-        //
+        $partner_type = Partner_Type::all();
+        return view('partner_type.index', compact('partner_type'));
     }
 
     /**
@@ -24,7 +25,7 @@ class PartnerTypeController extends Controller
      */
     public function create()
     {
-        //
+        return view('partner_type.create');
     }
 
     /**
@@ -35,7 +36,11 @@ class PartnerTypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $partner_type = new Partner_Type();
+        $partner_type->name = $request->name;
+        $partner_type->type = $request->type;
+        $partner_type->save();
+        return redirect('partner_type');
     }
 
     /**
@@ -46,7 +51,7 @@ class PartnerTypeController extends Controller
      */
     public function show(Partner_type $partner_type)
     {
-        //
+        return view('partner_type.show', compact('partner_type'));
     }
 
     /**
@@ -57,7 +62,7 @@ class PartnerTypeController extends Controller
      */
     public function edit(Partner_type $partner_type)
     {
-        //
+        return view('partner_type.edit', compact('partner_type'));
     }
 
     /**
@@ -69,7 +74,10 @@ class PartnerTypeController extends Controller
      */
     public function update(Request $request, Partner_type $partner_type)
     {
-        //
+        $partner_type->name = $request->name;
+        $partner_type->type = $request->type;
+        $partner_type->save();
+        return redirect('partner_type');
     }
 
     /**
@@ -80,6 +88,7 @@ class PartnerTypeController extends Controller
      */
     public function destroy(Partner_type $partner_type)
     {
-        //
+        $partner_type->delete();
+        return redirect('partner_type');
     }
 }
