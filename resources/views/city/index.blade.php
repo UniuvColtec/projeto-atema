@@ -19,17 +19,17 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($city as $city)
+                            @foreach($city as $citi)
                                 <tr>
                                     <td>
-                                        {{ $city->id }}
+                                        {{ $citi->id }}
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>{{ $city->name }}</td>
+                                    <td>{{ $citi->name }}</td>
                                 </tr>
                                 <tr>
-                                    <td>{{ $city->state }}</td>
+                                    <td>{{ $citi->state }}</td>
                                 </tr>
                                 <tr>
                                     <td>
