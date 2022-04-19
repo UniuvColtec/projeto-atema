@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('adminlte::page')
 
 @section('content')
     <div class="container">
@@ -19,19 +19,13 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($city as $citi)
+                            @foreach($city as $city)
                                 <tr>
                                     <td>
-                                        {{ $citi->id }}
+                                        {{ $city->id }}
                                     </td>
-                                </tr>
-                                <tr>
-                                    <td>{{ $citi->name }}</td>
-                                </tr>
-                                <tr>
-                                    <td>{{ $citi->state }}</td>
-                                </tr>
-                                <tr>
+                                    <td>{{ $city->name }}</td>
+                                    <td>{{ $city->state }}</td>
                                     <td>
                                         <a href="{{ route('city.edit',['city' => $city->id]) }}" class="btn btn-primary">
                                             Editar
@@ -48,5 +42,4 @@
             </div>
         </div>
     </div>
-
 @endsection
