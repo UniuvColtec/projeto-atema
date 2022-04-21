@@ -75,7 +75,7 @@ class CityController extends Controller
     public function update(Request $request, City $city)
     {
         $city->name = $request->name;
-        $city->state= $request->update;
+        $city->state= $request->state;
         $city->save();
         return redirect('city');
     }

@@ -27,10 +27,10 @@
                                     <td>{{ $city->name }}</td>
                                     <td>{{ $city->state }}</td>
                                     <td>
-                                        <a href="{{ route('city.edit',['city' => $city->id]) }}" class="btn btn-primary">
+                                        <a href="{{ route('city.edit', ['city' => $city->id]) }}" class="btn btn-primary">
                                             Editar
                                         </a>
-                                        <a href="{{ route('city.show',['city' => $city->id]) }}" class="btn btn-info">
+                                        <a href="{{ route('city.show', ['city' => $city->id]) }}" class="btn btn-info">
                                             Ver
                                         </a>
                                     </td>
