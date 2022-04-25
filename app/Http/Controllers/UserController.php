@@ -26,6 +26,7 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function create()
     {
 
@@ -39,8 +40,15 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+
     public function store(Request $request)
     {
+        //$password = $_POST['password'];
+      //  $confirmpassword = $_POST['confirmpassword'];
+      //  if($password != $confirmpassword){
+       //     $this->retornaErro('Erro ao cadastrar a senha');
+      //  }
         $user= new User();
         $user->name = $request->name;
         $user->password = Hash::make($request->password);
@@ -83,6 +91,7 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
+
         $user->name = $request->name;
         if ($request->password!=''){
             $user->password = Hash::make($request->password);
