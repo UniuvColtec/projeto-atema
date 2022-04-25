@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\City;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+
 
 class UserController extends Controller
 {
@@ -14,8 +17,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user= User::all();
-        return view('user.index', compact('user'));
+        $users = User::all();
+        return view('user.index', compact('users'));
     }
 
     /**
@@ -25,7 +28,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('user.create');
+
+        $cities = City::orderBy('name')->get(['id', 'name']);
+        return view('user.create', compact('cities'));
     }
 
     /**
@@ -38,8 +43,9 @@ class UserController extends Controller
     {
         $user= new User();
         $user->name = $request->name;
-        $user->password= $request->password;
+        $user->password = Hash::make($request->password);
         $user->email = $request->email;
+        $user->city_id = $request->city_id;
         $user->save();
         return redirect('user');
     }
@@ -63,7 +69,9 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('user.edit', compact('user'));
+
+        $cities = City::orderBy('name')->get(['id', 'name']);
+        return view('user.edit', compact('user','cities'));
     }
 
     /**
@@ -76,8 +84,11 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $user->name = $request->name;
-        $user->password= $request->password;
+        if ($request->password!=''){
+            $user->password = Hash::make($request->password);
+        }
         $user->email = $request->email;
+        $user->city_id = $request->city_id;
         $user->save();
         return redirect('user');
     }
