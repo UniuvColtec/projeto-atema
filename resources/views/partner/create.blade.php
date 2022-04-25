@@ -25,6 +25,16 @@
                                           name="name" placeholder="nome" value="{{ old('name') }}">
                                 </div>
                             <div class="form-group">
+                                <label for="partner_type_id">TIPO:</label>
+                                <select name="partner_type_id" id="partner_type_id"
+                                        class="form-control">
+                                    <option value="">- Selecione uma Cidade -</option>
+                                    @foreach($partner_types as $partner_type)
+                                        <option value="{{$partner_type->id}}">{{$partner_type->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <label for="email">Email:</label>
                                 <input type="email" class="form-control" id="email"
                                        name="email" placeholder="Email" value="{{ old('email') }}">

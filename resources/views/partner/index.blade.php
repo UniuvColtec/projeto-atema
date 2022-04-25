@@ -10,6 +10,7 @@
                      <tr>
                         <th>ID</th>
                         <th>Nome</th>
+                         <th>Tipo</th>
                          <th>Email</th>
                          <th>Site</th>
                          <th>Telephone</th>
@@ -21,17 +22,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                    @foreach($partner as $partner)
+                    @foreach($partners as $partner)
                         <tr>
-                            <td>{{ $partner_type->id }}</td>
-                            <td>{{ $partner_type->name }}</td>
-                            <td>{{ $partner_type->email }}</td>
-                            <td>{{ $partner_type->site }}</td>
-                            <td>{{ $partner_type->telephone }}</td>
-                            <td>{{ $partner_type->address}}</td>
-                            <td>{{ $partner_type->district }}</td>
-                            <td>{{ $partner_type->latitude}}</td>
-                            <td>{{ $partner_type->longitude}}</td>
+                            <td>{{ $partner->id }}</td>
+                            <td>{{ $partner->name }}</td>
+                            <td>{{ $partner->partner_type->name }}</td>
+                            <td>{{ $partner->email }}</td>
+                            <td>{{ $partner->site }}</td>
+                            <td>{{ $partner->telephone }}</td>
+                            <td>{{ $partner->address}}</td>
+                            <td>{{ $partner->district }}</td>
+                            <td>{{ $partner->latitude}}</td>
+                            <td>{{ $partner_->longitude}}</td>
                             <td>
                                 <a href="{{ route('partner.edit', ['partner' =>$partner->id]) }}" class="btn btn-primary">Editar</a>
                                  <a href="{{ route('partner.show', ['partner' =>$partner->id]) }}" class="btn btn-info">Ver</a>
