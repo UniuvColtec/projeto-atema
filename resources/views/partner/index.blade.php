@@ -33,7 +33,7 @@
                             <td>{{ $partner->address}}</td>
                             <td>{{ $partner->district }}</td>
                             <td>{{ $partner->latitude}}</td>
-                            <td>{{ $partner_->longitude}}</td>
+                            <td>{{ $partner->longitude}}</td>
                             <td>
                                 <a href="{{ route('partner.edit', ['partner' =>$partner->id]) }}" class="btn btn-primary">Editar</a>
                                  <a href="{{ route('partner.show', ['partner' =>$partner->id]) }}" class="btn btn-info">Ver</a>

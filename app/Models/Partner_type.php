@@ -15,3 +15,4 @@ class Partner_type extends Model
         'created_at' => 'date:d/m/Y H:m:s', 'updated_at'=> 'date:d/m/Y H:m:s', 'deleted_at'=>'date:d/m/Y H:m:s'];
 }
 
+

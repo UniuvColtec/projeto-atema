@@ -28,8 +28,8 @@ class PartnerController extends Controller
      */
     public function create()
     {
-        $partner_type = Partner_type::orderBy('name')->get(['id', 'name']);
-        return view('partner.create',compact('partner_type'));
+        $partner_types = Partner_type::orderBy('name')->get(['id', 'name']);
+        return view('partner.create',compact('partner_types'));
     }
 
     /**
