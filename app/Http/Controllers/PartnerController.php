@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\City;
 use App\Models\Partner;
+use App\Models\Partner_city;
+use App\Models\Partner_type;
 use Illuminate\Http\Request;
 
 class PartnerController extends Controller
@@ -14,8 +17,8 @@ class PartnerController extends Controller
      */
     public function index()
     {
-        $partner = Partner::all();
-        return view('partner.index', compact('partner'));
+        $partners = Partner::all();
+        return view('partner.index', compact('partners'));
     }
 
     /**
@@ -25,7 +28,8 @@ class PartnerController extends Controller
      */
     public function create()
     {
-        return view('partner.create');
+        $partner_types = Partner_type::orderBy('name')->get(['id', 'name']);
+        return view('partner.create',compact('partner_types'));
     }
 
     /**
@@ -39,7 +43,7 @@ class PartnerController extends Controller
         $partner = new Partner();
         $partner->name = $request->name;
         $partner->email = $request->email;
-        $partner->type = $request->type;
+        $partner->partner_type_id= $request->partner_type_id;
         $partner->site = $request->site;
         $partner->telephone = $request->telephone;
         $partner->address = $request->address;
@@ -68,8 +72,8 @@ class PartnerController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Partner $partner)
-    {
-        return view('partner.edit', compact('partner'));
+    {   $partner_type = Partner_type::orderBy('name')->get(['id', 'name']);
+        return view('partner.edit', compact('partner','partner_type'));
     }
 
     /**
@@ -83,7 +87,7 @@ class PartnerController extends Controller
     {
         $partner->name = $request->name;
         $partner->email = $request->email;
-        $partner->type = $request->type;
+        $partner->partner_type_id= $request->partner_type_id;
         $partner->site = $request->site;
         $partner->telephone = $request->telephone;
         $partner->address = $request->address;

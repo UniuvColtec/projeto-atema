@@ -24,6 +24,18 @@
                                        name="name" placeholder="nome" value="{{ old('name',$partner->name) }}">
                             </div>
                             <div class="form-group">
+                                <label for="partner_type_id">Tipo:</label>
+                                <select name="partner_type_id" id="partner_type_id"
+                                        class="form-control">
+                                    <option value="">- Selecione um Tipo -</option>
+                                    @foreach($partner_type as $partner_type)
+                                        <option value="{{$partner_type->id}}" {{ $partner_type->id== old('partner_type_id', $partner->partner_type_id) ?'selected' : '' }} >{{$partner_type->name}}</option>
+
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="form-group">
                                 <label for="email">Email:</label>
                                 <input type="email" class="form-control" id="email"
                                        name="email" placeholder="Email" value="{{ old('email',$partner->email) }}">

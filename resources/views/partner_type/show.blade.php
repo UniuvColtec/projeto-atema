@@ -17,13 +17,9 @@
                             {{ $partner_type->id }}
                             </div>
                         <div class="form-group">
-                            <label for="nome">Nome:</label>
+                            <label for="nome">Nome do Tipo:</label>
                             {{ $partner_type->name }}
                             </div>
-                        <div class="form-group">
-                            <label for="type">Tipo:</label>
-                            {{ $partner_type->type }}
-                        </div>
                         </div>
                     </div>
                 </div>

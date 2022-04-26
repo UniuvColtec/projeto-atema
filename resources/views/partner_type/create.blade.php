@@ -20,15 +20,10 @@
                         {{ csrf_field() }}
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="name">Nome</label>
+                                <label for="name">Nome do tipo :</label>
                                 <input type="text" class="form-control" id="name"
                                           name="name" placeholder="nome" value="{{ old('name') }}">
                                 </div>
-                            <div class="form-group">
-                                <label for="type">tipo</label>
-                                <input type="text" class="form-control" id="type"
-                                       name="type" placeholder="tipo" value="{{ old('type') }}">
-                            </div>
                             </div>
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary">Salvar</button>

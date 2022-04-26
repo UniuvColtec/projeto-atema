@@ -9,9 +9,10 @@ class Partner_type extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name,type'];
+        'name'];
     protected $hidden = ['deleted_at'];
     protected $casts = [
         'created_at' => 'date:d/m/Y H:m:s', 'updated_at'=> 'date:d/m/Y H:m:s', 'deleted_at'=>'date:d/m/Y H:m:s'];
 }
+
 

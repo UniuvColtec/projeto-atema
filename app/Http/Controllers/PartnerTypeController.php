@@ -38,7 +38,6 @@ class PartnerTypeController extends Controller
     {
         $partner_type = new Partner_Type();
         $partner_type->name = $request->name;
-        $partner_type->type = $request->type;
         $partner_type->save();
         return redirect('partner_type');
     }
@@ -75,7 +74,6 @@ class PartnerTypeController extends Controller
     public function update(Request $request, Partner_type $partner_type)
     {
         $partner_type->name = $request->name;
-        $partner_type->type = $request->type;
         $partner_type->save();
         return redirect('partner_type');
     }
