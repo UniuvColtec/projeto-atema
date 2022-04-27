@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CityRequest;
 use App\Models\City;
+use App\Response;
 use Illuminate\Http\Request;
 
 class CityController extends Controller
@@ -14,8 +16,7 @@ class CityController extends Controller
      */
     public function index()
     {
-        $city = City::all();
-        return view('city.index', compact('city'));
+        return view('city.index');
     }
 
     /**
@@ -34,13 +35,14 @@ class CityController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CityRequest $request)
     {
         $city = new City();
         $city->name = $request->name;
         $city->state = $request->state;
         $city->save();
-        return redirect('city');
+
+        return Response::responseOK('Cidade cadastrada com sucesso');
     }
 
     /**
@@ -72,12 +74,13 @@ class CityController extends Controller
      * @param  \App\Models\City  $city
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, City $city)
+    public function update(CityRequest $request, City $city)
     {
         $city->name = $request->name;
         $city->state= $request->state;
         $city->save();
-        return redirect('city');
+
+        return Response::responseOK('Alterado com sucesso');
     }
 
     /**
@@ -88,7 +91,17 @@ class CityController extends Controller
      */
     public function destroy(City $city)
     {
-        $city->delete();
-        return redirect('city');
+        if($city->delete()){
+            return Response::responseSuccess();
+        } else {
+            return Response::responseForbiden();
+        }
+    }
+
+    public function bootgrid(Request $request)
+    {
+        $cities = new City();
+        $bootgrid = $cities->bootgrid($request);
+        return response()->json($bootgrid);
     }
 }

@@ -229,7 +229,7 @@ return [
         [
             'type'         => 'navbar-search',
             'text'         => 'search',
-            'topnav_right' => true,
+            'topnav_right' => false,
         ],
         [
             'type'         => 'fullscreen-widget',
@@ -237,10 +237,6 @@ return [
         ],
 
         // Sidebar items:
-        [
-            'type' => 'sidebar-menu-search',
-            'text' => 'search',
-        ],
         [
             'text' => 'blog',
             'url'  => 'admin/blog',
@@ -264,59 +260,29 @@ return [
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
         ],
+        ['header' => 'Cadastros'],
         [
-            'text'    => 'multilevel',
+            'text'    => 'Cadastros Gerais',
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
                 [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-                [
-                    'text'    => 'level_one',
-                    'url'     => '#',
+                    'text'    => 'Cidade',
+                    'url'     => '/city',
+                    'icon'    => 'fas fa-fw fa-city',
                     'submenu' => [
                         [
-                            'text' => 'level_two',
-                            'url'  => '#',
+                            'text' => 'Cadastrar',
+                            'icon'    => 'fas fa-fw fa-plus',
+                            'url'  => '/city/create',
                         ],
                         [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
+                            'text'    => 'Listar',
+                            'icon'    => 'fas fa-fw fa-th-list',
+                            'url'     => '/city',
                         ],
                     ],
                 ],
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
             ],
-        ],
-        ['header' => 'labels'],
-        [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
         ],
     ],
 
@@ -376,7 +342,7 @@ return [
             ],
         ],
         'Select2' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',

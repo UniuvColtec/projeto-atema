@@ -35,7 +35,9 @@ Route::get('/home', function() {
 
 Route::resource('cidade', CidadeController::class);
 
+Route::post('city/bootgrid', [CityController::class, 'bootgrid'])->name('city.bootgrid');
 Route::resource('city', CityController::class);
+
 Route::resource('partner_type',PartnerTypeController::class);
 Route::resource('category', CategoryController::class);
 Route::resource('typical_food', TypicalFoodController::class);
