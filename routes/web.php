@@ -42,6 +42,7 @@ Route::resource('partner_type',PartnerTypeController::class);
 Route::resource('category', CategoryController::class);
 Route::resource('typical_food', TypicalFoodController::class);
 Route::resource('image', ImageController::class);
+Route::post('partner/bootgrid', [PartnerController::class, 'bootgrid'])->name('partner.bootgrid');
 Route::resource('partner', PartnerController::class);
 Route::resource('event', EventController::class);
 Route::resource('tourist_spot', TouristSpotController::class);

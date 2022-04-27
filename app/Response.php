@@ -17,7 +17,7 @@ class Response
         $return['status'] = 0;
         $return['message'] = $message;
 
-        return response()->json($return, 422);
+        return response()->json($return, 200);
     }
 
     static public function responseSuccess()
