@@ -48,6 +48,7 @@
                                 <label for="name">Nome</label>
                                 <input type="text" class="form-control" id="nome" name="name" placeholder="Nome">
                             </div>
+                        </div>
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary">Salvar</button>
                         </div>
