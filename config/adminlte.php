@@ -282,6 +282,23 @@ return [
                         ],
                     ],
                 ],
+                [
+                    'text'    => 'Comidas Típicas',
+                    'url'     => '/typical_food',
+                    'icon'    => 'fas fa-fw fa-city',
+                    'submenu' => [
+                        [
+                            'text' => 'Cadastrar',
+                            'icon'    => 'fas fa-fw fa-plus',
+                            'url'  => '/typical_food/create',
+                        ],
+                        [
+                            'text'    => 'Listar',
+                            'icon'    => 'fas fa-fw fa-th-list',
+                            'url'     => '/typical_food',
+                        ],
+                    ],
+                ],
             ],
         ],
     ],

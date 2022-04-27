@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Bootgrid;
 use App\Models\Typical_food;
+use App\Response;
 use Illuminate\Http\Request;
 use phpDocumentor\Reflection\Types\Boolean;
 
@@ -16,8 +17,7 @@ class TypicalFoodController extends Controller
      */
     public function index()
     {
-        $typical_food= Typical_Food::all();
-        return view('typical_food.index', compact('typical_food'));
+        return view('typical_food.index');
     }
 
     /**
@@ -43,7 +43,8 @@ class TypicalFoodController extends Controller
         $typical_food->description = $request->description;
         $typical_food->image = $request->image;
         $typical_food->save();
-        return redirect('typical_food');
+
+        return Response::responseOK('Comida Típica cadastrada');
     }
 
     /**
@@ -81,7 +82,7 @@ class TypicalFoodController extends Controller
         $typical_food->description = $request->description;
         $typical_food->image = $request->image;
         $typical_food->save();
-        return redirect('typical_food');
+        return Response::responseOK('Alterado com sucesso');
     }
 
     /**
@@ -92,13 +93,16 @@ class TypicalFoodController extends Controller
      */
     public function destroy(Typical_food $typical_food)
     {
-        $typical_food->delete();
-        return redirect('typical_food');
+        if($typical_food->delete()) {
+            return Response::responseSuccess();
+        } else {
+            return Response::responseForbiden();
+        }
     }
     public function bootgrid(Request $request)
     {
-        $bootgrid = new Bootgrid();
-        $bootgrid->query($this, $request, ['name']);
-        return $bootgrid;
+        $typical_food = new Typical_food();
+        $bootgrid = $typical_food->bootgrid($request);
+        return response()->json($bootgrid);
     }
 }
