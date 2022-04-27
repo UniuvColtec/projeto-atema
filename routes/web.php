@@ -48,6 +48,7 @@ Route::resource('typical_food', TypicalFoodController::class);
 Route::post('image/bootgrid', [ImageController::class, 'bootgrid'])->name('image.bootgrid');
 Route::resource('image', ImageController::class);
 
+Route::post('partner/bootgrid', [PartnerController::class, 'bootgrid'])->name('partner.bootgrid');
 
 Route::resource('partner', PartnerController::class);
 Route::resource('event', EventController::class);

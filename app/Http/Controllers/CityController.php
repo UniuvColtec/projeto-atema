@@ -41,7 +41,6 @@ class CityController extends Controller
         $city->name = $request->name;
         $city->state = $request->state;
         $city->save();
-
         return Response::responseOK('Cidade cadastrada com sucesso');
     }
 
@@ -79,7 +78,6 @@ class CityController extends Controller
         $city->name = $request->name;
         $city->state= $request->state;
         $city->save();
-
         return Response::responseOK('Alterado com sucesso');
     }
 

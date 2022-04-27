@@ -282,6 +282,23 @@ return [
                         ],
                     ],
                 ],
+                [
+                    'text'    => 'Parceiro',
+                    'url'     => '/partner',
+                    'icon'    => 'fas fa-fw fa-partner',
+                    'submenu' => [
+                        [
+                            'text' => 'Cadastrar',
+                            'icon'    => 'fas fa-fw fa-plus',
+                            'url'  => '/partner/create',
+                        ],
+                        [
+                            'text'    => 'Listar',
+                            'icon'    => 'fas fa-fw fa-th-list',
+                            'url'     => '/partner',
+                        ],
+                    ],
+                ],
             ],
         ],
     ],

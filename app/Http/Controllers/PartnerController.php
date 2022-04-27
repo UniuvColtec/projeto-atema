@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PartnerRequest;
 use App\Models\City;
 use App\Models\Partner;
 use App\Models\Partner_city;
 use App\Models\Partner_type;
+use App\Response;
 use Illuminate\Http\Request;
 
 class PartnerController extends Controller
@@ -38,8 +40,12 @@ class PartnerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PartnerRequest $request)
     {
+        dd($request->cities);
+        if (count($request->cities)==0){
+            return Response::responseError('Não foi selecionada nenhuma cidade');
+        }
         $partner = new Partner();
         $partner->name = $request->name;
         $partner->email = $request->email;
@@ -51,7 +57,15 @@ class PartnerController extends Controller
         $partner->latitude = $request->latitude;
         $partner->longitude = $request->longitude;
         $partner->save();
-        return redirect('partner');
+
+        foreach ($request->cities as $city){
+            $partner_city = new Partner_city();
+            $partner_city->partner_id = $partner->id;
+            $partner_city->city_id = $city;
+            $partner_city->save();
+        }
+
+        return Response::responseOK('Parceiro cadastrado com sucesso');
     }
 
     /**
@@ -95,7 +109,7 @@ class PartnerController extends Controller
         $partner->latitude = $request->latitude;
         $partner->longitude = $request->longitude;
         $partner->save();
-        return redirect('partner');
+        return Response::responseOK('Alterado com sucesso');
     }
 
     /**
@@ -106,7 +120,16 @@ class PartnerController extends Controller
      */
     public function destroy(Partner $partner)
     {
-        $partner->delete();
-        return redirect('partner');
+        if($partner->delete()){
+            return Response::responseSuccess();
+        } else {
+            return Response::responseForbiden();
+        }
+    }
+    public function bootgrid(Request $request)
+    {
+        $partners = new Partner();
+        $bootgrid = $partners->bootgrid($request);
+        return response()->json($bootgrid);
     }
 }
