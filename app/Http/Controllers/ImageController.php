@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ImageRequest;
+use App\Models\City;
 use App\Models\Image;
+use App\Response;
 use Illuminate\Http\Request;
 
 class ImageController extends Controller
@@ -14,8 +17,7 @@ class ImageController extends Controller
      */
     public function index()
     {
-        $image = Image::all();
-        return view('image.index', compact('image'));
+        return view('image.index');
     }
 
     /**
@@ -34,12 +36,12 @@ class ImageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ImageRequest $request)
     {
         $image = new Image();
         $image->address = $request->address;
         $image->save();
-        return redirect('image');
+        return Response::responseOK('Imagem cadastrada com sucesso');
     }
 
     /**
@@ -71,12 +73,12 @@ class ImageController extends Controller
      * @param  \App\Models\Image  $image
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Image $image)
+    public function update(ImageRequest $request, Image $image)
     {
         $image->address = $request->address;
         $image->address= $request->address;
         $image->save();
-        return redirect('image');
+        return Response::responseOK('Alterado com sucesso');
     }
 
     /**
@@ -87,7 +89,16 @@ class ImageController extends Controller
      */
     public function destroy(Image $image)
     {
-        $image->delete();
-        return redirect('image');
+        if($image->delete()){
+            return Response::responseSuccess();
+        } else {
+            return Response::responseForbiden();
+        }
+    }
+    public function bootgrid(Request $request)
+    {
+        $images = new Image();
+        $bootgrid = $images>bootgrid($request);
+        return response()->json($bootgrid);
     }
 }

@@ -1,19 +1,47 @@
 @extends('adminlte::page')
+@section('title', 'Imagem - Exibir')
+
+@push('css')
+    <link rel="stylesheet" href="/css/iziToast.min.css">
+@endpush
+
+@push('js')
+    <script src="/js/iziToast.min.js" type="text/javascript"></script>
+    <script src="/js/jquery.form.min.js" type="text/javascript"></script>
+    <script src="/js/formAjaxCadastrar.js" type="text/javascript"></script>
+    <script>
+        $(document).ready(function(){
+            $(".select2").select2();
+        })
+    </script>
+@endpush
+
+@section('content_header')
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Imagem
+                    <small>Exibir</small>
+                </h1>
+
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fa fa-home"></i> Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('image.index') }}"> Imagem</a></li>
+                    <li class="breadcrumb-item active">Exibir</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+@endsection
 
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-12">
                 <div class="card card-primary">
-                    <h1>Imagem - Exibir</h1>
                     <div class="card-body">
-                        <form action="{{ route('image.destroy', ['image' =>$image->id]) }}" method="post">
-                            {{ csrf_field() }}
-                            {{ method_field('DELETE') }}
-                            <a href="{{ route('image.index') }}" class="btn btn-primary">Listar</a>
-                            <a href="{{ route('image.edit', ['image' =>$image->id]) }}" class="btn btn-success">Editar</a>
-                            <button type="submit" class="btn btn-danger"
-                                    onclick="return confirm('Deseja realmente excluir?');">Excluir</button> </form>
                         <div class="form-group">
                             <label for="name">ID: </label>
                             {{ $image->id }}

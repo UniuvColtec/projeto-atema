@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
 use App\Models\City;
+use App\Response;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -15,8 +17,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $category = Category::all();
-        return view('category.index', compact('category'));
+        return view('category.index');
     }
 
     /**
@@ -35,12 +36,12 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
         $category = new Category();
         $category->name = $request->name;
         $category->save();
-        return redirect('category');
+        return Response::responseOK('Categoria cadastrada com sucesso');
     }
 
     /**
@@ -72,11 +73,11 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(CategoryRequest $request, Category $category)
     {
         $category->name = $request->name;
         $category->save();
-        return redirect('category');
+        return Response::responseOK('Alterado com sucesso');
     }
 
     /**
@@ -87,7 +88,16 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        $category->delete();
-        return redirect('category');
+        if($category->delete()){
+            return Response::responseSuccess();
+        } else {
+            return Response::responseForbiden();
+        }
+    }
+    public function bootgrid(Request $request)
+    {
+        $categories = new Category();
+        $bootgrid = $categories->bootgrid($request);
+        return response()->json($bootgrid);
     }
 }
