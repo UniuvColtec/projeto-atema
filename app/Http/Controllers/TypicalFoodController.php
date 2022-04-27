@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Bootgrid;
 use App\Models\Typical_food;
 use Illuminate\Http\Request;
+use phpDocumentor\Reflection\Types\Boolean;
 
 class TypicalFoodController extends Controller
 {
@@ -92,5 +94,11 @@ class TypicalFoodController extends Controller
     {
         $typical_food->delete();
         return redirect('typical_food');
+    }
+    public function bootgrid(Request $request)
+    {
+        $bootgrid = new Bootgrid();
+        $bootgrid->query($this, $request, ['name']);
+        return $bootgrid;
     }
 }

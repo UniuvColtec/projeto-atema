@@ -18,26 +18,9 @@ class City extends Model
 
     public function bootgrid(object $request)
     {
-        $searchPhrase = $request->searchPhrase;
-        $rowCount = ($request->rowCount > 0 ? $request->rowCount : 0);
-        $current = ($request->current ? ($request->current - 1) * $rowCount : 0);
-
-        $registros = $this::where('name', 'like', "%{$searchPhrase}%");
-        $registros->orWhere('state', 'like', "%{$searchPhrase}%");
-
-        foreach ($request->sort as $item => $value) {
-            $registros->orderBy($item, $value);
-        }
-
         $bootgrid = new Bootgrid();
-        $bootgrid->total = $registros->count();
-        if ($rowCount > 0) {
-            $bootgrid->current = $request->current;
-            $bootgrid->rowCount = $rowCount;
-            $bootgrid->rows = $registros->take($rowCount)->skip($current)->get();
-        } else {
-            $bootgrid->rows = $registros->get();
-        }
+        $bootgrid->query($this, $request, ['name', 'state']);
         return $bootgrid;
+
     }
 }
