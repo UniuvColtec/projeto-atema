@@ -39,9 +39,16 @@ Route::post('city/bootgrid', [CityController::class, 'bootgrid'])->name('city.bo
 Route::resource('city', CityController::class);
 
 Route::resource('partner_type',PartnerTypeController::class);
+
+Route::post('category/bootgrid', [CategoryController::class, 'bootgrid'])->name('category.bootgrid');
 Route::resource('category', CategoryController::class);
+
 Route::resource('typical_food', TypicalFoodController::class);
+
+Route::post('image/bootgrid', [ImageController::class, 'bootgrid'])->name('image.bootgrid');
 Route::resource('image', ImageController::class);
+
+
 Route::resource('partner', PartnerController::class);
 Route::resource('event', EventController::class);
 Route::resource('tourist_spot', TouristSpotController::class);

@@ -54,7 +54,6 @@
                                 <label for="estado">Estado: </label>
                                 {{ $city->state }}
                             </div>
-                        </form>
                     </div>
                 </div>
             </div>
