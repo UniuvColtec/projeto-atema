@@ -29,9 +29,9 @@ class PartnerController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
+    {   $cities = City::orderBy('name')->get(['id', 'name']);
         $partner_types = Partner_type::orderBy('name')->get(['id', 'name']);
-        return view('partner.create',compact('partner_types'));
+        return view('partner.create',compact('partner_types','cities'));
     }
 
     /**
@@ -41,9 +41,7 @@ class PartnerController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(PartnerRequest $request)
-    {
-        dd($request->cities);
-        if (count($request->cities)==0){
+    {   if ($request->cities==0){
             return Response::responseError('Não foi selecionada nenhuma cidade');
         }
         $partner = new Partner();
@@ -57,7 +55,6 @@ class PartnerController extends Controller
         $partner->latitude = $request->latitude;
         $partner->longitude = $request->longitude;
         $partner->save();
-
         foreach ($request->cities as $city){
             $partner_city = new Partner_city();
             $partner_city->partner_id = $partner->id;
@@ -86,8 +83,9 @@ class PartnerController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Partner $partner)
-    {   $partner_type = Partner_type::orderBy('name')->get(['id', 'name']);
-        return view('partner.edit', compact('partner','partner_type'));
+    {   $cities = City::orderBy('name')->get(['id', 'name']);
+        $partner_type = Partner_type::orderBy('name')->get(['id', 'name']);
+        return view('partner.edit', compact('partner','partner_type','cities'));
     }
 
     /**

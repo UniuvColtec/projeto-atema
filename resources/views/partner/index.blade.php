@@ -39,23 +39,12 @@
         <div class="row">
             <div class="col-12">
                 <table id="grid-data" class="table table-condensed table-hover table-striped">
-                    <!--<thead>
-                     <tr>
-                        <th>ID</th>
-                        <th>Nome</th>
-                         <th>Tipo</th>
-                         <th>Email</th>
-                         <th>Site</th>
-                         <th>Telephone</th>
-                         <th>Endereço</th>
-                         <th>Distrito</th>
-                        <th></th>
-                        </tr>
-                    </thead>-->
+
                     <thead>
                     <tr>
                         <th data-column-id="id" >Código</th>
                         <th data-column-id="name" data-order="desc" data-sortable="true">Nome</th>
+                        <th data-column-id="city" data-sortable="true">Cidade</th>
                         <th data-column-id="district" data-sortable="true">Localidade</th>
                         <th data-column-id="email" data-sortable="true">Email</th>
                         <th data-column-id="site" data-sortable="true">Site</th>
@@ -64,25 +53,6 @@
                         <th data-column-id="commands" data-formatter="commands" data-sortable="false">Ações</th>
                     </tr>
                     </thead>
-
-                   <!--<tbody>
-                   @foreach($partners as $partner)
-                        <tr>
-                            <td>{{ $partner->id }}</td>
-                            <td>{{ $partner->name }}</td>
-                            <td>{{ $partner->partner_type->name }}</td>
-                            <td>{{ $partner->email }}</td>
-                            <td>{{ $partner->site }}</td>
-                            <td>{{ $partner->telephone }}</td>
-                            <td>{{ $partner->address}}</td>
-                            <td>{{ $partner->district }}</td>
-                            <td>
-                                <a href="{{ route('partner.edit', ['partner' =>$partner->id]) }}" class="btn btn-primary">Editar</a>
-                                 <a href="{{ route('partner.show', ['partner' =>$partner->id]) }}" class="btn btn-info">Ver</a>
-                                </td>
-                        </tr>
-                    @endforeach
-                    </tbody>-->
                     </table>
                 </div>
         </div>

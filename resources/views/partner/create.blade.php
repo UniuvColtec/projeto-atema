@@ -57,6 +57,16 @@
                                 </select>
                             </div>
                             <div class="form-group">
+                                <label for="partner_id">Cidade</label>
+                                <select name="partner_id" id="partner_id"
+                                        class="form-control">
+                                    <option value="">- Selecione uma Cidade -</option>
+                                    @foreach($cities as $city)
+                                        <option value="{{$city->id}}">{{$city->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <label for="email">Email:</label>
                                 <input type="email" class="form-control" id="email"
                                        name="email" placeholder="Email" >
@@ -96,9 +106,5 @@
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary">Salvar</button>
                             </div>
-                         </form>
-                     </div>
-                 </div>
-            </div>
         </div>
 @endsection

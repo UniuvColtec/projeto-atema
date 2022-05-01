@@ -10,19 +10,23 @@ class Partner extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name,email,site,telephone,address,district,latitude,longitude'];
+        'name,email,site,telephone,address,district,latitude,longitude,city'];
     protected $hidden = ['deleted_at'];
     protected $casts = [
         'created_at' => 'date:d/m/Y H:m:s', 'updated_at'=> 'date:d/m/Y H:m:s', 'deleted_at'=>'date:d/m/Y H:m:s'];
     public function bootgrid(object $request)
     {
         $bootgrid = new Bootgrid();
-        $bootgrid->query($this, $request, ['name', 'site','address','district']);
+        $bootgrid->query($this, $request, ['name', 'site','address','district','city']);
         return $bootgrid;
 
     }
     public function partner_type(){
         return $this->belongsTo(Partner_type::class);
+
+    }
+    public function city(){
+        return $this->belongsTo(City::class);
 
     }
 }

@@ -60,6 +60,17 @@
                                     @endforeach
                                 </select>
                             </div>
+                            <div class="form-group">
+                                <label for="city_id">Cidade:</label>
+                                <select name="city_id" id="city_id"
+                                        class="form-control">
+                                    <option value="">- Selecione uma Cidade -</option>
+                                    @foreach($partner_cities as $partner_city)
+                                        <option value="{{$city->id}}" >{{$city->name}}</option>
+
+                                    @endforeach
+                                </select>
+                            </div>
 
                             <div class="form-group">
                                 <label for="email">Email:</label>

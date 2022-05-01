@@ -58,6 +58,10 @@
                             {{ $partner->name }}
                             </div>
                         <div class="form-group">
+                            <label for="city_id">Cidade:</label>
+                            {{ $partner_city->city_id }}
+                        </div>
+                        <div class="form-group">
                             <label for="partner_type_id">Tipo:</label>
                             {{ $partner->partner_type_id }}
                         </div>

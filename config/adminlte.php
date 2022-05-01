@@ -285,7 +285,7 @@ return [
                 [
                     'text'    => 'Comidas Típicas',
                     'url'     => '/typical_food',
-                    'icon'    => 'fas fa-fw fa-city',
+                    'icon'    => 'fas fa-fw fa-bowl-hot',
                     'submenu' => [
                         [
                             'text' => 'Cadastrar',
@@ -296,6 +296,57 @@ return [
                             'text'    => 'Listar',
                             'icon'    => 'fas fa-fw fa-th-list',
                             'url'     => '/typical_food',
+                        ],
+                    ],
+                ],
+                [
+                    'text'    => 'Parceiro',
+                    'url'     => '/partner',
+                    'icon'    => 'fas fa-fw fa-address-card',
+                    'submenu' => [
+                        [
+                            'text' => 'Cadastrar',
+                            'icon'    => 'fas fa-fw fa-plus',
+                            'url'  => '/partner/create',
+                        ],
+                        [
+                            'text'    => 'Listar',
+                            'icon'    => 'fas fa-fw fa-th-list',
+                            'url'     => '/partner',
+                        ],
+                    ],
+                ],
+                [
+                    'text'    => 'Categoria',
+                    'url'     => '/category',
+                    'icon'    => 'fas fa-fw fa-category',
+                    'submenu' => [
+                        [
+                            'text' => 'Cadastrar',
+                            'icon'    => 'fas fa-fw fa-plus',
+                            'url'  => '/category/create',
+                        ],
+                        [
+                            'text'    => 'Listar',
+                            'icon'    => 'fas fa-fw fa-th-list',
+                            'url'     => '/category',
+                        ],
+                    ],
+                ],
+                [
+                    'text'    => 'Tipo de parceiro',
+                    'url'     => '/partner_type',
+                    'icon'    => 'fas fa-fw fa-category',
+                    'submenu' => [
+                        [
+                            'text' => 'Cadastrar',
+                            'icon'    => 'fas fa-fw fa-plus',
+                            'url'  => '/partner_type/create',
+                        ],
+                        [
+                            'text'    => 'Listar',
+                            'icon'    => 'fas fa-fw fa-th-list',
+                            'url'     => '/partner_type',
                         ],
                     ],
                 ],
