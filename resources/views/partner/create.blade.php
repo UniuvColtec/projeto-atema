@@ -57,9 +57,9 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="partner_id">Cidade</label>
-                                <select name="partner_id" id="partner_id"
-                                        class="form-control">
+                                <label for="cities">Cidade</label>
+                                <select name="cities[]" id="cities"
+                                        class="form-control select2" multiple="">
                                     <option value="">- Selecione uma Cidade -</option>
                                     @foreach($cities as $city)
                                         <option value="{{$city->id}}">{{$city->name}}</option>
@@ -74,7 +74,7 @@
                             <div class="form-group">
                                 <label for="site">Site:</label>
                                 <input type="text" class="form-control" id="site"
-                                       name="site" placeholder="www.meusite.com.br" ">
+                                       name="site" placeholder="www.meusite.com.br" >
                             </div>
                             <div class="form-group">
                                 <label for="telephone">Telephone:</label>

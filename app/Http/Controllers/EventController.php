@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Response;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -36,6 +37,10 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
+        /*if (count($request->cities)==0){
+            return Response::responseError('Não foi selecionada nenhuma cidade');
+        }*/
+
         $event= new Event();
         $event->name = $request->name;
         $event->description = $request->description;
@@ -48,6 +53,13 @@ class EventController extends Controller
         $event->longitude = $request->longitude;
         $event->status = $request->status;
         $event->save();
+
+/*        foreach ($request->cities as $city){
+            $partner_city = new Partner_city();
+            $partner_city->partner_id = $partner->id;
+            $partner_city->city_id = $city;
+            $partner_city->save();
+        }*/
         return redirect('event');
     }
 

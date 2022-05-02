@@ -41,9 +41,8 @@ class PartnerController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(PartnerRequest $request)
-    {   if ($request->cities==0){
-            return Response::responseError('Não foi selecionada nenhuma cidade');
-        }
+    {
+
         $partner = new Partner();
         $partner->name = $request->name;
         $partner->email = $request->email;
@@ -55,12 +54,7 @@ class PartnerController extends Controller
         $partner->latitude = $request->latitude;
         $partner->longitude = $request->longitude;
         $partner->save();
-        foreach ($request->cities as $city){
-            $partner_city = new Partner_city();
-            $partner_city->partner_id = $partner->id;
-            $partner_city->city_id = $city;
-            $partner_city->save();
-        }
+
 
         return Response::responseOK('Parceiro cadastrado com sucesso');
     }
