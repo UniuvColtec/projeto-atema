@@ -58,7 +58,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="cities">Cidade</label>
-                                <select name="cities[]" id="cities"
+                                <select name="cities" id="cities"
                                         class="form-control select2" multiple="">
                                     <option value="">- Selecione uma Cidade -</option>
                                     @foreach($cities as $city)
@@ -87,19 +87,9 @@
                                        name="address" placeholder="Rua exemplo 1111" >
                             </div>
                             <div class="form-group">
-                                <label for="district">Distrito:</label>
+                                <label for="district">Localidade:</label>
                                 <input type="text" class="form-control" id="district"
                                        name="district" placeholder="">
-                            </div>
-                            <div class="form-group">
-                                <label for="latitude">Latitude:</label>
-                                <input type="text" class="form-control" id="latitude"
-                                       name="latitude" placeholder="latitude" >
-                            </div>
-                            <div class="form-group">
-                                <label for="longitude">Longitude:</label>
-                                <input type="text" class="form-control" id="longitude"
-                                       name="longitude" placeholder="longitude">
                             </div>
 
                             </div>

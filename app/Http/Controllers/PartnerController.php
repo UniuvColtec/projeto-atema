@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PartnerRequest;
 use App\Models\City;
 use App\Models\Partner;
-use App\Models\Partner_city;
 use App\Models\Partner_type;
 use App\Response;
 use Illuminate\Http\Request;
@@ -48,11 +47,10 @@ class PartnerController extends Controller
         $partner->email = $request->email;
         $partner->partner_type_id= $request->partner_type_id;
         $partner->site = $request->site;
+        $partner->city_id = $request->cities;
         $partner->telephone = $request->telephone;
         $partner->address = $request->address;
         $partner->district = $request->district;
-        $partner->latitude = $request->latitude;
-        $partner->longitude = $request->longitude;
         $partner->save();
 
 
@@ -95,11 +93,10 @@ class PartnerController extends Controller
         $partner->email = $request->email;
         $partner->partner_type_id= $request->partner_type_id;
         $partner->site = $request->site;
+        $partner->city_id = $request->cities;
         $partner->telephone = $request->telephone;
         $partner->address = $request->address;
         $partner->district = $request->district;
-        $partner->latitude = $request->latitude;
-        $partner->longitude = $request->longitude;
         $partner->save();
         return Response::responseOK('Alterado com sucesso');
     }

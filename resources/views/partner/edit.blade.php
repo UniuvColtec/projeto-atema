@@ -61,11 +61,11 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="city_id">Cidade:</label>
-                                <select name="city_id" id="city_id"
+                                <label for="cities">Cidade:</label>
+                                <select name="cities" id="cities"
                                         class="form-control">
                                     <option value="">- Selecione uma Cidade -</option>
-                                    @foreach($partner_cities as $partner_city)
+                                    @foreach($cities as $city)
                                         <option value="{{$city->id}}" >{{$city->name}}</option>
 
                                     @endforeach
@@ -92,20 +92,11 @@
                                        name="address" placeholder="Rua exemplo 1111" >
                             </div>
                             <div class="form-group">
-                                <label for="district">Distrito:</label>
+                                <label for="district">Localidade:</label>
                                 <input type="text" class="form-control" id="district"
                                        name="district" placeholder="" >
                             </div>
-                            <div class="form-group">
-                                <label for="latitude">Latitude:</label>
-                                <input type="text" class="form-control" id="latitude"
-                                       name="latitude" placeholder="latitude" >
-                            </div>
-                            <div class="form-group">
-                                <label for="longitude">Longitude:</label>
-                                <input type="text" class="form-control" id="longitude"
-                                       name="longitude" placeholder="longitude">
-                            </div>
+
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary">Salvar</button>
                             </div>

@@ -21,8 +21,7 @@ return new class extends Migration
             $table->string('telephone',20);
             $table->string('address',255)->nullable();;
             $table->string('district',255)->nullable();;
-            $table->string('latitude',100)->nullable();;
-            $table->string('longitude',100)->nullable();;
+            $table->unsignedBigInteger('city_id');
             $table->unsignedBigInteger('partner_type_id');
             $table->timestamps();
         });

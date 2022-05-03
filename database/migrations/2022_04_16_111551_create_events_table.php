@@ -23,8 +23,6 @@ return new class extends Migration
             $table->unsignedBigInteger('city_id');
             $table->string('address',255);
             $table->string('district',255);
-            $table->string('latitude',100);
-            $table->string('longitude',100);
             $table->enum('status',['Aprovado', 'Reprovado'])->default('Aprovado');
             $table->timestamps();
         });

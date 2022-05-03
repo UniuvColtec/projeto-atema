@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::table('partners', function (Blueprint $table) {
             $table->foreign('partner_type_id')->references('id')->on('partner_types');
+            $table->foreign('city_id')->references('id')->on('cities');
         });
     }
 
@@ -27,6 +28,7 @@ return new class extends Migration
     {
         Schema::table('partners', function (Blueprint $table) {
             $table->dropForeign(['partner_type_id']);
+            $table->dropForeign(['city_id']);
         });
     }
 };
