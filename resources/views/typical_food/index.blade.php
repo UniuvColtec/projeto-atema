@@ -28,7 +28,7 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fa fa-home"></i> Home</a></li>
-                    <li class="breadcrumb-item active">Cidade</li>
+                    <li class="breadcrumb-item active">Comidas Típicas</li>
                 </ol>
             </div>
         </div>

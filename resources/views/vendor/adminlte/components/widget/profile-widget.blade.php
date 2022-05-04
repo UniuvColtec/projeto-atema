@@ -3,7 +3,7 @@
     {{-- Profile header --}}
     <div class="{{ $makeHeaderClass() }}" style="{{ $makeHeaderStyle() }}">
 
-        {{-- User image --}}
+        {{-- UserRequest image --}}
         <div class="widget-user-image">
             @if(isset($img))
                 <img class="img-circle elevation-2" src="{{ $img }}" alt="User avatar: {{ $name }}">
@@ -18,12 +18,12 @@
             @endisset
         </div>
 
-        {{-- User name --}}
+        {{-- UserRequest name --}}
         @isset($name)
             <h3 class="widget-user-username mb-0">{{ $name }}</h3>
         @endisset
 
-        {{-- User description --}}
+        {{-- UserRequest description --}}
         @isset($desc)
             <h5 class="widget-user-desc">{{ $desc }}</h5>
         @endisset

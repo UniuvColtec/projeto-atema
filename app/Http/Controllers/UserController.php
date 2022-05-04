@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use App\Models\User;
 use App\Models\City;
+use App\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -17,8 +19,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        return view('user.index', compact('users'));
+        return view('user.index');
     }
 
     /**
@@ -42,20 +43,26 @@ class UserController extends Controller
      */
 
 
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        //$password = $_POST['password'];
-      //  $confirmpassword = $_POST['confirmpassword'];
-      //  if($password != $confirmpassword){
-       //     $this->retornaErro('Erro ao cadastrar a senha');
-      //  }
+        //$confirmpassword = $_POST['confirmpassword'];
+        //if($password != $confirmpassword){
+        //  return Response::responseError('Erro ao cadastrar senha');
+        //}
+
         $user= new User();
         $user->name = $request->name;
         $user->password = Hash::make($request->password);
         $user->email = $request->email;
         $user->city_id = $request->city_id;
+        //if ($request->city_id=''){
+        //$user->city_id = Hash::make($request->city_id);
+        //return Response::responseError('Escolha uma cidade');
+        //}
         $user->save();
-        return redirect('user');
+
+        return Response::responseOK('Usuário cadastrado com sucesso');
+
     }
 
     /**
@@ -64,7 +71,7 @@ class UserController extends Controller
      * @param  \App\Models\User $user
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(UserRequest $user)
     {
         return view('user.show', compact('user'));
     }
@@ -99,7 +106,7 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->city_id = $request->city_id;
         $user->save();
-        return redirect('user');
+        return Response::responseOK('Alterado com sucesso');
     }
 
     /**
@@ -108,9 +115,18 @@ class UserController extends Controller
      * @param  \App\Models\User $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(UserRequest $user)
     {
-        $user->delete();
-        return redirect('user');
+        if($user->delete()){
+            return Response::responseSuccess();
+        } else {
+            return Response::responseForbiden();
+        }
+    }
+    public function bootgrid(Request $request)
+    {
+        $users = new User();
+        $bootgrid = $users->bootgrid($request);
+        return response()->json($bootgrid);
     }
 }

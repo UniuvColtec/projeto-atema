@@ -54,7 +54,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | User Menu
+    | UserRequest Menu
     |--------------------------------------------------------------------------
     |
     | Here you can activate and change the user menu.
@@ -266,6 +266,23 @@ return [
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
                 [
+                    'text'    => 'Usuário',
+                    'url'     => '/user',
+                    'icon'    => 'fas fa-user-edit',
+                    'submenu' => [
+                        [
+                            'text' => 'Cadastrar',
+                            'icon'    => 'fas fa-fw fa-plus',
+                            'url'  => '/user/create',
+                        ],
+                        [
+                            'text'    => 'Listar',
+                            'icon'    => 'fas fa-fw fa-th-list',
+                            'url'     => '/user',
+                        ],
+                    ],
+                ],
+                [
                     'text'    => 'Cidade',
                     'url'     => '/city',
                     'icon'    => 'fas fa-fw fa-city',
@@ -283,9 +300,26 @@ return [
                     ],
                 ],
                 [
+                    'text'    => 'Pontos Turísticos',
+                    'url'     => '/tourist_spot',
+                    'icon'    => 'fas fa-map-marked-alt',
+                    'submenu' => [
+                        [
+                            'text' => 'Cadastrar',
+                            'icon'    => 'fas fa-fw fa-plus',
+                            'url'  => '/tourist_spot/create',
+                        ],
+                        [
+                            'text'    => 'Listar',
+                            'icon'    => 'fas fa-fw fa-th-list',
+                            'url'     => '/tourist_spot',
+                        ],
+                    ],
+                ],
+                [
                     'text'    => 'Comidas Típicas',
                     'url'     => '/typical_food',
-                    'icon'    => 'fas fa-fw fa-bowl-hot',
+                    'icon'    => 'fas fa-utensils',
                     'submenu' => [
                         [
                             'text' => 'Cadastrar',
@@ -300,26 +334,26 @@ return [
                     ],
                 ],
                 [
-                    'text'    => 'Parceiro',
-                    'url'     => '/partner',
-                    'icon'    => 'fas fa-fw fa-address-card',
+                    'text'    => 'Eventos',
+                    'url'     => '/event',
+                    'icon'    => 'fas fa-calendar-alt',
                     'submenu' => [
                         [
                             'text' => 'Cadastrar',
                             'icon'    => 'fas fa-fw fa-plus',
-                            'url'  => '/partner/create',
+                            'url'  => '/event/create',
                         ],
                         [
                             'text'    => 'Listar',
                             'icon'    => 'fas fa-fw fa-th-list',
-                            'url'     => '/partner',
+                            'url'     => '/event',
                         ],
                     ],
                 ],
                 [
-                    'text'    => 'Categoria',
+                    'text'    => 'Categoria do Evento',
                     'url'     => '/category',
-                    'icon'    => 'fas fa-fw fa-category',
+                    'icon'    => 'fas fa-folder-open',
                     'submenu' => [
                         [
                             'text' => 'Cadastrar',
@@ -334,19 +368,36 @@ return [
                     ],
                 ],
                 [
-                    'text'    => 'Tipo de parceiro',
-                    'url'     => '/partner_type',
-                    'icon'    => 'fas fa-fw fa-category',
+                    'text'    => 'Parceiros',
+                    'url'     => '/partner',
+                    'icon'    => 'fas fa-handshake',
                     'submenu' => [
                         [
                             'text' => 'Cadastrar',
                             'icon'    => 'fas fa-fw fa-plus',
-                            'url'  => '/partner_type/create',
+                            'url'  => '/partner/create',
                         ],
                         [
                             'text'    => 'Listar',
                             'icon'    => 'fas fa-fw fa-th-list',
-                            'url'     => '/partner_type',
+                            'url'     => '/partner',
+                        ],
+                    ],
+                ],
+                [
+                    'text'    => 'Imagens',
+                    'url'     => '/image',
+                    'icon'    => 'fas fa-images',
+                    'submenu' => [
+                        [
+                            'text' => 'Cadastrar',
+                            'icon'    => 'fas fa-fw fa-plus',
+                            'url'  => '/image/create',
+                        ],
+                        [
+                            'text'    => 'Listar',
+                            'icon'    => 'fas fa-fw fa-th-list',
+                            'url'     => '/image',
                         ],
                     ],
                 ],
