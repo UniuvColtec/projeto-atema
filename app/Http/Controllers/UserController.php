@@ -38,24 +38,36 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
 
 
     public function store(UserRequest $request)
     {
+
+
+        //$password = $_POST['password'];
         //$confirmpassword = $_POST['confirmpassword'];
         //if($password != $confirmpassword){
         //  return Response::responseError('Erro ao cadastrar senha');
         //}
 
-        $user= new User();
+
+        $user = new User();
         $user->name = $request->name;
         $user->password = Hash::make($request->password);
         $user->email = $request->email;
         $user->city_id = $request->city_id;
         //if ($request->city_id=''){
+
+        //$user->city_id = Hash::make($request->city_id);
+        //return Response::responseError('Escolha uma cidade');
+        //}
+        $user->save();
+
+        return Response::responseOK('Usuário cadastrado com sucesso');
+
         //$user->city_id = Hash::make($request->city_id);
         //return Response::responseError('Escolha uma cidade');
         //}
@@ -68,10 +80,10 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\User $user
+     * @param \App\Models\User $user
      * @return \Illuminate\Http\Response
      */
-    public function show(UserRequest $user)
+    public function show(Request $user)
     {
         return view('user.show', compact('user'));
     }
@@ -79,28 +91,28 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\User $user
+     * @param \App\Models\User $user
      * @return \Illuminate\Http\Response
      */
     public function edit(User $user)
     {
 
         $cities = City::orderBy('name')->get(['id', 'name']);
-        return view('user.edit', compact('user','cities'));
+        return view('user.edit', compact('user', 'cities'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User $user
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\User $user
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, User $user)
     {
 
         $user->name = $request->name;
-        if ($request->password!=''){
+        if ($request->password != '') {
             $user->password = Hash::make($request->password);
         }
         $user->email = $request->email;
@@ -112,17 +124,20 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\User $user
+     * @param \App\Models\User $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(UserRequest $user)
+
+    public function destroy(User $user)
+
     {
-        if($user->delete()){
+        if ($user->delete()) {
             return Response::responseSuccess();
         } else {
             return Response::responseForbiden();
         }
     }
+
     public function bootgrid(Request $request)
     {
         $users = new User();

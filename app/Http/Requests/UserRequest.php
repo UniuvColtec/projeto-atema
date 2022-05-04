@@ -29,6 +29,7 @@ class UserRequest extends FormRequest
             'email' => 'required',
             //  'city' => 'required'
 
+
         ];
     }
 
