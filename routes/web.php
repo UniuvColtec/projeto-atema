@@ -33,19 +33,23 @@ Route::get('/home', function() {
     return view('home');
 })->name('home')->middleware('auth');
 
-Route::resource('cidade', CidadeController::class);
 
 Route::post('city/bootgrid', [CityController::class, 'bootgrid'])->name('city.bootgrid');
 Route::resource('city', CityController::class);
 
+Route::get('partner_type/bootgrid', [PartnerTypeController::class, 'bootgrid'])->name('partner_type.bootgrid');
 Route::resource('partner_type',PartnerTypeController::class);
+
+Route::post('category/bootgrid', [CategoryController::class, 'bootgrid'])->name('category.bootgrid');
 Route::resource('category', CategoryController::class);
+
+Route::post('partner/bootgrid', [PartnerController::class, 'bootgrid'])->name('partner.bootgrid');
+Route::resource('partner', PartnerController::class);
 
 Route::post('typical_food/bootgrid', [TypicalFoodController::class, 'bootgrid'])->name('typical_food.bootgrid');
 Route::resource('typical_food', TypicalFoodController::class);
 
 Route::resource('image', ImageController::class);
-Route::resource('partner', PartnerController::class);
 Route::resource('event', EventController::class);
 Route::resource('tourist_spot', TouristSpotController::class);
 Route::resource('user', UserController::class);

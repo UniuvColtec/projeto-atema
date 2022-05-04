@@ -28,7 +28,8 @@ class PartnerRequest extends FormRequest
             'email' => 'required|email:rfc,dns',
             'address' => 'required',
             'telephone' => 'required',
-            'district' => 'required'
+            'district' => 'required',
+            'cities' => 'required'
         ];
     }
 
@@ -40,8 +41,8 @@ class PartnerRequest extends FormRequest
             'email.email' => 'Email inválido',
             'address.required' => 'Endereço  obrigatório',
             'telephone.required' => 'Telefone  obrigatório',
-            'address.required' => 'Endereço  obrigatório',
-            'district.required' => 'Localidade  obrigatório'
+            'district.required' => 'Localidade  obrigatório',
+            'cities.required' => 'Localidade  obrigatório'
         ];
     }
 }

@@ -41,7 +41,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="card card-primary">
-                    <form role="form" action="{{ route('partner.update', $partner->id) }}" method="POST" class="jsonForm">
+                    <form role="form" action="{{ route('partner.update', $partner->id) }}" method="post" class="jsonForm">
                         {{ csrf_field() }}
                         {{ method_field('PUT') }}
                         <div class="card-body">
@@ -61,8 +61,8 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="cities">Cidade:</label>
-                                <select name="cities" id="cities"
+                                <label for="city">Cidade:</label>
+                                <select name="city" id="city"
                                         class="form-control">
                                     <option value="">- Selecione uma Cidade -</option>
                                     @foreach($cities as $city)

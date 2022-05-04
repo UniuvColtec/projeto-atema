@@ -17,7 +17,7 @@ class Partner extends Model
     public function bootgrid(object $request)
     {
         $bootgrid = new Bootgrid();
-        $bootgrid->query($this, $request, ['name', 'site','address','district','cities_id']);
+        $bootgrid->query($this, $request, ['name','partner_type_id', 'site','address','district','city_id']);
         return $bootgrid;
 
     }

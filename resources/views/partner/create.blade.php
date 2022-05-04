@@ -37,8 +37,7 @@
 @endsection
 
 @section('content')
-    <form role="form" action="{{ route('partner.store') }}" class="jsonForm"
-                             method="post">
+    <form role="form" action="{{ route('partner.store') }}" class="jsonForm" method="post">
                         {{ csrf_field() }}
                         <div class="card-body">
                             <div class="form-group">
@@ -59,7 +58,7 @@
                             <div class="form-group">
                                 <label for="cities">Cidade</label>
                                 <select name="cities" id="cities"
-                                        class="form-control select2" multiple="">
+                                        class="form-control select2" >
                                     <option value="">- Selecione uma Cidade -</option>
                                     @foreach($cities as $city)
                                         <option value="{{$city->id}}">{{$city->name}}</option>
@@ -96,5 +95,6 @@
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary">Salvar</button>
                             </div>
+    </form>
         </div>
 @endsection

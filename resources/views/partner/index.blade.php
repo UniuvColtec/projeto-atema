@@ -44,7 +44,8 @@
                     <tr>
                         <th data-column-id="id" >Código</th>
                         <th data-column-id="name" data-order="desc" data-sortable="true">Nome</th>
-                        <th data-column-id="city" data-sortable="true">Cidade</th>
+                        <th data-column-id="city_id" data-sortable="true">Cidade</th>
+                        <th data-column-id="partner_type_id" data-sortable="true">Tipo</th>
                         <th data-column-id="district" data-sortable="true">Localidade</th>
                         <th data-column-id="email" data-sortable="true">Email</th>
                         <th data-column-id="site" data-sortable="true">Site</th>
