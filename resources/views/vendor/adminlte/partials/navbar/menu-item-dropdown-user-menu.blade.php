@@ -15,7 +15,7 @@
 
 <li class="nav-item dropdown user-menu">
 
-    {{-- User menu toggler --}}
+    {{-- UserRequest menu toggler --}}
     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
         @if(config('adminlte.usermenu_image'))
             <img src="{{ Auth::user()->adminlte_image() }}"
@@ -27,10 +27,10 @@
         </span>
     </a>
 
-    {{-- User menu dropdown --}}
+    {{-- UserRequest menu dropdown --}}
     <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
 
-        {{-- User menu header --}}
+        {{-- UserRequest menu header --}}
         @if(!View::hasSection('usermenu_header') && config('adminlte.usermenu_header'))
             <li class="user-header {{ config('adminlte.usermenu_header_class', 'bg-primary') }}
                 @if(!config('adminlte.usermenu_image')) h-auto @endif">
@@ -53,14 +53,14 @@
         {{-- Configured user menu links --}}
         @each('adminlte::partials.navbar.dropdown-item', $adminlte->menu("navbar-user"), 'item')
 
-        {{-- User menu body --}}
+        {{-- UserRequest menu body --}}
         @hasSection('usermenu_body')
             <li class="user-body">
                 @yield('usermenu_body')
             </li>
         @endif
 
-        {{-- User menu footer --}}
+        {{-- UserRequest menu footer --}}
         <li class="user-footer">
             @if($profile_url)
                 <a href="{{ $profile_url }}" class="btn btn-default btn-flat">

@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Cidade - Exibir')
+@section('title', 'Comidas Típicas - Exibir')
 
 @push('css')
     <link rel="stylesheet" href="/css/iziToast.min.css">

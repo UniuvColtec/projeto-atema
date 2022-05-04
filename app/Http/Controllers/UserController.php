@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use App\Models\User;
 use App\Models\City;
+use App\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -17,8 +19,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        return view('user.index', compact('users'));
+        return view('user.index');
     }
 
     /**
@@ -37,34 +38,52 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
 
 
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
+
+
         //$password = $_POST['password'];
-      //  $confirmpassword = $_POST['confirmpassword'];
-      //  if($password != $confirmpassword){
-       //     $this->retornaErro('Erro ao cadastrar a senha');
-      //  }
-        $user= new User();
+        //$confirmpassword = $_POST['confirmpassword'];
+        //if($password != $confirmpassword){
+        //  return Response::responseError('Erro ao cadastrar senha');
+        //}
+
+
+        $user = new User();
         $user->name = $request->name;
         $user->password = Hash::make($request->password);
         $user->email = $request->email;
         $user->city_id = $request->city_id;
+        //if ($request->city_id=''){
+
+        //$user->city_id = Hash::make($request->city_id);
+        //return Response::responseError('Escolha uma cidade');
+        //}
         $user->save();
-        return redirect('user');
+
+        return Response::responseOK('Usuário cadastrado com sucesso');
+
+        //$user->city_id = Hash::make($request->city_id);
+        //return Response::responseError('Escolha uma cidade');
+        //}
+        $user->save();
+
+        return Response::responseOK('Usuário cadastrado com sucesso');
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\User $user
+     * @param \App\Models\User $user
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(Request $user)
     {
         return view('user.show', compact('user'));
     }
@@ -72,45 +91,57 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\User $user
+     * @param \App\Models\User $user
      * @return \Illuminate\Http\Response
      */
     public function edit(User $user)
     {
 
         $cities = City::orderBy('name')->get(['id', 'name']);
-        return view('user.edit', compact('user','cities'));
+        return view('user.edit', compact('user', 'cities'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User $user
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\User $user
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, User $user)
     {
 
         $user->name = $request->name;
-        if ($request->password!=''){
+        if ($request->password != '') {
             $user->password = Hash::make($request->password);
         }
         $user->email = $request->email;
         $user->city_id = $request->city_id;
         $user->save();
-        return redirect('user');
+        return Response::responseOK('Alterado com sucesso');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\User $user
+     * @param \App\Models\User $user
      * @return \Illuminate\Http\Response
      */
+
     public function destroy(User $user)
+
     {
-        $user->delete();
-        return redirect('user');
+        if ($user->delete()) {
+            return Response::responseSuccess();
+        } else {
+            return Response::responseForbiden();
+        }
+    }
+
+    public function bootgrid(Request $request)
+    {
+        $users = new User();
+        $bootgrid = $users->bootgrid($request);
+        return response()->json($bootgrid);
     }
 }

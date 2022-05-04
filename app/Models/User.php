@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Bootgrid;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -43,9 +44,18 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function bootgrid(object $request)
+    {
+        $bootgrid = new Bootgrid();
+        $bootgrid->query($this, $request, ['name', 'password', 'email']);
+        return $bootgrid;
+
+    }
+
     public function city(){
         return $this->belongsTo(City::class);
 
     }
+
 
 }
