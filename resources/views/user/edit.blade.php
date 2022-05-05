@@ -58,6 +58,12 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="confirmpassword">Confirmar Senha</label>
+                                <input type="password" class="form-control" id="confirmpassword" name="confirmpassword" placeholder="Confirmar Senha">
+                            </div>
+
+
+                            <div class="form-group">
                                 <label for="email">Email:</label>
                                 <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="{{ $user->email }}">
                             </div>

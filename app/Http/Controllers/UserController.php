@@ -45,23 +45,15 @@ class UserController extends Controller
 
     public function store(UserRequest $request)
     {
-
-        //$password = $_POST['password'];
-        //$confirmpassword = $_POST['confirmpassword'];
-        //if($password != $confirmpassword){
-        //  return Response::responseError('Erro ao cadastrar senha');
-        //}
-
         $user = new User();
         $user->name = $request->name;
         $user->password = Hash::make($request->password);
+        if($request->password != $request->confirmpassword){
+            return Response::responseError('Erro ao cadastrar senha');
+        }
         $user->email = $request->email;
         $user->city_id = $request->city_id;
-        //if ($request->city_id=''){
 
-        //$user->city_id = Hash::make($request->city_id);
-        //return Response::responseError('Escolha uma cidade');
-        //}
         $user->save();
 
         return Response::responseOK('Usuário cadastrado com sucesso');
@@ -75,7 +67,7 @@ class UserController extends Controller
      * @param \App\Models\User $user
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $user)
+    public function show(User $user)
     {
         return view('user.show', compact('user'));
     }
@@ -106,6 +98,8 @@ class UserController extends Controller
         $user->name = $request->name;
         if ($request->password != '') {
             $user->password = Hash::make($request->password);
+        }if($request->password != $request->confirmpassword){
+            return Response::responseError('Erro ao cadastrar senha');
         }
         $user->email = $request->email;
         $user->city_id = $request->city_id;

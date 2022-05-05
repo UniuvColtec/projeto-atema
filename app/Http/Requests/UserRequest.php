@@ -26,20 +26,23 @@ class UserRequest extends FormRequest
         return [
             'name' => 'required',
             'password' => 'required',
+            'confirmpassword' => 'required',
             'email' => 'required',
-            //  'city' => 'required'
+            'city_id' => 'required'
 
 
         ];
     }
+
 
     public function messages()
     {
         return [
             'name.required' => 'Nome obrigatório',
             'password.required' => 'Senha obrigatória',
+            'confirmpassword.required' => 'Confirme sua senha',
             'email.required' => 'Email obrigatório',
-            //'city.required' => 'Escolha uma cidade'
+            'city_id.required' => 'Escolha uma cidade'
         ];
     }
 }

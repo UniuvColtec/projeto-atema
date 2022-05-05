@@ -44,12 +44,6 @@
                     <div class="card card-primary">
                         <div class="card-body">
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12">
-                <div class="card card-primary">
-                    <div class="card-body">
-
                         <div class="form-group">
                             <label for="id">ID: </label>
                             {{ $user->id }}
