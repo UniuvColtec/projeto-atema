@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Requests\Partner_typeRequest;
 use App\Models\Partner_type;
+use App\Response;
 use Illuminate\Http\Request;
 
 class PartnerTypeController extends Controller
@@ -39,7 +40,7 @@ class PartnerTypeController extends Controller
         $partner_type = new Partner_Type();
         $partner_type->name = $request->name;
         $partner_type->save();
-        return redirect('partner_type');
+        return Response::responseOK('tipo de parceiro cadastrado com sucesso');
     }
 
     /**
@@ -75,7 +76,7 @@ class PartnerTypeController extends Controller
     {
         $partner_type->name = $request->name;
         $partner_type->save();
-        return redirect('partner_type');
+        return Response::responseOK('Alterado com sucesso');
     }
 
     /**
@@ -86,7 +87,18 @@ class PartnerTypeController extends Controller
      */
     public function destroy(Partner_type $partner_type)
     {
-        $partner_type->delete();
-        return redirect('partner_type');
+        if($partner_type->delete()){
+            return Response::responseSuccess();
+        } else {
+            return Response::responseForbiden();
+        }
     }
+
+    public function bootgrid(Request $request)
+    {
+        $partner_type = new Partner_type();
+        $bootgrid = $partner_type->bootgrid($request);
+        return response()->json($bootgrid);
+    }
+
 }
