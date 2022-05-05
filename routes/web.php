@@ -41,7 +41,7 @@ Route::prefix('admin')->middleware('auth')->group(function(){
     Route::post('city/bootgrid', [CityController::class, 'bootgrid'])->name('city.bootgrid');
     Route::resource('city', CityController::class);
 
-    Route::get('partner_type/bootgrid', [PartnerTypeController::class, 'bootgrid'])->name('partner_type.bootgrid');
+    Route::post('partner_type/bootgrid', [PartnerTypeController::class, 'bootgrid'])->name('partner_type.bootgrid');
     Route::resource('partner_type',PartnerTypeController::class);
 
     Route::post('category/bootgrid', [CategoryController::class, 'bootgrid'])->name('category.bootgrid');
