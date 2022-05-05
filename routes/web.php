@@ -29,67 +29,32 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', function() {
-    return view('home');
-})->name('home')->middleware('auth');
 
-Route::post('partner/bootgrid', [PartnerController::class, 'bootgrid'])->name('partner.bootgrid');
-Route::resource('partner', PartnerController::class);
+Route::prefix('admin')->middleware('auth')->group(function(){
+    Route::get('/home', function() {
+        return view('home');
+    })->name('home');
 
+    Route::post('partner/bootgrid', [PartnerController::class, 'bootgrid'])->name('partner.bootgrid');
+    Route::resource('partner', PartnerController::class);
 
-Route::post('city/bootgrid', [CityController::class, 'bootgrid'])->name('city.bootgrid');
-Route::resource('city', CityController::class);
+    Route::post('city/bootgrid', [CityController::class, 'bootgrid'])->name('city.bootgrid');
+    Route::resource('city', CityController::class);
 
+    Route::get('partner_type/bootgrid', [PartnerTypeController::class, 'bootgrid'])->name('partner_type.bootgrid');
+    Route::resource('partner_type',PartnerTypeController::class);
 
+    Route::post('category/bootgrid', [CategoryController::class, 'bootgrid'])->name('category.bootgrid');
+    Route::resource('category', CategoryController::class);
 
+    Route::post('typical_food/bootgrid', [TypicalFoodController::class, 'bootgrid'])->name('typical_food.bootgrid');
+    Route::resource('typical_food', TypicalFoodController::class);
 
+    Route::post('user/bootgrid', [UserController::class, 'bootgrid'])->name('user.bootgrid');
+    Route::resource('user', UserController::class);
 
+    Route::resource('event', EventController::class);
+    Route::resource('tourist_spot', TouristSpotController::class);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Route::get('partner_type/bootgrid', [PartnerTypeController::class, 'bootgrid'])->name('partner_type.bootgrid');
-Route::resource('partner_type',PartnerTypeController::class);
-
-
-Route::post('category/bootgrid', [CategoryController::class, 'bootgrid'])->name('category.bootgrid');
-Route::resource('category', CategoryController::class);
-
-Route::post('partner/bootgrid', [PartnerController::class, 'bootgrid'])->name('partner.bootgrid');
-Route::resource('partner', PartnerController::class);
-
-Route::post('typical_food/bootgrid', [TypicalFoodController::class, 'bootgrid'])->name('typical_food.bootgrid');
-Route::resource('typical_food', TypicalFoodController::class);
-
-
-Route::post('image/bootgrid', [ImageController::class, 'bootgrid'])->name('image.bootgrid');
-Route::resource('image', ImageController::class);
-
-
-Route::post('user/bootgrid', [UserController::class, 'bootgrid'])->name('user.bootgrid');
-Route::resource('user', UserController::class);
-
-
-Route::resource('partner_type',PartnerTypeController::class);
-Route::resource('partner', PartnerController::class);
-
-
-Route::resource('event', EventController::class);
-Route::resource('tourist_spot', TouristSpotController::class);
+});
 
