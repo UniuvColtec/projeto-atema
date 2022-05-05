@@ -46,13 +46,11 @@ class UserController extends Controller
     public function store(UserRequest $request)
     {
 
-
         //$password = $_POST['password'];
         //$confirmpassword = $_POST['confirmpassword'];
         //if($password != $confirmpassword){
         //  return Response::responseError('Erro ao cadastrar senha');
         //}
-
 
         $user = new User();
         $user->name = $request->name;
@@ -68,12 +66,6 @@ class UserController extends Controller
 
         return Response::responseOK('Usuário cadastrado com sucesso');
 
-        //$user->city_id = Hash::make($request->city_id);
-        //return Response::responseError('Escolha uma cidade');
-        //}
-        $user->save();
-
-        return Response::responseOK('Usuário cadastrado com sucesso');
 
     }
 

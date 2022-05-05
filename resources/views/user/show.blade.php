@@ -60,17 +60,6 @@
                             {{ $user->name }}
                         </div>
 
-
-                            <div class="form-group">
-                                <label for="id">ID: </label>
-                                {{ $user->id }}
-                            </div>
-
-                            <div class="form-group">
-                                <label for="name">Nome:</label>
-                                {{ $user->name }}
-                            </div>
-
                             <div class="form-group">
                                 <label for="email">Email:</label>
                                 {{ $user->email }}

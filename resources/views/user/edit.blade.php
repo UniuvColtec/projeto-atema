@@ -43,9 +43,6 @@
                 <div class="card card-primary">
                     <form role="form" action="{{ route('user.update', $user->id) }}" method="POST" class="jsonForm">
 
-    {{ csrf_field() }}
-    {{ method_field('PUT') }}
-
                         {{ csrf_field() }}
                         {{ method_field('PUT') }}
 
