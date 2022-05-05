@@ -401,6 +401,23 @@ return [
                         ],
                     ],
                 ],
+                [
+                    'text'    => 'Tipo de parceiro',
+                    'url'     => '/admin/partner_type',
+                    'icon'    => 'fas fa-address-card',
+                    'submenu' => [
+                        [
+                            'text' => 'Cadastrar',
+                            'icon'    => 'fas fa-fw fa-plus',
+                            'url'     => '/admin/partner_type/create',
+                        ],
+                        [
+                            'text'    => 'Listar',
+                            'icon'    => 'fas fa-fw fa-th-list',
+                            'url'     => '/admin/partner_type',
+                        ],
+                    ],
+                ],
             ],
         ],
     ],
