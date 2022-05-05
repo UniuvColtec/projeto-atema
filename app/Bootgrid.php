@@ -15,13 +15,13 @@ class Bootgrid
         $rowCount = ($request->rowCount > 0 ? $request->rowCount : 0);
         $current = ($request->current ? ($request->current - 1) * $rowCount : 0);
 
-        if(count($fields)>0){
-            $query = $model::where($fields[0], 'like', "%{$searchPhrase}%");
+        if(count($fields)>0 AND $searchPhrase!=''){
+            $query = $model->where($fields[0], 'like', "%{$searchPhrase}%");
             for ($i=1; $i<count($fields); $i++){
                 $query->orWhere($fields[$i], 'like', "%{$searchPhrase}%");
             }
         }else{
-            $result = $model;
+            $query = $model;
         }
 
         foreach ($request->sort as $item => $value) {

@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Bootgrid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Partner extends Model
 {
@@ -14,10 +15,16 @@ class Partner extends Model
     protected $hidden = ['deleted_at'];
     protected $casts = [
         'created_at' => 'date:d/m/Y H:m:s', 'updated_at'=> 'date:d/m/Y H:m:s', 'deleted_at'=>'date:d/m/Y H:m:s'];
+
     public function bootgrid(object $request)
     {
         $bootgrid = new Bootgrid();
-        $bootgrid->query($this, $request, ['name','partner_type_id', 'site','address','district','city_id']);
+        $partners = DB::table('partners')
+            ->join('cities', 'partners.city_id', '=', 'cities.id')
+            ->join('partner_types', 'partners.partner_type_id', '=', 'partner_types.id')
+            ->select("partners.*", "cities.name as city_name", "partner_types.name as partner_type_name");
+
+        $bootgrid->query($partners, $request, ['partners.name','partner_types.name', 'site','address','district','cities.name', 'telephone']);
         return $bootgrid;
 
     }
