@@ -41,6 +41,8 @@ class EventController extends Controller
             return Response::responseError('Não foi selecionada nenhuma cidade');
         }*/
 
+        $coordinates = getCoordinates($request->link);
+
         $event= new Event();
         $event->name = $request->name;
         $event->description = $request->description;
@@ -49,9 +51,8 @@ class EventController extends Controller
         $event->final_date = $request->final_date;
         $event->address = $request->address;
         $event->district= $request->district;
-        $event->latitude = $request->latitude;
-        $event->longitude = $request->longitude;
-        $event->status = $request->status;
+        $event->latitude = $coordinates['latitude'];
+        $event->longitude = $coordinates['longitude'];;
         $event->save();
 
 /*        foreach ($request->cities as $city){
