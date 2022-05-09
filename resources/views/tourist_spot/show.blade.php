@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Partner - Exibir')
+@section('title', '>Pontos Turistico - Exibir')
 
 @push('css')
     <link rel="stylesheet" href="/css/iziToast.min.css">
@@ -20,7 +20,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Parceiro
+                <h1>Pontos Turistico
                     <small>Exibir</small>
                 </h1>
 
@@ -28,7 +28,7 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fa fa-home"></i> Home</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('partner.index') }}"> Parceiro</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('tourist_spot.index') }}"> Pontos Turistico</a></li>
                     <li class="breadcrumb-item active">Exibir</li>
                 </ol>
             </div>
@@ -41,49 +41,35 @@
         <div class="row">
             <div class="col-12">
                 <div class="card card-primary">
-                    <h1> parceiro - Exibir</h1>
+                    <h1> Pontos turisticos - Exibir</h1>
                     <div class="card-body">
-                        <form action="{{ route('partner.destroy', ['partner' =>$partner->id]) }}" method="post">
+                        <form action="{{ route('tourist_spot.destroy', ['tourist_spot' =>$tourist_spot->id]) }}" method="post">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
-                            <a href="{{ route('partner.index') }}" class="btnbtn-primary">Listar</a>
-                            <a href="{{ route('partner.edit', ['partner' =>$partner->id]) }}" class="btn btn-success">Editar</a>
-                            <button type="submit" class="btn btn-danger" onclick="return confirm('Deseja realmente excluir?');">Excluir</button> </form>
+
                         <div class="form-group">
-                            <label for="nome">ID: </label>
-                            {{ $partner->id }}
+                            <label for="id">ID: </label>
+                            {{ $tourist_spot->id }}
                             </div>
                         <div class="form-group">
                             <label for="nome">Nome:</label>
-                            {{ $partner->name }}
+                            {{ $tourist_spot->name }}
                             </div>
                         <div class="form-group">
                             <label for="cities">Cidade:</label>
-                            {{ $partner->cities }}
+                            {{ $tourist_spot->cities }}
                         </div>
                         <div class="form-group">
-                            <label for="partner_type_id">Tipo:</label>
-                            {{ $partner->partner_type_id }}
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email:</label>
-                            {{ $partner->email }}
-                        </div>
-                        <div class="form-group">
-                            <label for="site">Site:</label>
-                            {{ $partner->site }}
-                        </div>
-                        <div class="form-group">
-                            <label for="telephone">Telefone:</label>
-                            {{ $partner->telephone}}
+                            <label for="description">Descrição:</label>
+                            {{ $tourist_spot->description }}
                         </div>
                         <div class="form-group">
                             <label for="address">Endereço:</label>
-                            {{ $partner->address }}
+                            {{ $tourist_spot->address }}
                         </div>
                         <div class="form-group">
                             <label for="district">Distrito:</label>
-                            {{ $partner->district }}
+                            {{ $tourist_spot->district }}
                         </div>
                         </div>
                     </div>

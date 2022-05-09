@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Parceiro- Alterar')
+@section('title', 'Pontos Turisticos- Alterar')
 
 @push('css')
     <link rel="stylesheet" href="/css/iziToast.min.css">
@@ -20,7 +20,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Parceiro
+                <h1>Pontos Turisticos
                     <small>Alterar</small>
                 </h1>
 
@@ -28,7 +28,7 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fa fa-home"></i> Home</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('partner.index') }}">Parceiro</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('tourist_spot.index') }}">Pontos Turisticos</a></li>
                     <li class="breadcrumb-item active">Alterar</li>
                 </ol>
             </div>
@@ -41,7 +41,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="card card-primary">
-                    <form role="form" action="{{ route('partner.update', $partner->id) }}" method="post" class="jsonForm">
+                    <form role="form" action="{{ route('tourist_spot.update', $tourist_spot->id) }}" method="post" class="jsonForm">
                         {{ csrf_field() }}
                         {{ method_field('PUT') }}
                         <div class="card-body">
@@ -49,17 +49,7 @@
                                 <input type="text" class="form-control" id="name"
                                        name="name" placeholder="nome" >
                             </div>
-                            <div class="form-group">
-                                <label for="partner_type_id">Tipo:</label>
-                                <select name="partner_type_id" id="partner_type_id"
-                                        class="form-control">
-                                    <option value="">- Selecione um Tipo -</option>
-                                    @foreach($partner_type as $partner_type)
-                                        <option value="{{$partner_type->id}}" >{{$partner_type->name}}</option>
 
-                                    @endforeach
-                                </select>
-                            </div>
                             <div class="form-group">
                                 <label for="cities">Cidade:</label>
                                 <select name="cities" id="cities"
@@ -70,22 +60,11 @@
 
                                     @endforeach
                                 </select>
+                            <div class="form-group">
+                                <label for="description">Descrição:</label>
+                                <input type="text" class="form-control" id="description" name="description" >
                             </div>
 
-                            <div class="form-group">
-                                <label for="email">Email:</label>
-                                <input type="email" class="form-control" id="email"
-                                       name="email" placeholder="Email" >
-                            </div>
-                            <div class="form-group">
-                                <label for="site">Site:</label>
-                                <input type="text" class="form-control" id="site" name="site" placeholder="www.meusite.com.br">
-                            </div>
-                            <div class="form-group">
-                                <label for="telephone">Telephone:</label>
-                                <input type="text" class="form-control" id="telephone"
-                                       name="telephone" placeholder="5555-5555" >
-                            </div>
                             <div class="form-group">
                                 <label for="address">Endereço:</label>
                                 <input type="text" class="form-control" id="address"

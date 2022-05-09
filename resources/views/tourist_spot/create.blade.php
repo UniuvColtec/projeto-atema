@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Parceiro - Cadastro')
+@section('title', 'Pontos Turisticos - Cadastro')
 
 @push('css')
     <link rel="stylesheet" href="/css/iziToast.min.css">
@@ -20,7 +20,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Parceiro
+                <h1>Pontos Turisticos
                     <small>Cadastro</small>
                 </h1>
 
@@ -28,7 +28,7 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fa fa-home"></i> Home</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('partner.index') }}"> Parceiro</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('tourist_spot.index') }}"> Pontos Turisticos</a></li>
                     <li class="breadcrumb-item active">Cadastro</li>
                 </ol>
             </div>
@@ -37,7 +37,7 @@
 @endsection
 
 @section('content')
-    <form role="form" action="{{ route('partner.store') }}" class="jsonForm" method="post">
+    <form role="form" action="{{ route('tourist_spot.store') }}" class="jsonForm" method="post">
                         {{ csrf_field() }}
                         <div class="card-body">
                             <div class="form-group">
@@ -45,16 +45,6 @@
                                 <input type="text" class="form-control" id="name"
                                           name="name" placeholder="nome" required >
                                 </div>
-                            <div class="form-group">
-                                <label for="partner_type_id">TIPO:</label>
-                                <select name="partner_type_id" id="partner_type_id"
-                                        class="form-control select2">
-                                    <option value="">- Selecione um tipo-</option>
-                                    @foreach($partner_types as $partner_type)
-                                        <option value="{{$partner_type->id}}">{{$partner_type->name}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
                             <div class="form-group">
                                 <label for="cities">Cidade</label>
                                 <select name="cities" id="cities"
@@ -66,19 +56,9 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="email">Email:</label>
-                                <input type="email" class="form-control" id="email"
-                                       name="email" placeholder="Email" >
-                            </div>
-                            <div class="form-group">
-                                <label for="site">Site:</label>
-                                <input type="text" class="form-control" id="site"
-                                       name="site" placeholder="www.meusite.com.br" >
-                            </div>
-                            <div class="form-group">
-                                <label for="telephone">Telephone:</label>
-                                <input type="text" class="form-control" id="telephone"
-                                       name="telephone" placeholder="5555-5555" >
+                                <label for="">Descrição:</label>
+                                <input type="description" class="form-control" id="description"
+                                       name="description" placeholder="Descrição" >
                             </div>
                             <div class="form-group">
                                 <label for="address">Endereço:</label>

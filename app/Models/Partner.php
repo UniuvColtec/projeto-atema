@@ -11,7 +11,7 @@ class Partner extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name,email,site,telephone,address,district,latitude,longitude,city_id'];
+        'name,email,site,telephone,address,district,latitude,longitude'];
     protected $hidden = ['deleted_at'];
     protected $casts = [
         'created_at' => 'date:d/m/Y H:m:s', 'updated_at'=> 'date:d/m/Y H:m:s', 'deleted_at'=>'date:d/m/Y H:m:s'];

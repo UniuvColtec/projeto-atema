@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Requests\TouristSpotRequest;
+use App\Models\City;
 use App\Models\Tourist_spot;
+use App\Response;
 use Illuminate\Http\Request;
 
 class TouristSpotController extends Controller
@@ -25,7 +27,8 @@ class TouristSpotController extends Controller
      */
     public function create()
     {
-        return view('tourist_spot.create');
+        $cities = City::orderBy('name')->get(['id', 'name']);
+        return view('tourist_spot.create',compact('cities'));
     }
 
     /**
@@ -34,16 +37,16 @@ class TouristSpotController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TouristSpotRequest $request)
     {
-        $tourist_spot = new Partner();
+        $tourist_spot = new Tourist_spot();
+        $tourist_spot->city_id = $request->cities;
         $tourist_spot->name = $request->name;
         $tourist_spot->description= $request->description;
         $tourist_spot->address = $request->address;
         $tourist_spot->district = $request->district;
-        $tourist_spot->latitude = $request->latitude;
-        $tourist_spot->longitude = $request->longitude;
         $tourist_spot->save();
+        return Response::responseOK('Ponto Turistico cadastrado com sucesso');
     }
 
     /**
@@ -65,7 +68,8 @@ class TouristSpotController extends Controller
      */
     public function edit(Tourist_spot $tourist_spot)
     {
-        return view('tourist_spot.edit', compact('tourist_spot'));
+        $cities = City::orderBy('name')->get(['id', 'name']);
+        return view('tourist_spot.edit', compact('tourist_spot','cities'));
     }
 
     /**
@@ -78,12 +82,12 @@ class TouristSpotController extends Controller
     public function update(Request $request, Tourist_spot $tourist_spot)
     {
         $tourist_spot->name = $request->name;
+        $tourist_spot->city_id = $request->cities;
         $tourist_spot->description= $request->description;
         $tourist_spot->address = $request->address;
         $tourist_spot->district = $request->district;
-        $tourist_spot->latitude = $request->latitude;
-        $tourist_spot->longitude = $request->longitude;
         $tourist_spot->save();
+        return Response::responseOK('Alterado com sucesso');
     }
 
     /**
@@ -94,7 +98,17 @@ class TouristSpotController extends Controller
      */
     public function destroy(Tourist_spot $tourist_spot)
     {
-        $tourist_spot->delete();
-        return redirect('tourist_spot');
+
+        if($tourist_spot->delete()){
+            return Response::responseSuccess();
+        } else {
+            return Response::responseForbiden();
+        }
+    }
+    public function bootgrid(Request $request)
+    {
+        $tourist_spot = new Tourist_spot();
+        $bootgrid = $tourist_spot->bootgrid($request);
+        return response()->json($bootgrid);
     }
 }

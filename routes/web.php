@@ -54,6 +54,7 @@ Route::prefix('admin')->middleware('auth')->group(function(){
     Route::resource('user', UserController::class);
 
     Route::resource('event', EventController::class);
+    Route::post('tourist_spot/bootgrid', [TouristSpotController::class, 'bootgrid'])->name('tourist_spot.bootgrid');
     Route::resource('tourist_spot', TouristSpotController::class);
 
 });

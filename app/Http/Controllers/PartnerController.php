@@ -92,7 +92,7 @@ class PartnerController extends Controller
         $partner->email = $request->email;
         $partner->partner_type_id= $request->partner_type_id;
         $partner->site = $request->site;
-        $partner->city_id = $request->cities;
+        $partner->citY_id = $request->cities;
         $partner->telephone = $request->telephone;
         $partner->address = $request->address;
         $partner->district = $request->district;
