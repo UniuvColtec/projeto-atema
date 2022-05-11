@@ -8,10 +8,20 @@
 @push('js')
     <script src="/js/iziToast.min.js" type="text/javascript"></script>
     <script src="/js/jquery.form.min.js" type="text/javascript"></script>
-    <script src="/js/formAjaxCadastrar.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/jquery.mask.js"></script>
+    <script src="/js/jquery.mask.js" type="text/javascript"></script>
     <script>
         $(document).ready(function(){
             $(".select2").select2();
+            var options = {
+                onKeyPress: function (phone, e, field, options) {
+                    var masks = ['(00) 0000-00000', '(00) 00000-0000'];
+                    var mask = (phone.length > 14) ? masks[1] : masks[0];
+                    $('#telephone').mask(mask, options);
+                }
+            };
+
+            $('#telephone').mask('(00) 0000-00000', options);
         })
     </script>
 @endpush
@@ -66,6 +76,11 @@
                                 </select>
                             </div>
                             <div class="form-group">
+                                <label for="telephone">Telefone:</label>
+                                <input type="text" class="form-control telephone" id="telephone"
+                                       name="telephone" placeholder="EX: (DD) 00000-0000" >
+                            </div>
+                            <div class="form-group">
                                 <label for="email">Email:</label>
                                 <input type="email" class="form-control" id="email"
                                        name="email" placeholder="Email" >
@@ -74,11 +89,6 @@
                                 <label for="site">Site:</label>
                                 <input type="text" class="form-control" id="site"
                                        name="site" placeholder="www.meusite.com.br" >
-                            </div>
-                            <div class="form-group">
-                                <label for="telephone">Telephone:</label>
-                                <input type="text" class="form-control" id="telephone"
-                                       name="telephone" placeholder="5555-5555" >
                             </div>
                             <div class="form-group">
                                 <label for="address">Endereço:</label>

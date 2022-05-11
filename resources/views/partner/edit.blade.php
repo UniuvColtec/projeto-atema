@@ -47,15 +47,14 @@
                         <div class="card-body">
                             <div class="form-group">
                                  <label for="name">Nome:</label>
-                                    <input type="text" class="form-control" id="name"
-                                        name="name" placeholder="nome" >
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="nome" value="{{ $partner->name}}">
                                 </div>
                             <div>
                                 <label for="partner_type_id">Tipo:</label>
-                                <select name="partner_type_id" id="partner_type_id" class="form-control">
+                                <select name="partner_type_id" id="partner_type_id" class="form-control" >
                                     <option value="">- Selecione um Tipo -</option>
                                     @foreach($partner_type as $partner_type)
-                                        <option value="{{$partner_type->id}}" >{{$partner_type->name}}</option>
+                                        <option value="{{$partner_type->id}}" @if($partner->type_id == $partner_type->id) selected @endif>{{$partner_type->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -64,29 +63,29 @@
                                 <select name="cities" id="cities" class="form-control">
                                     <option value="">- Selecione uma Cidade -</option>
                                     @foreach($cities as $city)
-                                        <option value="{{$city->id}}" >{{$city->name}}</option>
+                                        <option value="{{$city->id}}">{{$city->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
                                 <div class="form-group">
                                     <label for="email">Email:</label>
-                                    <input type="email" class="form-control" id="email" name="email" placeholder="Email" >
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="{{ $partner->email}}">
                                 </div>
                                 <div class="form-group">
                                     <label for="site">Site:</label>
-                                    <input type="text" class="form-control" id="site" name="site" placeholder="www.meusite.com.br">
+                                    <input type="text" class="form-control" id="site" name="site" placeholder="www.meusite.com.br" value="{{ $partner->site}}">
                                 </div>
                                 <div class="form-group">
                                     <label for="telephone">Telephone:</label>
-                                    <input type="text" class="form-control" id="telephone" name="telephone" placeholder="5555-5555" >
+                                    <input type="text" class="form-control" id="telephone" name="telephone" placeholder="5555-5555"  value="{{ $partner->telephone}}">
                                 </div>
                                 <div class="form-group">
                                     <label for="address">Endereço:</label>
-                                    <input type="text" class="form-control" id="address" name="address" placeholder="Rua exemplo 1111" >
+                                    <input type="text" class="form-control" id="address" name="address" placeholder="Rua exemplo 1111" value="{{ $partner->address}}">
                                 </div>
                                 <div class="form-group">
                                     <label for="district">Localidade:</label>
-                                    <input type="text" class="form-control" id="district" name="district" placeholder="" >
+                                    <input type="text" class="form-control" id="district" name="district" placeholder="" value="{{ $partner->district}}">
                                 </div>
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary">Salvar</button>

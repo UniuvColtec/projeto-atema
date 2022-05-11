@@ -22,12 +22,12 @@ class Response
 
     static public function responseSuccess()
     {
-        return response()->json(204);
+        return response('', 204);
     }
 
-    static public function responseForbiden()
+    static public function responseForbiden($message='')
     {
-        return response()->json(422);
+        return response(($message?:'Ação não permitida'), 422);
     }
 
 }
