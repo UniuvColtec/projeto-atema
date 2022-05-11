@@ -41,7 +41,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="card card-primary">
-                    <form role="form" action="{{ route('category.update', $category->id) }}" method="POST" class="jsonForm">
+                    <form role="form" action="{{ route('category.update', $category->id) }}" method="POST" class="jsonForm" value="{{ $category->email}}">
                         {{ csrf_field() }}
                         {{ method_field('PUT') }}
                         <div class="card-body">

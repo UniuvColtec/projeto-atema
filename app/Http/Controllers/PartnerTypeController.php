@@ -5,6 +5,7 @@ use App\Http\Requests\Partner_typeRequest;
 use App\Models\Partner_type;
 use App\Response;
 use Illuminate\Http\Request;
+use mysql_xdevapi\Exception;
 
 class PartnerTypeController extends Controller
 {
@@ -87,10 +88,14 @@ class PartnerTypeController extends Controller
      */
     public function destroy(Partner_type $partner_type)
     {
-        if($partner_type->delete()){
-            return Response::responseSuccess();
-        } else {
-            return Response::responseForbiden();
+        try{
+            if($partner_type->delete()){
+                return Response::responseSuccess();
+            } else {
+                return Response::responseForbiden();
+            }
+        }catch (\Exception $exception){
+            return Response::responseForbiden('Não é possível a exclusão do tipo de parceiro, exclua os parceiros vinculados.');
         }
     }
 
