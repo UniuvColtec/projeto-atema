@@ -418,23 +418,6 @@ return [
                         ],
                     ],
                 ],
-                [
-                    'text'    => 'Pontos Turisticos',
-                    'url'     => '/admin/tourist_spot',
-                    'icon'    => 'fas fa-address-card',
-                    'submenu' => [
-                        [
-                            'text' => 'Cadastrar',
-                            'icon'    => 'fas fa-fw fa-plus',
-                            'url'     => '/admin/tourist_spot/create',
-                        ],
-                        [
-                            'text'    => 'Listar',
-                            'icon'    => 'fas fa-fw fa-th-list',
-                            'url'     => '/admin/tourist_spot',
-                        ],
-                    ],
-                ],
             ],
         ],
     ],

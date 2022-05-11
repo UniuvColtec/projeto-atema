@@ -46,9 +46,6 @@
                         <form action="{{ route('partner.destroy', ['partner' =>$partner->id]) }}" method="post">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
-                            <a href="{{ route('partner.index') }}" class="btnbtn-primary">Listar</a>
-                            <a href="{{ route('partner.edit', ['partner' =>$partner->id]) }}" class="btn btn-success">Editar</a>
-                            <button type="submit" class="btn btn-danger" onclick="return confirm('Deseja realmente excluir?');">Excluir</button> </form>
                         <div class="form-group">
                             <label for="nome">ID: </label>
                             {{ $partner->id }}

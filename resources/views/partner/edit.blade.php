@@ -45,60 +45,52 @@
                         {{ csrf_field() }}
                         {{ method_field('PUT') }}
                         <div class="card-body">
-                                <label for="name">Nome:</label>
-                                <input type="text" class="form-control" id="name"
-                                       name="name" placeholder="nome" >
-                            </div>
                             <div class="form-group">
+                                 <label for="name">Nome:</label>
+                                    <input type="text" class="form-control" id="name"
+                                        name="name" placeholder="nome" >
+                                </div>
+                            <div>
                                 <label for="partner_type_id">Tipo:</label>
-                                <select name="partner_type_id" id="partner_type_id"
-                                        class="form-control">
+                                <select name="partner_type_id" id="partner_type_id" class="form-control">
                                     <option value="">- Selecione um Tipo -</option>
                                     @foreach($partner_type as $partner_type)
                                         <option value="{{$partner_type->id}}" >{{$partner_type->name}}</option>
-
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="form-group">
+                            <div>
                                 <label for="cities">Cidade:</label>
-                                <select name="cities" id="cities"
-                                        class="form-control">
+                                <select name="cities" id="cities" class="form-control">
                                     <option value="">- Selecione uma Cidade -</option>
                                     @foreach($cities as $city)
                                         <option value="{{$city->id}}" >{{$city->name}}</option>
-
                                     @endforeach
                                 </select>
                             </div>
-
-                            <div class="form-group">
-                                <label for="email">Email:</label>
-                                <input type="email" class="form-control" id="email"
-                                       name="email" placeholder="Email" >
+                                <div class="form-group">
+                                    <label for="email">Email:</label>
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="Email" >
+                                </div>
+                                <div class="form-group">
+                                    <label for="site">Site:</label>
+                                    <input type="text" class="form-control" id="site" name="site" placeholder="www.meusite.com.br">
+                                </div>
+                                <div class="form-group">
+                                    <label for="telephone">Telephone:</label>
+                                    <input type="text" class="form-control" id="telephone" name="telephone" placeholder="5555-5555" >
+                                </div>
+                                <div class="form-group">
+                                    <label for="address">Endereço:</label>
+                                    <input type="text" class="form-control" id="address" name="address" placeholder="Rua exemplo 1111" >
+                                </div>
+                                <div class="form-group">
+                                    <label for="district">Localidade:</label>
+                                    <input type="text" class="form-control" id="district" name="district" placeholder="" >
+                                </div>
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary">Salvar</button>
                             </div>
-                            <div class="form-group">
-                                <label for="site">Site:</label>
-                                <input type="text" class="form-control" id="site" name="site" placeholder="www.meusite.com.br">
-                            </div>
-                            <div class="form-group">
-                                <label for="telephone">Telephone:</label>
-                                <input type="text" class="form-control" id="telephone"
-                                       name="telephone" placeholder="5555-5555" >
-                            </div>
-                            <div class="form-group">
-                                <label for="address">Endereço:</label>
-                                <input type="text" class="form-control" id="address"
-                                       name="address" placeholder="Rua exemplo 1111" >
-                            </div>
-                            <div class="form-group">
-                                <label for="district">Localidade:</label>
-                                <input type="text" class="form-control" id="district"
-                                       name="district" placeholder="" >
-                            </div>
-
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-primary">Salvar</button>
-                            </div>
+                    </form>
 @endsection
 
