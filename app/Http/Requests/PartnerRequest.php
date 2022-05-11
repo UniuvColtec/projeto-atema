@@ -29,13 +29,15 @@ class PartnerRequest extends FormRequest
             'address' => 'required',
             'telephone' => 'required',
             'district' => 'required',
-            'cities' => 'required'
+            'cities' => 'required',
+            'partner_type_id' => 'required'
         ];
     }
 
     public function messages()
     {
         return [
+            'partner_type_id.required' => 'O tipo do parceiro é obragatório',
             'name.required' => 'Nome obrigatório',
             'email.required' => 'Email obrigatório',
             'email.email' => 'Email inválido',
