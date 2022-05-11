@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\City;
 use App\Response;
 use Illuminate\Http\Request;
 
@@ -15,8 +16,7 @@ class EventController extends Controller
      */
     public function index()
     {
-        $event = Event::all();
-        return view('event.index', compact('event'));
+        return view('event.index');
     }
 
     /**
@@ -26,7 +26,8 @@ class EventController extends Controller
      */
     public function create()
     {
-        return view('event.create');
+        $cities = City::all();
+        return view('event.create', compact('cities'));
     }
 
     /**
@@ -37,11 +38,9 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        /*if (count($request->cities)==0){
+        if ($request->cities == 0) {
             return Response::responseError('Não foi selecionada nenhuma cidade');
-        }*/
-
-        $coordinates = getCoordinates($request->link);
+        }
 
         $event= new Event();
         $event->name = $request->name;
@@ -51,17 +50,13 @@ class EventController extends Controller
         $event->final_date = $request->final_date;
         $event->address = $request->address;
         $event->district= $request->district;
+        $event->city_id = $request->cities;
+        $coordinates = $event->getCoordinates($request->link);
         $event->latitude = $coordinates['latitude'];
         $event->longitude = $coordinates['longitude'];;
         $event->save();
 
-/*        foreach ($request->cities as $city){
-            $partner_city = new Partner_city();
-            $partner_city->partner_id = $partner->id;
-            $partner_city->city_id = $city;
-            $partner_city->save();
-        }*/
-        return redirect('event');
+        return Response::responseOK("Evento cadastrado com sucesso");
     }
 
     /**
@@ -119,5 +114,11 @@ class EventController extends Controller
     {
         $event->delete();
         return redirect('event');
+    }
+    public function bootgrid(Request $request)
+    {
+        $events = new Event();
+        $bootgrid = $events->bootgrid($request);
+        return response()->json($bootgrid);
     }
 }

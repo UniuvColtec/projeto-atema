@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Comidas Típicas - Listagem')
+@section('title', 'Eventos - Listagem')
 
 @push('css')
     <link rel="stylesheet" href="/css/iziToast.min.css">
@@ -17,9 +17,9 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Comidas Típicas
+                <h1>Eventos
                     <small>Listar</small>
-                    <a href="{{ route('typical_food.create') }}" class="btn btn-info" title="Adicionar novo registro">
+                    <a href="{{ route('event.create') }}" class="btn btn-info" title="Adicionar novo registro">
                         <i class="far fa-plus-square"></i>
                     </a>
                 </h1>
@@ -28,7 +28,7 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fa fa-home"></i> Home</a></li>
-                    <li class="breadcrumb-item active">Comidas Típicas</li>
+                    <li class="breadcrumb-item active">Eventos</li>
                 </ol>
             </div>
         </div>
@@ -45,6 +45,9 @@
                     <th data-column-id="id" >Código</th>
                     <th data-column-id="name" data-order="desc" data-sortable="true">Nome</th>
                     <th data-column-id="description" data-sortable="true">Descrição</th>
+                    <th data-column-id="contact" data-sortable="true">Contato</th>
+                    <th data-column-id="start_date" data-sortable="true">Data de inicio</th>
+                    <th data-column-id="final_date" data-sortable="true">Data de encerramento</th>
                     <th data-column-id="commands" data-formatter="commands" data-sortable="false">Ações</th>
                 </tr>
                 </thead>

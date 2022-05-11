@@ -17,7 +17,7 @@ class Event extends Model
     public function bootgrid(object $request)
     {
         $bootgrid = new Bootgrid();
-        $bootgrid->query($this, $request, ['name','contact','start_date','final_date', 'city_id', 'addres','district','status']);
+        $bootgrid->query($this, $request, ['name','contact','start_date','final_date', 'city_id', 'address','district','status']);
         return $bootgrid;
 
     }
