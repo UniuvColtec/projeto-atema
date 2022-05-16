@@ -43,6 +43,7 @@ class PartnerController extends Controller
 
         $partner = new Partner();
         $partner->name = $request->name;
+        $partner->cnpj = $request->cnpj;
         $partner->email = $request->email;
         $partner->partner_type_id= $request->partner_type_id;
         $partner->site = $request->site;
@@ -51,7 +52,6 @@ class PartnerController extends Controller
         $partner->address = $request->address;
         $partner->district = $request->district;
         $partner->save();
-
 
         return Response::responseOK('Parceiro cadastrado com sucesso');
     }
@@ -86,13 +86,14 @@ class PartnerController extends Controller
      * @param  \App\Models\Partner  $partner
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Partner $partner)
+    public function update(PartnerRequest $request, Partner $partner)
     {
         $partner->name = $request->name;
         $partner->email = $request->email;
+        $partner->cnpj = $request->cnpj;
         $partner->partner_type_id= $request->partner_type_id;
         $partner->site = $request->site;
-        $partner->citY_id = $request->cities;
+        $partner->city_id = $request->cities;
         $partner->telephone = $request->telephone;
         $partner->address = $request->address;
         $partner->district = $request->district;

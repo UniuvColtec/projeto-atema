@@ -6,13 +6,25 @@
 @endpush
 
 @push('js')
+    <script src="/js/formAjaxAlterar.js" type="text/javascript"></script>
     <script src="/js/iziToast.min.js" type="text/javascript"></script>
     <script src="/js/jquery.form.min.js" type="text/javascript"></script>
-    <script src="/js/formAjaxAlterar.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/jquery.mask.js"></script>
+    <script src="/js/jquery.mask.js" type="text/javascript"></script>
     <script>
         $(document).ready(function(){
             $(".select2").select2();
+            var options = {
+                onKeyPress: function (phone, e, field, options) {
+                    var masks = ['(00) 0000-00000', '(00) 00000-0000'];
+                    var mask = (phone.length > 14) ? masks[1] : masks[0];
+                    $('#telephone').mask(mask, options);
+                }
+            };
+            $('#cnpj').mask('00. 000. 000/0000-00', options);
+            $('#telephone').mask('(00) 0000-00000', options);
         })
+
     </script>
 @endpush
 
@@ -59,34 +71,46 @@
                                 </select>
                             </div>
                             <div>
-                                <label for="cities">Cidade:</label>
-                                <select name="cities" id="cities" class="form-control">
-                                    <option value="">- Selecione uma Cidade -</option>
-                                    @foreach($cities as $city)
-                                        <option value="{{$city->id}}">{{$city->name}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
                                 <div class="form-group">
                                     <label for="email">Email:</label>
                                     <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="{{ $partner->email}}">
                                 </div>
+                            <div class="form-group">
+                                <label for="cnpj">Cnpj:</label>
+                                <input type="cnpj" class="form-control cnpj" id="cnpj"
+                                       name="cnpj" placeholder="XX. XXX. XXX/0001-XX" value="{{ $partner->cnpj}}" >
+                            </div>
                                 <div class="form-group">
                                     <label for="site">Site:</label>
                                     <input type="text" class="form-control" id="site" name="site" placeholder="www.meusite.com.br" value="{{ $partner->site}}">
                                 </div>
-                                <div class="form-group">
-                                    <label for="telephone">Telephone:</label>
-                                    <input type="text" class="form-control" id="telephone" name="telephone" placeholder="5555-5555"  value="{{ $partner->telephone}}">
+                            <div class="form-group">
+                                <label for="telephone">Telefone:</label>
+                                <input type="text" class="form-control telephone" id="telephone"
+                                       name="telephone" placeholder="EX: (DD) 00000-0000" value="{{ $partner->telephone}}">
+                            </div>
+                                <div class="card-body">
+                                    <div class="form-group jsonForm">
+                                        <h4>Endereço:</h4>
+                                        <label for="cities">Cidade:</label>
+                                        <select name="cities" id="cities" class="form-control">
+                                            <option value="">- Selecione uma Cidade -</option>
+                                            @foreach($cities as $city)
+                                                <option value="{{$city->id}}">{{$city->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="address">RUA:</label>
+                                        <input type="text" class="form-control" id="address" name="address" placeholder="Rua exemplo 1111" value="{{ $partner->address}}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="district">Bairro:</label>
+                                        <input type="text" class="form-control" id="district" name="district" placeholder="" value="{{ $partner->district}}">
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="address">Endereço:</label>
-                                    <input type="text" class="form-control" id="address" name="address" placeholder="Rua exemplo 1111" value="{{ $partner->address}}">
-                                </div>
-                                <div class="form-group">
-                                    <label for="district">Localidade:</label>
-                                    <input type="text" class="form-control" id="district" name="district" placeholder="" value="{{ $partner->district}}">
-                                </div>
+                            </div>
+
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary">Salvar</button>
                             </div>

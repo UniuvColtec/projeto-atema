@@ -50,29 +50,34 @@
                                 <input type="text" class="form-control" id="name" name="name" placeholder="nome" value="{{ $tourist_spot->name}}" >
                             </div>
 
-                            <div >
-                                <label for="cities">Cidade:</label>
-                                <select name="cities" id="cities"
-                                        class="form-control">
-                                    <option >- Selecione uma Cidade -</option>
-                                    @foreach($cities as $city)
-                                        <option value="{{$city->id}}" >{{$city->name}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
                             <div>
                                 <label for="description">Descrição:</label>
                                 <input type="text" class="form-control" id="description" name="description" value="{{ $tourist_spot->description}}">
                             </div>
+                            <div class="card-body">
+                                    <div class="form-group jsonForm">
+                                        <h4>Endereço:</h4>
+                                        <div>
+                                            <label for="cities">Cidade:</label>
+                                            <select name="cities" id="cities"
+                                                    class="form-control">
+                                                <option >- Selecione uma Cidade -</option>
+                                                @foreach($cities as $city)
+                                                    <option value="{{$city->id}}" >{{$city->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div >
+                                            <label for="address">Endereço:</label>
+                                            <input type="text" class="form-control" id="address" name="address" placeholder="Rua exemplo 1111" value="{{ $tourist_spot->address}}">
+                                        </div>
+                                        <div >
+                                            <label for="district">Localidade:</label>
+                                            <input type="text" class="form-control" id="district" name="district" placeholder="" value="{{ $tourist_spot->district}}">
+                                        </div>
+                                    </div>
 
-                            <div >
-                                <label for="address">Endereço:</label>
-                                <input type="text" class="form-control" id="address" name="address" placeholder="Rua exemplo 1111" value="{{ $tourist_spot->address}}">
-                            </div>
-                            <div >
-                                <label for="district">Localidade:</label>
-                                <input type="text" class="form-control" id="district" name="district" placeholder="" value="{{ $tourist_spot->district}}">
-                            </div>
+
 
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary">Salvar</button>

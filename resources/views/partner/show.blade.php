@@ -62,6 +62,10 @@
                             <label for="partner_type_id">Tipo:</label>
                             {{ $partner->partner_type_id }}
                         </div>
+                            <div class="form-group">
+                                <label for="cnpj">Cnpj:</label>
+                                {{ $partner->cnpj }}
+                            </div>
                         <div class="form-group">
                             <label for="email">Email:</label>
                             {{ $partner->email }}

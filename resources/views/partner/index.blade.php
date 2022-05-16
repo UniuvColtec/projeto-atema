@@ -47,6 +47,7 @@
                         <th data-column-id="city_name" data-sortable="true">Cidade</th>
                         <th data-column-id="partner_type_name" data-sortable="true">Tipo</th>
                         <th data-column-id="district" data-sortable="true" data-visible="false">Localidade</th>
+                        <th data-column-id="cnpj" data-sortable="true" data-visible="false">Cnpj</th>
                         <th data-column-id="email" data-sortable="true" data-visible="false">Email</th>
                         <th data-column-id="site" data-sortable="true" data-visible="false">Site</th>
                         <th data-column-id="telephone" data-sortable="true" data-visible="false">Telefone</th>

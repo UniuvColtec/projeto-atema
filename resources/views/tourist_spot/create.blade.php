@@ -6,6 +6,7 @@
 @endpush
 
 @push('js')
+
     <script src="/js/iziToast.min.js" type="text/javascript"></script>
     <script src="/js/jquery.form.min.js" type="text/javascript"></script>
     <script src="/js/formAjaxCadastrar.js" type="text/javascript"></script>
@@ -46,32 +47,32 @@
                                           name="name" placeholder="nome" required >
                                 </div>
                             <div class="form-group">
-                                <label for="cities">Cidade</label>
-                                <select name="cities" id="cities"
-                                        class="form-control select2" >
-                                    <option value="">- Selecione uma Cidade -</option>
-                                    @foreach($cities as $city)
-                                        <option value="{{$city->id}}">{{$city->name}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="form-group">
                                 <label for="">Descrição:</label>
-                                <input type="description" class="form-control" id="description"
+                                <input type="description" class="form-control " id="description"
                                        name="description" placeholder="Descrição" >
                             </div>
-                            <div class="form-group">
-                                <label for="address">Endereço:</label>
-                                <input type="text" class="form-control" id="address"
-                                       name="address" placeholder="Rua exemplo 1111" >
+                            <div class="card-body">
+                                <div class="form-group jsonForm">
+                                    <h4>Endereço:</h4>
+                                    <label for="cities">Cidade:</label>
+                                    <select name="cities" id="cities" class="form-control ">
+                                        <option value="">- Selecione uma Cidade -</option>
+                                        @foreach($cities as $city)
+                                            <option value="{{$city->id}}">{{$city->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="address">RUA:</label>
+                                    <input type="text" class="form-control" id="address" name="address" placeholder="Rua exemplo 1111" >
+                                </div>
+                                <div class="form-group">
+                                    <label for="district">Bairro:</label>
+                                    <input type="text" class="form-control" id="district" name="district" placeholder="" >
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="district">Localidade:</label>
-                                <input type="text" class="form-control" id="district"
-                                       name="district" placeholder="">
-                            </div>
+                        </div>
 
-                            </div>
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary">Salvar</button>
                             </div>

@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Requests\TouristSpotRequest;
 use App\Models\City;
 use App\Models\Tourist_spot;
 use App\Response;
 use Illuminate\Http\Request;
+use App\Http\Requests\TouristSpotRequest;
 
 class TouristSpotController extends Controller
 {
@@ -79,7 +79,7 @@ class TouristSpotController extends Controller
      * @param  \App\Models\Tourist_spot  $tourist_spot
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tourist_spot $tourist_spot)
+    public function update(TouristSpotRequest $request, Tourist_spot $tourist_spot)
     {
         $tourist_spot->name = $request->name;
         $tourist_spot->city_id = $request->cities;
