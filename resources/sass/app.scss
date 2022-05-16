@@ -4,5 +4,30 @@
 // Variables
 @import 'variables';
 
+
+//Select2
+@import "~select2/dist/css/select2.css";
+
+//Izitoast
+@import "~izitoast/dist/css/iziToast.css";
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic');
+@import '~@fortawesome/fontawesome-free/css/all.css';
+// OverlayScrollbars
+@import '~overlayscrollbars/css/OverlayScrollbars.css';
+// iCheck
+@import '~icheck-bootstrap/icheck-bootstrap.css';
+// AdminLTE
+@import '../../vendor/almasaeed2010/adminlte/dist/css/adminlte.css';
+
+
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+// Already imported by AdminLTE
+//@import '~bootstrap/scss/bootstrap';
+
+
+@import "/node_modules/bs-stepper/dist/css/bs-stepper.css";
+
+
+@import 'geral';

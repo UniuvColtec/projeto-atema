@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Event;
 use App\Models\City;
+use App\Models\Typical_food;
 use App\Response;
 use Illuminate\Http\Request;
 
@@ -27,7 +29,9 @@ class EventController extends Controller
     public function create()
     {
         $cities = City::all();
-        return view('event.create', compact('cities'));
+        $typical_foods = Typical_food::all();
+        $categories = Category::all();
+        return view('event.create', compact('cities','typical_foods','categories'));
     }
 
     /**
@@ -78,7 +82,10 @@ class EventController extends Controller
      */
     public function edit(Event $event)
     {
-        return view('event.edit', compact('event'));
+        $cities = City::all();
+        $typical_foods = Typical_food::all();
+        $categories = Category::all();
+        return view('event.edit', compact('event','cities','typical_foods','categories'));
     }
 
     /**

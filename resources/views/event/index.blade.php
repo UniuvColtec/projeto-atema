@@ -44,10 +44,12 @@
                 <tr>
                     <th data-column-id="id" >Código</th>
                     <th data-column-id="name" data-order="desc" data-sortable="true">Nome</th>
-                    <th data-column-id="description" data-sortable="true">Descrição</th>
                     <th data-column-id="contact" data-sortable="true">Contato</th>
                     <th data-column-id="start_date" data-sortable="true">Data de inicio</th>
                     <th data-column-id="final_date" data-sortable="true">Data de encerramento</th>
+                    <th data-column-id="city_id" data-sortable="true">Cidade</th>
+                    <th data-column-id="address" data-sortable="true">Endereço</th>
+                    <th data-column-id="district" data-sortable="true">Bairro</th> 
                     <th data-column-id="commands" data-formatter="commands" data-sortable="false">Ações</th>
                 </tr>
                 </thead>

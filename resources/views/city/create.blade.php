@@ -2,12 +2,11 @@
 @section('title', 'Cidade - Cadastro')
 
 @push('css')
-    <link rel="stylesheet" href="/css/iziToast.min.css">
+{{--    <link rel="stylesheet" href="/css/iziToast.min.css">--}}
 @endpush
 
 @push('js')
-    <script src="/js/iziToast.min.js" type="text/javascript"></script>
-    <script src="/js/jquery.form.min.js" type="text/javascript"></script>
+{{--    <script src="/js/jquery.form.min.js" type="text/javascript"></script>--}}
     <script src="/js/formAjaxCadastrar.js" type="text/javascript"></script>
     <script>
         $(document).ready(function(){

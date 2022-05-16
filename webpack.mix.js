@@ -12,5 +12,7 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
+    .copy('node_modules/bs-stepper/dist/js/bs-stepper.js', 'public/js')
+    .copy('node_modules/iziToast/dist/js/iziToast.js', 'public/js')
     .vue()
     .sass('resources/sass/app.scss', 'public/css');
