@@ -79,10 +79,11 @@
                                       <span class="bs-stepper-label">Localização</span>
                                     </button>
                                   </div>
+                                  <div class="line"></div>
                                   <div class="step" data-target="#image-part">
                                     <button type="button" class="step-trigger" role="tab" aria-controls="image-part" id="image-part-trigger">
                                       <span class="bs-stepper-circle">3</span>
-                                      <span class="bs-stepper-label">Imagens</span>
+                                      <span class="bs-stepper-label">Imagens e Outros</span>
                                     </button>
                                   </div>
                                 </div>
@@ -119,7 +120,7 @@
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label for="cities">Cidade</label>
-                                            <select name="cities" id="cities" class="form-control select2" required>
+                                            <select name="cities" id="cities" class="form-control select" required>
                                                 <option value="">- Selecione uma Cidade -</option>
                                                 @foreach($cities as $city)
                                                     <option value="{{$city->id}}">{{$city->name}}</option>

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EventRequest;
 use App\Models\Category;
 use App\Models\Event;
 use App\Models\City;
+use App\Models\Partner;
 use App\Models\Typical_food;
 use App\Response;
 use Illuminate\Http\Request;
@@ -45,7 +47,6 @@ class EventController extends Controller
         if ($request->cities == 0) {
             return Response::responseError('Não foi selecionada nenhuma cidade');
         }
-
         $event= new Event();
         $event->name = $request->name;
         $event->description = $request->description;
@@ -55,7 +56,7 @@ class EventController extends Controller
         $event->address = $request->address;
         $event->district= $request->district;
         $event->city_id = $request->cities;
-        $coordinates = $event->getCoordinates($request->link);
+        $coordinates = $event->getCoordinates($request->localization);
         $event->latitude = $coordinates['latitude'];
         $event->longitude = $coordinates['longitude'];;
         $event->save();
@@ -71,7 +72,8 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        return view('event.show', compact('event'));
+        $cities = City::all();
+        return view('event.show', compact('event','cities'));
     }
 
     /**
@@ -85,7 +87,8 @@ class EventController extends Controller
         $cities = City::all();
         $typical_foods = Typical_food::all();
         $categories = Category::all();
-        return view('event.edit', compact('event','cities','typical_foods','categories'));
+        $partners = Partner::all();
+        return view('event.edit', compact('event','cities','typical_foods','categories','partners'));
     }
 
     /**
@@ -95,7 +98,7 @@ class EventController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Event $event)
+    public function update(EventRequest $request, Event $event)
     {
         $event->name = $request->name;
         $event->description = $request->description;
@@ -104,6 +107,11 @@ class EventController extends Controller
         $event->final_date = $request->final_date;
         $event->address = $request->address;
         $event->district= $request->district;
+        if($request->localization != ''){
+            $coordinates = $event->getCoordinates($request->localization);
+            $event->latitude = $coordinates['latitude'];
+            $event->longitude = $coordinates['longitude'];;
+        }
         $event->latitude = $request->latitude;
         $event->longitude = $request->longitude;
         $event->status = $request->status;
@@ -119,8 +127,11 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
-        $event->delete();
-        return redirect('event');
+        if($event->delete()) {
+            return Response::responseSuccess();
+        } else {
+            return Response::responseForbiden();
+        }
     }
     public function bootgrid(Request $request)
     {

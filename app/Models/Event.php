@@ -13,7 +13,10 @@ class Event extends Model
         district,latitude,longitude,status'];
     protected $hidden = ['deleted_at'];
     protected $casts = [
-        'created_at' => 'date:d/m/Y H:m:s', 'updated_at'=> 'date:d/m/Y H:m:s', 'deleted_at'=>'date:d/m/Y H:m:s'];
+        'created_at' => 'date:d/m/Y H:m:s', 'updated_at'=> 'date:d/m/Y H:m:s', 'deleted_at'=>'date:d/m/Y H:m:s',
+        'start_date' => 'date:d/m/Y H:m:s','final_date' => 'date:d/m/Y H:m:s',
+    ];
+
     public function bootgrid(object $request)
     {
         $bootgrid = new Bootgrid();
@@ -24,8 +27,8 @@ class Event extends Model
     public function getCoordinates($link) {
         $brokenLink = explode('!', $link);
 
-        $latitude = explode('d',$brokenLink[5]);
-        $longitude = explode('d',$brokenLink[6]);
+        $latitude = explode('d', $brokenLink[5]);
+        $longitude = explode('d', $brokenLink[6]);
 
         $coordinates = [
             'latitude' => $latitude[1],
