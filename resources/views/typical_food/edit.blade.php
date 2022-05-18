@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Comida Típica - Alterar')
+@section('title', 'Comidas Típicas - Alterar')
 
 @push('css')
     <link rel="stylesheet" href="/css/iziToast.min.css">
@@ -20,7 +20,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Comida Típica
+                <h1>Comidas Típicas
                     <small>Alterar</small>
                 </h1>
 
