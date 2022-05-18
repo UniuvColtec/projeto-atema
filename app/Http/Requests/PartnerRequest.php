@@ -29,6 +29,7 @@ class PartnerRequest extends FormRequest
             'address' => 'required',
             'telephone' => 'required',
             'district' => 'required',
+            'description' => 'required',
             'cities' => 'required',
             'partner_type_id' => 'required'
         ];
@@ -43,8 +44,9 @@ class PartnerRequest extends FormRequest
             'email.email' => 'Email inválido',
             'address.required' => 'Endereço  obrigatório',
             'telephone.required' => 'Telefone  obrigatório',
-            'district.required' => 'Localidade  obrigatório',
-            'cities.required' => 'Cidade obrigatório'
+            'district.required' => 'Bairro  obrigatório',
+            'description.required' => 'Descrição  obrigatória',
+            'cities.required' => 'Cidade obrigatória'
         ];
     }
 }

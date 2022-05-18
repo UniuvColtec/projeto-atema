@@ -86,9 +86,14 @@
                             <label for="district">Distrito:</label>
                             {{ $partner->district }}
                         </div>
+                            <div class="form-group">
+                                <label for="description">Descrição:</label>
+                                {{ $partner->description }}
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 @endsection

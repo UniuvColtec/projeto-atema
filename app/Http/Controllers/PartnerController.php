@@ -50,7 +50,10 @@ class PartnerController extends Controller
         $partner->city_id = $request->cities;
         $partner->telephone = $request->telephone;
         $partner->address = $request->address;
+        $partner->description = $request->description;
         $partner->district = $request->district;
+        $partner->latitude = '-10.1212';
+        $partner->longitude = '-20.1212';
         $partner->save();
 
         return Response::responseOK('Parceiro cadastrado com sucesso');
@@ -91,6 +94,7 @@ class PartnerController extends Controller
         $partner->name = $request->name;
         $partner->email = $request->email;
         $partner->cnpj = $request->cnpj;
+        $partner->description = $request->description;
         $partner->partner_type_id= $request->partner_type_id;
         $partner->site = $request->site;
         $partner->city_id = $request->cities;
