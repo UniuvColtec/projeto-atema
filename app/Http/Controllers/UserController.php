@@ -45,19 +45,18 @@ class UserController extends Controller
 
     public function store(UserRequest $request)
     {
-        $user = new User();
-        $user->name = $request->name;
-        $user->password = Hash::make($request->password);
-        if($request->password != $request->confirmpassword){
-            return Response::responseError('Erro ao cadastrar senha');
-        }
-        $user->email = $request->email;
-        $user->city_id = $request->city_id;
+            $user = new User();
+            $user->name = $request->name;
+            $user->password = Hash::make($request->password);
+            if($request->password != $request->confirmpassword){
+                return Response::responseError('Erro ao cadastrar senha');
+            }
+            $user->email = $request->email;
+            $user->city_id = $request->city_id;
 
-        $user->save();
+            $user->save();
 
-        return Response::responseOK('Usuário cadastrado com sucesso');
-
+            return Response::responseOK('Usuário cadastrado com sucesso');
 
     }
 

@@ -27,7 +27,7 @@ class UserRequest extends FormRequest
             'name' => 'required',
             'password' => 'required',
             'confirmpassword' => 'required',
-            'email' => 'required',
+            'email' => ['required', 'email', \Illuminate\Validation\Rule::unique('users')->ignore($this->user()->id)],
             'city_id' => 'required'
 
 
@@ -42,7 +42,8 @@ class UserRequest extends FormRequest
             'password.required' => 'Senha obrigatória',
             'confirmpassword.required' => 'Confirme sua senha',
             'email.required' => 'Email obrigatório',
-            'city_id.required' => 'Escolha uma cidade'
+            'city_id.required' => 'Escolha uma cidade',
+            'email.unique' => 'Email já cadastrado'
         ];
     }
 }
