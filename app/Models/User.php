@@ -51,7 +51,7 @@ class User extends Authenticatable
             ->join('cities', 'users.city_id', '=', 'cities.id')
             ->select("users.id", "users.name","users.email", "cities.name as city_name");
 
-        $bootgrid->query($users, $request, ['name', 'email']);
+        $bootgrid->query($users, $request, ['users.id','users.name','cities.name', 'users.email' ]);
         return $bootgrid;
 
     }
