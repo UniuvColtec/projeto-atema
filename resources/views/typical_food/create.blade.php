@@ -6,6 +6,8 @@
 @endpush
 
 @push('js')
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
     <script src="/js/iziToast.min.js" type="text/javascript"></script>
     <script src="/js/jquery.form.min.js" type="text/javascript"></script>
     <script src="/js/formAjaxCadastrar.js" type="text/javascript"></script>
@@ -13,6 +15,22 @@
         $(document).ready(function(){
             $(".select2").select2();
         })
+        $('#description').summernote({
+            placeholder: 'Hello stand alone ui',
+            tabsize: 2,
+            height: 120,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture', 'video']],
+                ['view', ['fullscreen', 'codeview', 'help']]
+            ]
+        });
+
+
     </script>
 @endpush
 
@@ -45,16 +63,16 @@
                         {{ csrf_field() }}
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="nome">Nome</label>
-                                <input type="text" class="form-control" id="nome" name="name" placeholder="Nome" required>
+                                <label for="name">Nome</label>
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Nome" required>
                             </div>
                             <div class="form-group">
-                                <label for="descricao">Descrição</label>
-                                <input type="text" id="descricao" name="description" class="form-control" placeholder="Descrição" required>
+                                <label for="description">Descrição</label>
+                                <input type="text" id="description" name="description" class="form-control" placeholder="Descrição" required>
                             </div>
                             <div class="form-group">
-                                <label for="imagem">Imagem</label>
-                                <input type="text" id="imagem" name="image" class="form-control" placeholder="Imagem" required>
+                                <label for="image">Imagem</label>
+                                <input type="text" id="image" name="image" class="form-control" placeholder="Imagem" required>
                             </div>
                         </div>
                         <div class="card-footer">

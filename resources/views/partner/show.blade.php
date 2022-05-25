@@ -56,11 +56,11 @@
                             </div>
                         <div class="form-group">
                             <label for="cities">Cidade:</label>
-                            {{ $partner->cities }}
+                            {{ $partner->city_name }}
                         </div>
                         <div class="form-group">
                             <label for="partner_type_id">Tipo:</label>
-                            {{ $partner->partner_type_id }}
+                            {{ $partner->partner_type_name }}
                         </div>
                             <div class="form-group">
                                 <label for="cnpj">Cnpj:</label>
@@ -88,7 +88,7 @@
                         </div>
                             <div class="form-group">
                                 <label for="description">Descrição:</label>
-                                {{ $partner->description }}
+                                {!!$partner->description!!}
                         </div>
                         </form>
                     </div>

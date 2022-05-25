@@ -10,10 +10,26 @@
     <script src="/js/iziToast.min.js" type="text/javascript"></script>
     <script src="/js/jquery.form.min.js" type="text/javascript"></script>
     <script src="/js/formAjaxCadastrar.js" type="text/javascript"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
     <script>
         $(document).ready(function(){
             $(".select2").select2();
         })
+        $('#description').summernote({
+            placeholder: 'Hello stand alone ui',
+            tabsize: 2,
+            height: 120,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture', 'video']],
+                ['view', ['fullscreen', 'codeview', 'help']]
+            ]
+        });
     </script>
 @endpush
 
@@ -47,7 +63,7 @@
                                           name="name" placeholder="nome" required >
                                 </div>
                             <div class="form-group">
-                                <label for="">Descrição:</label>
+                                <label for="description">Descrição:</label>
                                 <input type="description" class="form-control " id="description"
                                        name="description" placeholder="Descrição" >
                             </div>
