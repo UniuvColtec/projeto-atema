@@ -56,7 +56,11 @@
                             </div>
                         <div class="form-group">
                             <label for="cities">Cidade:</label>
+<<<<<<< Updated upstream
                             {{ $partner->city_name }}
+=======
+                            {{ $partner->city_name}}
+>>>>>>> Stashed changes
                         </div>
                         <div class="form-group">
                             <label for="partner_type_id">Tipo:</label>
@@ -88,7 +92,11 @@
                         </div>
                             <div class="form-group">
                                 <label for="description">Descrição:</label>
+<<<<<<< Updated upstream
                                 {!!$partner->description!!}
+=======
+                                 {!!$partner->description!!}
+>>>>>>> Stashed changes
                         </div>
                         </form>
                     </div>
