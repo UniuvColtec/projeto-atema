@@ -7,6 +7,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -46,7 +47,11 @@ class User extends Authenticatable
     public function bootgrid(object $request)
     {
         $bootgrid = new Bootgrid();
-        $bootgrid->query($this, $request, ['name', 'password', 'email']);
+        $users = DB::table('users')
+            ->join('cities', 'users.city_id', '=', 'cities.id')
+            ->select("users.id", "users.name","users.email", "cities.name as city_name");
+
+        $bootgrid->query($users, $request, ['users.id','users.name','cities.name', 'users.email' ]);
         return $bootgrid;
 
     }
