@@ -101,7 +101,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="description">Descrição:</label>
-                                            {{ $event->description }}
+                                            {!!$event->description!!}
                                         </div>
                                         <div class="form-group">
                                             <label for="start_date">Data de início:</label>

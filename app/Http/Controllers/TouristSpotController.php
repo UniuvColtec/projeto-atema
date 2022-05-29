@@ -86,6 +86,8 @@ class TouristSpotController extends Controller
         $tourist_spot->description= $request->description;
         $tourist_spot->address = $request->address;
         $tourist_spot->district = $request->district;
+        $tourist_spot->latitude = $request->latitude;
+        $tourist_spot->longitude = $request->longitude;
         $tourist_spot->save();
         return Response::responseOK('Alterado com sucesso');
     }

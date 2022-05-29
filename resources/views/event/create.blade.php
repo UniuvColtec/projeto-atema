@@ -117,7 +117,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="description">Descrição:</label>
-                                            <input type="text" name="description" id="description" class="form-control" placeholder="Descrição" required>
+                                            <textarea id="description" name="description" required></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label for="start_date">Data de início:</label>

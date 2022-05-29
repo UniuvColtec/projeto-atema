@@ -56,11 +56,11 @@
                             </div>
                         <div class="form-group">
                             <label for="cities">Cidade:</label>
-                            {{ $partner->city_name }}
+                            {{ $partner->city->name }}
                         </div>
                         <div class="form-group">
                             <label for="partner_type_id">Tipo:</label>
-                            {{ $partner->partner_type_name }}
+                            {{ $partner->partner_type->name }}
                         </div>
                             <div class="form-group">
                                 <label for="cnpj">Cnpj:</label>

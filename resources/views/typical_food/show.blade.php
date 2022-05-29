@@ -53,7 +53,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="description">Descrição: </label>
-                                {{ $typical_food->description }}
+                                {!!$typical_food->description!!}
                             </div>
                             <div class="form-group">
                                 <label for="image">Imagem: </label>

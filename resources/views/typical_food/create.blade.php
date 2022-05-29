@@ -67,8 +67,8 @@
                                 <input type="text" class="form-control" id="name" name="name" placeholder="Nome" required>
                             </div>
                             <div class="form-group">
-                                <label for="description">Descrição</label>
-                                <input type="text" id="description" name="description" class="form-control" placeholder="Descrição" required>
+                                <label for="description">Descrição:</label>
+                                <textarea id="description" name="description" required></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="image">Imagem</label>

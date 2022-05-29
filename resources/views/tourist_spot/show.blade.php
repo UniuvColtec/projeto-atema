@@ -57,11 +57,11 @@
                             </div>
                         <div class="form-group">
                             <label for="cities">Cidade:</label>
-                            {{ $tourist_spot->cities }}
+                            {{ $tourist_spot->city->name}}
                         </div>
                         <div class="form-group">
                             <label for="description">Descrição:</label>
-                            {{ $tourist_spot->description }}
+                            {!!$tourist_spot->description!!}
                         </div>
                         <div class="form-group">
                             <label for="address">Endereço:</label>
