@@ -10,10 +10,21 @@ window.$ = window.jQuery = require('jquery');
 
 require('overlayscrollbars');
 require('../../vendor/almasaeed2010/adminlte/dist/js/adminlte');
-require('select2');
+require('../../vendor/almasaeed2010/adminlte/plugins/select2/js/select2.full')
 require('jquery-form');
 require('jquery-validation');
+require('jquery-ui/ui/widget');
+require('blueimp-file-upload');
+require('blueimp-canvas-to-blob');
+require('blueimp-tmpl');
+require('blueimp-load-image');
 
+$.fn.select2.defaults.set( "theme", "bootstrap4" );
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
 
 //window.Vue = require('vue').default;
 

@@ -17,8 +17,7 @@
         $(document).ready(function(){
             var stepperEl = document.getElementById("stepper");
             stepper = new Stepper(stepperEl);
-            // // $('#information-part').validate();
-            //
+
             stepperEl.addEventListener('show.bs-stepper', function (event) {
                 if (!$('.jsonForm').valid()){
                     event.preventDefault()
@@ -108,6 +107,9 @@
                                 <div id="information-part" class="content" role="tabpanel" aria-labelledby="information-part-trigger">
                                     <div class="card-body">
                                         <div class="form-group">
+                                            <label for="image">Imagem</label>
+                                        </div>
+                                        <div class="form-group">
                                             <label for="name">Nome:</label>
                                             <input name="name" id="name" class="form-control" placeholder="Nome" required>
                                         </div>
@@ -117,15 +119,15 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="description">Descrição:</label>
-                                            <input type="text" name="description" id="description" class="form-control" placeholder="Descrição" required>
+                                            <textarea name="description" id="description" class="form-control" placeholder="Descrição" required></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label for="start_date">Data de início:</label>
-                                            <input type="datetime-local" name="start_date" id="start_date" class="form-control" placeholder="Data de início" required>
+                                            <input type="datetime-local" name="start_date" id="start_date" class="form-control" placeholder="Data de início" required value="2022-05-29T10:10">
                                         </div>
                                         <div class="form-group">
                                             <label for="final_date">Data de encerramento:</label>
-                                            <input type="datetime-local" name="final_date" id="final_date" class="form-control" placeholder="Data de encerramento" required>
+                                            <input type="datetime-local" name="final_date" id="final_date" class="form-control" placeholder="Data de encerramento" required value="2022-05-30T10:10">
                                         </div>
                                     </div>
                                     <div class="card-footer">
@@ -136,7 +138,7 @@
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label for="cities">Cidade</label>
-                                            <select name="cities" id="cities" class="form-control select" required>
+                                            <select name="cities" id="cities" class="form-control select2" required>
                                                 <option value="">- Selecione uma Cidade -</option>
                                                 @foreach($cities as $city)
                                                     <option value="{{$city->id}}">{{$city->name}}</option>
@@ -165,12 +167,14 @@
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label for="image">Imagem</label>
-                                            <input type="text" name="image" id="image" class="form-control" placeholder="Imagem" required>
+{{--                                            <input id="fileupload" type="file" name="files[]" multiple--}}
+{{--                                                   data-url="/path/to/upload/handler.json"--}}
+{{--                                                   data-sequential-uploads="true"--}}
+{{--                                                   data-form-data='{"script": "true"}'>--}}
                                         </div>
                                         <div class="form-group">
                                             <label for="typical_foods">Comidas Típicas</label>
-                                            <select name="typical_foods" id="typical_foods" class="form-control select2" multiple required>
-                                                <option value="">- Selecione uma Comida Típica -</option>
+                                            <select name="typical_foods[]" id="typical_foods" class="form-control select2" multiple required data-placeholder="Selecione uma ou mais comidas típicas" >
                                                 @foreach($typical_foods as $typical_food)
                                                     <option value="{{$typical_food->id}}">{{$typical_food->name}}</option>
                                                 @endforeach
@@ -178,8 +182,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="categories">Categorias</label>
-                                            <select name="categories" id="categories" class="form-control select2" multiple required >
-                                                <option value="">- Selecione uma Categorias -</option>
+                                            <select name="categories[]" id="categories" class="form-control select2 " multiple required data-placeholder="Selecione uma ou mais categorias" >
                                                 @foreach($categories as $category)
                                                     <option value="{{$category->id}}">{{$category->name}}</option>
                                                 @endforeach
@@ -199,3 +202,4 @@
         </div>
     </div>
 @endsection
+

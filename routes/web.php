@@ -53,6 +53,11 @@ Route::prefix('admin')->middleware('auth')->group(function(){
     Route::post('user/bootgrid', [UserController::class, 'bootgrid'])->name('user.bootgrid');
     Route::resource('user', UserController::class);
 
+    Route::get('event/image', [EventController::class, 'image'])->name('event.image');
+    Route::get('event/uploadimage', [EventController::class, 'uploadImageGet'])->name('event.uploadImageGet');
+    Route::post('event/uploadimage', [EventController::class, 'uploadImagePost'])->name('event.uploadImagePost');
+    Route::delete('event/uploadimage', [EventController::class, 'uploadImageDelete'])->name('event.uploadImageDelete');
+
     Route::post('event/bootgrid', [EventController::class, 'bootgrid'])->name('event.bootgrid');
     Route::resource('event', EventController::class);
 

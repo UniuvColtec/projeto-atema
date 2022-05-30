@@ -6,9 +6,12 @@ use App\Http\Requests\EventRequest;
 use App\Models\Category;
 use App\Models\Event;
 use App\Models\City;
+use App\Models\Event_category;
 use App\Models\Partner;
+use App\Models\Typical_event_food;
 use App\Models\Typical_food;
 use App\Response;
+use App\UploadHandler;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -56,12 +59,24 @@ class EventController extends Controller
         $event->address = $request->address;
         $event->district= $request->district;
         $event->city_id = $request->cities;
-        $coordinates = $event->getCoordinates($request->localization);
-        $event->latitude = $coordinates['latitude'];
-        $event->longitude = $coordinates['longitude'];;
+        $event->getCoordinates($request->localization);
         $event->save();
 
-        return Response::responseOK("Evento cadastrado com sucesso");
+        foreach ($request->categories as $category){
+            $event_category = new Event_category();
+            $event_category->category_id = $category;
+            $event_category->event_id = $event->id;
+            $event_category->save();
+        }
+        foreach ($request->typical_foods as $typical_food){
+            $event_category = new Typical_event_food();
+            $event_category->typical_food_id = $typical_food;
+            $event_category->event_id = $event->id;
+            $event_category->save();
+        }
+
+        return Response::responseError('teste');
+//        return Response::responseOK("Evento cadastrado com sucesso");
     }
 
     /**
@@ -139,4 +154,27 @@ class EventController extends Controller
         $bootgrid = $events->bootgrid($request);
         return response()->json($bootgrid);
     }
+
+    public function image()
+    {
+        return view('event.image');
+    }
+
+    public function uploadImagePost()
+    {
+        $upload_handler = new UploadHandler(null, false);
+        return $upload_handler->post();
+    }
+    public function uploadImageGet()
+    {
+        $upload_handler = new UploadHandler(null, false);
+        return $upload_handler->get();
+
+    }
+    public function uploadImageDelete()
+    {
+        $upload_handler = new UploadHandler(null, false);
+        return $upload_handler->delete();
+    }
+
 }

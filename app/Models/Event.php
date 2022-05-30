@@ -25,17 +25,14 @@ class Event extends Model
 
     }
     public function getCoordinates($link) {
-        $brokenLink = explode('!', $link);
+        $pos = strpos( $link, "!3d");
+        $latitude = substr($link, $pos+3, 11);
 
-        $latitude = explode('d', $brokenLink[5]);
-        $longitude = explode('d', $brokenLink[6]);
+        $pos = strpos( $link, "!4d");
+        $longitude = substr($link, $pos+3, 11);
 
-        $coordinates = [
-            'latitude' => $latitude[1],
-            'longitude' => $longitude[1]
-        ];
-
-        return $coordinates;
+        $this->latitude = $latitude;
+        $this->longitude = $longitude;
     }
 }
 

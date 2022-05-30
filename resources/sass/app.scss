@@ -4,10 +4,6 @@
 // Variables
 @import 'variables';
 
-
-//Select2
-@import "~select2/dist/css/select2.css";
-
 //Izitoast
 @import "~izitoast/dist/css/iziToast.css";
 
@@ -21,6 +17,11 @@
 // AdminLTE
 @import '../../vendor/almasaeed2010/adminlte/dist/css/adminlte.css';
 
+//Select2
+//@import "~select2/dist/css/select2.css";
+@import "/vendor/almasaeed2010/adminlte/plugins/select2/css/select2.css";
+@import "/vendor/almasaeed2010/adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.css";
+
 
 // Bootstrap
 // Already imported by AdminLTE
@@ -28,6 +29,5 @@
 
 
 @import "/node_modules/bs-stepper/dist/css/bs-stepper.css";
-
 
 @import 'geral';
