@@ -6,7 +6,7 @@
 @endpush
 
 @push('js')
-
+    <script src=" {{ asset('js/bs-stepper.js') }}" type="text/javascript"></script>
     <script src="/js/iziToast.min.js" type="text/javascript"></script>
     <script src="/js/jquery.form.min.js" type="text/javascript"></script>
     <script src="/js/formAjaxCadastrar.js" type="text/javascript"></script>
@@ -64,8 +64,7 @@
                                 </div>
                             <div class="form-group">
                                 <label for="description">Descrição:</label>
-                                <input type="description" class="form-control " id="description"
-                                       name="description" placeholder="Descrição" >
+                                <textarea id="description" name="description" required></textarea>
                             </div>
                             <div class="card-body">
                                 <div class="form-group jsonForm">
