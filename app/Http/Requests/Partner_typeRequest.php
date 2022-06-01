@@ -33,7 +33,7 @@ class Partner_typeRequest extends FormRequest
     {
         return [
             'name.required' => 'Nome obrigatório',
-            'name.unique'=>'nome já existente'
+            'name.unique'=>'Tipo de parceiro já existente'
         ];
     }
 }
