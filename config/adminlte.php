@@ -243,12 +243,74 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
+            'text'    => 'Pontos Turísticos',
+            'url'     => '/admin/tourist_spot',
+            'icon'    => 'fas fa-map-marked-alt',
+            'submenu' => [
+                [
+                    'text' => 'Cadastrar',
+                    'icon'    => 'fas fa-fw fa-plus',
+                    'url'     => '/admin/tourist_spot/create',
+                ],
+                [
+                    'text'    => 'Listar',
+                    'icon'    => 'fas fa-fw fa-th-list',
+                    'url'     => '/admin/tourist_spot',
+                ],
+            ],
         ],
+        [
+            'text'    => 'Comidas Típicas',
+            'url'     => '/admin/typical_food',
+            'icon'    => 'fas fa-utensils',
+            'submenu' => [
+                [
+                    'text' => 'Cadastrar',
+                    'icon'    => 'fas fa-fw fa-plus',
+                    'url'     => '/admin/typical_food/create',
+                ],
+                [
+                    'text'    => 'Listar',
+                    'icon'    => 'fas fa-fw fa-th-list',
+                    'url'     => '/admin/typical_food',
+                ],
+            ],
+        ],
+        [
+            'text'    => 'Eventos',
+            'url'     => '/admin/event',
+            'icon'    => 'fas fa-calendar-alt',
+            'submenu' => [
+                [
+                    'text' => 'Cadastrar',
+                    'icon'    => 'fas fa-fw fa-plus',
+                    'url'     => '/admin/event/create',
+                ],
+                [
+                    'text'    => 'Listar',
+                    'icon'    => 'fas fa-fw fa-th-list',
+                    'url'     => '/admin/event',
+                ],
+            ],
+        ],
+        [
+            'text'    => 'Parceiros',
+            'url'     => '/admin/partner',
+            'icon'    => 'fas fa-handshake',
+            'submenu' => [
+                [
+                    'text' => 'Cadastrar',
+                    'icon'    => 'fas fa-fw fa-plus',
+                    'url'     => '/admin/partner/create',
+                ],
+                [
+                    'text'    => 'Listar',
+                    'icon'    => 'fas fa-fw fa-th-list',
+                    'url'     => '/admin/partner',
+                ],
+            ],
+        ],
+
         ['text'    => 'account_settings',
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
@@ -304,57 +366,7 @@ return [
                         ],
                     ],
                 ],
-                [
-                    'text'    => 'Pontos Turísticos',
-                    'url'     => '/admin/tourist_spot',
-                    'icon'    => 'fas fa-map-marked-alt',
-                    'submenu' => [
-                        [
-                            'text' => 'Cadastrar',
-                            'icon'    => 'fas fa-fw fa-plus',
-                            'url'     => '/admin/tourist_spot/create',
-                        ],
-                        [
-                            'text'    => 'Listar',
-                            'icon'    => 'fas fa-fw fa-th-list',
-                            'url'     => '/admin/tourist_spot',
-                        ],
-                    ],
-                ],
-                [
-                    'text'    => 'Comidas Típicas',
-                    'url'     => '/admin/typical_food',
-                    'icon'    => 'fas fa-utensils',
-                    'submenu' => [
-                        [
-                            'text' => 'Cadastrar',
-                            'icon'    => 'fas fa-fw fa-plus',
-                            'url'     => '/admin/typical_food/create',
-                        ],
-                        [
-                            'text'    => 'Listar',
-                            'icon'    => 'fas fa-fw fa-th-list',
-                            'url'     => '/admin/typical_food',
-                        ],
-                    ],
-                ],
-                [
-                    'text'    => 'Eventos',
-                    'url'     => '/admin/event',
-                    'icon'    => 'fas fa-calendar-alt',
-                    'submenu' => [
-                        [
-                            'text' => 'Cadastrar',
-                            'icon'    => 'fas fa-fw fa-plus',
-                            'url'     => '/admin/event/create',
-                        ],
-                        [
-                            'text'    => 'Listar',
-                            'icon'    => 'fas fa-fw fa-th-list',
-                            'url'     => '/admin/event',
-                        ],
-                    ],
-                ],
+
                 [
                     'text'    => 'Categoria do Evento',
                     'url'     => '/admin/category',
@@ -372,23 +384,7 @@ return [
                         ],
                     ],
                 ],
-                [
-                    'text'    => 'Parceiros',
-                    'url'     => '/admin/partner',
-                    'icon'    => 'fas fa-handshake',
-                    'submenu' => [
-                        [
-                            'text' => 'Cadastrar',
-                            'icon'    => 'fas fa-fw fa-plus',
-                            'url'     => '/admin/partner/create',
-                        ],
-                        [
-                            'text'    => 'Listar',
-                            'icon'    => 'fas fa-fw fa-th-list',
-                            'url'     => '/admin/partner',
-                        ],
-                    ],
-                ],
+
                 [
                     'text'    => 'Tipo de parceiro',
                     'url'     => '/admin/partner_type',

@@ -61,7 +61,7 @@
 
                             <div class="form-group">
                                 <label for="city_id">Cidade:</label>
-                                {{ $user->city_id }}
+                                {{ $user->city->name }}
                             </div>
 
                         </div>
