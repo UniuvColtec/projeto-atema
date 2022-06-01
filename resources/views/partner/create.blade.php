@@ -113,6 +113,7 @@
                                             <span class="bs-stepper-label">Localização</span>
                                         </button>
                                     </div>
+                                    <div class="line"></div>
                                     <div class="step" data-target="#image-part">
                                         <button type="button" class="step-trigger" role="tab" aria-controls="image-part" id="image-part-trigger">
                                             <span class="bs-stepper-circle">3</span>

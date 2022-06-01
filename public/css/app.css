@@ -63839,3 +63839,7 @@ form.was-validated select:valid ~ .select2-container--bootstrap4 .select2-select
 form label.is-invalid {
   display: none !important;
 }
+
+.note-editor.fullscreen .note-editing-area {
+  background: white;
+}

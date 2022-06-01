@@ -45,6 +45,8 @@ class TouristSpotController extends Controller
         $tourist_spot->description= $request->description;
         $tourist_spot->address = $request->address;
         $tourist_spot->district = $request->district;
+        $tourist_spot->latitude = '-10.1212';
+        $tourist_spot->longitude = '-20.1212';
         $tourist_spot->save();
         return Response::responseOK('Ponto Turistico cadastrado com sucesso');
     }

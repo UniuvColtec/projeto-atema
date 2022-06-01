@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Pontos Turisticos- Alterar')
+@section('title', 'Pontos Turísticos- Alterar')
 
 @push('css')
     <link rel="stylesheet" href="/css/iziToast.min.css">
@@ -36,7 +36,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Pontos Turisticos
+                <h1>Pontos Turísticos
                     <small>Alterar</small>
                 </h1>
 
@@ -44,7 +44,7 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fa fa-home"></i> Home</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('tourist_spot.index') }}">Pontos Turisticos</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('tourist_spot.index') }}">Pontos Turísticos</a></li>
                     <li class="breadcrumb-item active">Alterar</li>
                 </ol>
             </div>
@@ -68,7 +68,7 @@
 
                             <div class="form-group">
                                 <label for="description">Descrição:</label>
-                                <textarea id="description" name="description" required value = {!! $tourist_spot->description !!} ></textarea>
+                                <textarea id="description" name="description" required  >{{ $tourist_spot->description }}</textarea>
                             </div>
                             <div class="card-body">
                                     <div class="form-group jsonForm">

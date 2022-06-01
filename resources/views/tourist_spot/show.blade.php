@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', '>Pontos Turistico - Exibir')
+@section('title', '>Pontos Turístico - Exibir')
 
 @push('css')
     <link rel="stylesheet" href="/css/iziToast.min.css">
@@ -28,7 +28,7 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fa fa-home"></i> Home</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('tourist_spot.index') }}"> Pontos Turistico</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('tourist_spot.index') }}"> Pontos Turístico</a></li>
                     <li class="breadcrumb-item active">Exibir</li>
                 </ol>
             </div>
@@ -41,7 +41,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="card card-primary">
-                    <h1> Pontos turisticos - Exibir</h1>
+                    <h1> Pontos Turísticos - Exibir</h1>
                     <div class="card-body">
                         <form action="{{ route('tourist_spot.destroy', ['tourist_spot' =>$tourist_spot->id]) }}" method="post">
                             {{ csrf_field() }}

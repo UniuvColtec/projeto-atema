@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Partner - Exibir')
+@section('title', 'Parceiro - Exibir')
 
 @push('css')
     <link rel="stylesheet" href="/css/iziToast.min.css">
@@ -37,11 +37,13 @@
 @endsection
 
 @section('content')
+
+
     <div class="container">
         <div class="row">
             <div class="col-12">
                 <div class="card card-primary">
-                    <h1> parceiro - Exibir</h1>
+                    <h1> Parceiro - Exibir</h1>
                     <div class="card-body">
                         <form action="{{ route('partner.destroy', ['partner' =>$partner->id]) }}" method="post">
                             {{ csrf_field() }}
@@ -54,6 +56,10 @@
                             <label for="nome">Nome:</label>
                             {{ $partner->name }}
                             </div>
+                        <div class="form-group">
+                            <label for="cities">Cidade:</label>
+                            {{ $partner->city->name }}
+                        </div>
                         <div class="form-group">
                             <label for="partner_type_id">Tipo:</label>
                             {{ $partner->partner_type->name }}
@@ -85,6 +91,9 @@
                             <div class="form-group">
 
                                 <label for="description">Descrição:</label>
+
+
+                                {!!$partner->description!!}
                         </div>
                         </form>
                     </div>

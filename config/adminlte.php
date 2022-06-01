@@ -249,16 +249,21 @@ return [
             'label'       => 4,
             'label_color' => 'success',
         ],
-        ['header' => 'account_settings'],
-        [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+        ['text'    => 'account_settings',
+            'icon'    => 'fas fa-fw fa-share',
+            'submenu' => [
+                [
+                    'text' => 'profile',
+                    'url'  => 'admin/settings',
+                    'icon' => 'fas fa-fw fa-user',
+                ],
+                [
+                    'text' => 'change_password',
+                    'url'  => 'admin/settings',
+                    'icon' => 'fas fa-fw fa-lock',
+                ],
+
+            ],
         ],
         ['header' => 'Cadastros'],
         [
@@ -381,23 +386,6 @@ return [
                             'text'    => 'Listar',
                             'icon'    => 'fas fa-fw fa-th-list',
                             'url'     => '/admin/partner',
-                        ],
-                    ],
-                ],
-                [
-                    'text'    => 'Imagens',
-                    'url'     => '/admin/image',
-                    'icon'    => 'fas fa-images',
-                    'submenu' => [
-                        [
-                            'text' => 'Cadastrar',
-                            'icon'    => 'fas fa-fw fa-plus',
-                            'url'     => '/admin/image/create',
-                        ],
-                        [
-                            'text'    => 'Listar',
-                            'icon'    => 'fas fa-fw fa-th-list',
-                            'url'     => '/admin/image',
                         ],
                     ],
                 ],

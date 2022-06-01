@@ -36,12 +36,11 @@
     </div>
 @endsection
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-             <div class="col-12">
+            <div class="col-12">
                 <div class="card card-primary">
                     <h1>tipo-parceiro - Cadastro</h1>
-                            </div>
                     <form role="form" action="{{ route('partner_type.store') }}" method="post" class="jsonForm">
                         {{ csrf_field() }}
                         <div class="card-body">

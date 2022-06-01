@@ -11,6 +11,8 @@
     <script src="/js/jquery.form.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="js/jquery.mask.js"></script>
     <script src="/js/jquery.mask.js" type="text/javascript"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
     <script>
         $(document).ready(function(){
             $(".select2").select2();
@@ -24,6 +26,20 @@
             $('#cnpj').mask('00. 000. 000/0000-00', options);
             $('#telephone').mask('(00) 0000-00000', options);
         })
+        $('#description').summernote({
+            placeholder: 'Hello stand alone ui',
+            tabsize: 2,
+            height: 120,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture', 'video']],
+                ['view', ['fullscreen', 'codeview', 'help']]
+            ]
+        });
 
     </script>
 @endpush
@@ -62,6 +78,10 @@
                                     <input type="text" class="form-control" id="name" name="name" placeholder="nome" value="{{ $partner->name}}">
                                 </div>
                             <div>
+                                <div class="form-group">
+                                    <label for="description">Descrição:</label>
+                                    <textarea id="description" name="description" required  >{{ $partner->description }}</textarea>
+                                </div>
                                 <label for="partner_type_id">Tipo:</label>
                                 <select name="partner_type_id" id="partner_type_id" class="form-control" >
                                     <option value="">- Selecione um Tipo -</option>

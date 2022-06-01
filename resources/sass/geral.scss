@@ -1,3 +1,7 @@
 form label.is-invalid {
     display: none !important;
 }
+
+.note-editor.fullscreen .note-editing-area {
+    background: white;
+}
