@@ -34,5 +34,9 @@ class Event extends Model
         $this->latitude = $latitude;
         $this->longitude = $longitude;
     }
+
+    public function event_category(){
+        return $this->hasMany(Event_category::class);
+    }
 }
 

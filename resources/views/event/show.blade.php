@@ -63,33 +63,6 @@
                 <div class="card card-primary">
                     <form role="form" action="{{ route('event.store') }}" method="post" class="jsonForm">
                         {{ csrf_field() }}
-                        <div id="stepper" class="bs-stepper">
-                            <div class="bs-stepper-header" role="tablist">
-                                <!-- your steps here -->
-                                <div class="step" data-target="#information-part">
-                                    <button type="button" class="step-trigger" role="tab" aria-controls="information-part" id="information-part-trigger">
-                                        <span class="bs-stepper-circle">1</span>
-                                        <span class="bs-stepper-label">Informações</span>
-                                    </button>
-                                </div>
-                                <div class="line"></div>
-                                <div class="step" data-target="#localization-part">
-                                    <button type="button" class="step-trigger" role="tab" aria-controls="localization-part" id="localization-part-trigger">
-                                        <span class="bs-stepper-circle">2</span>
-                                        <span class="bs-stepper-label">Localização</span>
-                                    </button>
-                                </div>
-                                <div class="line"></div>
-                                <div class="step" data-target="#image-part">
-                                    <button type="button" class="step-trigger" role="tab" aria-controls="image-part" id="image-part-trigger">
-                                        <span class="bs-stepper-circle">3</span>
-                                        <span class="bs-stepper-label">Imagens e Outros</span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="bs-stepper-content">
-                                <!-- your steps content here -->
-                                <div id="information-part" class="content" role="tabpanel" aria-labelledby="information-part-trigger">
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label for="name">Nome:</label>
@@ -111,13 +84,6 @@
                                             <label for="final_date">Data de encerramento:</label>
                                             {{ $event->final_date }}
                                         </div>
-                                    </div>
-                                    <div class="card-footer">
-                                        <button type="button" class="btn btn-primary" onclick="stepper.next()">Próximo</button>
-                                    </div>
-                                </div>
-                                <div id="localization-part" class="content" role="tabpanel" aria-labelledby="localization-part-trigger">
-                                    <div class="card-body">
                                         <div class="form-group">
                                             <label for="cities">Cidade</label>
                                             @foreach($cities as $city)
@@ -134,6 +100,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="localization">Localização:</label>
+                                            <br>
                                             <iframe src="https://maps.google.com/maps?q={{ $event->latitude }},{{ $event->longitude }}&hl=pt-br&z=17&amp;output=embed"
                                                     width="600"
                                                     height="450"
@@ -143,31 +110,36 @@
                                                     referrerpolicy="no-referrer-when-downgrade">
                                             </iframe>
                                         </div>
-                                    </div>
-                                    <div class="card-footer">
-                                        <button type="button" class="btn btn-primary" onclick="stepper.previous()">Anterior</button>
-                                        <button type="button" class="btn btn-primary" onclick="stepper.next()">Próximo</button>
-                                    </div>
-                                </div>
-                                <div id="image-part" class="content" role="tabpanel" aria-labelledby="image-part-trigger">
-                                    <div class="card-body">
                                         <div class="form-group">
-                                            <label for="image">Imagem</label>
+                                            <label for="image">Imagem:</label>
                                         </div>
                                         <div class="form-group">
-                                            <label for="typical_foods">Comidas Típicas</label>
+                                            <label for="typical_foods">Comidas Típicas:</label>
+                                            @foreach($typical_event_foods as $typical_event_food)
+                                                @if($typical_event_food->event_id == $event->id)
+                                                    @foreach($typical_foods as $typical_food)
+                                                        @if($typical_event_food->typical_food_id == $typical_food->id)
+                                                            {{ $typical_food->name }}
+                                                        @endif
+                                                    @endforeach
+                                                @endif
+                                            @endforeach
+
                                         </div>
                                         <div class="form-group">
-                                            <label for="categories">Categorias</label>
+                                            <label for="categories">Categorias:</label>
+                                            {{-- {{ $event->event_category->category }} --}}
+                                            @foreach($event_categories as $event_category)
+                                                @if($event_category->event_id == $event->id)
+                                                    @foreach($categories as $category)
+                                                        @if($event_category->category_id == $category->id)
+                                                            {{ $category->name }}
+                                                        @endif
+                                                    @endforeach
+                                                @endif
+                                            @endforeach
                                         </div>
                                     </div>
-                                    <div class="card-footer">
-                                        <button type="button" class="btn btn-primary" onclick="stepper.previous()">Anterior</button>
-                                        <button type="submit" class="btn btn-primary">Salvar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </form>
                 </div>
             </div>

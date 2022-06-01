@@ -107,9 +107,6 @@
                                 <div id="information-part" class="content" role="tabpanel" aria-labelledby="information-part-trigger">
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label for="image">Imagem</label>
-                                        </div>
-                                        <div class="form-group">
                                             <label for="name">Nome:</label>
                                             <input name="name" id="name" class="form-control" placeholder="Nome" required>
                                         </div>
@@ -123,11 +120,11 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="start_date">Data de início:</label>
-                                            <input type="datetime-local" name="start_date" id="start_date" class="form-control" placeholder="Data de início" required value="2022-05-29T10:10">
+                                            <input type="datetime-local" name="start_date" id="start_date" class="form-control" placeholder="Data de início" required value="2022-05-29T10:10" min="{{ $todays_date }}">
                                         </div>
                                         <div class="form-group">
                                             <label for="final_date">Data de encerramento:</label>
-                                            <input type="datetime-local" name="final_date" id="final_date" class="form-control" placeholder="Data de encerramento" required value="2022-05-30T10:10">
+                                            <input type="datetime-local" name="final_date" id="final_date" class="form-control" placeholder="Data de encerramento" required value="2022-05-30T10:10" min="{{ $todays_date }}">
                                         </div>
                                     </div>
                                     <div class="card-footer">

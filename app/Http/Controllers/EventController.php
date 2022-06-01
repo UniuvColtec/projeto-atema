@@ -36,7 +36,8 @@ class EventController extends Controller
         $cities = City::all();
         $typical_foods = Typical_food::all();
         $categories = Category::all();
-        return view('event.create', compact('cities','typical_foods','categories'));
+        $todays_date = date('Y-m-d\TH:i:s');
+        return view('event.create', compact('cities','typical_foods','categories','todays_date'));
     }
 
     /**
@@ -45,7 +46,7 @@ class EventController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EventRequest $request)
     {
         if ($request->cities == 0) {
             return Response::responseError('Não foi selecionada nenhuma cidade');
@@ -75,8 +76,7 @@ class EventController extends Controller
             $event_category->save();
         }
 
-        return Response::responseError('teste');
-//        return Response::responseOK("Evento cadastrado com sucesso");
+        return Response::responseOK("Evento cadastrado com sucesso");
     }
 
     /**
@@ -88,7 +88,11 @@ class EventController extends Controller
     public function show(Event $event)
     {
         $cities = City::all();
-        return view('event.show', compact('event','cities'));
+        $event_categories = Event_category::all();
+        $categories = Category::all();
+        $typical_event_foods = Typical_event_food::all();
+        $typical_foods = Typical_food::all();
+        return view('event.show', compact('event','cities','event_categories','categories','typical_event_foods','typical_foods'));
     }
 
     /**
@@ -121,7 +125,8 @@ class EventController extends Controller
         $event->start_date = $request->start_date;
         $event->final_date = $request->final_date;
         $event->address = $request->address;
-        $event->district= $request->district;
+        $event->district = $request->district;
+        $event->city_id = $request->cities;
         if($request->localization != ''){
             $coordinates = $event->getCoordinates($request->localization);
             $event->latitude = $coordinates['latitude'];
