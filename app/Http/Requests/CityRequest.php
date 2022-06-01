@@ -24,7 +24,7 @@ class CityRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
+            'name'=>'required|unique:cities,name',
             'state' => 'required'
         ];
     }
@@ -33,6 +33,7 @@ class CityRequest extends FormRequest
     {
         return [
             'name.required' => 'Nome obrigatório',
+            'name.unique'=>'Cidade já cadastrada',
             'state.required' => 'Estado obrigatório'
         ];
     }

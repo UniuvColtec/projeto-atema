@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('cities', function (Blueprint $table) {
             $table->id();
-            $table->string('name',100);
+            $table->string('name',100)->unique();
             $table->enum('state',['PR','SC']);
             $table->timestamps();
         });
