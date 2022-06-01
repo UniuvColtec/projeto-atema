@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('partner_types', function (Blueprint $table) {
             $table->id();
             $table->string('name',100)->unique();
-            $table->enum('type',['Restaurante','Hotel','Companhia Aérea','Ônibus']);
+
             $table->timestamps();
         });
     }

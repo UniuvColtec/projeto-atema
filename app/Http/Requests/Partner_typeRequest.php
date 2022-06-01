@@ -24,14 +24,16 @@ class Partner_typeRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required'
+                'name'=>'required|unique:partner_types,name',
+
         ];
     }
 
     public function messages()
     {
         return [
-            'name.required' => 'Nome obrigatório'
+            'name.required' => 'Nome obrigatório',
+            'name.unique'=>'nome já existente'
         ];
     }
 }

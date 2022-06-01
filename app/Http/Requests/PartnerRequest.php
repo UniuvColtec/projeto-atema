@@ -38,7 +38,7 @@ class PartnerRequest extends FormRequest
     public function messages()
     {
         return [
-            'partner_type_id.required' => 'O tipo do parceiro é obragatório',
+            'partner_type_id.required' => 'O tipo do parceiro é obrigatório',
             'name.required' => 'Nome obrigatório',
             'email.required' => 'Email obrigatório',
             'email.email' => 'Email inválido',

@@ -6,6 +6,7 @@
 @endpush
 
 @push('js')
+    <script src=" {{ asset('js/bs-stepper.js') }}" type="text/javascript"></script>00
     <script src="/js/iziToast.min.js" type="text/javascript"></script>
     <script src="/js/jquery.form.min.js" type="text/javascript"></script>
     <script src="/js/formAjaxAlterar.js" type="text/javascript"></script>
@@ -28,7 +29,28 @@
                 ['insert', ['link', 'picture', 'video']],
                 ['view', ['fullscreen', 'codeview', 'help']]
             ]
-        });
+        })
+        var stepper;
+        $(document).ready(function(){
+            var stepperEl = document.getElementById("stepper");
+            stepper = new Stepper(stepperEl);
+            // // $('#information-part').validate();
+            //
+            stepperEl.addEventListener('show.bs-stepper', function (partner) {
+                if (!$('.jsonForm').valid()){
+                    event.preventDefault()
+                }
+            })
+            stepperEl.addEventListener('shown.bs-stepper', function(partner){
+                $(".select2").select2();
+            });
+
+            $('.jsonForm').validate({
+                errorClass: 'is-invalid',
+            });
+
+            $(".select2").select2();
+        })
     </script>
 @endpush
 

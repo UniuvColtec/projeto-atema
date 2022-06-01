@@ -5,7 +5,6 @@ use App\Http\Requests\Partner_typeRequest;
 use App\Models\Partner_type;
 use App\Response;
 use Illuminate\Http\Request;
-use mysql_xdevapi\Exception;
 
 class PartnerTypeController extends Controller
 {
@@ -16,8 +15,7 @@ class PartnerTypeController extends Controller
      */
     public function index()
     {
-        $partner_type = Partner_Type::all();
-        return view('partner_type.index', compact('partner_type'));
+        return view('partner_type.index');
     }
 
     /**
@@ -36,12 +34,12 @@ class PartnerTypeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Partner_typeRequest $request)
     {
         $partner_type = new Partner_Type();
         $partner_type->name = $request->name;
         $partner_type->save();
-        return Response::responseOK('tipo de parceiro cadastrado com sucesso');
+        return Response::responseOK('Tipo de Parceiro cadastrado com sucesso');
     }
 
     /**
@@ -73,7 +71,7 @@ class PartnerTypeController extends Controller
      * @param  \App\Models\Partner_type  $partner_type
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Partner_type $partner_type)
+    public function update(Partner_typeRequest $request, Partner_type $partner_type)
     {
         $partner_type->name = $request->name;
         $partner_type->save();
