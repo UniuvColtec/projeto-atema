@@ -1,0 +1,63 @@
+@font-face {
+    font-family: 'Montserrat Light';
+    src: url("../fonts/Montserrat-Light.ttf");
+}
+
+@font-face {
+    font-family: 'Montserrat Bold';
+    src: url("../fonts/Montserrat-Bold.ttf");
+}
+
+:root {
+    --ci-color-orange: #FFBB13;
+    --ci-color-green: #98B54D;
+    --ci-color-gray: #7C7C7C;
+}
+
+* {
+    font-family: "Montserrat Bold";
+    color: var(--ci-color-gray);
+    text-decoration: none !important;
+}
+
+header {
+    background: white;
+}
+
+.font-light {
+   font-family: "Montserrat Light";
+}
+
+.home-action-buttons .card {
+    box-shadow: 0 0 15px 1px #dedede;
+    border: 0;
+    border-radius: 20px;
+}
+
+.home-action-buttons a, .home-proximos-eventos .card, .calendario-anual-container .card {
+    transition: .2s;
+    transition-property: transform, border;
+}
+
+.home-proximos-eventos .card:hover, .calendario-anual-container .card:hover {
+    transform: scale(1.04);
+    border: 1px solid var(--ci-color-orange);
+}
+
+.home-action-buttons a:hover {
+    transform: scale(1.1);
+}
+
+.home-proximos-eventos svg, .calendario-anual-container svg {
+    fill: var(--ci-color-orange);
+}
+
+/* ----- footer ----- */
+.footer-desenvolvido-por * {
+    filter: brightness(0) invert(1);
+    transition: .2s;
+}
+
+.footer-desenvolvido-por *:hover {
+    filter: none;
+}
