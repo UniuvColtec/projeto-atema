@@ -197,10 +197,6 @@
                             <div id="image-part" class="content" role="tabpanel" aria-labelledby="image-part-trigger">
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label for="logo">logo</label>
-                                        <input type="file" name="logo" id="logo" class="form-control" placeholder="Imagem" required>
-                                    </div>
-                                    <div class="form-group">
                                         <label for="image">Imagem</label>
                                         <input type="text" name="image" id="image" class="form-control" placeholder="Imagem" required>
                                     </div>

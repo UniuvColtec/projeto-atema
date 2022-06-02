@@ -152,6 +152,7 @@ class EventController extends Controller
         } else {
             return Response::responseForbiden();
         }
+
     }
     public function bootgrid(Request $request)
     {

@@ -17,7 +17,7 @@ class TypicalFoodSeeder extends Seeder
     {
         $typical_foods = [
             [
-                'name' => 'Piroque',
+                'name' => 'Pirogue',
                 'description' => 'Tradição dos imigrantes poloneses de Santa Catarina, o pirogue (ou "pierog") é um pastel salgado cozido fácil de fazer e que faz muito sucesso na época do Natal. Itaiópolis é um pedaço da Polônia antiga no Brasil. A cidade tem 20 mil habitantes e cerca de 90% são descendentes de poloneses.',
                 'image' => 'a'
             ],
