@@ -37,16 +37,18 @@
 @endsection
 
 @section('content')
-    <div class="container">
+
+    <div class="container-fluid">
         <div class="row">
             <div class="col-12">
                 <div class="card card-primary">
+                    <div class="card-body">
                         <div class="form-group">
                             <label for="name">ID: </label>
                             {{ $category->id }}
                         </div>
                         <div class="form-group">
-                            <label for="name">Nome:</label>
+                            <label for="name">Nome: </label>
                             {{ $category->name }}
                         </div>
                     </div>
