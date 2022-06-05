@@ -91,7 +91,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="card card-primary">
-                    <form role="form" action="{{ route('partner.update', $partner->id) }}" method="post" class="jsonForm">
+                    <form role="form" action="{{ route('partner.update', $partner->id) }}" class="jsonForm" method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         {{ method_field('PUT') }}
                         <div id="stepper" class="bs-stepper">
@@ -123,41 +123,42 @@
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label for="name">Nome:</label>
-                                            <input type="text" class="form-control" id="name" name="name" placeholder="nome" value="{{ $partner->name}}">
-                                        </div>
-                                            <div class="form-group">
-                                                <label for="description">Descrição:</label>
-                                                <textarea id="description" name="description" required  >{{ $partner->description }}</textarea>
-                                            </div>
-                                        <label for="partner_type_id">Tipo:</label>
-                                        <select name="partner_type_id" id="partner_type_id" class="form-control" >
-                                            <option value="">- Selecione um Tipo -</option>
-                                            @foreach($partner_type as $partner_type)
-                                                <option value="{{$partner_type->id}}" @if($partner->type_id == $partner_type->id) selected @endif>{{$partner_type->name}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <div>
-                                        <div class="form-group">
-                                            <label for="email">Email:</label>
-                                            <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="{{ $partner->email}}">
+                                            <input type="text" class="form-control" id="name" name="name" placeholder="nome"value="{{ $partner->name}}" >
                                         </div>
                                         <div class="form-group">
-                                            <label for="cnpj">Cnpj:</label>
-                                            <input type="cnpj" class="form-control cnpj" id="cnpj" name="cnpj" placeholder="XX. XXX. XXX/0001-XX" value="{{ $partner->cnpj}}" >
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="site">Site:</label>
-                                            <input type="text" class="form-control" id="site" name="site" placeholder="www.meusite.com.br" value="{{ $partner->site}}">
+                                            <label for="partner_type_id">TIPO:</label>
+                                            <select name="partner_type_id" id="partner_type_id" class="form-control select2" required >
+                                                <option value="">- Selecione um tipo-</option>
+                                                @foreach($partner_type as $partner_type)
+                                                    <option value="{{$partner_type->id}}" @if($partner_type->id==$partner_type->id)selected @endif>{{$partner_type->name}}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="telephone">Telefone:</label>
                                             <input type="text" class="form-control telephone" id="telephone" name="telephone" placeholder="EX: (DD) 00000-0000" value="{{ $partner->telephone}}">
                                         </div>
+                                        <div class="form-group">
+                                            <label for="email">Email:</label>
+                                            <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="{{ $partner->email}}" >
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="cnpj">Cnpj:</label>
+                                            <input type="cnpj" class="form-control cnpj" id="cnpj" name="cnpj" placeholder="XX.XXX.XXX/XXXX-XX" value="{{ $partner->cnpj}}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="site">Site:</label>
+                                            <input type="text" class="form-control" id="site" name="site" placeholder="www.meusite.com.br" value="{{ $partner->site}}" >
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="description">Descrição:</label>
+                                            <textarea id="description" name="description" required>{{ $partner->description }}</textarea>
+                                        </div>
                                         <div class="card-footer">
                                             <button type="button" class="btn btn-primary" onclick="stepper.next()">Próximo</button>
                                         </div>
                                     </div>
+                                </div>
                                 <div class="card-body">
                                     <div id="localization-part" class="content" role="tabpanel" aria-labelledby="localization-part-trigger">
                                         <div class="card-body">
@@ -171,12 +172,16 @@
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <label for="address">RUA:</label>
-                                                <input type="text" class="form-control" id="address" name="address" placeholder="Rua exemplo 1111" value="{{ $partner->address}}">
+                                                <label for="address">Rua:</label>
+                                                <input type="text" class="form-control" id="address" name="address" placeholder="Rua exemplo 1111"required value="{{$partner->address}}">
                                             </div>
                                             <div class="form-group">
                                                 <label for="district">Bairro:</label>
-                                                <input type="text" class="form-control" id="district" name="district" placeholder="" value="{{ $partner->district}}">
+                                                <input type="text" class="form-control" id="district" name="district" placeholder="" value="{{$partner->district}}" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="localization">Localização:</label>
+                                                <input type="text" name="localization" id="localization" class="form-control" placeholder="Localização" value="{{ $partner->localization}}" >
                                             </div>
                                             <div class="card-footer">
                                                 <button type="button" class="btn btn-primary" onclick="stepper.previous()">Anterior</button>
@@ -184,28 +189,22 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="image-part" class="content" role="tabpanel" aria-labelledby="image-part-trigger">
-                                        <div class="card-body">
-                                            <div class="form-group">
+                                </div>
 
-                                                <div id="image-part" class="content" role="tabpanel" aria-labelledby="image-part-trigger">
-                                                    <div class="card-body">
-                                                        <div class="form-group">
-                                                            <label for="logo">logo</label>
-                                                            <input type="file" name="logo" id="logo" class="form-control" placeholder="logo" required>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="image">Imagem</label>
-                                                            <input type="text" name="image" id="image" class="form-control" placeholder="Imagem" required>
-                                                        </div>
-                                                    </div>
-                                                    <div class="card-footer">
-                                                        <button type="button" class="btn btn-primary" onclick="stepper.previous()">Anterior</button>
-                                                        <button type="submit" class="btn btn-primary">Salvar</button>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                <div id="image-part" class="content" role="tabpanel" aria-labelledby="image-part-trigger">
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label for="logo">logo</label>
+                                            <input type="file" id="logo" name="logo" class="form-control-file">
                                         </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <button type="button" class="btn btn-primary" onclick="stepper.previous()">Anterior</button>
+                                        <button type="submit" class="btn btn-primary">Salvar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -214,4 +213,5 @@
 
 
 @endsection
+
 

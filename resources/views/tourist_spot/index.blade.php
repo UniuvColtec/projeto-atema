@@ -22,7 +22,6 @@
                         <i class="far fa-plus-square"></i>
                     </a>
                 </h1>
-
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -35,7 +34,7 @@
 @endsection
 
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-12">
                 <table id="grid-data" class="table table-condensed table-hover table-striped">

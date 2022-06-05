@@ -82,45 +82,93 @@
                     <form role="form" action="{{ route('tourist_spot.update', $tourist_spot->id) }}" method="post" class="jsonForm">
                         {{ csrf_field() }}
                         {{ method_field('PUT') }}
-                        <div class="card-body">
-                            <div>
-                                <label for="name">Nome:</label>
-                                <input type="text" class="form-control" id="name" name="name" placeholder="nome" value="{{ $tourist_spot->name}}" >
+                        <div id="stepper" class="bs-stepper">
+                            <div class="bs-stepper-header" role="tablist">
+                                <!-- your steps here -->
+                                <div class="step" data-target="#information-part">
+                                    <button type="button" class="step-trigger" role="tab" aria-controls="information-part" id="information-part-trigger">
+                                        <span class="bs-stepper-circle">1</span>
+                                        <span class="bs-stepper-label">Informações</span>
+                                    </button>
+                                </div>
+                                <div class="line"></div>
+                                <div class="step" data-target="#localization-part">
+                                    <button type="button" class="step-trigger" role="tab" aria-controls="localization-part" id="localization-part-trigger">
+                                        <span class="bs-stepper-circle">2</span>
+                                        <span class="bs-stepper-label">Localização</span>
+                                    </button>
+                                </div>
+                                <div class="line"></div>
+                                <div class="step" data-target="#image-part">
+                                    <button type="button" class="step-trigger" role="tab" aria-controls="image-part" id="image-part-trigger">
+                                        <span class="bs-stepper-circle">3</span>
+                                        <span class="bs-stepper-label">Imagens e outros</span>
+                                    </button>
+                                </div>
                             </div>
-
-                            <div class="form-group">
-                                <label for="description">Descrição:</label>
-                                <textarea id="description" name="description" required  >{{ $tourist_spot->description }}</textarea>
-                            </div>
-                            <div class="card-body">
+                            <div class="bs-stepper-content">
+                                <!-- your steps content here -->
+                                <div id="information-part" class="content" role="tabpanel" aria-labelledby="information-part-trigger">
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label for="name">Nome:</label>
+                                            <input type="text" class="form-control" id="name" name="name" placeholder="nome" value="{{ $tourist_spot->name}}" >
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="description">Descrição:</label>
+                                            <textarea id="description" name="description" required  >{{ $tourist_spot->description }}</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <button type="button" class="btn btn-primary" onclick="stepper.next()">Próximo</button>
+                                    </div>
+                                </div>
+                                <div id="localization-part" class="content" role="tabpanel" aria-labelledby="localization-part-trigger">
                                     <div class="form-group jsonForm">
-                                        <h4>Endereço:</h4>
-                                        <div>
+                                        <div class="form-group">
                                             <label for="cities">Cidade:</label>
-                                            <select name="cities" id="cities"
-                                                    class="form-control">
+                                            <select name="cities" id="cities" class="form-control">
                                                 <option >- Selecione uma Cidade -</option>
                                                 @foreach($cities as $city)
                                                     <option value="{{$city->id}}" >{{$city->name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
-                                        <div >
+                                        <div class="form-group">
                                             <label for="address">Endereço:</label>
                                             <input type="text" class="form-control" id="address" name="address" placeholder="Rua exemplo 1111" value="{{ $tourist_spot->address}}">
                                         </div>
-                                        <div >
+                                        <div class="form-group">
                                             <label for="district">Localidade:</label>
                                             <input type="text" class="form-control" id="district" name="district" placeholder="" value="{{ $tourist_spot->district}}">
                                         </div>
                                     </div>
-
-
-
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-primary">Salvar</button>
+                                    <div class="form-group">
+                                        <label for="localization">Localização:</label>
+                                        <input type="text" name="localization" id="localization" class="form-control" placeholder="Localização">
+                                    </div>
+                                    <div class="card-footer">
+                                        <button type="button" class="btn btn-primary" onclick="stepper.previous()">Anterior</button>
+                                        <button type="button" class="btn btn-primary" onclick="stepper.next()">Próximo</button>
+                                    </div>
+                                </div>
+                                <div id="image-part" class="content" role="tabpanel" aria-labelledby="image-part-trigger">
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label for="image">Imagem</label>
+                                            <input type="text" name="image" id="image" class="form-control" placeholder="Imagem" required>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <button type="button" class="btn btn-primary" onclick="stepper.previous()">Anterior</button>
+                                        <button type="submit" class="btn btn-primary">Salvar</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
-

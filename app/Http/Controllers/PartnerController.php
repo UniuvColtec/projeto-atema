@@ -53,14 +53,13 @@ class PartnerController extends Controller
 
         $partner->description = $request->description;
         $partner->district = $request->district;
-        $partner->latitude = '-10.1212';
-        $partner->longitude = '-20.1212';
+        $partner->getCoordinates($request->localization);
         //upload da logo
         if($request->hasFile('logo') ** $request->file('logo')->isValid()){
             $requestlogo= $request->logo;
             $extension= $requestlogo->extension();
             $logoname=md5($requestlogo->getClientOriginalName(). strtotime("now")).".".$extension;
-            $requestlogo->move(public_path('logo/partner'),$logoname);
+            $requestlogo->move(public_path('logo/partners'),$logoname);
             $partner->logo=$logoname;
 
     }
@@ -111,6 +110,13 @@ class PartnerController extends Controller
         $partner->telephone = $request->telephone;
         $partner->address = $request->address;
         $partner->district = $request->district;
+        if($request->localization != ''){
+            $coordinates = $partner->getCoordinates($request->localization);
+            $partner->latitude = $coordinates['latitude'];
+            $partner->longitude = $coordinates['longitude'];;
+        }
+        $partner->latitude = $request->latitude;
+        $partner->longitude = $request->longitude;
         $partner->save();
         return Response::responseOK('Alterado com sucesso');
     }

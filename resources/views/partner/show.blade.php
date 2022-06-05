@@ -88,7 +88,7 @@
                         </div>
                             <div class="form-group">
                                 <label for="logo">Logo:</label>
-                                <img src="//logo/partner/{{$partner->logo}}" alt="{{$partner->title}}">
+                                <img src="/logo/partners/{{$partner->logo}}" alt="{{$partner->title}}">
                             </div>
                             <div class="form-group">
 
