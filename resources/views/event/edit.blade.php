@@ -6,9 +6,9 @@
 @endpush
 
 @push('js')
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
     <script src=" {{ asset('js/bs-stepper.js') }}" type="text/javascript"></script>
-    {{--    <script src="/js/iziToast.min.js" type="text/javascript"></script>--}}
-    {{--    <script src="/js/jquery.form.min.js" type="text/javascript"></script>--}}
     <script src="/js/formAjaxAlterar.js" type="text/javascript"></script>
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
@@ -16,21 +16,30 @@
         var stepper;
         $(document).ready(function(){
             var stepperEl = document.getElementById("stepper");
-            stepper = new Stepper(stepperEl);
-            // // $('#information-part').validate();
-            //
-            stepperEl.addEventListener('show.bs-stepper', function (event) {
-                if (!$('.jsonForm').valid()){
-                    event.preventDefault()
-                }
-            })
+            stepper = new Stepper(stepperEl, {
+                linear: false
+            });
+
             stepperEl.addEventListener('shown.bs-stepper', function(event){
                 $(".select2").select2();
             });
 
             $('.jsonForm').validate({
                 errorClass: 'is-invalid',
-
+            });
+            $('#description').summernote({
+                placeholder: 'Preencha a descrição do evento',
+                tabsize: 2,
+                height: 120,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture', 'video']],
+                    ['view', ['fullscreen', 'codeview', 'help']]
+                ]
             });
             $('#description').summernote({
                 placeholder: 'Hello stand alone ui',
@@ -97,10 +106,17 @@
                                     </button>
                                 </div>
                                 <div class="line"></div>
+                                <div class="step" data-target="#other-part">
+                                    <button type="button" class="step-trigger" role="tab" aria-controls="other-part" id="other-part-trigger">
+                                        <span class="bs-stepper-circle">3</span>
+                                        <span class="bs-stepper-label">Outros</span>
+                                    </button>
+                                </div>
+                                <div class="line"></div>
                                 <div class="step" data-target="#image-part">
                                     <button type="button" class="step-trigger" role="tab" aria-controls="image-part" id="image-part-trigger">
-                                        <span class="bs-stepper-circle">3</span>
-                                        <span class="bs-stepper-label">Imagens e outros</span>
+                                        <span class="bs-stepper-circle">4</span>
+                                        <span class="bs-stepper-label">Imagens</span>
                                     </button>
                                 </div>
                             </div>
@@ -118,7 +134,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="description">Descrição:</label>
-                                            <input type="text" name="description" id="description" class="form-control" placeholder="Descrição" value="{{ $event->description }}" required>
+                                            <textarea name="description" id="description" class="form-control" placeholder="Descrição" required>{{ $event->description }}</textarea>
                                         </div>
                                         <div class="form-group">
                                             <label for="start_date">Data de início:</label>
@@ -131,6 +147,7 @@
                                     </div>
                                     <div class="card-footer">
                                         <button type="button" class="btn btn-primary" onclick="stepper.next()">Próximo</button>
+                                        <button type="submit" class="btn btn-success">Salvar</button>
                                     </div>
                                 </div>
                                 <div id="localization-part" class="content" role="tabpanel" aria-labelledby="localization-part-trigger">
@@ -158,11 +175,71 @@
                                         </div>
                                     </div>
                                     <div class="card-footer">
-                                        <button type="button" class="btn btn-primary" onclick="stepper.previous()">Anterior</button>
+                                        <button type="button" class="btn btn-info" onclick="stepper.previous()">Anterior</button>
                                         <button type="button" class="btn btn-primary" onclick="stepper.next()">Próximo</button>
+                                        <button type="submit" class="btn btn-success">Salvar</button>
+                                    </div>
+                                </div>
+
+                                <div id="other-part" class="content" role="tabpanel" aria-labelledby="other-part-trigger">
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label for="typical_foods">Comidas Típicas</label>
+                                            <select name="typical_foods[]" id="typical_foods" class="form-control select2" multiple required data-placeholder="Selecione uma ou mais comidas típicas" >
+                                                @foreach($typical_foods as $typical_food)
+                                                    @php
+                                                        $selected = ''
+                                                    @endphp
+                                                    @foreach($event->event_typical_food as $event_typical_food)
+                                                        @if($event_typical_food->typical_food_id == $typical_food->id)
+                                                            @php
+                                                                $selected = 'selected'
+                                                            @endphp
+                                                        @endif
+                                                    @endforeach
+                                                    <option value="{{$typical_food->id}}" {{ $selected }}>{{$typical_food->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="categories">Categorias</label>
+                                            <select name="categories[]" id="categories" class="form-control select2 " multiple required data-placeholder="Selecione uma ou mais categorias" >
+                                                @foreach($categories as $category)
+                                                    @php
+                                                        $selected = ''
+                                                    @endphp
+                                                    @foreach($event->event_category as $event_category)
+                                                        @if($event_category->category_id == $category->id)
+                                                            @php
+                                                                $selected = 'selected'
+                                                            @endphp
+                                                        @endif
+                                                    @endforeach
+                                                    <option value="{{$category->id}}" {{ $selected }}>{{$category->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <button type="button" class="btn btn-info" onclick="stepper.previous()">Anterior</button>
+                                        <button type="button" class="btn btn-primary" onclick="stepper.next()">Próximo</button>
+                                        <button type="submit" class="btn btn-success">Salvar</button>
                                     </div>
                                 </div>
                                 <div id="image-part" class="content" role="tabpanel" aria-labelledby="image-part-trigger">
+                                    <div class="card-body">
+
+                                        @include('event.image')
+
+                                    </div>
+                                    <div class="card-footer">
+                                        <button type="button" class="btn btn-info" onclick="stepper.previous()">Anterior</button>
+                                        <button type="submit" class="btn btn-success">Salvar</button>
+                                    </div>
+                                </div>
+
+
+                                <div id="image2-part" class="content" role="tabpanel" aria-labelledby="image2-part-trigger">
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label for="image">Imagem</label>

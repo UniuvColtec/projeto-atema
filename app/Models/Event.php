@@ -38,9 +38,11 @@ class Event extends Model
     public function event_category(){
         return $this->hasMany(Event_category::class);
     }
-    public function typical_food(){
-        return $this->belongsTo(Typical_food::class);
-
+    public function event_typical_food(){
+        return $this->hasMany(Typical_event_food::class);
+    }
+    public function event_image(){
+        return $this->hasMany(Image_events::class);
     }
     public function city(){
         return $this->belongsTo(City::class);

@@ -63659,6 +63659,346 @@ form.was-validated select:valid ~ .select2-container--bootstrap4 .select2-select
     display: none; }
 
 
+@charset "UTF-8";
+/*
+ * jQuery File Upload Plugin CSS
+ * https://github.com/blueimp/jQuery-File-Upload
+ *
+ * Copyright 2013, Sebastian Tschan
+ * https://blueimp.net
+ *
+ * Licensed under the MIT license:
+ * https://opensource.org/licenses/MIT
+ */
+
+.fileinput-button {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+.fileinput-button input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  height: 100%;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  font-size: 200px !important;
+  direction: ltr;
+  cursor: pointer;
+}
+
+/* Fixes for IE < 8 */
+@media screen\9 {
+  .fileinput-button input {
+    font-size: 150% !important;
+  }
+}
+
+@charset "UTF-8";
+/*
+ * jQuery File Upload UI Plugin CSS
+ * https://github.com/blueimp/jQuery-File-Upload
+ *
+ * Copyright 2010, Sebastian Tschan
+ * https://blueimp.net
+ *
+ * Licensed under the MIT license:
+ * https://opensource.org/licenses/MIT
+ */
+
+.progress-animated .progress-bar,
+.progress-animated .bar {
+  background: url(/images/vendor/blueimp-file-upload/progressbar.gif?f46267590fad1e4ebf3a3378d505bfeb) !important;
+  filter: none;
+}
+.fileupload-process {
+  float: right;
+  display: none;
+}
+.fileupload-processing .fileupload-process,
+.files .processing .preview {
+  display: block;
+  width: 32px;
+  height: 32px;
+  background: url(/images/vendor/blueimp-file-upload/loading.gif?430fc2eb2b9556d6f006db257b282429) center no-repeat;
+  background-size: contain;
+}
+.files audio,
+.files video {
+  max-width: 300px;
+}
+.files .name {
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+      hyphens: auto;
+}
+.files button {
+  margin-bottom: 5px;
+}
+.toggle[type='checkbox'] {
+  transform: scale(2);
+  margin-left: 10px;
+}
+
+@media (max-width: 767px) {
+  .fileupload-buttonbar .btn {
+    margin-bottom: 5px;
+  }
+  .fileupload-buttonbar .delete,
+  .fileupload-buttonbar .toggle,
+  .files .toggle,
+  .files .btn span {
+    display: none;
+  }
+  .files audio,
+  .files video {
+    max-width: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .files .image td:nth-child(2) {
+    display: none;
+  }
+}
+
+@charset "UTF-8";
+/*
+ * blueimp Gallery CSS
+ * https://github.com/blueimp/Gallery
+ *
+ * Copyright 2013, Sebastian Tschan
+ * https://blueimp.net
+ *
+ * Licensed under the MIT license:
+ * https://opensource.org/licenses/MIT
+ */
+
+.blueimp-gallery,
+.blueimp-gallery > .slides > .slide > .slide-content,
+.blueimp-gallery > .slides > .slide > .slide-content > img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transition: opacity 0.2s linear;
+  /* Prevent artifacts in Mozilla Firefox: */
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+}
+.blueimp-gallery > .slides > .slide > .slide-content,
+.blueimp-gallery > .slides > .slide > .slide-content > img {
+  margin: auto;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  opacity: 1;
+}
+.blueimp-gallery {
+  position: fixed;
+  z-index: 999999;
+  overflow: hidden;
+  background: #000;
+  opacity: 0;
+  display: none;
+  direction: ltr;
+  touch-action: pinch-zoom;
+}
+.blueimp-gallery-carousel {
+  position: relative;
+  z-index: auto;
+  margin: 1em auto;
+  /* Set the carousel width/height ratio to 16/9: */
+  padding-bottom: 56.25%;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+  touch-action: pan-y pinch-zoom;
+  display: block;
+}
+.blueimp-gallery-display {
+  display: block;
+  opacity: 1;
+}
+.blueimp-gallery > .slides {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+.blueimp-gallery-carousel > .slides {
+  position: absolute;
+}
+.blueimp-gallery > .slides > .slide {
+  visibility: hidden;
+  position: relative;
+  float: left;
+  height: 100%;
+  text-align: center;
+  transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+.blueimp-gallery > .slides > .slide-prev,
+.blueimp-gallery > .slides > .slide-active,
+.blueimp-gallery > .slides > .slide-next {
+  visibility: visible;
+}
+.blueimp-gallery > .slides > .slide-loading {
+  background: url(/images/vendor/blueimp-gallery/loading.gif?f028c722a78e240e77af95c62a178b57) center no-repeat;
+  background-size: 64px 64px;
+}
+.blueimp-gallery-smil > .slides > .slide-loading {
+  background-image: url(/images/vendor/blueimp-gallery/loading.svg?023c9ea941ebacf354086bdf6faefc1d);
+}
+.blueimp-gallery > .slides > .slide-loading > .slide-content {
+  opacity: 0;
+}
+.blueimp-gallery > .slides > .slide-error {
+  background: url(/images/vendor/blueimp-gallery/error.png?3bafc2f184a539e0dede926f31e6fbce) center no-repeat;
+}
+.blueimp-gallery-svgasimg > .slides > .slide-error {
+  background-image: url(/images/vendor/blueimp-gallery/error.svg?f75c874514981ebe761c8eec1450629a);
+}
+.blueimp-gallery > .slides > .slide-error > .slide-content {
+  display: none;
+}
+.blueimp-gallery-display > .prev,
+.blueimp-gallery-display > .next {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  width: 8px;
+  height: 20px;
+  padding: 10px 14px 10px 18px;
+  margin-top: -23px;
+  box-sizing: content-box;
+  background: #222 url(/images/vendor/blueimp-gallery/prev.png?568f8dfeccd08edb957a9f4a4512c553) center no-repeat;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 3px solid #fff;
+  border-radius: 30px;
+  opacity: 0.5;
+  cursor: pointer;
+  display: none;
+}
+.blueimp-gallery-display > .next {
+  right: 15px;
+  left: auto;
+  background-image: url(/images/vendor/blueimp-gallery/next.png?1289eefa54d4f2a5aa44ab5b445cd611);
+}
+.blueimp-gallery-svgasimg > .prev {
+  background-image: url(/images/vendor/blueimp-gallery/prev.svg?8d15baa0fbed5d3bb5e1fe68cd1a0093);
+}
+.blueimp-gallery-svgasimg > .next {
+  background-image: url(/images/vendor/blueimp-gallery/next.svg?5b3eec6fa6c8caebbf4b72f45fb6910d);
+}
+.blueimp-gallery-display > .close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 30px;
+  height: 30px;
+  background: url(/images/vendor/blueimp-gallery/close.png?2d9dfafe45b3b0850f4bf433dd1cb621) center no-repeat;
+  opacity: 0.8;
+  cursor: pointer;
+  display: none;
+}
+.blueimp-gallery-svgasimg > .close {
+  background-image: url(/images/vendor/blueimp-gallery/close.svg?a602bec812b38bf336f3149fdffcf74e);
+}
+.blueimp-gallery > .title {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  margin: 0 60px 0 0;
+  font-size: 20px;
+  line-height: 30px;
+  color: #fff;
+  text-shadow: 0 0 2px #000;
+  opacity: 0.8;
+  display: none;
+}
+.blueimp-gallery-display > .play-pause {
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+  width: 30px;
+  height: 30px;
+  background: url(/images/vendor/blueimp-gallery/play-pause.png?208696f4ab3cc7349f91edf4f08332a3) 0 0 no-repeat;
+  cursor: pointer;
+  opacity: 0.5;
+  display: none;
+}
+.blueimp-gallery-svgasimg > .play-pause {
+  background-image: url(/images/vendor/blueimp-gallery/play-pause.svg?ec3526013b9f64376048c82304854c82);
+}
+.blueimp-gallery-playing > .play-pause {
+  background-position: -30px 0;
+}
+.blueimp-gallery-controls > .prev,
+.blueimp-gallery-controls > .next,
+.blueimp-gallery-controls > .close,
+.blueimp-gallery-controls > .title,
+.blueimp-gallery-controls > .play-pause {
+  display: block;
+  /* Fix z-index issues (controls behind slide element) on Android: */
+  transform: translateZ(0);
+}
+.blueimp-gallery-single > .prev,
+.blueimp-gallery-left > .prev,
+.blueimp-gallery-single > .next,
+.blueimp-gallery-right > .next,
+.blueimp-gallery-single > .play-pause {
+  display: none;
+}
+.blueimp-gallery > .slides > .slide > .slide-content,
+.blueimp-gallery > .prev,
+.blueimp-gallery > .next,
+.blueimp-gallery > .close,
+.blueimp-gallery > .play-pause {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.blueimp-gallery > .prev:hover,
+.blueimp-gallery > .next:hover,
+.blueimp-gallery > .close:hover,
+.blueimp-gallery > .title:hover,
+.blueimp-gallery > .play-pause:hover {
+  color: #fff;
+  opacity: 1;
+}
+
+/* IE7 fixes */
+* + html .blueimp-gallery > .slides > .slide {
+  min-height: 300px;
+}
+* + html .blueimp-gallery > .slides > .slide > .slide-content {
+  position: relative;
+}
+* + html .blueimp-gallery > .slides > .slide > .slide-content > img {
+  position: relative;
+}
+
+@supports ((-o-object-fit: contain) or (object-fit: contain)) {
+  .blueimp-gallery-contain > .slides > .slide > .slide-content,
+  .blueimp-gallery-contain > .slides > .slide > .slide-content > img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: contain;
+       object-fit: contain;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .blueimp-gallery-carousel {
+    background: #fff;
+  }
+}
+
 /*!
  * bsStepper v1.7.0 (https://github.com/Johann-S/bs-stepper)
  * Copyright 2018 - 2019 Johann-S <johann.servoire@gmail.com>
@@ -63842,4 +64182,14 @@ form label.is-invalid {
 
 .note-editor.fullscreen .note-editing-area {
   background: white;
+}
+
+/* File Upload - Bootstrap 4 */
+.files td {
+  vertical-align: middle;
+}
+
+.files p {
+  padding: 0;
+  margin: 0;
 }

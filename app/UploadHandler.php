@@ -1395,19 +1395,21 @@ class UploadHandler
         return $this->generate_response($response, $print_response);
     }
 
-    public function post($print_response = true) {
+    public function post($print_response = true, $file_name='') {
         if ($this->get_query_param('_method') === 'DELETE') {
             return $this->delete($print_response);
         }
         $upload = $this->get_upload_data($this->options['param_name']);
         // Parse the Content-Disposition header, if available:
         $content_disposition_header = $this->get_server_var('HTTP_CONTENT_DISPOSITION');
-        $file_name = $content_disposition_header ?
-            rawurldecode(preg_replace(
-                '/(^[^"]+")|("$)/',
-                '',
-                $content_disposition_header
-            )) : null;
+        if (!$file_name){
+            $file_name = $content_disposition_header ?
+                rawurldecode(preg_replace(
+                    '/(^[^"]+")|("$)/',
+                    '',
+                    $content_disposition_header
+                )) : null;
+        }
         // Parse the Content-Range header, which has the following form:
         // Content-Range: bytes 0-524287/2000000
         $content_range_header = $this->get_server_var('HTTP_CONTENT_RANGE');

@@ -7,6 +7,8 @@ use App\Models\Category;
 use App\Models\Event;
 use App\Models\City;
 use App\Models\Event_category;
+use App\Models\Image;
+use App\Models\Image_events;
 use App\Models\Partner;
 use App\Models\Typical_event_food;
 use App\Models\Typical_food;
@@ -16,6 +18,15 @@ use Illuminate\Http\Request;
 
 class EventController extends Controller
 {
+    private $optionsUpload = array(
+        'script_url' => '/admin/event/uploadimage'
+    );
+
+    public function __construct(){
+        $this->optionsUpload['upload_dir'] = base_path('public/' . env('FILE_UPLOAD')) . '/';
+        $this->optionsUpload['upload_url'] = url(env('FILE_UPLOAD')) . '/';
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -75,6 +86,15 @@ class EventController extends Controller
             $event_category->event_id = $event->id;
             $event_category->save();
         }
+        if($request->images){
+            foreach ($request->images as $image){
+                $event_image = new Image_events();
+                $event_image->image_id = $image;
+                $event_image->event_id = $event->id;
+                $event_image->save();
+            }
+        }
+
 
         return Response::responseOK("Evento cadastrado com sucesso");
     }
@@ -132,11 +152,8 @@ class EventController extends Controller
             $event->latitude = $coordinates['latitude'];
             $event->longitude = $coordinates['longitude'];;
         }
-        $event->latitude = $request->latitude;
-        $event->longitude = $request->longitude;
-        $event->status = $request->status;
         $event->save();
-        return redirect('event');
+        return Response::responseOK('Evento alterado com sucesso');
     }
 
     /**
@@ -147,7 +164,14 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
+        $event_images = $event->event_image;
         if($event->delete()) {
+            foreach($event_images as $event_image){
+                @unlink($this->optionsUpload['upload_dir'] . $event_image->image->address);
+                @unlink($this->optionsUpload['upload_dir'] . 'thumbnail/' . $event_image->image->address);
+                $image = Image::find($event_image->image->id);
+                $image->delete();
+            }
             return Response::responseSuccess();
         } else {
             return Response::responseForbiden();
@@ -166,21 +190,65 @@ class EventController extends Controller
         return view('event.image');
     }
 
-    public function uploadImagePost()
+    public function uploadImagePost($event_id=null)
     {
-        $upload_handler = new UploadHandler(null, false);
-        return $upload_handler->post();
-    }
-    public function uploadImageGet()
-    {
-        $upload_handler = new UploadHandler(null, false);
-        return $upload_handler->get();
+        $upload_handler = new UploadHandler($this->optionsUpload, false);
+        $return = $upload_handler->post(false, uniqid('event-'));
+        foreach ($return as &$itens){
+            foreach($itens as &$item){
+                $image = new Image();
+                $image->address = $item->name;
+                $image->save();
+                $item->id = $image->id;
 
+                if ($event_id){
+                    $image_event = new Image_events();
+                    $image_event->event_id = $event_id;
+                    $image_event->image_id = $image->id;
+                    $image_event->save();
+                }
+            }
+        }
+        return $return;
     }
-    public function uploadImageDelete()
+    public function uploadImageGet($event_id=null)
     {
-        $upload_handler = new UploadHandler(null, false);
-        return $upload_handler->delete();
+        if (!$event_id) return;
+        $return['files'] = [];
+
+        $image_events = Image_events::where('event_id', $event_id)->get();
+        foreach ($image_events as $image_event){
+            $return['files'][] = $this->uploadJsonGet($image_event->image->address, $image_event->id);
+        }
+        return json_encode($return);
+    }
+    public function uploadImageDelete($event_id=null)
+    {
+        $upload_handler = new UploadHandler($this->optionsUpload, false);
+        $return = $upload_handler->delete(false);
+        foreach ($return as $item => $deleted){
+            if ($deleted){
+                $image = Image::where('address', $item)->first();
+                if ($image) $image->delete();
+            }
+        }
+
+        return ($return);
+    }
+
+    private function uploadJsonGet($imageName, $id){
+        $jsonReturn = new \stdClass();
+
+        $jsonReturn->deleteType = 'DELETE';
+        $jsonReturn->deleteUrl = route('event.uploadImageDelete') . "?file=" . $imageName;
+        $jsonReturn->id = $id;
+        $jsonReturn->name = $imageName;
+        $jsonReturn->size = filesize($this->optionsUpload['upload_dir'] . $imageName);
+        $jsonReturn->thumbnailUrl = url($this->optionsUpload['upload_url'] . 'thumbnail/' . $imageName);
+        $jsonReturn->url = url($this->optionsUpload['upload_url'] . $imageName);
+
+        return $jsonReturn;
+
     }
 
 }

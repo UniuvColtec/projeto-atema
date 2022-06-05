@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('event_categories', function (Blueprint $table) {
-            $table->foreign('category_id')->references('id')->on('categories');
-            $table->foreign('event_id')->references('id')->on('events');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
         });
     }
 

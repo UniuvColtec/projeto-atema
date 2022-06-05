@@ -5,3 +5,13 @@ form label.is-invalid {
 .note-editor.fullscreen .note-editing-area {
     background: white;
 }
+
+
+/* File Upload - Bootstrap 4 */
+.files td {
+    vertical-align: middle;
+}
+.files p {
+    padding: 0;
+    margin: 0;
+}

@@ -2,16 +2,13 @@
 @section('title', 'Eventos - Cadastro')
 
 @push('css')
-{{--    <link rel="stylesheet" href="/css/iziToast.min.css">--}}
 @endpush
 
 @push('js')
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-    <script src=" {{ asset('js/bs-stepper.js') }}" type="text/javascript"></script>
-{{--    <script src="/js/iziToast.min.js" type="text/javascript"></script>--}}
-{{--    <script src="/js/jquery.form.min.js" type="text/javascript"></script>--}}
-    <script src="/js/formAjaxCadastrar.js" type="text/javascript"></script>
+    <script src="{{ asset('js/bs-stepper.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/formAjaxAlterar.js') }}" type="text/javascript"></script>
     <script>
         var stepper;
         $(document).ready(function(){
@@ -32,7 +29,7 @@
 
             });
             $('#description').summernote({
-                placeholder: 'Hello stand alone ui',
+                placeholder: 'Preencha a descrição do evento',
                 tabsize: 2,
                 height: 120,
                 toolbar: [
@@ -46,6 +43,7 @@
                 ]
             });
         })
+
     </script>
 @endpush
 
@@ -74,7 +72,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="card card-primary">
-                    <form role="form" action="{{ route('event.store') }}" method="post" class="jsonForm">
+                    <form role="form" action="{{ route('event.store') }}" method="post" class="jsonForm" >
                         {{ csrf_field() }}
                             <div id="stepper" class="bs-stepper">
                                 <div class="bs-stepper-header" role="tablist">
@@ -92,13 +90,20 @@
                                       <span class="bs-stepper-label">Localização</span>
                                     </button>
                                   </div>
-                                  <div class="line"></div>
-                                  <div class="step" data-target="#image-part">
-                                    <button type="button" class="step-trigger" role="tab" aria-controls="image-part" id="image-part-trigger">
-                                      <span class="bs-stepper-circle">3</span>
-                                      <span class="bs-stepper-label">Imagens e Outros</span>
-                                    </button>
-                                  </div>
+                                    <div class="line"></div>
+                                    <div class="step" data-target="#other-part">
+                                        <button type="button" class="step-trigger" role="tab" aria-controls="other-part" id="other-part-trigger">
+                                            <span class="bs-stepper-circle">3</span>
+                                            <span class="bs-stepper-label">Outros</span>
+                                        </button>
+                                    </div>
+                                    <div class="line"></div>
+                                    <div class="step" data-target="#image-part">
+                                        <button type="button" class="step-trigger" role="tab" aria-controls="image-part" id="image-part-trigger">
+                                            <span class="bs-stepper-circle">4</span>
+                                            <span class="bs-stepper-label">Imagens</span>
+                                        </button>
+                                    </div>
                                 </div>
                                 <div class="bs-stepper-content">
                                 <!-- your steps content here -->
@@ -118,11 +123,11 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="start_date">Data de início:</label>
-                                            <input type="datetime-local" name="start_date" id="start_date" class="form-control" placeholder="Data de início" required value="2022-05-29T10:10" min="{{ $todays_date }}">
+                                            <input type="datetime-local" name="start_date" id="start_date" class="form-control" placeholder="Data de início" required value="2022-06-29T10:10" min="{{ $todays_date }}">
                                         </div>
                                         <div class="form-group">
                                             <label for="final_date">Data de encerramento:</label>
-                                            <input type="datetime-local" name="final_date" id="final_date" class="form-control" placeholder="Data de encerramento" required value="2022-05-30T10:10" min="{{ $todays_date }}">
+                                            <input type="datetime-local" name="final_date" id="final_date" class="form-control" placeholder="Data de encerramento" required value="2022-06-30T10:10" min="{{ $todays_date }}">
                                         </div>
                                     </div>
                                     <div class="card-footer">
@@ -154,19 +159,12 @@
                                         </div>
                                     </div>
                                     <div class="card-footer">
-                                        <button type="button" class="btn btn-primary" onclick="stepper.previous()">Anterior</button>
+                                        <button type="button" class="btn btn-info" onclick="stepper.previous()">Anterior</button>
                                         <button type="button" class="btn btn-primary" onclick="stepper.next()">Próximo</button>
                                     </div>
                                 </div>
-                                <div id="image-part" class="content" role="tabpanel" aria-labelledby="image-part-trigger">
+                                <div id="other-part" class="content" role="tabpanel" aria-labelledby="other-part-trigger">
                                     <div class="card-body">
-                                        <div class="form-group">
-                                            <label for="image">Imagem</label>
-{{--                                            <input id="fileupload" type="file" name="files[]" multiple--}}
-{{--                                                   data-url="/path/to/upload/handler.json"--}}
-{{--                                                   data-sequential-uploads="true"--}}
-{{--                                                   data-form-data='{"script": "true"}'>--}}
-                                        </div>
                                         <div class="form-group">
                                             <label for="typical_foods">Comidas Típicas</label>
                                             <select name="typical_foods[]" id="typical_foods" class="form-control select2" multiple required data-placeholder="Selecione uma ou mais comidas típicas" >
@@ -185,8 +183,19 @@
                                         </div>
                                     </div>
                                     <div class="card-footer">
-                                        <button type="button" class="btn btn-primary" onclick="stepper.previous()">Anterior</button>
-                                        <button type="submit" class="btn btn-primary">Salvar</button>
+                                        <button type="button" class="btn btn-info" onclick="stepper.previous()">Anterior</button>
+                                        <button type="button" class="btn btn-primary" onclick="stepper.next()">Próximo</button>
+                                    </div>
+                                </div>
+                                <div id="image-part" class="content" role="tabpanel" aria-labelledby="image-part-trigger">
+                                    <div class="card-body">
+
+                                        @include('event.image')
+
+                                    </div>
+                                    <div class="card-footer">
+                                        <button type="button" class="btn btn-info" onclick="stepper.previous()">Anterior</button>
+                                        <button type="submit" class="btn btn-success">Salvar</button>
                                     </div>
                                 </div>
                             </div>

@@ -30,9 +30,6 @@ class PartnerTypeSeeder extends Seeder
             ],
             [
                 'name' => 'Hospedaria'
-            ],
-            [
-                'name' => 'Hospedaria'
             ]
         ];
         foreach ($partner_types as $partner_type) {
