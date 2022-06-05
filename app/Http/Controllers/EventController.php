@@ -152,6 +152,27 @@ class EventController extends Controller
             $event->latitude = $coordinates['latitude'];
             $event->longitude = $coordinates['longitude'];;
         }
+
+        foreach ($event->event_category as $event_category){
+            $event_category->delete();
+        }
+        foreach ($event->event_typical_food as $event_typical_food){
+            $event_typical_food->delete();
+        }
+
+        foreach ($request->categories as $category){
+            $event_category = new Event_category();
+            $event_category->category_id = $category;
+            $event_category->event_id = $event->id;
+            $event_category->save();
+        }
+        foreach ($request->typical_foods as $typical_food){
+            $event_typical_food = new Typical_event_food();
+            $event_typical_food->typical_food_id = $typical_food;
+            $event_typical_food->event_id = $event->id;
+            $event_typical_food->save();
+        }
+
         $event->save();
         return Response::responseOK('Evento alterado com sucesso');
     }

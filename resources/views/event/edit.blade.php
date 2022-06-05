@@ -2,7 +2,6 @@
 @section('title', 'Eventos - Alterar')
 
 @push('css')
-    {{--    <link rel="stylesheet" href="/css/iziToast.min.css">--}}
 @endpush
 
 @push('js')
@@ -10,8 +9,6 @@
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
     <script src=" {{ asset('js/bs-stepper.js') }}" type="text/javascript"></script>
     <script src="/js/formAjaxAlterar.js" type="text/javascript"></script>
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
     <script>
         var stepper;
         $(document).ready(function(){
@@ -20,6 +17,11 @@
                 linear: false
             });
 
+            stepperEl.addEventListener('show.bs-stepper', function (event) {
+                if (!$('.jsonForm').valid()){
+                    event.preventDefault()
+                }
+            })
             stepperEl.addEventListener('shown.bs-stepper', function(event){
                 $(".select2").select2();
             });
@@ -29,20 +31,6 @@
             });
             $('#description').summernote({
                 placeholder: 'Preencha a descrição do evento',
-                tabsize: 2,
-                height: 120,
-                toolbar: [
-                    ['style', ['style']],
-                    ['font', ['bold', 'underline', 'clear']],
-                    ['color', ['color']],
-                    ['para', ['ul', 'ol', 'paragraph']],
-                    ['table', ['table']],
-                    ['insert', ['link', 'picture', 'video']],
-                    ['view', ['fullscreen', 'codeview', 'help']]
-                ]
-            });
-            $('#description').summernote({
-                placeholder: 'Hello stand alone ui',
                 tabsize: 2,
                 height: 120,
                 toolbar: [
@@ -239,45 +227,6 @@
                                 </div>
 
 
-                                <div id="image2-part" class="content" role="tabpanel" aria-labelledby="image2-part-trigger">
-                                    <div class="card-body">
-                                        <div class="form-group">
-                                            <label for="image">Imagem</label>
-                                            <input type="text" name="image" id="image" class="form-control" placeholder="Imagem" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="typical_foods">Comidas Típicas</label>
-                                            <select name="typical_foods" id="typical_foods" class="form-control select2" multiple required>
-                                                <option value="">- Selecione as Comidas Típicas -</option>
-                                                @foreach($typical_foods as $typical_food)
-                                                    <option value="{{$typical_food->id}}">{{$typical_food->name}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="categories">Categorias</label>
-                                            <select name="categories" id="categories" class="form-control select2" multiple required >
-                                                <option value="">- Selecione as Categorias -</option>
-                                                @foreach($categories as $category)
-                                                    <option value="{{$category->id}}">{{$category->name}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                        {{-- <div class="form-group">
-                                            <label for="categories">Parceiros</label>
-                                            <select name="partners" id="partners" class="form-control select2" multiple required >
-                                                <option value="">- Selecione os parceiros -</option>
-                                                @foreach($partners as $partner)
-                                                    <option value="{{$partner->id}}">{{$partner->name}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div> --}}
-                                    </div>
-                                    <div class="card-footer">
-                                        <button type="button" class="btn btn-primary" onclick="stepper.previous()">Anterior</button>
-                                        <button type="submit" class="btn btn-primary">Salvar</button>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </form>
