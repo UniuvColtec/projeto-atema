@@ -170,7 +170,7 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                        <div class="form-group">
+                                        {{-- <div class="form-group">
                                             <label for="categories">Parceiros</label>
                                             <select name="partners" id="partners" class="form-control select2" multiple required >
                                                 <option value="">- Selecione os parceiros -</option>
@@ -178,7 +178,7 @@
                                                     <option value="{{$partner->id}}">{{$partner->name}}</option>
                                                 @endforeach
                                             </select>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                     <div class="card-footer">
                                         <button type="button" class="btn btn-primary" onclick="stepper.previous()">Anterior</button>

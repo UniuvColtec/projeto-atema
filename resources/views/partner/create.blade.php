@@ -95,7 +95,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="card card-primary">
-                    <form role="form" action="{{ route('partner.store') }}" class="jsonForm" method="post">
+                    <form role="form" action="{{ route('partner.store') }}" class="jsonForm" method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
                             <div id="stepper" class="bs-stepper">
                                 <div class="bs-stepper-header" role="tablist">
@@ -197,8 +197,8 @@
                             <div id="image-part" class="content" role="tabpanel" aria-labelledby="image-part-trigger">
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label for="image">Imagem</label>
-                                        <input type="text" name="image" id="image" class="form-control" placeholder="Imagem" required>
+                                        <label for="logo">logo</label>
+                                        <input type="file" id="logo" name="logo" class="form-control-file">
                                     </div>
                                 </div>
                                 <div class="card-footer">

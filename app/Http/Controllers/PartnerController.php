@@ -50,10 +50,20 @@ class PartnerController extends Controller
         $partner->city_id = $request->cities;
         $partner->telephone = $request->telephone;
         $partner->address = $request->address;
+
         $partner->description = $request->description;
         $partner->district = $request->district;
         $partner->latitude = '-10.1212';
         $partner->longitude = '-20.1212';
+        //upload da logo
+        if($request->hasFile('logo') ** $request->file('logo')->isValid()){
+            $requestlogo= $request->logo;
+            $extension= $requestlogo->extension();
+            $logoname=md5($requestlogo->getClientOriginalName(). strtotime("now")).".".$extension;
+            $requestlogo->move(public_path('logo/partner'),$logoname);
+            $partner->logo=$logoname;
+
+    }
         $partner->save();
 
         return Response::responseOK('Parceiro cadastrado com sucesso');

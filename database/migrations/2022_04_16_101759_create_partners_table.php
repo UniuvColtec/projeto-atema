@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name',100);
             $table->string('cnpj',100);
             $table->longText('description');
+            $table->string('logo');
             $table->string('email',100);
             $table->string('site',200)->nullable();
             $table->string('telephone',20);
