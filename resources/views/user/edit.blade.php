@@ -69,7 +69,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="city_id">Usuário</label>
+                                <label for="city_id">Cidade</label>
                                 <select name="city_id" id="city_id"
                                         class="form-control">
                                     <option value="">- Selecione uma Cidade -</option>

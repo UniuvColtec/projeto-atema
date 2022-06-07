@@ -45,7 +45,7 @@
                     <th data-column-id="id" >Código</th>
                     <th data-column-id="name" data-order="desc" data-sortable="true">Nome</th>
                     <th data-column-id="email" data-sortable="true">Email</th>
-                    <th data-column-id="city" data-sortable="true">Cidade</th>
+                    <th data-column-id="city_name" data-sortable="true">Cidade</th>
                     <th data-column-id="commands" data-formatter="commands" data-sortable="false">Ações</th>
                 </tr>
                 </thead>
