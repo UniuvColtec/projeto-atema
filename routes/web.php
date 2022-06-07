@@ -11,6 +11,7 @@ use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\TouristSpotController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,6 +65,9 @@ Route::prefix('admin')->middleware('auth')->group(function(){
 
     Route::post('tourist_spot/bootgrid', [TouristSpotController::class, 'bootgrid'])->name('tourist_spot.bootgrid');
     Route::resource('tourist_spot', TouristSpotController::class);
+
+    Route::post('profile/bootgrid', [ProfileController::class, 'bootgrid'])->name('profile.bootgrid');
+    Route::resource('profile', ProfileController::class);
 
 });
 

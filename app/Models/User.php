@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Bootgrid;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;

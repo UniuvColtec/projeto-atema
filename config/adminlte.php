@@ -386,6 +386,18 @@ return [
                 ],
 
                 [
+                    'text'    => 'Perfil',
+                    'url'     => '/admin/profile/edit',
+                    'icon'    => 'fas fa-user',
+
+                ],
+
+
+
+
+
+
+                [
                     'text'    => 'Tipo de parceiro',
                     'url'     => '/admin/partner_type',
                     'icon'    => 'fas fa-address-card',
