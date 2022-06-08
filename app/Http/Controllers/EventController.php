@@ -66,6 +66,7 @@ class EventController extends Controller
         $event->name = $request->name;
         $event->description = $request->description;
         $event->contact = $request->contact;
+        $event->website = $request->website;
         $event->start_date = $request->start_date;
         $event->final_date = $request->final_date;
         $event->address = $request->address;
@@ -142,6 +143,7 @@ class EventController extends Controller
         $event->name = $request->name;
         $event->description = $request->description;
         $event->contact = $request->contact;
+        $event->website = $request->website;
         $event->start_date = $request->start_date;
         $event->final_date = $request->final_date;
         $event->address = $request->address;
