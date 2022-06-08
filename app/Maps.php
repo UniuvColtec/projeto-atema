@@ -19,7 +19,16 @@ class Maps
     }
 
     static public function renderMap($latitude, $longitude){
-        return '';
+        return "
+            <iframe src='https://maps.google.com/maps?q={$latitude},{$longitude}&hl=pt-br&z=17&amp;output=embed'
+                width='100%'
+                height='450'
+                style='border:0;'
+                allowfullscreen='1'
+                loading='lazy'
+                referrerpolicy='no-referrer-when-downgrade'>
+            </iframe>
+        ";
     }
 
 }
