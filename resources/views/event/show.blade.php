@@ -101,14 +101,7 @@
                                         <div class="form-group">
                                             <label for="localization">Localização:</label>
                                             <br>
-                                            <iframe src="https://maps.google.com/maps?q={{ $event->latitude }},{{ $event->longitude }}&hl=pt-br&z=17&amp;output=embed"
-                                                    width="600"
-                                                    height="450"
-                                                    style="border:0;"
-                                                    allowfullscreen=""
-                                                    loading="lazy"
-                                                    referrerpolicy="no-referrer-when-downgrade">
-                                            </iframe>
+                                            {!! $event->renderMap($event->latitude, $event->longitude) !!}
                                         </div>
                                         <div class="form-group">
                                             <label for="image">Imagem:</label>

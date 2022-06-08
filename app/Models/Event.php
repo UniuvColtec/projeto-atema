@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Bootgrid;
+use App\Maps;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -25,16 +26,15 @@ class Event extends Model
 
     }
     public function getCoordinates($link) {
-        $pos = strpos( $link, "!3d");
-        $latitude = substr($link, $pos+3, 11);
+        $coordenadas = Maps::getCoordinates($link);
 
-        $pos = strpos( $link, "!4d");
-        $longitude = substr($link, $pos+3, 11);
-
-        $this->latitude = $latitude;
-        $this->longitude = $longitude;
+        $this->latitude = $coordenadas->latitude;
+        $this->longitude = $coordenadas->longitude;
     }
 
+    public function renderMap($latitude, $longitude) {
+        return Maps::renderMap($latitude, $longitude);
+    }
     public function event_category(){
         return $this->hasMany(Event_category::class);
     }
