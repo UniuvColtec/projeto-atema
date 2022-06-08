@@ -30,5 +30,15 @@ class Tourist_spot extends Model
         return $this->belongsTo(City::class);
 
     }
+    public function getCoordinates($link) {
+        $pos = strpos( $link, "!3d");
+        $latitude = substr($link, $pos+3, 11);
+
+        $pos = strpos( $link, "!4d");
+        $longitude = substr($link, $pos+3, 11);
+
+        $this->latitude = $latitude;
+        $this->longitude = $longitude;
+    }
 }
 

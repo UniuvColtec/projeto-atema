@@ -148,9 +148,7 @@ class EventController extends Controller
         $event->district = $request->district;
         $event->city_id = $request->cities;
         if($request->localization != ''){
-            $coordinates = $event->getCoordinates($request->localization);
-            $event->latitude = $coordinates['latitude'];
-            $event->longitude = $coordinates['longitude'];;
+            $event->getCoordinates($request->localization);
         }
 
         foreach ($event->event_category as $event_category){

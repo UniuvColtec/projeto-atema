@@ -63,7 +63,7 @@
                             {{ $partner->partner_type->name }}
                         </div>
                             <div class="form-group">
-                                <label for="cnpj">Cnpj:</label>
+                                <label for="cnpj">CNPJ:</label>
                                 {{ $partner->cnpj }}
                             </div>
                         <div class="form-group">
@@ -87,8 +87,20 @@
                             {{ $partner->district }}
                         </div>
                             <div class="form-group">
+                                <label for="localization">Localização:</label>
+                                <br>
+                                <iframe src="https://maps.google.com/maps?q={{ $partner->latitude }},{{ $partner->longitude }}&hl=pt-br&z=17&amp;output=embed"
+                                        width="100%"
+                                        height="450"
+                                        style="border:0;"
+                                        allowfullscreen=""
+                                        loading="lazy"
+                                        referrerpolicy="no-referrer-when-downgrade">
+                                </iframe>
+                            </div>
+                            <div class="form-group">
                                 <label for="logo">Logo:</label>
-                                <img src="/logo/partners/{{$partner->logo}}" alt="{{$partner->title}}">
+                                <img src="{{$partner->getUrlLogo()}}" alt="{{$partner->title}}" class="img-thumbnail">
                             </div>
                             <div class="form-group">
 

@@ -31,6 +31,7 @@ class PartnerRequest extends FormRequest
             'district' => 'required',
             'description' => 'required',
             'cities' => 'required',
+            'cnpj' => 'required',
             'partner_type_id' => 'required'
         ];
     }
@@ -43,6 +44,7 @@ class PartnerRequest extends FormRequest
             'email.required' => 'Email obrigatório',
             'email.email' => 'Email inválido',
             'address.required' => 'Endereço  obrigatório',
+            'cnpj.required' => 'Cnpj  obrigatório',
             'telephone.required' => 'Telefone  obrigatório',
             'district.required' => 'Bairro  obrigatório',
             'description.required' => 'Descrição  obrigatória',

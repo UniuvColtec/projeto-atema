@@ -37,7 +37,12 @@ Route::prefix('admin')->middleware('auth')->group(function(){
     })->name('home');
 
     Route::post('partner/bootgrid', [PartnerController::class, 'bootgrid'])->name('partner.bootgrid');
+    Route::get('partner/uploadimage/{partner_id?}', [PartnerController::class, 'uploadImageGet'])->name('partner.uploadImageGet');
+    Route::post('partner/uploadimage/{partner_id?}', [PartnerController::class, 'uploadImagePost'])->name('partner.uploadImagePost');
+    Route::put('partner/uploadimage/{partner_id?}', [PartnerController::class, 'uploadImagePost'])->name('partner.uploadImagePost');
+    Route::delete('partner/uploadimage/{partner_id?}', [PartnerController::class, 'uploadImageDelete'])->name('partner.uploadImageDelete');
     Route::resource('partner', PartnerController::class);
+
 
     Route::post('city/bootgrid', [CityController::class, 'bootgrid'])->name('city.bootgrid');
     Route::resource('city', CityController::class);

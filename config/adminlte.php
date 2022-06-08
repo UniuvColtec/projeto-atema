@@ -310,7 +310,6 @@ return [
                 ],
             ],
         ],
-
         ['text'    => 'account_settings',
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
@@ -384,7 +383,6 @@ return [
                         ],
                     ],
                 ],
-
                 [
                     'text'    => 'Tipo de parceiro',
                     'url'     => '/admin/partner_type',
