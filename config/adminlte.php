@@ -321,7 +321,7 @@ return [
                 ],
                 [
                     'text' => 'change_password',
-                    'url'  => 'admin/settings',
+                    'url'  => 'admin/password',
                     'icon' => 'fas fa-fw fa-lock',
                 ],
 
@@ -384,18 +384,6 @@ return [
                         ],
                     ],
                 ],
-
-                [
-                    'text'    => 'Perfil',
-                    'url'     => '/admin/profile/edit',
-                    'icon'    => 'fas fa-user',
-
-                ],
-
-
-
-
-
 
                 [
                     'text'    => 'Tipo de parceiro',
