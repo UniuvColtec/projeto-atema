@@ -129,7 +129,7 @@
                                         <input type="text" class="form-control" id="name" name="name" placeholder="nome" required >
                                     </div>
                                     <div class="form-group">
-                                        <label for="partner_type_id">TIPO:</label>
+                                        <label for="partner_type_id">Tipo:</label>
                                         <select name="partner_type_id" id="partner_type_id" class="form-control select2" required >
                                             <option value="">- Selecione um tipo-</option>
                                             @foreach($partner_types as $partner_type)
@@ -139,15 +139,15 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="telephone">Telefone:</label>
-                                        <input type="text" class="form-control telephone" id="telephone" name="telephone" placeholder="EX: (DD) 00000-0000" >
+                                        <input type="text" class="form-control telephone" id="telephone" name="telephone" placeholder="EX: (DD) 00000-0000" required >
                                     </div>
                                     <div class="form-group">
                                         <label for="email">Email:</label>
-                                        <input type="email" class="form-control" id="email" name="email" placeholder="Email" >
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="Email"  required >
                                     </div>
                                     <div class="form-group">
-                                        <label for="cnpj">Cnpj:</label>
-                                        <input type="cnpj" class="form-control cnpj" id="cnpj" name="cnpj" placeholder="XX.XXX.XXX/XXXX-XX" >
+                                        <label for="cnpj">CNPJ:</label>
+                                        <input type="cnpj" class="form-control cnpj" id="cnpj" name="cnpj" placeholder="XX.XXX.XXX/XXXX-XX"  required >
                                     </div>
                                     <div class="form-group">
                                         <label for="site">Site:</label>
@@ -167,7 +167,7 @@
                                         <div class="card-body">
                                             <div class="form-group">
                                                 <label for="cities">Cidade:</label>
-                                                <select name="cities" id="cities" class="form-control">
+                                                <select name="cities" id="cities" class="form-control select2" required >
                                                     <option value="">- Selecione uma Cidade -</option>
                                                     @foreach($cities as $city)
                                                         <option value="{{$city->id}}">{{$city->name}}</option>
@@ -184,7 +184,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="localization">Localização:</label>
-                                                <input type="text" name="localization" id="localization" class="form-control" placeholder="Localização" >
+                                                <input type="text" name="localization" id="localization" class="form-control" placeholder="Localização" required >
                                             </div>
                                             <div class="card-footer">
                                                 <button type="button" class="btn btn-primary" onclick="stepper.previous()">Anterior</button>

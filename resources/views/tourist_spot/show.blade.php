@@ -67,6 +67,18 @@
                             <label for="address">Endereço:</label>
                             {{ $tourist_spot->address }}
                         </div>
+                            <div class="form-group">
+                                <label for="localization">Localização:</label>
+                                <br>
+                                <iframe src="https://maps.google.com/maps?q={{ $tourist_spot->latitude }},{{ $tourist_spot->longitude }}&hl=pt-br&z=17&amp;output=embed"
+                                        width="600"
+                                        height="450"
+                                        style="border:0;"
+                                        allowfullscreen=""
+                                        loading="lazy"
+                                        referrerpolicy="no-referrer-when-downgrade">
+                                </iframe>
+                            </div>
                         <div class="form-group">
                             <label for="district">Distrito:</label>
                             {{ $tourist_spot->district }}

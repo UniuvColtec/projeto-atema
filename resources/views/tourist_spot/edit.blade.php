@@ -112,7 +112,7 @@
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label for="name">Nome:</label>
-                                            <input type="text" class="form-control" id="name" name="name" placeholder="nome" value="{{ $tourist_spot->name}}" >
+                                            <input type="text" class="form-control" id="name" name="name" placeholder="nome" value="{{ $tourist_spot->name}}"  required >
                                         </div>
                                         <div class="form-group">
                                             <label for="description">Descrição:</label>
@@ -127,20 +127,20 @@
                                     <div class="form-group jsonForm">
                                         <div class="form-group">
                                             <label for="cities">Cidade:</label>
-                                            <select name="cities" id="cities" class="form-control">
+                                            <select name="cities" id="cities" class="form-control" required >
                                                 <option >- Selecione uma Cidade -</option>
                                                 @foreach($cities as $city)
-                                                    <option value="{{$city->id}}" >{{$city->name}}</option>
+                                                    <option value="{{$city->id}}" @if($city->id==$city->id)selected @endif>{{$city->name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="address">Endereço:</label>
-                                            <input type="text" class="form-control" id="address" name="address" placeholder="Rua exemplo 1111" value="{{ $tourist_spot->address}}">
+                                            <input type="text" class="form-control" id="address" name="address" placeholder="Rua exemplo 1111" value="{{ $tourist_spot->address}}" required >
                                         </div>
                                         <div class="form-group">
                                             <label for="district">Localidade:</label>
-                                            <input type="text" class="form-control" id="district" name="district" placeholder="" value="{{ $tourist_spot->district}}">
+                                            <input type="text" class="form-control" id="district" name="district" placeholder="" value="{{ $tourist_spot->district}}" required >
                                         </div>
                                     </div>
                                     <div class="form-group">

@@ -50,19 +50,16 @@ class PartnerController extends Controller
         $partner->city_id = $request->cities;
         $partner->telephone = $request->telephone;
         $partner->address = $request->address;
-
+        $partner->getCoordinates($request->localization);
         $partner->description = $request->description;
         $partner->district = $request->district;
-        $partner->getCoordinates($request->localization);
         //upload da logo
-        if($request->hasFile('logo') ** $request->file('logo')->isValid()){
+        if($request->hasFile('logo') && $request->file('logo')->isValid()){
             $requestlogo= $request->logo;
-            $extension= $requestlogo->extension();
-            $logoname=md5($requestlogo->getClientOriginalName(). strtotime("now")).".".$extension;
-            $requestlogo->move(public_path('logo/partners'),$logoname);
+            $logoname=md5($requestlogo->getClientOriginalName(). strtotime("now")).".".$requestlogo->extension();
+            $requestlogo->move(public_path(Partner::PARTNER_LOGO), $logoname);
             $partner->logo=$logoname;
-
-    }
+        }
         $partner->save();
 
         return Response::responseOK('Parceiro cadastrado com sucesso');
@@ -111,12 +108,9 @@ class PartnerController extends Controller
         $partner->address = $request->address;
         $partner->district = $request->district;
         if($request->localization != ''){
-            $coordinates = $partner->getCoordinates($request->localization);
-            $partner->latitude = $coordinates['latitude'];
-            $partner->longitude = $coordinates['longitude'];;
+            $partner->getCoordinates($request->localization);
         }
-        $partner->latitude = $request->latitude;
-        $partner->longitude = $request->longitude;
+
         $partner->save();
         return Response::responseOK('Alterado com sucesso');
     }

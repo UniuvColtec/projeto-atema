@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use App\Bootgrid;
+use App\Maps;
+use Cassandra\Map;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
@@ -15,6 +17,8 @@ class Partner extends Model
     protected $hidden = ['deleted_at'];
     protected $casts = [
         'created_at' => 'date:d/m/Y H:m:s', 'updated_at'=> 'date:d/m/Y H:m:s', 'deleted_at'=>'date:d/m/Y H:m:s'];
+
+    public const PARTNER_LOGO = '/logo/partners/';
 
     public function bootgrid(object $request)
     {
@@ -29,14 +33,18 @@ class Partner extends Model
 
     }
     public function getCoordinates($link) {
-        $pos = strpos( $link, "!3d");
-        $latitude = substr($link, $pos+3, 11);
+        $coordenadas = Maps::getCoordinates($link);
 
-        $pos = strpos( $link, "!4d");
-        $longitude = substr($link, $pos+3, 11);
+        $this->latitude = $coordenadas->latitude;
+        $this->longitude = $coordenadas->longitude;
+    }
 
-        $this->latitude = $latitude;
-        $this->longitude = $longitude;
+    public function renderMap(){
+        return Maps::renderMap($this->latitude, $this->longitude);
+    }
+
+    public function getUrlLogo(){
+        return asset('' . self::PARTNER_LOGO . $this->logo);
     }
     public function partner_type(){
         return $this->belongsTo(Partner_type::class);

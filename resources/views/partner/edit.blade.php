@@ -123,10 +123,10 @@
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label for="name">Nome:</label>
-                                            <input type="text" class="form-control" id="name" name="name" placeholder="nome"value="{{ $partner->name}}" >
+                                            <input type="text" class="form-control" id="name" name="name" placeholder="nome"value="{{ $partner->name}}" required  >
                                         </div>
                                         <div class="form-group">
-                                            <label for="partner_type_id">TIPO:</label>
+                                            <label for="partner_type_id">Tipo:</label>
                                             <select name="partner_type_id" id="partner_type_id" class="form-control select2" required >
                                                 <option value="">- Selecione um tipo-</option>
                                                 @foreach($partner_type as $partner_type)
@@ -136,15 +136,15 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="telephone">Telefone:</label>
-                                            <input type="text" class="form-control telephone" id="telephone" name="telephone" placeholder="EX: (DD) 00000-0000" value="{{ $partner->telephone}}">
+                                            <input type="text" class="form-control telephone" id="telephone" name="telephone" placeholder="EX: (DD) 00000-0000" value="{{ $partner->telephone}}" required >
                                         </div>
                                         <div class="form-group">
                                             <label for="email">Email:</label>
-                                            <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="{{ $partner->email}}" >
+                                            <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="{{ $partner->email}}" required >
                                         </div>
                                         <div class="form-group">
-                                            <label for="cnpj">Cnpj:</label>
-                                            <input type="cnpj" class="form-control cnpj" id="cnpj" name="cnpj" placeholder="XX.XXX.XXX/XXXX-XX" value="{{ $partner->cnpj}}">
+                                            <label for="cnpj">CNPJ:</label>
+                                            <input type="cnpj" class="form-control cnpj" id="cnpj" name="cnpj" placeholder="XX.XXX.XXX/XXXX-XX" value="{{ $partner->cnpj}}" required >
                                         </div>
                                         <div class="form-group">
                                             <label for="site">Site:</label>
@@ -164,16 +164,16 @@
                                         <div class="card-body">
                                             <div class="form-group">
                                                 <label for="cities">Cidade:</label>
-                                                <select name="cities" id="cities" class="form-control">
+                                                <select name="cities" id="cities" class="form-control" required >
                                                     <option value="">- Selecione uma Cidade -</option>
                                                     @foreach($cities as $city)
-                                                        <option value="{{$city->id}}">{{$city->name}}</option>
+                                                        <option value="{{$city->id}}" @if($partner->city_id == $city->id) selected @endif>{{$city->name}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
                                             <div class="form-group">
                                                 <label for="address">Rua:</label>
-                                                <input type="text" class="form-control" id="address" name="address" placeholder="Rua exemplo 1111"required value="{{$partner->address}}">
+                                                <input type="text" class="form-control" id="address" name="address" placeholder="Rua exemplo 1111"required value="{{$partner->address}}" required >
                                             </div>
                                             <div class="form-group">
                                                 <label for="district">Bairro:</label>
@@ -194,8 +194,8 @@
                                 <div id="image-part" class="content" role="tabpanel" aria-labelledby="image-part-trigger">
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label for="logo">logo</label>
-                                            <input type="file" id="logo" name="logo" class="form-control-file">
+                                            <label for="logo">Logo</label>
+                                            <input type="file" id="logo" name="logo" class="form-control-file" value="{{ $partner->logo}}" >
                                         </div>
                                     </div>
                                     <div class="card-footer">

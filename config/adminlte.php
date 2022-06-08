@@ -310,6 +310,12 @@ return [
                 ],
             ],
         ],
+        [
+            'text'    => 'Perfil',
+            'url'     => '/admin/profile/edit',
+            'icon'    => 'fas fa-user',
+
+        ],
 
         ['text'    => 'account_settings',
             'icon'    => 'fas fa-fw fa-share',
@@ -385,12 +391,7 @@ return [
                     ],
                 ],
 
-                [
-                    'text'    => 'Perfil',
-                    'url'     => '/admin/profile/edit',
-                    'icon'    => 'fas fa-user',
 
-                ],
 
 
 
