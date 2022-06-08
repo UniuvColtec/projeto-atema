@@ -75,14 +75,14 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Parceiro
+                <h1>Parceiros
                     <small>Cadastro</small>
                 </h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fa fa-home"></i> Home</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('partner.index') }}"> Parceiro</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('partner.index') }}"> Parceiros</a></li>
                     <li class="breadcrumb-item active">Cadastro</li>
                 </ol>
             </div>
@@ -187,7 +187,7 @@
                                                 <input type="text" name="localization" id="localization" class="form-control" placeholder="Localização" required >
                                             </div>
                                             <div class="card-footer">
-                                                <button type="button" class="btn btn-primary" onclick="stepper.previous()">Anterior</button>
+                                                <button type="button" class="btn btn-info" onclick="stepper.previous()">Anterior</button>
                                                 <button type="button" class="btn btn-primary" onclick="stepper.next()">Próximo</button>
                                             </div>
                                         </div>
@@ -197,13 +197,19 @@
                             <div id="image-part" class="content" role="tabpanel" aria-labelledby="image-part-trigger">
                                 <div class="card-body">
                                     <div class="form-group">
+                                        <h3>Imagens</h3>
+                                        @include('partner.image')
+                                    </div>
+                                    <div class="form-group">
                                         <label for="logo">logo</label>
                                         <input type="file" id="logo" name="logo" class="form-control-file">
                                     </div>
+
+
                                 </div>
                                 <div class="card-footer">
-                                    <button type="button" class="btn btn-primary" onclick="stepper.previous()">Anterior</button>
-                                    <button type="submit" class="btn btn-primary">Salvar</button>
+                                    <button type="button" class="btn btn-info" onclick="stepper.previous()">Anterior</button>
+                                    <button type="submit" class="btn btn-success">Salvar</button>
                                 </div>
                             </div>
                         </div>

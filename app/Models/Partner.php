@@ -50,6 +50,9 @@ class Partner extends Model
         return $this->belongsTo(Partner_type::class);
 
     }
+    public function partner_image(){
+        return $this->hasMany(Image_partners::class);
+    }
     public function city(){
         return $this->belongsTo(City::class);
 
