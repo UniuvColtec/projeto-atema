@@ -189,6 +189,7 @@
                                 </div>
                                 <div id="image-part" class="content" role="tabpanel" aria-labelledby="image-part-trigger">
                                     <div class="card-body">
+                                        <h3>Imagens</h3>
 
                                         @include('event.image')
 

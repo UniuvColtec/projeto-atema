@@ -1,12 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Image;
 use App\Models\Image_partners;
 use App\Http\Requests\PartnerRequest;
 use App\Models\City;
 use App\Models\Partner;
 use App\Models\Partner_type;
 use App\Response;
+use App\UploadHandler;
 use Illuminate\Http\Request;
 
 class PartnerController extends Controller
@@ -51,7 +53,11 @@ class PartnerController extends Controller
     public function store(PartnerRequest $request)
     {
 
+
         $partner = new Partner();
+        if ( !$partner->validar_cnpj($request->cnpj)){
+        return Response::responseError("Cnpj inválido");
+        }
         $partner->name = $request->name;
         $partner->cnpj = $request->cnpj;
         $partner->email = $request->email;
@@ -77,6 +83,7 @@ class PartnerController extends Controller
                 $partner_image->partner_id = $partner->id;
                 $partner_image->save();
             }
+
         }
         $partner->save();
 
@@ -181,7 +188,7 @@ class PartnerController extends Controller
 
                 if ($partner_id){
                     $image_partner= new Image_partners();
-                    $image_partner->event_id = $partner_id;
+                    $image_partner->partner_id = $partner_id;
                     $image_partner->image_id = $image->id;
                     $image_partner->save();
                 }

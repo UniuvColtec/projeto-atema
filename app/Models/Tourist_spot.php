@@ -40,5 +40,8 @@ class Tourist_spot extends Model
         $this->latitude = $latitude;
         $this->longitude = $longitude;
     }
+    public function tourist_spot_image(){
+        return $this->hasMany(Image_tourist_spots::class);
+    }
 }
 

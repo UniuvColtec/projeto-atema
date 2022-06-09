@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('image_tourist_spots', function (Blueprint $table) {
+        Schema::create('image_partners', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('tourist_spot_id');
+            $table->unsignedBigInteger('partner_id');
             $table->unsignedBigInteger('image_id');
             $table->timestamps();
         });
@@ -28,7 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('image_tourist_spots');
+        Schema::dropIfExists('image_partners');
     }
 };
-

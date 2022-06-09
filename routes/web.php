@@ -69,6 +69,10 @@ Route::prefix('admin')->middleware('auth')->group(function(){
     Route::resource('event', EventController::class);
 
     Route::post('tourist_spot/bootgrid', [TouristSpotController::class, 'bootgrid'])->name('tourist_spot.bootgrid');
+    Route::get('tourist_spot/uploadimage/{tourist_spot_id?}', [TouristSpotController::class, 'uploadImageGet'])->name('tourist_spot.uploadImageGet');
+    Route::post('tourist_spot/uploadimage/{tourist_spot_id?}', [TouristSpotController::class, 'uploadImagePost'])->name('tourist_spot.uploadImagePost');
+    Route::put('tourist_spot/uploadimage/{tourist_spot_id?}', [TouristSpotController::class, 'uploadImagePost'])->name('tourist_spot.uploadImagePost');
+    Route::delete('tourist_spot/uploadimage/{tourist_spot_id?}', [TouristSpotController::class, 'uploadImageDelete'])->name('tourist_spot.uploadImageDelete');
     Route::resource('tourist_spot', TouristSpotController::class);
 
     Route::post('profile/bootgrid', [ProfileController::class, 'bootgrid'])->name('profile.bootgrid');

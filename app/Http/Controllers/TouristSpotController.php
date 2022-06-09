@@ -2,13 +2,25 @@
 
 namespace App\Http\Controllers;
 use App\Models\City;
+use App\Models\Image;
+use App\Models\Image_tourist_spots;
+use App\Models\Image_tourist_spotss;
 use App\Models\Tourist_spot;
 use App\Response;
+use App\UploadHandler;
 use Illuminate\Http\Request;
 use App\Http\Requests\TouristSpotRequest;
 
 class TouristSpotController extends Controller
 {
+    private $optionsUpload = array(
+        'script_url' => '/admin/tourist_spot/uploadimage'
+    );
+
+    public function __construct(){
+        $this->optionsUpload['upload_dir'] = base_path('public/' . env('FILE_UPLOAD')) . '/';
+        $this->optionsUpload['upload_url'] = url(env('FILE_UPLOAD')) . '/';
+    }
     /**
      * Display a listing of the resource.
      *
@@ -46,6 +58,14 @@ class TouristSpotController extends Controller
         $tourist_spot->address = $request->address;
         $tourist_spot->district = $request->district;
         $tourist_spot->getCoordinates($request->localization);
+        if($request->images){
+            foreach ($request->images as $image){
+                $tourist_spot_image = new Image_tourist_spots();
+                $tourist_spot_image->image_id = $image;
+                $tourist_spot_image->tourist_spot_id = $tourist_spot->id;
+                $tourist_spot_image->save();
+            }
+        }
         $tourist_spot->save();
         return Response::responseOK('Ponto Turistico cadastrado com sucesso');
     }
@@ -102,17 +122,91 @@ class TouristSpotController extends Controller
      */
     public function destroy(Tourist_spot $tourist_spot)
     {
-
-        if($tourist_spot->delete()){
+        $tourist_spot_images = $tourist_spot->tourist_spot_image;
+        if($tourist_spot->delete()) {
+            foreach($tourist_spot_images as $tourist_spot_image){
+                @unlink($this->optionsUpload['upload_dir'] . $tourist_spot_image->image->address);
+                @unlink($this->optionsUpload['upload_dir'] . 'thumbnail/' . $tourist_spot_image->image->address);
+                $image = Image::find($tourist_spot_image->image->id);
+                $image->delete();
+            }
             return Response::responseSuccess();
         } else {
             return Response::responseForbiden();
         }
+
     }
     public function bootgrid(Request $request)
     {
-        $tourist_spot = new Tourist_spot();
-        $bootgrid = $tourist_spot->bootgrid($request);
+        $tourist_spots = new Tourist_spot();
+        $bootgrid = $tourist_spots->bootgrid($request);
         return response()->json($bootgrid);
     }
+
+    public function image()
+    {
+        return view('tourist_spot.image');
+    }
+
+    public function uploadImagePost($tourist_spot_id=null)
+    {
+        $upload_handler = new UploadHandler($this->optionsUpload, false);
+        $return = $upload_handler->post(false, uniqid('tourist_spot-'));
+        foreach ($return as &$itens){
+            foreach($itens as &$item){
+                $image = new Image();
+                $image->address = $item->name;
+                $image->save();
+                $item->id = $image->id;
+
+                if ($tourist_spot_id){
+                    $image_tourist_spot = new Image_tourist_spots();
+                    $image_tourist_spot->tourist_spot_id = $tourist_spot_id;
+                    $image_tourist_spot->image_id = $image->id;
+                    $image_tourist_spot->save();
+                }
+            }
+        }
+        return $return;
+    }
+    public function uploadImageGet($tourist_spot_id=null)
+    {
+        if (!$tourist_spot_id) return;
+        $return['files'] = [];
+
+        $image_tourist_spots = Image_tourist_spots::where('tourist_spot_id', $tourist_spot_id)->get();
+        foreach ($image_tourist_spots as $image_tourist_spot){
+            $return['files'][] = $this->uploadJsonGet($image_tourist_spot->image->address, $image_tourist_spot->id);
+        }
+        return json_encode($return);
+    }
+    public function uploadImageDelete($tourist_spot_id=null)
+    {
+        $upload_handler = new UploadHandler($this->optionsUpload, false);
+        $return = $upload_handler->delete(false);
+        foreach ($return as $item => $deleted){
+            if ($deleted){
+                $image = Image::where('address', $item)->first();
+                if ($image) $image->delete();
+            }
+        }
+
+        return ($return);
+    }
+
+    private function uploadJsonGet($imageName, $id){
+        $jsonReturn = new \stdClass();
+
+        $jsonReturn->deleteType = 'DELETE';
+        $jsonReturn->deleteUrl = route('tourist_spot.uploadImageDelete') . "?file=" . $imageName;
+        $jsonReturn->id = $id;
+        $jsonReturn->name = $imageName;
+        $jsonReturn->size = filesize($this->optionsUpload['upload_dir'] . $imageName);
+        $jsonReturn->thumbnailUrl = url($this->optionsUpload['upload_url'] . 'thumbnail/' . $imageName);
+        $jsonReturn->url = url($this->optionsUpload['upload_url'] . $imageName);
+
+        return $jsonReturn;
+
+    }
+
 }

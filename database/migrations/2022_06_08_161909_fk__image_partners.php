@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('image_tourist_spots', function (Blueprint $table) {
-            $table->foreign('tourist_spot_id')->references('id')->on('tourist_spots')->onDelete('cascade');
+        Schema::table('image_partners', function (Blueprint $table) {
+            $table->foreign('partner_id')->references('id')->on('partners')->onDelete('cascade');
             $table->foreign('image_id')->references('id')->on('images')->onDelete('cascade');
         });
     }
@@ -26,10 +26,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('image_tourist_spots', function (Blueprint $table) {
-            $table->dropForeign(['tourist_spot_id']);
+        Schema::table('image_partners', function (Blueprint $table) {
+            $table->dropForeign(['partner_id']);
             $table->dropForeign(['image_id']);
         });
     }
 };
-

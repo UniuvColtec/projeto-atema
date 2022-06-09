@@ -202,7 +202,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="logo">logo</label>
-                                        <input type="file" id="logo" name="logo" class="form-control-file">
+                                        <input type="file" id="logo" name="logo" class="form-control-file btn btn-outline-secondary">
                                     </div>
 
 

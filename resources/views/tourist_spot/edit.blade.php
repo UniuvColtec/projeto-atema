@@ -148,20 +148,20 @@
                                         <input type="text" name="localization" id="localization" class="form-control" placeholder="Localização">
                                     </div>
                                     <div class="card-footer">
-                                        <button type="button" class="btn btn-primary" onclick="stepper.previous()">Anterior</button>
+                                        <button type="button" class="btn btn-info" onclick="stepper.previous()">Anterior</button>
                                         <button type="button" class="btn btn-primary" onclick="stepper.next()">Próximo</button>
                                     </div>
                                 </div>
                                 <div id="image-part" class="content" role="tabpanel" aria-labelledby="image-part-trigger">
                                     <div class="card-body">
-                                        <div class="form-group">
-                                            <label for="image">Imagem</label>
-                                            <input type="text" name="image" id="image" class="form-control" placeholder="Imagem" required>
-                                        </div>
+                                        <h3>Imagens</h3>
+
+                                        @include('tourist_spot.image')
+
                                     </div>
                                     <div class="card-footer">
-                                        <button type="button" class="btn btn-primary" onclick="stepper.previous()">Anterior</button>
-                                        <button type="submit" class="btn btn-primary">Salvar</button>
+                                        <button type="button" class="btn btn-info" onclick="stepper.previous()">Anterior</button>
+                                        <button type="submit" class="btn btn-success">Salvar</button>
                                     </div>
                                 </div>
                             </div>
