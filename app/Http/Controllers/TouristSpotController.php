@@ -58,6 +58,7 @@ class TouristSpotController extends Controller
         $tourist_spot->address = $request->address;
         $tourist_spot->district = $request->district;
         $tourist_spot->getCoordinates($request->localization);
+        $tourist_spot->save();
         if($request->images){
             foreach ($request->images as $image){
                 $tourist_spot_image = new Image_tourist_spots();
@@ -66,7 +67,6 @@ class TouristSpotController extends Controller
                 $tourist_spot_image->save();
             }
         }
-        $tourist_spot->save();
         return Response::responseOK('Ponto Turistico cadastrado com sucesso');
     }
 

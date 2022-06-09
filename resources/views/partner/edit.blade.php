@@ -193,7 +193,7 @@
 
                                 <div id="image-part" class="content" role="tabpanel" aria-labelledby="image-part-trigger">
                                     <div class="card-body">
-                                        <div class="form-group">]
+                                        <div class="form-group">
                                             <h3>Imagens</h3>
 
                                             @include('partner.image')

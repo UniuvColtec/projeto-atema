@@ -157,9 +157,7 @@
                                 <div id="image-part" class="content" role="tabpanel" aria-labelledby="image-part-trigger">
                                         <div class="card-body">
                                             <h3>Imagens</h3>
-
                                             @include('tourist_spot.image')
-
                                         </div>
                                     <div class="card-footer">
                                         <button type="button" class="btn btn-info" onclick="stepper.previous()">Anterior</button>

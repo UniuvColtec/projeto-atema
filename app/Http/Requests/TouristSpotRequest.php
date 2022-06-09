@@ -27,6 +27,7 @@ class TouristSpotRequest extends FormRequest
             'name' => 'required',
             'address' => 'required',
             'district' => 'required',
+            'description' => 'required',
             'cities' => 'required'
         ];
     }
@@ -36,6 +37,7 @@ class TouristSpotRequest extends FormRequest
         return [
             'name.required' => 'Nome obrigatório',
             'address.required' => 'Endereço  obrigatório',
+            'description.required' => 'Descrição  obrigatória',
             'district.required' => 'Localidade  obrigatório',
             'cities.required' => 'Cidade  obrigatório',
 

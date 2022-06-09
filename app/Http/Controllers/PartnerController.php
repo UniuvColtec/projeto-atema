@@ -76,6 +76,7 @@ class PartnerController extends Controller
             $requestlogo->move(public_path(Partner::PARTNER_LOGO), $logoname);
             $partner->logo = $logoname;
         }
+        $partner->save();
         if($request->images){
             foreach ($request->images as $image){
                 $partner_image = new Image_partners();
@@ -85,7 +86,7 @@ class PartnerController extends Controller
             }
 
         }
-        $partner->save();
+
 
         return Response::responseOK('Parceiro cadastrado com sucesso');
     }

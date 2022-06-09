@@ -32,7 +32,8 @@ class PartnerRequest extends FormRequest
             'description' => 'required',
             'cities' => 'required',
             'cnpj' => 'required',
-            'partner_type_id' => 'required'
+            'partner_type_id' => 'required',
+            'logo' => 'required'
         ];
     }
 
@@ -48,7 +49,8 @@ class PartnerRequest extends FormRequest
             'telephone.required' => 'Telefone  obrigatório',
             'district.required' => 'Bairro  obrigatório',
             'description.required' => 'Descrição  obrigatória',
-            'cities.required' => 'Cidade obrigatória'
+            'cities.required' => 'Cidade obrigatória',
+            'logo.required' => 'A logo é obrigatória'
         ];
     }
 }

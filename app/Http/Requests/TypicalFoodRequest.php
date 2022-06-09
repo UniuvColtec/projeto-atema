@@ -26,7 +26,6 @@ class TypicalFoodRequest extends FormRequest
         return [
             'name' => 'required',
             'description' => 'required',
-            'image' => 'required'
         ];
     }
 
@@ -35,7 +34,6 @@ class TypicalFoodRequest extends FormRequest
         return [
             'name.required' => 'Nome obrigatório',
             'description.required' => 'Descrição obrigatória',
-            'image.required' => 'Imagem obrigatória'
         ];
     }
 }
