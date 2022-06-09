@@ -70,9 +70,11 @@
                                 <label for="description">Descrição:</label>
                                 <textarea id="description" name="description" required></textarea>
                             </div>
-                            <div class="form-group">
-                                <label for="image">Imagem</label>
-                                <input type="text" id="image" name="image" class="form-control" placeholder="Imagem" required>
+                            <div class="card-body">
+                                <h3>Imagens</h3>
+
+                                @include('typical_food.image')
+
                             </div>
                         </div>
                         <div class="card-footer">

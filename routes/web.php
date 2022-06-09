@@ -37,6 +37,7 @@ Route::prefix('admin')->middleware('auth')->group(function(){
     })->name('home');
 
     Route::post('partner/bootgrid', [PartnerController::class, 'bootgrid'])->name('partner.bootgrid');
+    Route::get('partner/image', [PartnerController::class, 'image'])->name('partner.image');
     Route::get('partner/uploadimage/{partner_id?}', [PartnerController::class, 'uploadImageGet'])->name('partner.uploadImageGet');
     Route::post('partner/uploadimage/{partner_id?}', [PartnerController::class, 'uploadImagePost'])->name('partner.uploadImagePost');
     Route::put('partner/uploadimage/{partner_id?}', [PartnerController::class, 'uploadImagePost'])->name('partner.uploadImagePost');
@@ -53,6 +54,11 @@ Route::prefix('admin')->middleware('auth')->group(function(){
     Route::post('category/bootgrid', [CategoryController::class, 'bootgrid'])->name('category.bootgrid');
     Route::resource('category', CategoryController::class);
 
+    Route::get('typical_food/image', [TypicalFoodController::class, 'image'])->name('typical_food.image');
+    Route::get('typical_food/uploadimage/{typical_food_id?}', [TypicalFoodController::class, 'uploadImageGet'])->name('typical_food.uploadImageGet');
+    Route::post('typical_food/uploadimage/{typical_food_id?}', [TypicalFoodController::class, 'uploadImagePost'])->name('typical_food.uploadImagePost');
+    Route::put('typical_food/uploadimage/{typical_food_id?}', [TypicalFoodController::class, 'uploadImagePost'])->name('typical_food.uploadImagePost');
+    Route::delete('typical_food/uploadimage/{typical_food_id?}', [TypicalFoodController::class, 'uploadImageDelete'])->name('typical_food.uploadImageDelete');
     Route::post('typical_food/bootgrid', [TypicalFoodController::class, 'bootgrid'])->name('typical_food.bootgrid');
     Route::resource('typical_food', TypicalFoodController::class);
 
@@ -69,6 +75,7 @@ Route::prefix('admin')->middleware('auth')->group(function(){
     Route::resource('event', EventController::class);
 
     Route::post('tourist_spot/bootgrid', [TouristSpotController::class, 'bootgrid'])->name('tourist_spot.bootgrid');
+    Route::get('tourist_spot/image', [TouristSpotController::class, 'image'])->name('tourist_spot.image');
     Route::get('tourist_spot/uploadimage/{tourist_spot_id?}', [TouristSpotController::class, 'uploadImageGet'])->name('tourist_spot.uploadImageGet');
     Route::post('tourist_spot/uploadimage/{tourist_spot_id?}', [TouristSpotController::class, 'uploadImagePost'])->name('tourist_spot.uploadImagePost');
     Route::put('tourist_spot/uploadimage/{tourist_spot_id?}', [TouristSpotController::class, 'uploadImagePost'])->name('tourist_spot.uploadImagePost');

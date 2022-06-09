@@ -11,7 +11,7 @@ class Typical_food extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name,description,image'];
+        'name,description'];
     protected $hidden = ['deleted_at'];
     protected $casts = [
         'created_at' => 'date:d/m/Y H:m:s', 'updated_at'=> 'date:d/m/Y H:m:s', 'deleted_at'=>'date:d/m/Y H:m:s'];
@@ -21,5 +21,8 @@ class Typical_food extends Model
         $bootgrid = new Bootgrid();
         $bootgrid->query($this,$request,['name','description']);
         return $bootgrid;
+    }
+    public function typical_food_images(){
+        return $this->hasMany(Image_typical_foods::class);
     }
 }

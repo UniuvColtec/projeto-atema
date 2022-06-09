@@ -53,9 +53,11 @@
                                 <label for="description">Descrição:</label>
                                 <input type="text" class="form-control" id="description" name="description" placeholder="Descrição" value="{{ $typical_food->description }}">
                             </div>
-                            <div class="form-group">
-                                <label for="image">Imagem:</label>
-                                <input type="text" class="form-control" id="image" name="image" placeholder="Imagem" value="{{ $typical_food->image }}">
+                            <div class="card-body">
+                                <h3>Imagens</h3>
+
+                                @include('typical_food.image')
+
                             </div>
                         </div>
                         <div class="card-footer">
