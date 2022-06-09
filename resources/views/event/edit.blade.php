@@ -121,6 +121,10 @@
                                             <input type="text" name="contact" id="contact" class="form-control" placeholder="Contato" value="{{ $event->contact }}" required>
                                         </div>
                                         <div class="form-group">
+                                            <label for="website">Url do site do evento:</label>
+                                            <input type="text" name="website" id="website" class="form-control" placeholder="Url" value="{{ $event->website }}" required>
+                                        </div>
+                                        <div class="form-group">
                                             <label for="description">Descrição:</label>
                                             <textarea name="description" id="description" class="form-control" placeholder="Descrição" required>{{ $event->description }}</textarea>
                                         </div>

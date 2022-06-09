@@ -75,8 +75,10 @@ Route::prefix('admin')->middleware('auth')->group(function(){
     Route::delete('tourist_spot/uploadimage/{tourist_spot_id?}', [TouristSpotController::class, 'uploadImageDelete'])->name('tourist_spot.uploadImageDelete');
     Route::resource('tourist_spot', TouristSpotController::class);
 
-    Route::post('profile/bootgrid', [ProfileController::class, 'bootgrid'])->name('profile.bootgrid');
-    Route::resource('profile', ProfileController::class);
+    Route::get('settings', [UserController::class, 'getProfile'])->name('profile.index');
+    Route::post('settings', [UserController::class, 'postProfile'])->name('profile.save');
 
+    Route::get('password', [UserController::class, 'getPassword'])->name('password.index');
+    Route::post('password', [UserController::class, 'postPassword'])->name('password.save');
 });
 

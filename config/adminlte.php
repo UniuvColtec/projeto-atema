@@ -310,13 +310,6 @@ return [
                 ],
             ],
         ],
-        [
-            'text'    => 'Perfil',
-            'url'     => '/admin/profile/edit',
-            'icon'    => 'fas fa-user',
-
-        ],
-
         ['text'    => 'account_settings',
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
@@ -327,7 +320,7 @@ return [
                 ],
                 [
                     'text' => 'change_password',
-                    'url'  => 'admin/settings',
+                    'url'  => 'admin/password',
                     'icon' => 'fas fa-fw fa-lock',
                 ],
 
@@ -390,14 +383,6 @@ return [
                         ],
                     ],
                 ],
-
-
-
-
-
-
-
-
                 [
                     'text'    => 'Tipo de parceiro',
                     'url'     => '/admin/partner_type',
