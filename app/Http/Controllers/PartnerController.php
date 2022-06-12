@@ -139,8 +139,8 @@ class PartnerController extends Controller
             $partner->getCoordinates($request->localization);
         }
         if ($request->hasFile('logo') && $request->file('logo')->isValid()) {
-            if (Storage::exists($partner->logo)){
-                Storage::delete($partner->logo);
+            if (Storage::exists(Partner::PARTNER_LOGO)){
+                Storage::delete(Partner::PARTNER_LOGO);
             }
             $requestlogo = $request->logo;
             $logoname = md5($requestlogo->getClientOriginalName() . strtotime("now")) . "." . $requestlogo->extension();

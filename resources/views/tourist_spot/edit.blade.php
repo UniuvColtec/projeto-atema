@@ -121,6 +121,7 @@
                                     </div>
                                     <div class="card-footer">
                                         <button type="button" class="btn btn-primary" onclick="stepper.next()">Próximo</button>
+                                        <button type="submit" class="btn btn-success">Salvar</button>
                                     </div>
                                 </div>
                                 <div id="localization-part" class="content" role="tabpanel" aria-labelledby="localization-part-trigger">
@@ -150,6 +151,7 @@
                                     <div class="card-footer">
                                         <button type="button" class="btn btn-info" onclick="stepper.previous()">Anterior</button>
                                         <button type="button" class="btn btn-primary" onclick="stepper.next()">Próximo</button>
+                                        <button type="submit" class="btn btn-success">Salvar</button>
                                     </div>
                                 </div>
                                 <div id="image-part" class="content" role="tabpanel" aria-labelledby="image-part-trigger">

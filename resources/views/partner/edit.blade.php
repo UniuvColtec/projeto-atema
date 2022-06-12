@@ -156,6 +156,7 @@
                                         </div>
                                         <div class="card-footer">
                                             <button type="button" class="btn btn-primary" onclick="stepper.next()">Próximo</button>
+                                            <button type="submit" class="btn btn-success">Salvar</button>
                                         </div>
                                     </div>
                                 </div>
@@ -186,6 +187,7 @@
                                             <div class="card-footer">
                                                 <button type="button" class="btn btn-info" onclick="stepper.previous()">Anterior</button>
                                                 <button type="button" class="btn btn-primary" onclick="stepper.next()">Próximo</button>
+                                                <button type="submit" class="btn btn-success">Salvar</button>
                                             </div>
                                         </div>
                                     </div>
@@ -201,7 +203,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="logo">Logo</label>
-                                            <input type="file" id="logo" name="logo" class="form-control-file"  >
+                                            <input type="file" id="logo" name="logo" class="form-control-file" >
                                         </div>
                                     </div>
                                     <div class="card-footer">

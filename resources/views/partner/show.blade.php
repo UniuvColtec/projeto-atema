@@ -86,12 +86,13 @@
                             <label for="district">Distrito:</label>
                             {{ $partner->district }}
                         </div>
-                            <div class="form-group">
+                            <div class="form-group ">
                                 <label for="localization">Localização:</label>
                                 <br>
-                                <iframe src="https://maps.google.com/maps?q={{ $partner->latitude }},{{ $partner->longitude }}&hl=pt-br&z=17&amp;output=embed"
+                                <iframe  src="https://maps.google.com/maps?q={{ $partner->latitude }},{{ $partner->longitude }}&hl=pt-br&z=17&amp;output=embed"
                                         width="100%"
                                         height="450"
+
                                         style="border:0;"
                                         allowfullscreen=""
                                         loading="lazy"
