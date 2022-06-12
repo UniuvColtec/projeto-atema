@@ -17,6 +17,7 @@ class Event extends Model
         'created_at' => 'date:d/m/Y H:m:s', 'updated_at'=> 'date:d/m/Y H:m:s', 'deleted_at'=>'date:d/m/Y H:m:s',
         'start_date' => 'date:d/m/Y H:m:s','final_date' => 'date:d/m/Y H:m:s',
     ];
+    public const EVENT_LOGO = '/logo/events/';
 
     public function bootgrid(object $request)
     {
@@ -40,6 +41,9 @@ class Event extends Model
     }
     public function event_typical_food(){
         return $this->hasMany(Typical_event_food::class);
+    }
+    public function getUrlLogo(){
+        return asset('' . self::EVENT_LOGO . $this->logo);
     }
     public function event_image(){
         return $this->hasMany(Image_events::class);

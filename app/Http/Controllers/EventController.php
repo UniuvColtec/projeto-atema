@@ -15,13 +15,14 @@ use App\Models\Typical_food;
 use App\Response;
 use App\UploadHandler;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class EventController extends Controller
 {
     private $optionsUpload = array(
         'script_url' => '/admin/event/uploadimage'
     );
-
+    
     public function __construct(){
         $this->optionsUpload['upload_dir'] = base_path('public/' . env('FILE_UPLOAD')) . '/';
         $this->optionsUpload['upload_url'] = url(env('FILE_UPLOAD')) . '/';
@@ -73,6 +74,12 @@ class EventController extends Controller
         $event->district= $request->district;
         $event->city_id = $request->cities;
         $event->getCoordinates($request->localization);
+        if ($request->hasFile('logo') && $request->file('logo')->isValid()) {
+            $requestlogo = $request->logo;
+            $logoname = md5($requestlogo->getClientOriginalName() . strtotime("now")) . "." . $requestlogo->extension();
+            $requestlogo->move(public_path(Event::EVENT_LOGO), $logoname);
+            $event->logo = $logoname;
+        }
         $event->save();
 
         foreach ($request->categories as $category){
@@ -151,6 +158,15 @@ class EventController extends Controller
         $event->city_id = $request->cities;
         if($request->localization != ''){
             $event->getCoordinates($request->localization);
+        }
+        if ($request->hasFile('logo') && $request->file('logo')->isValid()) {
+            if (Storage::exists($event->logo)){
+                Storage::delete($event->logo);
+            }
+            $requestlogo = $request->logo;
+            $logoname = md5($requestlogo->getClientOriginalName() . strtotime("now")) . "." . $requestlogo->extension();
+            $requestlogo->move(public_path(Event::EVENT_LOGO), $logoname);
+            $event->logo = $logoname;
         }
 
         foreach ($event->event_category as $event_category){

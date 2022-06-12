@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->longText('description');
+            $table->string('logo');
             $table->string('contact',75);
             $table->dateTime('start_date');
             $table->dateTime('final_date');

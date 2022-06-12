@@ -198,6 +198,10 @@
                                         @include('event.image')
 
                                     </div>
+                                    <div class="form-group">
+                                        <label for="logo">logo</label>
+                                        <input type="file" id="logo" name="logo" class="form-control-file btn btn-outline-secondary">
+                                    </div>
                                     <div class="card-footer">
                                         <button type="button" class="btn btn-info" onclick="stepper.previous()">Anterior</button>
                                         <button type="submit" class="btn btn-success">Salvar</button>

@@ -201,7 +201,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="logo">Logo</label>
-                                            <input type="file" id="logo" name="logo" class="form-control-file" value="{{ $partner->logo}}" >
+                                            <input type="file" id="logo" name="logo" class="form-control-file"  >
                                         </div>
                                     </div>
                                     <div class="card-footer">

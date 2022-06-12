@@ -10,6 +10,7 @@ use App\Models\Partner_type;
 use App\Response;
 use App\UploadHandler;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PartnerController extends Controller
 {
@@ -136,6 +137,15 @@ class PartnerController extends Controller
         $partner->district = $request->district;
         if ($request->localization != '') {
             $partner->getCoordinates($request->localization);
+        }
+        if ($request->hasFile('logo') && $request->file('logo')->isValid()) {
+            if (Storage::exists($partner->logo)){
+                Storage::delete($partner->logo);
+            }
+            $requestlogo = $request->logo;
+            $logoname = md5($requestlogo->getClientOriginalName() . strtotime("now")) . "." . $requestlogo->extension();
+            $requestlogo->move(public_path(Partner::PARTNER_LOGO), $logoname);
+            $partner->logo = $logoname;
         }
 
         $partner->save();

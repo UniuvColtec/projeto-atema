@@ -225,6 +225,10 @@
                                         @include('event.image')
 
                                     </div>
+                                    <div class="form-group">
+                                        <label for="logo">Logo</label>
+                                        <input type="file" id="logo" name="logo" class="form-control-file" value="{{ $event->logo}}" >
+                                    </div>
                                     <div class="card-footer">
                                         <button type="button" class="btn btn-info" onclick="stepper.previous()">Anterior</button>
                                         <button type="submit" class="btn btn-success">Salvar</button>

@@ -99,6 +99,10 @@
                                             {{ $event->district }}
                                         </div>
                                         <div class="form-group">
+                                            <label for="logo">Logo:</label>
+                                            <img src="{{$event->getUrlLogo()}}" alt="{{$event->title}}" class="img-thumbnail">
+                                        </div>
+                                        <div class="form-group">
                                             <label for="localization">Localização:</label>
                                             <br>
                                             {!! $event->renderMap($event->latitude, $event->longitude) !!}
