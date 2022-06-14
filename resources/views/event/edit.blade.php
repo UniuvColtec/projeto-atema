@@ -162,6 +162,19 @@
                                             <input type="text" name="district" id="district" class="form-control" placeholder="Bairro" value="{{ $event->district }}" required>
                                         </div>
                                         <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-2" id="coordinates">
+                                                    <label for="Latitude">Latitude: </label>
+                                                    <input type="text" name="latitude" id="latitude" class="form-control" value="{{ $event->latitude }}" readonly>
+                                                </div>
+                                                <div class="col-2">
+                                                    <label for="longitude">Longitude: </label>
+                                                    <input type="text" name="longitude" id="longitude" class="form-control" value="{{ $event->longitude }}" readonly>
+                                                </div>
+                                            </div>
+                                            <a href="https://www.google.com.br/maps/@ {{ $event->latitude }},{{ $event->longitude }},15z">Ir para o mapa</a>
+                                        </div>
+                                        <div class="form-group">
                                             <label for="localization">Localização:</label>
                                             <input type="text" name="localization" id="localization" class="form-control" placeholder="Localização">
                                         </div>
