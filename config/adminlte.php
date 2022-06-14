@@ -310,7 +310,7 @@ return [
                 ],
             ],
         ],
-        ['text'    => 'account_settings',
+         ['text'    => 'account_settings',
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
                 [
