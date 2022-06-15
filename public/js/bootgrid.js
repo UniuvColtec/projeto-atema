@@ -17,6 +17,14 @@ $(document).ready(function () {
                 return "<button type=\"button\" class=\"btn btn-xs btn-success command-show\" data-row-id=\"" + row.id + "\"><span class=\"fa fa-eye\"></span></button> " +
                     "<button type=\"button\" class=\"btn btn-xs btn-info command-edit\" data-row-id=\"" + row.id + "\"><span class=\"fas fa-pencil-alt\"></span></button></button> " +
                     "<button type=\"button\" class=\"btn btn-xs btn-danger command-delete\" data-row-id=\"" + row.id + "\"><span class=\"fa fa-trash\"></span></button>";
+            },
+            "dateTime": function(column, row)
+            {
+                return moment.utc(row[column.id]).format('DD/MM/YYYY HH:mm');
+            },
+            "date": function(column, row)
+            {
+                return moment.utc(row[column.id]).format('DD/MM/YYYY');
             }
         }
     }).on("loaded.rs.jquery.bootgrid", function()
