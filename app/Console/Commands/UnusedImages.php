@@ -31,24 +31,21 @@ class UnusedImages extends Command
      */
     public function handle()
     {
+        $fileDir = base_path('public/' . env('FILE_UPLOAD')) . '/';
+        $images = DB::table('images')->whereRaw("id NOT IN (SELECT id FROM image_events) AND id NOT IN (SELECT id FROM image_tourist_spots)
+         AND id NOT IN (SELECT id FROM image_typical_foods)")->get();
 
 
-        $db = DB::connection();
-        $resultImages = $db::query("SELECT id FROM images WHERE id NOT IN (SELECT id FROM image_events) AND NOT IN (SELECT id FROM image_tourist_spots)
-         AND NOT IN (SELECT id FROM image_typical_foods");
+        if ($images->count() > 0) {
+            foreach ($images as $image) {
+                @unlink($fileDir . $image->address);
+                @unlink($fileDir . 'thumbnail/' . $image->address);
+                Image::find($image->id)->delete();
+            }
 
-        if( $resultImages>1){
-             foreach  ($resultImages as $resultImage){
-                 $image = Image::find($resultImage->id);
-                 $image->delete();
 
-             }
-
-            return Response::responseSuccess();
-        } else {
-           return Response::responseForbiden();
         }
-    }
 
+    }
 }
 
