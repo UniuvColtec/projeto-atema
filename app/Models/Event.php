@@ -6,6 +6,7 @@ use App\Bootgrid;
 use App\Maps;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Event extends Model
 {
@@ -22,7 +23,11 @@ class Event extends Model
     public function bootgrid(object $request)
     {
         $bootgrid = new Bootgrid();
-        $bootgrid->query($this, $request, ['name','contact','start_date','final_date', 'city_id', 'address','district','status']);
+        $events = DB::table('events')
+            ->join('cities','events.city_id','=','cities.id')
+            ->select("events.*","cities.name as city_name");
+
+        $bootgrid->query($events, $request, ['name','contact','start_date','final_date', 'city_name', 'address','district','status']);
         return $bootgrid;
 
     }

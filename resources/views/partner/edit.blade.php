@@ -130,7 +130,7 @@
                                             <select name="partner_type_id" id="partner_type_id" class="form-control select2" required >
                                                 <option value="">- Selecione um tipo-</option>
                                                 @foreach($partner_type as $partner_type)
-                                                    <option value="{{$partner_type->id}}" @if($partner_type->id==$partner_type->id)selected @endif>{{$partner_type->name}}</option>
+                                                    <option value="{{$partner_type->id}}" @if($partner_type->id==$partner->partner_type_id)selected @endif>{{$partner_type->name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>

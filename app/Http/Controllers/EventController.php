@@ -22,7 +22,7 @@ class EventController extends Controller
     private $optionsUpload = array(
         'script_url' => '/admin/event/uploadimage'
     );
-    
+
     public function __construct(){
         $this->optionsUpload['upload_dir'] = base_path('public/' . env('FILE_UPLOAD')) . '/';
         $this->optionsUpload['upload_url'] = url(env('FILE_UPLOAD')) . '/';
@@ -160,8 +160,9 @@ class EventController extends Controller
             $event->getCoordinates($request->localization);
         }
         if ($request->hasFile('logo') && $request->file('logo')->isValid()) {
-            if (Storage::exists($event->logo)){
-                Storage::delete($event->logo);
+            $pathLogo = public_path(Event::EVENT_LOGO). $event->logo;
+            if (file_exists($pathLogo)){
+                @unlink($pathLogo);
             }
             $requestlogo = $request->logo;
             $logoname = md5($requestlogo->getClientOriginalName() . strtotime("now")) . "." . $requestlogo->extension();
@@ -201,6 +202,8 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
+        $pathLogo = public_path(Event::EVENT_LOGO). $event->logo;
+            @unlink($pathLogo);
         $event_images = $event->event_image;
         if($event->delete()) {
             foreach($event_images as $event_image){

@@ -10,6 +10,7 @@
     <script src="/js/jquery.bootgrid.js"></script>
     <script src="/js/jquery.bootgrid.fa.js"></script>
     <script src="/js/iziToast.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="/js/bootgrid.js"></script>
 @endpush
 
@@ -45,11 +46,11 @@
                     <th data-column-id="id" >Código</th>
                     <th data-column-id="name" data-order="desc" data-sortable="true">Nome</th>
                     <th data-column-id="contact" data-sortable="true">Contato</th>
-                    <th data-column-id="start_date" data-sortable="true">Data de inicio</th>
-                    <th data-column-id="final_date" data-sortable="true">Data de encerramento</th>
-                    <th data-column-id="city_id" data-sortable="true">Cidade</th>
-                    <th data-column-id="address" data-sortable="true">Endereço</th>
-                    <th data-column-id="district" data-sortable="true">Bairro</th> 
+                    <th data-column-id="start_date" data-sortable="true" data-formatter="dateTime">Data de inicio</th>
+                    <th data-column-id="final_date" data-sortable="true" data-formatter="dateTime">Data de encerramento</th>
+                    <th data-column-id="city_name" data-sortable="true">Cidade</th>
+                    <th data-column-id="address" data-sortable="true" data-visible="false">Endereço</th>
+                    <th data-column-id="district" data-sortable="true" data-visible="false">Bairro</th>
                     <th data-column-id="commands" data-formatter="commands" data-sortable="false">Ações</th>
                 </tr>
                 </thead>
