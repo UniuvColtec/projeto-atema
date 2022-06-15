@@ -8,7 +8,7 @@
               <span>Adicionar...</span>
               <input type="file" name="files[]" multiple accept="image/png, image/jpeg" />
             </span>
-            <button type="submit" class="btn btn-primary start">
+            <button type="submit" id="fileupload-start" class="btn btn-primary start">
                 <i class="fas fa-upload"></i>
                 <span>Iniciar envio</span>
             </button>

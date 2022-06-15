@@ -4,7 +4,8 @@ $(document).ready(function(){
 
         beforeSubmit: function(){
             if ($(".imagemPendente").length>0) {
-                iziToast.warning({message: 'Existem imagem não enviadas, clique em "Iniciar envio"'});
+                $("#fileupload-start").trigger('click');
+                iziToast.warning({message: 'Existem imagem não enviadas, aguarde enviar as imagens.'});
                 return false;
             }
         },
