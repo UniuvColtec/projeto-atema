@@ -43,6 +43,9 @@
                     ['view', ['fullscreen', 'codeview', 'help']]
                 ]
             });
+            $('#myModal').on('shown.bs.modal', function () {
+                $('#myInput').trigger('focus')
+            });
         })
 
 
@@ -163,16 +166,40 @@
                                         </div>
                                         <div class="form-group">
                                             <div class="row">
-                                                <div class="col-2" id="coordinates">
+                                                <div class="col-3" id="coordinates">
                                                     <label for="Latitude">Latitude: </label>
                                                     <input type="text" name="latitude" id="latitude" class="form-control" value="{{ $event->latitude }}" readonly>
                                                 </div>
-                                                <div class="col-2">
+                                                <div class="col-3">
                                                     <label for="longitude">Longitude: </label>
                                                     <input type="text" name="longitude" id="longitude" class="form-control" value="{{ $event->longitude }}" readonly>
                                                 </div>
+                                                <div class="col-3" id="map">
+                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mapModal">
+                                                        Abrir Mapa
+                                                    </button>
+                                                    <div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="mapModalLable" aria-hidden="true">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="mapModalLable">Mapa</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                    <div class="modal-body">
+                                                                        OOLKJASKDJHASDK
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <a href="https://www.google.com.br/maps/@ {{ $event->latitude }},{{ $event->longitude }},15z">Ir para o mapa</a>
+                                            {{-- <a href="https://www.google.com.br/maps/@ {{ $event->latitude }},{{ $event->longitude }},15z">Ir para o mapa</a> --}}
                                         </div>
                                         <div class="form-group">
                                             <label for="localization">Localização:</label>
