@@ -6,6 +6,7 @@ $(document).ready(function(){
             if ($(".imagemPendente").length>0) {
                 $("#fileupload-start").trigger('click');
                 iziToast.warning({message: 'Existem imagem não enviadas, aguarde enviar as imagens.'});
+               // setTimeout(submitForm,60000);
                 return false;
             }
         },

@@ -6,7 +6,7 @@
             <span class="btn btn-success fileinput-button">
              <i class="far fa-plus"></i>
               <span>Adicionar...</span>
-              <input type="file" name="files[]" multiple accept="image/png, image/jpeg" />
+              <input id="input" type="file" name="files[]" multiple accept="image/png, image/jpeg" />
             </span>
             <button type="submit" id="fileupload-start" class="btn btn-primary start">
                 <i class="fas fa-upload"></i>

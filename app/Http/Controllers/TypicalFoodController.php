@@ -22,6 +22,7 @@ class TypicalFoodController extends Controller
         $this->optionsUpload['upload_url'] = url(env('FILE_UPLOAD')) . '/';
     }
     /**
+     *
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response

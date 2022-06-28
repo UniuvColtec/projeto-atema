@@ -30,7 +30,20 @@
             ]
         });
 
+        if(!document.getElementById('buttonload').disabled) {
 
+            document.getElementById('buttonload').onclick = function () {
+                this.textContent = 'Carregando…';
+                submitForm();
+            }
+        }
+        else {
+            document.getElementById('buttonload').onclick = function () {
+                this.textContent = 'Salvar';
+                submitForm();
+
+            }
+        }
     </script>
 @endpush
 
@@ -78,7 +91,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-success">Salvar</button>
+                            <button id="buttonload" type="submit" name="buttonload" class="btn btn-success">Salvar</button>
                         </div>
                     </form>
                 </div>
