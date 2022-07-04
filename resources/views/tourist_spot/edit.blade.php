@@ -107,7 +107,6 @@
                                 </div>
                             </div>
                             <div class="bs-stepper-content">
-                                <!-- your steps content here -->
                                 <div id="information-part" class="content" role="tabpanel" aria-labelledby="information-part-trigger">
                                     <div class="card-body">
                                         <div class="form-group">
@@ -116,12 +115,12 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="description">Descrição:</label>
-                                            <textarea id="description" name="description" required  >{{ $tourist_spot->description }}</textarea>
+                                            <textarea name="description" id="description" class="form-control" placeholder="Descrição" required>{{ $tourist_spot->description }}</textarea>
                                         </div>
-                                    </div>
-                                    <div class="card-footer">
-                                        <button type="button" class="btn btn-primary" onclick="stepper.next()">Próximo</button>
-                                        <button type="submit" class="btn btn-success">Salvar</button>
+                                        <div class="card-footer">
+                                            <button type="button" class="btn btn-primary" onclick="stepper.next()">Próximo</button>
+                                            <button type="submit" class="btn btn-success">Salvar</button>
+                                        </div>
                                     </div>
                                 </div>
                                 <div id="localization-part" class="content" role="tabpanel" aria-labelledby="localization-part-trigger">

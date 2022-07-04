@@ -121,44 +121,40 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                                <div class="card-body">
-                                    <div id="localization-part" class="content" role="tabpanel" aria-labelledby="localization-part-trigger">
-                                        <div class="card-body">
-                                            <div class="form-group">
-                                                <label for="cities">Cidade:</label>
-                                                <select name="cities" id="cities" class="form-control select2 " required >
-                                                    <option value="">- Selecione uma Cidade -</option>
-                                                    @foreach($cities as $city)
-                                                        <option value="{{$city->id}}">{{$city->name}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="address">RUA:</label>
-                                                <input type="text" class="form-control" id="address" name="address" placeholder="Rua exemplo 1111" required >
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="district">Bairro:</label>
-                                                <input type="text" class="form-control" id="district" name="district" placeholder="" required >
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="localization">Localização:</label>
-                                                <input type="text" name="localization" id="localization" class="form-control" placeholder="Localização" required >
-                                            </div>
-                                            <div class="card-footer">
-                                                <button type="button" class="btn btn-info" onclick="stepper.previous()">Anterior</button>
-                                                <button type="button" class="btn btn-primary" onclick="stepper.next()">Próximo</button>
-                                            </div>
+                                <div id="localization-part" class="content" role="tabpanel" aria-labelledby="localization-part-trigger">
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label for="cities">Cidade:</label>
+                                            <select name="cities" id="cities" class="form-control select2 " required >
+                                                <option value="">- Selecione uma Cidade -</option>
+                                                @foreach($cities as $city)
+                                                    <option value="{{$city->id}}">{{$city->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="address">RUA:</label>
+                                            <input type="text" class="form-control" id="address" name="address" placeholder="Rua exemplo 1111" required >
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="district">Bairro:</label>
+                                            <input type="text" class="form-control" id="district" name="district" placeholder="" required >
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="localization">Localização:</label>
+                                            <input type="text" name="localization" id="localization" class="form-control" placeholder="Localização" required >
+                                        </div>
+                                        <div class="card-footer">
+                                            <button type="button" class="btn btn-info" onclick="stepper.previous()">Anterior</button>
+                                            <button type="button" class="btn btn-primary" onclick="stepper.next()">Próximo</button>
                                         </div>
                                     </div>
                                 </div>
-
                                 <div id="image-part" class="content" role="tabpanel" aria-labelledby="image-part-trigger">
-                                        <div class="card-body">
-                                            <h3>Imagens</h3>
-                                            @include('tourist_spot.image')
-                                        </div>
+                                    <div class="card-body">
+                                        <h3>Imagens</h3>
+                                        @include('tourist_spot.image')
+                                    </div>
                                     <div class="card-footer">
                                         <button type="button" class="btn btn-info" onclick="stepper.previous()">Anterior</button>
                                         <button type="submit" class="btn btn-success btn-submit">Salvar</button>
@@ -171,4 +167,5 @@
             </div>
         </div>
     </div>
+
 @endsection
