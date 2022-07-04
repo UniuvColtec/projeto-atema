@@ -163,7 +163,7 @@
                                     </div>
                                     <div class="card-footer">
                                         <button type="button" class="btn btn-info" onclick="stepper.previous()">Anterior</button>
-                                        <button type="submit" class="btn btn-success">Salvar</button>
+                                        <button type="submit" class="btn btn-success btn-submit">Salvar</button>
                                     </div>
                                 </div>
                             </div>
