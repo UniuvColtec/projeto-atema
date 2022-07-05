@@ -10,7 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
     <script src="/js/iziToast.min.js" type="text/javascript"></script>
     <script src="/js/jquery.form.min.js" type="text/javascript"></script>
-    <script src="/js/formAjaxCadastrar.js" type="text/javascript"></script>
+    <script src="/js/formAjaxAlterar.js" type="text/javascript"></script>
     <script>
         $(document).ready(function(){
             $(".select2").select2();
@@ -30,20 +30,6 @@
             ]
         });
 
-        if(!document.getElementById('buttonload').disabled) {
-
-            document.getElementById('buttonload').onclick = function () {
-                this.textContent = 'Carregando…';
-                submitForm();
-            }
-        }
-        else {
-            document.getElementById('buttonload').onclick = function () {
-                this.textContent = 'Salvar';
-                submitForm();
-
-            }
-        }
     </script>
 @endpush
 
@@ -91,7 +77,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <button id="buttonload" type="submit" name="buttonload" class="btn btn-success">Salvar</button>
+                            <button id="buttonload" type="submit" name="buttonload" class="btn btn-success btn-submit">Salvar</button>
                         </div>
                     </form>
                 </div>

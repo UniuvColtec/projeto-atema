@@ -1,16 +1,40 @@
+var jsonForm;
+var intervalSubmit;
+
 $(document).ready(function(){
-    $('.jsonForm').ajaxForm({
+    var btnSubmitText = '';
+    const btnSubmit = $(".btn-submit");
+    jsonForm = $('.jsonForm');
+
+    jsonForm.ajaxForm({
         dataType:  'json',
 
         beforeSubmit: function(){
             if ($(".imagemPendente").length>0) {
                 $("#fileupload-start").trigger('click');
-                iziToast.warning({message: 'Existem imagem não enviadas, aguarde enviar as imagens.'});
-               // setTimeout(submitForm,60000);
+                if (btnSubmitText==''){
+                    iziToast.warning({
+                        message: 'Existem imagem não enviadas, aguarde enviar as imagens.',
+                        onClosed: function(){
+                            intervalSubmit = setInterval( () => {
+                                jsonForm.trigger('submit')
+                            },2000);
+                        }
+                    });
+
+                    btnSubmitText = $(".btn-submit").text();
+                    btnSubmit.attr("disabled", "true").html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span class="sr-only">Carregando...</span>')
+                }
+
                 return false;
+            }else{
+                clearInterval(intervalSubmit);
             }
         },
         success:   function(d){
+            if (btnSubmitText!=''){
+                btnSubmit.removeAttr('disabled').text(btnSubmitText);
+            }
             if (d.status==0){
                 iziToast.error({
                     message: d.message

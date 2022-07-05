@@ -1,16 +1,3 @@
-function submitForm() {
-    document.getElementById("buttonload").disabled = true;
-    document.getElementById("input").addEventListener("input", function (event) {
-        var form = document.getElementById("input").value;
-
-        if (form !== null && form !== '') {
-            document.getElementById("buttonload").disabled = false;
-        } else {
-            document.getElementById("buttonload").disabled = true;
-        }
-    });
-}
-
 $(document).ready(function(){
     $('.jsonForm').ajaxForm({
     dataType:  'json',
