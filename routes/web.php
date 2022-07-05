@@ -24,9 +24,11 @@ use App\Http\Controllers\ProfileController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+  //  return view('welcome');
+//});
+Route::get('/', [\App\Http\Controllers\web\HomeSiteController::class, 'home'])->name('web.home');
+
 
 Auth::routes();
 
@@ -87,5 +89,7 @@ Route::prefix('admin')->middleware('auth')->group(function(){
 
     Route::get('password', [UserController::class, 'getPassword'])->name('password.index');
     Route::post('password', [UserController::class, 'postPassword'])->name('password.save');
+
+
 });
 
