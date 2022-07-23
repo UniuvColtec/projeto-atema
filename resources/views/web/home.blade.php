@@ -51,7 +51,7 @@
                     </div>
                 </div>
             </a>
-            <a href="#">
+            <a href="{{ route('partner') }}">
                 <div class="card h-100 py-3">
                     <div class="card-body d-flex justify-content-evenly align-items-center flex-column flex-sm-row gap-3 gap-sm-0">
                         <img src="assets/img/botoes-home/parceiros.svg" width="50">

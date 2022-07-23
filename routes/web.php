@@ -28,7 +28,7 @@ use App\Http\Controllers\ProfileController;
   //  return view('welcome');
 //});
 Route::get('/', [\App\Http\Controllers\web\HomeSiteController::class, 'home'])->name('web.home');
-
+Route::get('/', [\App\Http\Controllers\web\RoutePartners::class, 'partner'])->name('partner');
 
 Auth::routes();
 
@@ -38,6 +38,7 @@ Route::prefix('admin')->middleware('auth')->group(function(){
         return view('home');
     })->name('home');
 
+
     Route::post('partner/bootgrid', [PartnerController::class, 'bootgrid'])->name('partner.bootgrid');
     Route::get('partner/image', [PartnerController::class, 'image'])->name('partner.image');
     Route::get('partner/uploadimage/{partner_id?}', [PartnerController::class, 'uploadImageGet'])->name('partner.uploadImageGet');
@@ -45,6 +46,7 @@ Route::prefix('admin')->middleware('auth')->group(function(){
     Route::put('partner/uploadimage/{partner_id?}', [PartnerController::class, 'uploadImagePost'])->name('partner.uploadImagePost');
     Route::delete('partner/uploadimage/{partner_id?}', [PartnerController::class, 'uploadImageDelete'])->name('partner.uploadImageDelete');
     Route::resource('partner', PartnerController::class);
+
 
 
     Route::post('city/bootgrid', [CityController::class, 'bootgrid'])->name('city.bootgrid');
@@ -89,6 +91,8 @@ Route::prefix('admin')->middleware('auth')->group(function(){
 
     Route::get('password', [UserController::class, 'getPassword'])->name('password.index');
     Route::post('password', [UserController::class, 'postPassword'])->name('password.save');
+
+
 
 
 });
