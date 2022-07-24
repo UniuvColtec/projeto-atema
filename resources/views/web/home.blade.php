@@ -39,14 +39,14 @@
                     </div>
                 </div>
             </a>
+            <a href="{{ route('web.partner') }}">
                 <div class="card h-100 py-3">
                     <div class="card-body d-flex justify-content-evenly align-items-center flex-column flex-sm-row gap-3 gap-sm-0">
-                        <a href="{{ route('web.partner') }}">
                             <img src="assets/img/botoes-home/parceiros.svg" width="50">
                             <p class="m-0 p-0">Parceiros</p>
-                        </a>
                     </div>
                 </div>
+            </a>
             <a href="{{ route('web.typicalfood') }}">
                 <div class="card h-100 py-3">
                     <div class="card-body d-flex justify-content-evenly align-items-center flex-column flex-sm-row gap-3 gap-sm-0">
