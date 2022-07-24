@@ -12,6 +12,11 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\TouristSpotController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\frontend\HomeSiteController;
+use App\Http\Controllers\frontend\FrontendPartnerController;
+use App\Http\Controllers\frontend\FrontendEventController;
+use App\Http\Controllers\frontend\FrontendTypicalFoodController;
+use App\Http\Controllers\frontend\FrontendTouristSpotController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,17 +29,25 @@ use App\Http\Controllers\ProfileController;
 |
 */
 
-//Route::get('/', function () {
-  //  return view('welcome');
-//});
-Route::get('/', [\App\Http\Controllers\web\HomeSiteController::class, 'home'])->name('web.home');
-Route::get('/', [\App\Http\Controllers\web\RoutePartners::class, 'partner'])->name('partner');
+Route::get('/', [HomeSiteController::class, 'index'])->name('web.index');
+Route::get('/parceiro/{partner}', [FrontendPartnerController::class, 'show'])->name('web.partner.show');
+Route::get('/parceiro', [FrontendPartnerController::class, 'index'])->name('web.partner');
+Route::get('/evento/mapa', [FrontendEventController::class, 'map'])->name('web.event.map');
+Route::get('/evento/{event}', [FrontendEventController::class, 'show'])->name('web.event.show');
+Route::get('/evento', [FrontendEventController::class, 'index'])->name('web.event');
+Route::get('/comida-tipica/{typical_food}', [FrontendTypicalFoodController::class, 'show'])->name('web.typicalfood.show');
+Route::get('/comida-tipica', [FrontendTypicalFoodController::class, 'index'])->name('web.typicalfood');
+Route::get('/ponto-turistico/{tourist_spot}', [FrontendTouristSpotController::class, 'show'])->name('web.touristspot.show');
+Route::get('/ponto-turistico', [FrontendTouristSpotController::class, 'index'])->name('web.touristspot');
+
+Route::get('/quem-somos', [\App\Http\Controllers\frontend\AboutController::class, 'index'])->name('web.about');
+Route::get('/contato', [\App\Http\Controllers\frontend\ContactController::class, 'index'])->name('web.contact');
 
 Auth::routes();
 
 
 Route::prefix('admin')->middleware('auth')->group(function(){
-    Route::get('/home', function() {
+    Route::get('/', function() {
         return view('home');
     })->name('home');
 
@@ -91,9 +104,6 @@ Route::prefix('admin')->middleware('auth')->group(function(){
 
     Route::get('password', [UserController::class, 'getPassword'])->name('password.index');
     Route::post('password', [UserController::class, 'postPassword'])->name('password.save');
-
-
-
 
 });
 

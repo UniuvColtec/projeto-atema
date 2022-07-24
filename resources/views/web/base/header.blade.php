@@ -1,7 +1,7 @@
 <header>
     <nav class="navbar navbar-expand-lg py-4" id="header-navbar">
         <div class="container-md">
-            <a class="navbar-brand " href="index.html"><img src="assets/img/calendario-integrado-logo.png" alt="Calendário Integrado"></a>
+            <a class="navbar-brand " href="/"><img src="{{ asset('assets/img/calendario-integrado-logo.png') }}" alt="Calendário Integrado"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,13 +14,13 @@
                 </form>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Quem Somos</a>
+                        <a class="nav-link" href="{{ route('web.about') }}">Quem Somos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contato</a>
+                        <a class="nav-link" href="{{ route('web.contact') }}">Contato</a>
                     </li>
                 </ul>
             </div>

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Bootgrid;
 use App\Maps;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
@@ -31,6 +32,36 @@ class Event extends Model
         return $bootgrid;
 
     }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        self::creating(function($model){
+            $model->showDate();
+        });
+
+        self::updating(function($model){
+            $model->showDate();
+        });
+    }
+
+    public function showDate()
+    {
+        if (!$this->start_date || !$this->final_date) return;
+
+        $start_date = Carbon::create($this->start_date);
+        $final_date = Carbon::create($this->final_date);
+
+        if ($start_date->month != $final_date->month){
+            $this->show_date = "{$start_date->day} de {$start_date->monthName} à {$final_date->day} de {$final_date->monthName}";
+        }else if ($start_date->day != $final_date->day){
+            $this->show_date = "{$start_date->day} à {$final_date->day} de {$final_date->monthName}";
+        }else{
+            $this->show_date = "{$final_date->day} de {$final_date->monthName}";
+        }
+    }
+
     public function getCoordinates($link) {
         $coordenadas = Maps::getCoordinates($link);
 
@@ -55,7 +86,12 @@ class Event extends Model
     }
     public function city(){
         return $this->belongsTo(City::class);
-
     }
+
+    public function firstImage()
+    {
+        return $this->hasOne(Image_events::class)->with('image');
+    }
+
 }
 

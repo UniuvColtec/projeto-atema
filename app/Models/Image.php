@@ -21,7 +21,7 @@ class Image extends Model
         $bootgrid = new Bootgrid();
         $bootgrid->query($this, $request, ['address']);
         return $bootgrid;
-
     }
+
 }
 

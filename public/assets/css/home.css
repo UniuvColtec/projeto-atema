@@ -1,12 +1,3 @@
-@font-face {
-    font-family: 'Montserrat Light';
-    src: url("../fonts/Montserrat-Light.ttf");
-}
-
-@font-face {
-    font-family: 'Montserrat Bold';
-    src: url("../fonts/Montserrat-Bold.ttf");
-}
 
 :root {
     --ci-color-orange: #FFBB13;
@@ -15,9 +6,13 @@
 }
 
 * {
-    font-family: "Montserrat Bold";
+    font-family: "Montserrat";
     color: var(--ci-color-gray);
     text-decoration: none !important;
+}
+
+body {
+    background: #f1f1f1;
 }
 
 header {
@@ -25,7 +20,8 @@ header {
 }
 
 .font-light {
-   font-family: "Montserrat Light";
+    font-family: "Montserrat";
+    font-weight: 300;
 }
 
 .home-action-buttons .card {

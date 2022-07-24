@@ -4,7 +4,7 @@
             <div class="row row-cols-1 text-center row-cols-md-2 text-md-start">
                 <div>
                     <img src="assets/img/calendario-integrado-logo-branca.png">
-                    <p class="text-white py-3" style="font-family: 'Montserrat Light'">
+                    <p class="text-white py-3 font-light">
                         Desenvolvimento Regional:<br>
                         Plataforma de integração do<br>
                         Território Iguaçu para mapeamento<br>
@@ -37,7 +37,7 @@
             </div>
             <div class="row row-cols-1 row-cols-md-2 text-center text-md-start pt-4">
                 <div class="d-flex align-items-center">
-                    <small class="text-white font-light">© 2022 Calendário Integrado. Todos os direitos
+                    <small class="text-white font-light">© {{ date("Y") }} Calendário Integrado. Todos os direitos
                         reservados.</small>
                 </div>
                 <div class="text-center text-md-start pt-5 pt-md-0">

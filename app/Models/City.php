@@ -20,6 +20,10 @@ class City extends Model
         $bootgrid = new Bootgrid();
         $bootgrid->query($this, $request, ['name', 'state']);
         return $bootgrid;
+    }
 
+    public function user()
+    {
+        return $this->hasMany(User::class);
     }
 }
