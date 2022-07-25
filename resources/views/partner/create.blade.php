@@ -7,7 +7,7 @@
 
 @push('js')
     <script src=" {{ asset('js/bs-stepper.js') }}" type="text/javascript"></script>
-    <script src="/js/formAjaxCadastrar.js" type="text/javascript"></script>
+    <script src="/js/formAjaxAlterar.js" type="text/javascript"></script>
     <script src="/js/iziToast.min.js" type="text/javascript"></script>
     <script src="/js/jquery.form.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="/js/jquery.mask.js"></script>
@@ -209,7 +209,7 @@
                                 </div>
                                 <div class="card-footer">
                                     <button type="button" class="btn btn-info" onclick="stepper.previous()">Anterior</button>
-                                    <button type="submit" class="btn btn-success">Salvar</button>
+                                    <button id="buttonload" type="submit" name="buttonload" class="btn btn-success btn-submit">Salvar</button>
                                 </div>
                             </div>
                         </div>

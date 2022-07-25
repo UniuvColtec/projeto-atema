@@ -86,6 +86,10 @@
                             <label for="district">Distrito:</label>
                             {{ $partner->district }}
                         </div>
+                            <div class="form-group">
+                                <label for="image">Imagem: </label>
+                                {{ $partner->image }}
+                            </div>
                             <div class="form-group ">
                                 <label for="localization">Localização:</label>
                                 <br>
@@ -101,7 +105,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="logo">Logo:</label>
-                                <img src="{{$partner->getUrlLogo()}}" alt="{{$partner->title}}" class="img-thumbnail">
+                                <img src="{{$partner->getUrlLogo()}}" alt="{{$partner->title}}" class="rounded float-leftl">
                             </div>
                             <div class="form-group">
 
