@@ -120,7 +120,9 @@ class EventController extends Controller
         $categories = Category::all();
         $typical_event_foods = Typical_event_food::all();
         $typical_foods = Typical_food::all();
-        return view('event.show', compact('event','cities','event_categories','categories','typical_event_foods','typical_foods'));
+        $images = Image::all();
+        $image_events = Image_events::all();
+        return view('event.show', compact('event','cities','event_categories','categories','typical_event_foods','typical_foods','images','image_events'));
     }
 
     /**

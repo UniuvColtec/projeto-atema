@@ -119,7 +119,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="website">Url do site do evento:</label>
-                                            <input type="text" name="website" id="website" class="form-control" placeholder="Url" required>
+                                            <input type="text" name="website" id="website" class="form-control" placeholder="Url">
                                         </div>
                                         <div class="form-group">
                                             <label for="description">Descrição:</label>
@@ -127,11 +127,11 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="start_date">Data de início:</label>
-                                            <input type="datetime-local" name="start_date" id="start_date" class="form-control" placeholder="Data de início" required value="2022-06-29T10:10" min="{{ $todays_date }}">
+                                            <input type="datetime-local" name="start_date" id="start_date" class="form-control" placeholder="Data de início" required value="{{ $todays_date }}" min="{{ $todays_date }}">
                                         </div>
                                         <div class="form-group">
                                             <label for="final_date">Data de encerramento:</label>
-                                            <input type="datetime-local" name="final_date" id="final_date" class="form-control" placeholder="Data de encerramento" required value="2022-06-30T10:10" min="{{ $todays_date }}">
+                                            <input type="datetime-local" name="final_date" id="final_date" class="form-control" placeholder="Data de encerramento" required value="{{ $todays_date }}" min="{{ $todays_date }}">
                                         </div>
                                     </div>
                                     <div class="card-footer">
@@ -204,7 +204,7 @@
                                     </div>
                                     <div class="card-footer">
                                         <button type="button" class="btn btn-info" onclick="stepper.previous()">Anterior</button>
-                                        <button type="submit" class="btn btn-success btn-submit">Salvar</button>
+                                        <button type="submit" id="buttonload" name="buttonload" class="btn btn-success btn-submit">Salvar</button>
                                     </div>
                                 </div>
                             </div>

@@ -27,12 +27,11 @@ class EventRequest extends FormRequest
             'name' => 'required',
             'description' => 'required',
             'contact' => 'required',
-            'start_date' => 'required',
-            'final_date' => 'required',
+            'start_date' => 'required|date',
+            'final_date' => 'required|date|after:start_date',
             'cities' => 'required',
             'address' => 'required',
-            'district' => 'required',
-            'website' => 'required'
+            'district' => 'required'
         ];
     }
 
@@ -45,9 +44,9 @@ class EventRequest extends FormRequest
             'address.required' => 'Endereço é obrigatório',
             'start_date.required' => 'Data de inicio é obrigatória',
             'final_date.required' => 'Data de término é obrigatória',
+            'final_date.after' => 'Data de término deve ser após o inicio',
             'district.required' => 'Bairro é obrigatório',
             'cities.required' => 'Cidade é obrigatória',
-            'website.required' => 'A URL é obrigatória'
         ];
     }
 }

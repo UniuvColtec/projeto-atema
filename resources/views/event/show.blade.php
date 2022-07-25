@@ -74,15 +74,38 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="description">Descrição:</label>
+
+
                                             {!!$event->description!!}
                                         </div>
                                         <div class="form-group">
-                                            <label for="start_date">Data de início:</label>
-                                            {{ $event->start_date }}
+                                            <label for="categories">Categorias:</label>
+                                            {{-- {{ $event->event_category->category }} --}}
+                                            @foreach($event_categories as $event_category)
+                                                @if($event_category->event_id == $event->id)
+                                                    @foreach($categories as $category)
+                                                        @if($event_category->category_id == $category->id)
+                                                            {{ $category->name }}
+                                                        @endif
+                                                    @endforeach
+                                                @endif
+                                            @endforeach
                                         </div>
                                         <div class="form-group">
-                                            <label for="final_date">Data de encerramento:</label>
-                                            {{ $event->final_date }}
+                                            <label for="typical_foods">Comidas Típicas:</label>
+                                            @foreach($typical_event_foods as $typical_event_food)
+                                                @if($typical_event_food->event_id == $event->id)
+                                                    @foreach($typical_foods as $typical_food)
+                                                        @if($typical_event_food->typical_food_id == $typical_food->id)
+                                                            {{ $typical_food->name }}
+                                                        @endif
+                                                    @endforeach
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="start_date">Data:</label>
+                                            {{ $event->show_date }}
                                         </div>
                                         <div class="form-group">
                                             <label for="cities">Cidade</label>
@@ -98,43 +121,19 @@
                                             <label for="district">Bairro:</label>
                                             {{ $event->district }}
                                         </div>
-                                        <div class="form-group">
-                                            <label for="logo">Logo:</label>
-                                            <img src="{{$event->getUrlLogo()}}" alt="{{$event->title}}" class="img-thumbnail">
-                                        </div>
+
                                         <div class="form-group">
                                             <label for="localization">Localização:</label>
                                             <br>
                                             {!! $event->renderMap($event->latitude, $event->longitude) !!}
                                         </div>
                                         <div class="form-group">
+                                            <label for="logo">Logo:</label>
+                                            <br>
+                                            <img src="{{$event->getUrlLogo()}}" alt="{{$event->title}}" class="img-thumbnail" style="max-width: 266px; max-height: 266px;">
+                                        </div>
+                                        <div class="form-group">
                                             <label for="image">Imagem:</label>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="typical_foods">Comidas Típicas:</label>
-                                            @foreach($typical_event_foods as $typical_event_food)
-                                                @if($typical_event_food->event_id == $event->id)
-                                                    @foreach($typical_foods as $typical_food)
-                                                        @if($typical_event_food->typical_food_id == $typical_food->id)
-                                                            {{ $typical_food->name }}
-                                                        @endif
-                                                    @endforeach
-                                                @endif
-                                            @endforeach
-
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="categories">Categorias:</label>
-                                            {{-- {{ $event->event_category->category }} --}}
-                                            @foreach($event_categories as $event_category)
-                                                @if($event_category->event_id == $event->id)
-                                                    @foreach($categories as $category)
-                                                        @if($event_category->category_id == $category->id)
-                                                            {{ $category->name }}
-                                                        @endif
-                                                    @endforeach
-                                                @endif
-                                            @endforeach
                                         </div>
                                     </div>
                     </form>

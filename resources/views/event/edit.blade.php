@@ -128,7 +128,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="website">Url do site do evento:</label>
-                                            <input type="text" name="website" id="website" class="form-control" placeholder="Url" value="{{ $event->website }}" required>
+                                            <input type="text" name="website" id="website" class="form-control" placeholder="Url" value="{{ $event->website }}">
                                         </div>
                                         <div class="form-group">
                                             <label for="description">Descrição:</label>
