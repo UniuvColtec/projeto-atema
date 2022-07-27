@@ -14,6 +14,7 @@ use App\Models\Typical_event_food;
 use App\Models\Typical_food;
 use App\Response;
 use App\UploadHandler;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -49,6 +50,7 @@ class EventController extends Controller
         $typical_foods = Typical_food::all();
         $categories = Category::all();
         $todays_date = date('Y-m-d\TH:i:s');
+//        $todays_date = Carbon::now()->addDay()->format('Y-m-d\TH:i:s');
         return view('event.create', compact('cities','typical_foods','categories','todays_date'));
     }
 

@@ -131,7 +131,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="final_date">Data de encerramento:</label>
-                                            <input type="datetime-local" name="final_date" id="final_date" class="form-control" placeholder="Data de encerramento" required value="{{ $todays_date }}" min="{{ $todays_date }}">
+                                            <input type="datetime-local" name="final_date" id="final_date" class="form-control" placeholder="Data de encerramento" required value="{{ \Carbon\Carbon::now()->addDay()->format('Y-m-d\TH:i:s') }}" min="{{ $todays_date }}">
                                         </div>
                                     </div>
                                     <div class="card-footer">

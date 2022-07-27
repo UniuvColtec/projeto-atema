@@ -105,7 +105,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="logo">Logo:</label>
-                                <img src="{{$partner->getUrlLogo()}}" alt="{{$partner->title}}" class="rounded float-leftl">
+                                <img src="{{$partner->getUrlLogo()}}" alt="{{$partner->title}}" class="rounded float-leftl" style="max-width: 266px; max-height: 266px;">
                             </div>
                             <div class="form-group">
 

@@ -13,14 +13,16 @@ class FrontendEventController extends Controller
         return 'eventos - listagem';
     }
 
-    function show(Event $event)
+    function show(int $id)
     {
+        $event =  Event::findOrFail($id);
+        echo $event->images[0]->image->address;
         dd($event);
     }
 
     function map()
     {
-        return 'mapa';
+        return 'mapa - exibir todos as Geo Localização';
     }
 
 }

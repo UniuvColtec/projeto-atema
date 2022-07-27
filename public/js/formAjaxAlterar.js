@@ -54,8 +54,12 @@ $(document).ready(function(){
                 document.location = '/'
             }
             if (d.status===422){
-                var message = '';
-                var errors = d.responseJSON.errors
+                if (btnSubmitText!=''){
+                    btnSubmit.removeAttr('disabled').text(btnSubmitText);
+                }
+
+                let message = '';
+                let errors = d.responseJSON.errors
 
                 $.each(errors, function(key, value){
                     message += '- ' + value + '<br>'

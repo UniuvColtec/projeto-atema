@@ -13,8 +13,10 @@ class FrontendTouristSpotController extends Controller
         return 'pontos turisticos - listagem';
     }
 
-    function show(Tourist_spot $tourist_spot)
+    function show(int $id)
     {
+        $tourist_spot =  Tourist_spot::findOrFail($id);
+        echo $tourist_spot->tourist_spot_image;
         dd($tourist_spot);
     }
 }

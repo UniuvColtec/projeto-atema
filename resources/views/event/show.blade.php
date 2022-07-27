@@ -134,6 +134,10 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="image">Imagem:</label>
+                                            @foreach($event->images as $image)
+                                                <img class="card-img-top w-100 h-auto" src="{{ asset('files/' . $event->firstImage->image->address) }}"
+                                                     alt="{{ $event->name }}" style="max-width: 500px; max-height: 400px;">
+                                            @endforeach
                                         </div>
                                     </div>
                     </form>

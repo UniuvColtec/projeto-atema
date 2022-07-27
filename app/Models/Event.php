@@ -88,6 +88,11 @@ class Event extends Model
         return $this->belongsTo(City::class);
     }
 
+    public function images()
+    {
+        return $this->hasMany(Image_events::class)->with('image');
+    }
+
     public function firstImage()
     {
         return $this->hasOne(Image_events::class)->with('image');
