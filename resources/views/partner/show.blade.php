@@ -41,56 +41,18 @@
         <div class="row">
             <div class="col-12">
                 <div class="card card-primary">
-                    <h1> Parceiro - Exibir</h1>
+                    <img src="{{$partner->getUrlLogo()}}" alt="{{$partner->title}}" class="align-self-center mr-3 border-success" style="max-width: 200px; max-height: 200px;">
+                    <h2 class="text-center"> {{ $partner->name }}</h2>
                     <div class="card-body">
                         <form action="{{ route('partner.destroy', ['partner' =>$partner->id]) }}" method="post">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
-                        <div class="form-group">
-                            <label for="nome">ID: </label>
-                            {{ $partner->id }}
+                            <div class="">
+                                {!!$partner->description!!}
                             </div>
-                        <div class="form-group">
-                            <label for="nome">Nome:</label>
-                            {{ $partner->name }}
-                            </div>
-                        <div class="form-group">
-                            <label for="cities">Cidade:</label>
-                            {{ $partner->city->name }}
-                        </div>
-                        <div class="form-group">
-                            <label for="partner_type_id">Tipo:</label>
-                            {{ $partner->partner_type->name }}
-                        </div>
-                            <div class="form-group">
-                                <label for="cnpj">CNPJ:</label>
-                                {{ $partner->cnpj }}
-                            </div>
-                        <div class="form-group">
-                            <label for="email">Email:</label>
-                            {{ $partner->email }}
-                        </div>
-                        <div class="form-group">
-                            <label for="site">Site:</label>
-                            {{ $partner->site }}
-                        </div>
-                        <div class="form-group">
-                            <label for="telephone">Telefone:</label>
-                            {{ $partner->telephone}}
-                        </div>
-                        <div class="form-group">
-                            <label for="address">Endereço:</label>
-                            {{ $partner->address }}
-                        </div>
-                        <div class="form-group">
-                            <label for="district">Distrito:</label>
-                            {{ $partner->district }}
-                        </div>
-                            <div class="form-group">
-                                <label for="image">Imagem: </label>
-                                {{ $partner->image }}
-                            </div>
-                            <div class="form-group ">
+                            <div class="container-fluid">
+                                <label for="address">Endereço:</label>
+                                {{ $partner->city->name }}, {{ $partner->address }}, {{ $partner->district }}
                                 <label for="localization">Localização:</label>
                                 <br>
                                 <iframe  src="https://maps.google.com/maps?q={{ $partner->latitude }},{{ $partner->longitude }}&hl=pt-br&z=17&amp;output=embed"
@@ -103,17 +65,22 @@
                                         referrerpolicy="no-referrer-when-downgrade">
                                 </iframe>
                             </div>
-                            <div class="form-group">
-                                <label for="logo">Logo:</label>
-                                <img src="{{$partner->getUrlLogo()}}" alt="{{$partner->title}}" class="rounded float-leftl" style="max-width: 266px; max-height: 266px;">
+                            <div class="container-fluid">
+                                <div class="form-group">
+                                    <label class="nav-icon far fa-envelope"></label>
+                                    {{ $partner->email }}
+                                    <br>
+                                    <label class="fa-brands fa-firefox-browser"></label>
+                                    {{ $partner->site }}
+                                    <br>
+                                    <label class="fa-solid fa-phone"></label>
+                                    {{ $partner->telephone}}
+                                    <br>
+                                    <label for="cnpj">CNPJ:</label>
+                                    {{ $partner->cnpj }}
+                                </div>
+
                             </div>
-                            <div class="form-group">
-
-                                <label for="description">Descrição:</label>
-
-
-                                {!!$partner->description!!}
-                        </div>
                         </form>
                     </div>
                 </div>
@@ -121,3 +88,11 @@
         </div>
     </div>
 @endsection
+<div class="form-group">
+    <label for="nome">ID: </label>
+    {{ $partner->id }}
+</div>
+<div class="form-group">
+    <label for="image">Imagem: </label>
+    {{ $partner->image }}
+</div>

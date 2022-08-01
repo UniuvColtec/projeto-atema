@@ -89,13 +89,16 @@ class CityController extends Controller
      */
     public function destroy(City $city)
     {
-        if($city->delete()){
-            return Response::responseSuccess();
-        } else {
-            return Response::responseForbiden();
+        try{
+            if($city->delete()){
+                return Response::responseSuccess();
+            } else {
+                return Response::responseForbiden();
+            }
+        }catch (\Exception $exception){
+            return Response::responseForbiden('Não é possível a exclusão da Cidade, exclua os cadastros vinculados.');
         }
     }
-
     public function bootgrid(Request $request)
     {
         $cities = new City();
