@@ -17,7 +17,7 @@
             $(".select2").select2();
         })
         $('#description').summernote({
-            placeholder: 'Hello stand alone ui',
+            placeholder: 'Insira a descrição aqui',
             tabsize: 2,
             height: 120,
             toolbar: [
@@ -110,7 +110,7 @@
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label for="name">Nome:</label>
-                                            <input type="text" class="form-control" id="name" name="name" placeholder="nome" required >
+                                            <input type="text" class="form-control" id="name" name="name" placeholder="nome -Campo obrigatório-" required >
                                         </div>
                                         <div class="form-group">
                                             <label for="description">Descrição:</label>
@@ -134,15 +134,15 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="address">RUA:</label>
-                                            <input type="text" class="form-control" id="address" name="address" placeholder="Rua exemplo 1111" required >
+                                            <input type="text" class="form-control" id="address" name="address" placeholder="Rua exemplo 1111 -Campo obrigatório-" required >
                                         </div>
                                         <div class="form-group">
-                                            <label for="district">Bairro:</label>
-                                            <input type="text" class="form-control" id="district" name="district" placeholder="" required >
+                                            <label for="district">Localidade:</label>
+                                            <input type="text" class="form-control" id="district" name="district" placeholder="localidade -Campo obrigatório-" required >
                                         </div>
                                         <div class="form-group">
                                             <label for="localization">Localização:</label>
-                                            <input type="text" name="localization" id="localization" class="form-control" placeholder="Localização" required >
+                                            <input type="text" name="localization" id="localization" class="form-control" placeholder="Localização -Campo obrigatório-" required >
                                         </div>
                                         <div class="card-footer">
                                             <button type="button" class="btn btn-info" onclick="stepper.previous()">Anterior</button>

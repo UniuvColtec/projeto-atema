@@ -29,7 +29,7 @@
 
 
             $('#description').summernote({
-                placeholder: 'Hello stand alone ui',
+                placeholder: 'Insira a descrição aqui',
                 tabsize: 2,
                 height: 120,
                 toolbar: [
@@ -126,7 +126,7 @@
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="name">Nome:</label>
-                                        <input type="text" class="form-control" id="name" name="name" placeholder="nome" required >
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="nome -Campo obrigatório-" required >
                                     </div>
                                     <div class="form-group">
                                         <label for="partner_type_id">Tipo:</label>
@@ -139,22 +139,22 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="telephone">Telefone:</label>
-                                        <input type="text" class="form-control telephone" id="telephone" name="telephone" placeholder="EX: (DD) 00000-0000" required >
+                                        <input type="text" class="form-control telephone" id="telephone" name="telephone" placeholder="EX: (DD) 00000-0000 -Campo obrigatório-" required >
                                     </div>
                                     <div class="form-group">
                                         <label for="email">Email:</label>
-                                        <input type="email" class="form-control" id="email" name="email" placeholder="Email"  required >
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="Email -Campo obrigatório-"  required >
                                     </div>
                                     <div class="form-group">
                                         <label for="cnpj">CNPJ:</label>
-                                        <input type="cnpj" class="form-control cnpj" id="cnpj" name="cnpj" placeholder="XX.XXX.XXX/XXXX-XX"  required >
+                                        <input type="cnpj" class="form-control cnpj" id="cnpj" name="cnpj" placeholder="XX.XXX.XXX/XXXX-XX -Campo obrigatório-"  required >
                                     </div>
                                     <div class="form-group">
                                         <label for="site">Site:</label>
-                                            <input type="text" class="form-control" id="site" name="site" placeholder="www.meusite.com.br" >
+                                            <input type="text" class="form-control" id="site" name="site" placeholder="www.meusite.com.br -Campo obrigatório-" >
                                     </div>
                                     <div class="form-group">
-                                        <label for="description">Descrição:</label>
+                                        <label for="description" >Descrição:</label>
                                         <textarea id="description" name="description" required></textarea>
                                     </div>
                                     <div class="card-footer">
@@ -176,15 +176,15 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="address">Rua:</label>
-                                                <input type="text" class="form-control" id="address" name="address" placeholder="Rua exemplo 1111"required >
+                                                <input type="text" class="form-control" id="address" name="address" placeholder="Rua exemplo 1111 -Campo obrigatório-"required >
                                             </div>
                                             <div class="form-group">
-                                                <label for="district">Bairro:</label>
-                                                <input type="text" class="form-control" id="district" name="district" placeholder="" required>
+                                                <label for="district">Localidade:</label>
+                                                <input type="text" class="form-control" id="district" name="district" placeholder="-Campo obrigatório-" required>
                                             </div>
                                             <div class="form-group">
                                                 <label for="localization">Localização:</label>
-                                                <input type="text" name="localization" id="localization" class="form-control" placeholder="Localização" required >
+                                                <input type="text" name="localization" id="localization" class="form-control" placeholder="Localização -Campo obrigatório-" required >
                                             </div>
                                             <div class="card-footer">
                                                 <button type="button" class="btn btn-info" onclick="stepper.previous()">Anterior</button>

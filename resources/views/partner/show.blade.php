@@ -55,15 +55,7 @@
                                 {{ $partner->city->name }}, {{ $partner->address }}, {{ $partner->district }}
                                 <label for="localization">Localização:</label>
                                 <br>
-                                <iframe  src="https://maps.google.com/maps?q={{ $partner->latitude }},{{ $partner->longitude }}&hl=pt-br&z=17&amp;output=embed"
-                                        width="100%"
-                                        height="450"
-
-                                        style="border:0;"
-                                        allowfullscreen=""
-                                        loading="lazy"
-                                        referrerpolicy="no-referrer-when-downgrade">
-                                </iframe>
+                                {!! $partner->renderMap($partner->latitude, $partner->longitude) !!}
                             </div>
                             <div class="container-fluid">
                                 <div class="form-group">

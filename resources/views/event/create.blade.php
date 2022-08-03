@@ -9,6 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
     <script src="{{ asset('js/bs-stepper.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/formAjaxAlterar.js') }}" type="text/javascript"></script>
+    <script type="text/javascript" src="/js/jquery.mask.js"></script>
     <script>
         var stepper;
         $(document).ready(function(){
@@ -28,20 +29,34 @@
                 errorClass: 'is-invalid',
 
             });
-            $('#description').summernote({
-                placeholder: 'Preencha a descrição do evento',
-                tabsize: 2,
-                height: 120,
-                toolbar: [
-                    ['style', ['style']],
-                    ['font', ['bold', 'underline', 'clear']],
-                    ['color', ['color']],
-                    ['para', ['ul', 'ol', 'paragraph']],
-                    ['table', ['table']],
-                    ['insert', ['link', 'picture', 'video']],
-                    ['view', ['fullscreen', 'codeview', 'help']]
-                ]
-            });
+            $(document).ready(function(){
+                var options = {
+                    onKeyPress: function (phone, e, field, options) {
+                        var masks = ['(00) 0000-00000', '(00) 00000-0000'];
+                        var mask = (phone.length > 14) ? masks[1] : masks[0];
+                        $('#telephone').mask(mask, options);
+                    }
+                };
+                $('#cnpj').mask('00.000.000/0000-00', options);
+                $('#telephone').mask('(00) 0000-00000', options);
+
+
+                $('#description').summernote({
+                    placeholder: 'Insira a descrição aqui',
+                    tabsize: 2,
+                    height: 120,
+                    toolbar: [
+                        ['style', ['style']],
+                        ['font', ['bold', 'underline', 'clear']],
+                        ['color', ['color']],
+                        ['para', ['ul', 'ol', 'paragraph']],
+                        ['table', ['table']],
+                        ['insert', ['link', 'picture', 'video']],
+                        ['view', ['fullscreen', 'codeview', 'help']]
+                    ]
+                });
+
+            })
         })
 
     </script>
@@ -111,11 +126,11 @@
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label for="name">Nome:</label>
-                                            <input name="name" id="name" class="form-control" placeholder="Nome" required>
+                                            <input name="name" id="name" class="form-control" placeholder="Nome -Campo obrigatório-" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="contact">Contato:</label>
-                                            <input type="text" name="contact" id="contact" class="form-control" placeholder="Contato" required>
+                                            <label for="telephone">Telefone:</label>
+                                            <input type="text" class="form-control telephone" id="telephone" name="telephone" placeholder="EX: (DD) 00000-0000 -Campo obrigatório-" required >
                                         </div>
                                         <div class="form-group">
                                             <label for="website">Url do site do evento:</label>
@@ -151,15 +166,15 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="address">Endereço:</label>
-                                            <input type="text" name="address" id="address" class="form-control" placeholder="Endereço" required>
+                                            <input type="text" name="address" id="address" class="form-control" placeholder="Endereço -Campo obrigatório-" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="district">Bairro:</label>
-                                            <input type="text" name="district" id="district" class="form-control" placeholder="Bairro" required>
+                                            <label for="district">Localidade:</label>
+                                            <input type="text" name="district" id="district" class="form-control" placeholder="localidade -Campo obrigatório-" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="localization">Localização:</label>
-                                            <input type="text" name="localization" id="localization" class="form-control" placeholder="Localização" required>
+                                            <input type="text" name="localization" id="localization" class="form-control" placeholder="Localização -Campo obrigatório-" required>
                                         </div>
                                     </div>
                                     <div class="card-footer">
