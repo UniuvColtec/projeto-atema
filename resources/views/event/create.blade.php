@@ -34,11 +34,11 @@
                     onKeyPress: function (phone, e, field, options) {
                         var masks = ['(00) 0000-00000', '(00) 00000-0000'];
                         var mask = (phone.length > 14) ? masks[1] : masks[0];
-                        $('#telephone').mask(mask, options);
+                        $('#contact').mask(mask, options);
                     }
                 };
                 $('#cnpj').mask('00.000.000/0000-00', options);
-                $('#telephone').mask('(00) 0000-00000', options);
+                $('#contact').mask('(00) 0000-00000', options);
 
 
                 $('#description').summernote({
@@ -133,8 +133,8 @@
                                             <input name="subtitle" id="subtitle" class="form-control" placeholder="Subtítulo" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="telephone">Telefone:</label>
-                                            <input type="text" class="form-control telephone" id="telephone" name="telephone" placeholder="EX: (DD) 00000-0000 -Campo obrigatório-" required >
+                                            <label for="contact">Telefone:</label>
+                                            <input type="text" class="form-control" id="contact" name="contact" placeholder="EX: (DD) 00000-0000 -Campo obrigatório-" required >
                                         </div>
                                         <div class="form-group">
                                             <label for="website">Url do site do evento:</label>
