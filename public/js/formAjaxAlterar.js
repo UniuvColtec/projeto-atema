@@ -9,6 +9,7 @@ $(document).ready(function(){
     jsonForm.ajaxForm({
         dataType:  'json',
 
+
         beforeSubmit: function(){
             if ($(".imagemPendente").length>0) {
                 $("#fileupload-start").trigger('click');
@@ -27,6 +28,7 @@ $(document).ready(function(){
                 }
 
                 return false;
+
             }else{
                 clearInterval(intervalSubmit);
             }

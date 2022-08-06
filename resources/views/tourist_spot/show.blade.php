@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', '>Pontos Turístico - Exibir')
+@section('title', 'Pontos Turístico - Exibir')
 
 @push('css')
     <link rel="stylesheet" href="/css/iziToast.min.css">

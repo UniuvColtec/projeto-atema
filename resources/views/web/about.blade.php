@@ -3,5 +3,5 @@
 
 @section('content')
 
-    sobre nós
+    Sobre nós
 @stop

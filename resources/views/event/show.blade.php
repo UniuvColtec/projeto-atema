@@ -32,7 +32,6 @@
             });
         })
 
-
     </script>
 @endpush
 
@@ -69,13 +68,15 @@
                                             {{ $event->name }}
                                         </div>
                                         <div class="form-group">
+                                            <label for="subtitle">Subtítulo:</label>
+                                            {{ $event->subtitle }}
+                                        </div>
+                                        <div class="form-group">
                                             <label for="contact">Contato:</label>
                                             {{ $event->contact }}
                                         </div>
                                         <div class="form-group">
                                             <label for="description">Descrição:</label>
-
-
                                             {!!$event->description!!}
                                         </div>
                                         <div class="form-group">
@@ -145,4 +146,7 @@
             </div>
         </div>
     </div>
+    <script>
+        document.querySelector('.place-name').innerHTML = "";
+    </script>
 @endsection

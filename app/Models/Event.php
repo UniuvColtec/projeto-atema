@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\DB;
 class Event extends Model
 {
     use HasFactory;
-    protected $fillable = ['name,description,contact,website,start_date,final_date,address,
+    protected $fillable = ['name,subtitle,description,contact,website,start_date,final_date,address,
         district,latitude,longitude,status'];
     protected $hidden = ['deleted_at'];
     protected $casts = [

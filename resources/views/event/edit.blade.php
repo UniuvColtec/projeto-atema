@@ -123,6 +123,10 @@
                                             <input name="name" id="name" class="form-control" placeholder="Nome" value="{{ $event->name }}" required>
                                         </div>
                                         <div class="form-group">
+                                            <label for="subtitle">Subtítulo:</label>
+                                            <input type="text" name="subtitle" id="subtitle" class="form-control" placeholder="Subtítulo" value="{{ $event->subtitle }}" required>
+                                        </div>
+                                        <div class="form-group">
                                             <label for="contact">Contato:</label>
                                             <input type="text" name="contact" id="contact" class="form-control" placeholder="Contato" value="{{ $event->contact }}" required>
                                         </div>

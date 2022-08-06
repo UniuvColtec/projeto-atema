@@ -67,6 +67,7 @@ class EventController extends Controller
         }
         $event= new Event();
         $event->name = $request->name;
+        $event->subtitle = $request->subtitle;
         $event->description = $request->description;
         $event->contact = $request->contact;
         $event->website = $request->website;
@@ -152,6 +153,7 @@ class EventController extends Controller
     public function update(EventRequest $request, Event $event)
     {
         $event->name = $request->name;
+        $event->subtitle = $request->subtitle;
         $event->description = $request->description;
         $event->contact = $request->contact;
         $event->website = $request->website;

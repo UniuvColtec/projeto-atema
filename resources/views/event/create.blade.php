@@ -129,6 +129,10 @@
                                             <input name="name" id="name" class="form-control" placeholder="Nome -Campo obrigatório-" required>
                                         </div>
                                         <div class="form-group">
+                                            <label for="subtitle">Subtítulo:</label>
+                                            <input name="subtitle" id="subtitle" class="form-control" placeholder="Subtítulo" required>
+                                        </div>
+                                        <div class="form-group">
                                             <label for="telephone">Telefone:</label>
                                             <input type="text" class="form-control telephone" id="telephone" name="telephone" placeholder="EX: (DD) 00000-0000 -Campo obrigatório-" required >
                                         </div>
