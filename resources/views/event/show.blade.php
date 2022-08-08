@@ -62,76 +62,59 @@
                 <div class="card card-primary">
                     <form role="form" action="{{ route('event.store') }}" method="post" class="jsonForm">
                         {{ csrf_field() }}
+                        {{ method_field('DELETE') }}
                                     <div class="card-body">
-                                        <div class="form-group">
-                                            <label for="name">Nome:</label>
-                                            {{ $event->name }}
+                                        <div class="form-group" style="text-align: center">
+                                            <p class="h1">{{ $event->name }}</p>
+                                            <p class="h6">{{ $event->subtitle }} <img src="{{$event->getUrlLogo()}}" alt="{{$event->title}}" class="img-thumbnail" style="max-width: 266px; max-height: 266px;"></p>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="subtitle">Subtítulo:</label>
-                                            {{ $event->subtitle }}
+                                        <div class="row">
+                                            <div class="col" style="text-align: center;">
+                                                {!!$event->description!!}
+                                            </div>
+                                            <div class="col" style="text-align: center">
+                                                <p>O evento ocorrera de {{ $event->show_date }} </p>
+                                                <p>Dentre as comidas tipicas estão:
+                                                @foreach($typical_event_foods as $typical_event_food)
+                                                    @if($typical_event_food->event_id == $event->id)
+                                                        @foreach($typical_foods as $typical_food)
+                                                            @if($typical_event_food->typical_food_id == $typical_food->id)
+                                                                {{ $typical_food->name }}
+                                                            @endif
+                                                        @endforeach
+                                                    @endif
+                                                @endforeach
+                                                </p>
+                                                <p>O evento está categorizado como:
+                                                    @foreach($event_categories as $event_category)
+                                                        @if($event_category->event_id == $event->id)
+                                                            @foreach($categories as $category)
+                                                                @if($event_category->category_id == $category->id)
+                                                                    {{ $category->name }}
+                                                                @endif
+                                                            @endforeach
+                                                        @endif
+                                                    @endforeach</p>
+                                            </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="contact">Contato:</label>
                                             {{ $event->contact }}
                                         </div>
                                         <div class="form-group">
-                                            <label for="description">Descrição:</label>
-                                            {!!$event->description!!}
-                                        </div>
-                                        <div class="form-group">
                                             <label for="categories">Categorias:</label>
                                             {{-- {{ $event->event_category->category }} --}}
-                                            @foreach($event_categories as $event_category)
-                                                @if($event_category->event_id == $event->id)
-                                                    @foreach($categories as $category)
-                                                        @if($event_category->category_id == $category->id)
-                                                            {{ $category->name }}
-                                                        @endif
-                                                    @endforeach
-                                                @endif
-                                            @endforeach
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="typical_foods">Comidas Típicas:</label>
-                                            @foreach($typical_event_foods as $typical_event_food)
-                                                @if($typical_event_food->event_id == $event->id)
-                                                    @foreach($typical_foods as $typical_food)
-                                                        @if($typical_event_food->typical_food_id == $typical_food->id)
-                                                            {{ $typical_food->name }}
-                                                        @endif
-                                                    @endforeach
-                                                @endif
-                                            @endforeach
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="start_date">Data:</label>
-                                            {{ $event->show_date }}
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="cities">Cidade</label>
-                                            @foreach($cities as $city)
-                                                @if($city->id == $event->city_id){{$city->name}}@endif
-                                            @endforeach
+
                                         </div>
                                         <div class="form-group">
                                             <label for="address">Endereço:</label>
-                                            {{ $event->address }}
+                                            @foreach($cities as $city)
+                                                @if($city->id == $event->city_id){{$city->name}},@endif
+                                            @endforeach
+                                            {{ $event->address }}, {{ $event->district }}
                                         </div>
                                         <div class="form-group">
-                                            <label for="district">Bairro:</label>
-                                            {{ $event->district }}
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="localization">Localização:</label>
-                                            <br>
                                             {!! $event->renderMap($event->latitude, $event->longitude) !!}
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="logo">Logo:</label>
-                                            <br>
-                                            <img src="{{$event->getUrlLogo()}}" alt="{{$event->title}}" class="img-thumbnail" style="max-width: 266px; max-height: 266px;">
                                         </div>
                                         <div class="form-group">
                                             <label for="image">Imagem:</label>
@@ -146,7 +129,4 @@
             </div>
         </div>
     </div>
-    <script>
-        document.querySelector('.place-name').innerHTML = "";
-    </script>
 @endsection
