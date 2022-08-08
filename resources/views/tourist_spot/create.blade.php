@@ -114,7 +114,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="description">Descrição:</label>
-                                            <textarea id="description" name="description" required></textarea>
+                                            <textarea id="description" name="description" aria-required="true"></textarea>
                                         </div>
                                         <div class="card-footer">
                                             <button type="button" class="btn btn-primary" onclick="stepper.next()">Próximo</button>

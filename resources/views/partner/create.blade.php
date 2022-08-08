@@ -151,11 +151,11 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="site">Site:</label>
-                                            <input type="text" class="form-control" id="site" name="site" placeholder="www.meusite.com.br -Campo obrigatório-" >
+                                            <input type="text" class="form-control" id="site" name="site" placeholder="www.meusite.com.br " >
                                     </div>
                                     <div class="form-group">
                                         <label for="description" >Descrição:</label>
-                                        <textarea id="description" name="description" required></textarea>
+                                        <textarea id="description" name="description" required ></textarea>
                                     </div>
                                     <div class="card-footer">
                                         <button type="button" class="btn btn-primary" onclick="stepper.next()">Próximo</button>

@@ -12,8 +12,20 @@
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
     <script src=" {{ asset('js/bs-stepper.js') }}" type="text/javascript"></script>
     <script src="/js/formAjaxAlterar.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/js/jquery.mask.js"></script>
     <script>
         var stepper;
+        $(document).ready(function() {
+            var options = {
+                onKeyPress: function (phone, e, field, options) {
+                    var masks = ['(00) 0000-00000', '(00) 00000-0000'];
+                    var mask = (phone.length > 14) ? masks[1] : masks[0];
+                    $('#contact').mask(mask, options);
+                }
+            };
+            $('#cnpj').mask('00.000.000/0000-00', options);
+            $('#contact').mask('(00) 0000-00000', options);
+        });
         $(document).ready(function(){
             var stepperEl = document.getElementById("stepper");
             stepper = new Stepper(stepperEl, {
@@ -50,9 +62,10 @@
                 $('#myInput').trigger('focus')
             })
         })
-
-
     </script>
+
+
+
 @endpush
 
 @section('content_header')
@@ -127,7 +140,7 @@
                                             <input type="text" name="subtitle" id="subtitle" class="form-control" placeholder="Subtítulo" value="{{ $event->subtitle }}" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="contact">Contato:</label>
+                                            <label for="contact">Telefone:</label>
                                             <input type="text" name="contact" id="contact" class="form-control" placeholder="Contato" value="{{ $event->contact }}" required>
                                         </div>
                                         <div class="form-group">

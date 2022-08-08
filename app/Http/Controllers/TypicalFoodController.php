@@ -111,6 +111,15 @@ class TypicalFoodController extends Controller
      */
     public function destroy(Typical_food $typical_food)
     {
+        try{
+            if($typical_food->delete()){
+                return Response::responseSuccess();
+            } else {
+                return Response::responseForbiden();
+            }
+        }catch (\Exception $exception){
+            return Response::responseForbiden('Não é possível a exclusão da Comida tipica, exclua os cadastros vinculados.');
+        }
         $typical_food_images = $typical_food->typical_food_image;
         if($typical_food->delete()) {
             foreach($typical_food_images as $typical_food_image){

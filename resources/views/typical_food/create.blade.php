@@ -67,7 +67,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="description">Descrição:</label>
-                                <textarea id="description" name="description" required></textarea>
+                                <textarea id="description" name="description" aria-required="true"></textarea>
                             </div>
                             <div class="card-body">
                                 <h3>Imagens</h3>
