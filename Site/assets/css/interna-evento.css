@@ -1,0 +1,15 @@
+.carousel-inner {
+    box-shadow: 0 0 40px darkgray;
+    border-radius: 20px;
+}
+
+.btn-cta-contato {
+    border-radius: 30px;
+    background: var(--ci-color-orange);
+    color: white;
+    transition: transform .3s;
+}
+
+.btn-cta-contato:hover {
+    transform: scale(1.1);
+}
