@@ -40,6 +40,7 @@ Route::get('/comida-tipica', [FrontendTypicalFoodController::class, 'index'])->n
 Route::get('/ponto-turistico/{tourist_spot}', [FrontendTouristSpotController::class, 'show'])->name('web.touristspot.show');
 Route::get('/ponto-turistico', [FrontendTouristSpotController::class, 'index'])->name('web.touristspot');
 
+
 Route::get('/quem-somos', [\App\Http\Controllers\frontend\AboutController::class, 'index'])->name('web.about');
 Route::get('/contato', [\App\Http\Controllers\frontend\ContactController::class, 'index'])->name('web.contact');
 

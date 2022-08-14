@@ -73,7 +73,7 @@
         <div class="row row-cols-1 row-cols-md-3 home-proximos-eventos px-3 px-md-0">
 
             @foreach( $events as $event)
-            <a class="my-3 m-md-0" href="{{ route('web.event.show', $event->id) }}">
+            <a class="my-3 m-md-0" href="{{ route('web.event', $event->id) }}">
                 <div class="card h-100">
                     <img class="card-img-top w-100 h-auto" src="{{ asset('files/' . $event->firstImage->image->address) }}"
                          alt="{{ $event->name }}">
