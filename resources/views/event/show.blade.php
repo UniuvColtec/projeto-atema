@@ -66,26 +66,27 @@
                                     <div class="card-body">
                                         <div class="form-group" style="text-align: center">
                                             <p class="h1">{{ $event->name }}</p>
-                                            <p class="h6">{{ $event->subtitle }} <img src="{{$event->getUrlLogo()}}" alt="{{$event->title}}" class="img-thumbnail" style="max-width: 266px; max-height: 266px;"></p>
+                                            <p class="h6">{{ $event->subtitle }}</p>
+                                            <img src="{{$event->getUrlLogo()}}" alt="{{$event->title}}" class="img-thumbnail" style="max-height: 64px;">
                                         </div>
-                                        <div class="row">
-                                            <div class="col" style="text-align: center;">
-                                                {!!$event->description!!}
-                                            </div>
-                                            <div class="col" style="text-align: center">
-                                                <p>O evento ocorrera de {{ $event->show_date }} </p>
+                                        <div class="form-group">
+                                            {!!$event->description!!}
+                                            <label>Detalhes:</label>
+                                            <p>
+                                                O evento ocorrera de {{ $event->show_date }}
+                                            </p>
                                                 <p>Dentre as comidas tipicas estão:
-                                                @foreach($typical_event_foods as $typical_event_food)
-                                                    @if($typical_event_food->event_id == $event->id)
-                                                        @foreach($typical_foods as $typical_food)
-                                                            @if($typical_event_food->typical_food_id == $typical_food->id)
-                                                                {{ $typical_food->name }}
-                                                            @endif
-                                                        @endforeach
-                                                    @endif
-                                                @endforeach
+                                                    @foreach($typical_event_foods as $typical_event_food)
+                                                        @if($typical_event_food->event_id == $event->id)
+                                                            @foreach($typical_foods as $typical_food)
+                                                                @if($typical_event_food->typical_food_id == $typical_food->id)
+                                                                    {{ $typical_food->name }},
+                                                                @endif
+                                                            @endforeach
+                                                        @endif
+                                                    @endforeach
                                                 </p>
-                                                <p>O evento está categorizado como:
+                                                <p>As categorias do evento são:
                                                     @foreach($event_categories as $event_category)
                                                         @if($event_category->event_id == $event->id)
                                                             @foreach($categories as $category)
@@ -94,16 +95,12 @@
                                                                 @endif
                                                             @endforeach
                                                         @endif
-                                                    @endforeach</p>
+                                                    @endforeach
+                                                </p>
                                             </div>
-                                        </div>
                                         <div class="form-group">
-                                            <label for="contact">Contato:</label>
-                                            {{ $event->contact }}
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="categories">Categorias:</label>
-                                            {{-- {{ $event->event_category->category }} --}}
+                                            {{-- <label for="categories">Categorias:</label>
+                                              {{ $event->event_category->category->name }} --}}
 
                                         </div>
                                         <div class="form-group">
@@ -118,10 +115,23 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="image">Imagem:</label>
+                                            <br>
                                             @foreach($event->images as $image)
-                                                <img class="card-img-top w-100 h-auto" src="{{ asset('files/' . $event->firstImage->image->address) }}"
+                                                <img class="card-img-top w-100 h-auto" src="{{ asset('files/' . $image->image->address) }}"
                                                      alt="{{ $event->name }}" style="max-width: 500px; max-height: 400px;">
                                             @endforeach
+                                        </div>
+                                        <div class="footer">
+                                            <div style="display: flex; flex-direction: row; justify-content: space-evenly;">
+                                                <div>
+                                                    <label class="fa-solid fa-globe"></label>
+                                                    {{ $event->website }}
+                                                </div>
+                                                <div>
+                                                    <label class="fa-solid fa-phone"></label>
+                                                    {{ $event->contact }}
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                     </form>
