@@ -67,6 +67,13 @@
             $(".select2").select2();
         })
 
+        function verify() {
+            if(document.getElementById('description').value == ''){
+                alert("Descrição deve ser preenchida");
+            } else {
+                stepper.next();
+            }
+        }
 
     </script>
 @endpush
@@ -158,7 +165,7 @@
                                         <textarea id="description" name="description" required ></textarea>
                                     </div>
                                     <div class="card-footer">
-                                        <button type="button" class="btn btn-primary" onclick="stepper.next()">Próximo</button>
+                                        <button type="button" class="btn btn-primary" onclick="verify()">Próximo</button>
                                     </div>
                                 </div>
                             </div>
@@ -201,7 +208,7 @@
                                         @include('partner.image')
                                     </div>
                                     <div class="form-group">
-                                        <label for="logo">logo</label>
+                                        <label for="logo">logo*</label>
                                         <input type="file" id="logo" name="logo" class="form-control-file btn btn-outline-secondary">
                                     </div>
 

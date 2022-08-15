@@ -58,6 +58,14 @@
 
             })
         })
+        function verify() {
+            if(document.getElementById('description').value == ''){
+                alert("Descrição deve ser preenchida");
+            } else {
+                stepper.next();
+            }
+        }
+
 
     </script>
 @endpush
@@ -154,7 +162,7 @@
                                         </div>
                                     </div>
                                     <div class="card-footer">
-                                        <button type="button" class="btn btn-primary" onclick="stepper.next()">Próximo</button>
+                                        <button type="button" class="btn btn-primary" onclick="verify()">Próximo</button>
                                     </div>
                                 </div>
                                 <div id="localization-part" class="content" role="tabpanel" aria-labelledby="localization-part-trigger">

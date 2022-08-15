@@ -58,18 +58,23 @@
                                 {!! $partner->renderMap($partner->latitude, $partner->longitude) !!}
                             </div>
                             <div class="container-fluid">
-                                <div class="form-group">
-                                    <label class="nav-icon far fa-envelope"></label>
-                                    {{ $partner->email }}
-                                    <br>
-                                    <label class="fa-brands fa-firefox-browser"></label>
-                                    {{ $partner->site }}
-                                    <br>
-                                    <label class="fa-solid fa-phone"></label>
-                                    {{ $partner->telephone}}
-                                    <br>
-                                    <label for="cnpj">CNPJ:</label>
-                                    {{ $partner->cnpj }}
+                                <div style="display: flex; flex-direction: row; justify-content: space-evenly;">
+                                    <div>
+                                        <label class="nav-icon far fa-envelope"></label>
+                                        {{ $partner->email }}
+                                    </div>
+                                    <div>
+                                        <label class="fa-brands fa-firefox-browser"></label>
+                                        {{ $partner->site }}
+                                    </div>
+                                    <div>
+                                        <label class="fa-solid fa-phone"></label>
+                                        {{ $partner->telephone}}
+                                    </div>
+                                    <div>
+                                        <label for="cnpj">CNPJ:</label>
+                                        {{ $partner->cnpj }}
+                                    </div>
                                 </div>
 
                             </div>

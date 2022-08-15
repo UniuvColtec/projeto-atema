@@ -50,7 +50,7 @@ class EventController extends Controller
         $typical_foods = Typical_food::all();
         $categories = Category::all();
         $todays_date = date('Y-m-d\TH:i:s');
-//        $todays_date = Carbon::now()->addDay()->format('Y-m-d\TH:i:s');
+//      $todays_date = Carbon::now()->addDay()->format('Y-m-d\TH:i:s');
         return view('event.create', compact('cities','typical_foods','categories','todays_date'));
     }
 
