@@ -14,7 +14,13 @@
         </div>
     @endif
 
-    @yield('content')
+    <main class="px-2 px-md-0 my-5">
+        @include('web.base.actions')
+        @yield('content')
+    </main>
+
+    @yield('post_content')
+
 
     @include('web.base.footer')
 @stop

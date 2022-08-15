@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+{{--<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">--}}
 
 <head>
 
@@ -88,6 +88,10 @@
         @include('adminlte::plugins', ['type' => 'js'])
 
         <script src="{{ asset('vendor/adminlte/dist/js/adminlte.min.js') }}"></script>
+        <script src="{{ asset('/js/iziToast.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('/vendor/select2/js/select2.full.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('/js/jquery.form.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('/js/jquery.mask.js') }}" type="text/javascript"></script>
     @else
         <script src="{{ mix(config('adminlte.laravel_mix_js_path', 'js/app.js')) }}"></script>
         <script src="{{ asset('/js/iziToast.js') }}" type="text/javascript"></script>

@@ -15,7 +15,7 @@ class FrontendEventController extends Controller
     {
         $events = Event::where('status', 'Aprovado')->whereDate('final_date', '>=', date('Y-m-d'))->orderBy('start_date')->take(3)->with('city', 'firstImage')->get();
         //return 'eventos - listagem';
-        return view('web.event.event_page', compact('events'));
+        return view('web.event.list', compact('events'));
     }
 
     function show(int $id)

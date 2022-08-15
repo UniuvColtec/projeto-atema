@@ -20,51 +20,6 @@
 @stop
 
 @section('content')
-<main class="px-2 px-md-0 my-5">
-    <div class="container py-3 home-action-buttons">
-        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-4 text-center px-2 justify-content-evenly">
-            <a href="#">
-                <div class="card h-100 py-3">
-                    <div class="card-body d-flex justify-content-evenly align-items-center flex-column flex-sm-row gap-3 gap-sm-0">
-                        <img src="assets/img/botoes-home/calendario.svg" width="50">
-                        <p class="m-0 p-0">Cadastrar<br>Evento</p>
-                    </div>
-                </div>
-            </a>
-            <a href="{{ route('web.event.map') }}">
-                <div class="card h-100 py-3">
-                    <div class="card-body d-flex justify-content-evenly align-items-center flex-column flex-sm-row gap-3 gap-sm-0">
-                        <img src="assets/img/botoes-home/mapa-dos-eventos.svg" width="50">
-                        <p class="m-0 p-0">Mapa dos<br>Eventos</p>
-                    </div>
-                </div>
-            </a>
-            <a href="{{ route('web.partner') }}">
-                <div class="card h-100 py-3">
-                    <div class="card-body d-flex justify-content-evenly align-items-center flex-column flex-sm-row gap-3 gap-sm-0">
-                            <img src="assets/img/botoes-home/parceiros.svg" width="50">
-                            <p class="m-0 p-0">Parceiros</p>
-                    </div>
-                </div>
-            </a>
-            <a href="{{ route('web.typicalfood') }}">
-                <div class="card h-100 py-3">
-                    <div class="card-body d-flex justify-content-evenly align-items-center flex-column flex-sm-row gap-3 gap-sm-0">
-                        <img src="assets/img/botoes-home/comidas-tipicas.svg" width="50">
-                        <p class="m-0 p-0">Comidas<br>Típicas</p>
-                    </div>
-                </div>
-            </a>
-            <a href="{{ route('web.touristspot') }}">
-                <div class="card h-100 py-3">
-                    <div class="card-body d-flex justify-content-evenly align-items-center flex-column flex-sm-row gap-3 gap-sm-0">
-                        <img src="assets/img/botoes-home/turismo-local.svg" width="50">
-                        <p class="m-0 p-0">Turismo<br>Local</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </div>
     <div class="container pb-4">
         <div class="row justify-content-between py-3">
             <h3 class="w-auto">Próximos Eventos</h3>
@@ -73,7 +28,7 @@
         <div class="row row-cols-1 row-cols-md-3 home-proximos-eventos px-3 px-md-0">
 
             @foreach( $events as $event)
-            <a class="my-3 m-md-0" href="{{ route('web.event', $event->id) }}">
+            <a class="my-3 m-md-0" href="{{ route('web.event.show', $event->id) }}">
                 <div class="card h-100">
                     <img class="card-img-top w-100 h-auto" src="{{ asset('files/' . $event->firstImage->image->address) }}"
                          alt="{{ $event->name }}">
@@ -236,19 +191,21 @@ Bituruna - PR
             </a>
         </div>
     </div>
-</main>
-<div class="container-fluid" style="background: var(--ci-color-green)">
-    <div class="container py-5">
-        <div class="row row-cols-1 row-cols-lg-2">
-            <h4 class="text-white my-3 my-md-4 my-lg-5">Cadastre-se na newsletter para ficar<br>informado sobre os
-                próximos eventos
-</h4>
-            <form class="d-flex my-3 my-md-4 my-lg-5" role="search">
-                <input class="form-control rounded-5 bg-gray" type="search" placeholder="deixe seu e-mail aqui"
-                       aria-label="Search">
-            </form>
+@stop
+
+@section('post_content')
+    <div class="container-fluid" style="background: var(--ci-color-green)">
+        <div class="container py-5">
+            <div class="row row-cols-1 row-cols-lg-2">
+                <h4 class="text-white my-3 my-md-4 my-lg-5">Cadastre-se na newsletter para ficar<br>informado sobre os
+                    próximos eventos
+                </h4>
+                <form class="d-flex my-3 my-md-4 my-lg-5" role="search">
+                    <input class="form-control rounded-5 bg-gray" type="search" placeholder="deixe seu e-mail aqui"
+                           aria-label="Search">
+                </form>
+            </div>
         </div>
     </div>
-</div>
-
 @stop
+

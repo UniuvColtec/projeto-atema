@@ -1,55 +1,10 @@
-@extends('web.event.page')
+@extends('web.base.page')
 
 @section('content')
-<main class="px-2 px-md-0 my-5">
-    <div class="container home-action-buttons">
-        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-4 text-center px-2 justify-content-evenly">
-            <a href="#">
-                <div class="card h-100 py-3">
-                    <div class="card-body d-flex justify-content-evenly align-items-center flex-column flex-sm-row gap-3 gap-sm-0">
-                        <img src="assets/img/botoes-home/calendario.svg" width="50">
-                        <p class="m-0 p-0">Sugerir<br>Evento</p>
-                    </div>
-                </div>
-            </a>
-            <a href="{{ route('web.event.map') }}">
-                <div class="card h-100 py-3">
-                    <div class="card-body d-flex justify-content-evenly align-items-center flex-column flex-sm-row gap-3 gap-sm-0">
-                        <img src="assets/img/botoes-home/mapa-dos-eventos.svg" width="50">
-                        <p class="m-0 p-0">Mapa dos<br>Eventos</p>
-                    </div>
-                </div>
-            </a>
-            <a href="{{ route('web.partner') }}">
-                <div class="card h-100 py-3">
-                    <div class="card-body d-flex justify-content-evenly align-items-center flex-column flex-sm-row gap-3 gap-sm-0">
-                        <img src="assets/img/botoes-home/parceiros.svg" width="50">
-                        <p class="m-0 p-0">Parceiros</p>
-                    </div>
-                </div>
-            </a>
-            <a href="{{ route('web.typicalfood') }}">
-                <div class="card h-100 py-3">
-                    <div class="card-body d-flex justify-content-evenly align-items-center flex-column flex-sm-row gap-3 gap-sm-0">
-                        <img src="assets/img/botoes-home/comidas-tipicas.svg" width="50">
-                        <p class="m-0 p-0">Comidas<br>Típicas</p>
-                    </div>
-                </div>
-            </a>
-            <a href="{{ route('web.touristspot') }}">
-                <div class="card h-100 py-3">
-                    <div class="card-body d-flex justify-content-evenly align-items-center flex-column flex-sm-row gap-3 gap-sm-0">
-                        <img src="assets/img/botoes-home/turismo-local.svg" width="50">
-                        <p class="m-0 p-0">Turismo<br>Local</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </div>
 
 
-    @foreach( $events as $event)
     <div class="container my-5">
+    @foreach( $events as $event)
         <div class="row">
             <div class="col-12 col-md-6">
                 <h2>{{ $event->name }}</h2>
@@ -125,13 +80,13 @@
                         contato@evento.com.br
                     </div>
                 </div>
-                <a href="#" class="px-4">
+                <a href="{{ $event->website }}" target="_blank" class="px-4">
                     <div class="d-flex align-items-center gap-1 text-nowrap">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#98B54D"
                              class="bi bi-globe" viewBox="0 0 16 16">
                             <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855A7.97 7.97 0 0 0 5.145 4H7.5V1.077zM4.09 4a9.267 9.267 0 0 1 .64-1.539 6.7 6.7 0 0 1 .597-.933A7.025 7.025 0 0 0 2.255 4H4.09zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a6.958 6.958 0 0 0-.656 2.5h2.49zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5H4.847zM8.5 5v2.5h2.99a12.495 12.495 0 0 0-.337-2.5H8.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5H4.51zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5H8.5zM5.145 12c.138.386.295.744.468 1.068.552 1.035 1.218 1.65 1.887 1.855V12H5.145zm.182 2.472a6.696 6.696 0 0 1-.597-.933A9.268 9.268 0 0 1 4.09 12H2.255a7.024 7.024 0 0 0 3.072 2.472zM3.82 11a13.652 13.652 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5H3.82zm6.853 3.472A7.024 7.024 0 0 0 13.745 12H11.91a9.27 9.27 0 0 1-.64 1.539 6.688 6.688 0 0 1-.597.933zM8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855.173-.324.33-.682.468-1.068H8.5zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.65 13.65 0 0 1-.312 2.5zm2.802-3.5a6.959 6.959 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5h2.49zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7.024 7.024 0 0 0-3.072-2.472c.218.284.418.598.597.933zM10.855 4a7.966 7.966 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4h2.355z"/>
                         </svg>
-                        {{ $event->website}}
+                        {{ $event->website }}
                     </div>
                 </a>
                 <div class="d-flex align-items-center gap-1 text-nowrap">
@@ -142,7 +97,7 @@
                     </svg>
                     {{ $event->address}}
                 </div>
-                <p style="text-align: justify" class="my-4"> {!!$event->description!!}</p>
+                <div class="text-justify my-4"> {!!$event->description!!}</div>
 
                 <a href="#" class="btn-cta-contato py-2 px-3 my-2">Entre em contato com a organização</a>
             </div>
@@ -462,9 +417,3 @@
     </div>
 </main>
 @stop
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-        crossorigin="anonymous"></script>
-<script src="assets/js/script.js" type="text/javascript"></script>
-
