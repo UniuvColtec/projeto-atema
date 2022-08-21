@@ -21,8 +21,7 @@ class FrontendEventController extends Controller
     function show(int $id)
     {
         $event =  Event::findOrFail($id);
-        echo $event->images[0]->image->address;
-        dd($event);
+        return view('web.event.show', compact('event'));
     }
 
     function map()
