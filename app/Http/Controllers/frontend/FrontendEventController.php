@@ -6,6 +6,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Event;
+use App\Models\Event_category;
+use App\Models\Typical_event_food;
 use App\Models\Typical_food;
 use Illuminate\Http\Request;
 
@@ -21,7 +23,11 @@ class FrontendEventController extends Controller
     function show(int $id)
     {
         $event =  Event::findOrFail($id);
-        return view('web.event.show', compact('event'));
+        $event_categories = Event_category::all();
+        $categories = Category::all();
+        $typical_event_foods = Typical_event_food::all();
+        $typical_foods = Typical_food::all();
+        return view('web.event.show', compact('event','event_categories','categories','typical_event_foods','typical_foods'));
     }
 
     function map()

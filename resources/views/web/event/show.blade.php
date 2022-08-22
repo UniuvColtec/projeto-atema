@@ -8,9 +8,16 @@
             <div class="col-12 col-md-6">
                 <h2>{{ $event->name }}</h2>
                 <p style="color: darkgray; margin: 0">{{ $event->subtitle}}
-                        @foreach( $event->event_category as $category)
-                            <span class="badge rounded-pill text-bg-primary">{{ $category }}</span>
-                        @endforeach
+                    @foreach($event_categories as $event_category)
+                        @if($event_category->event_id == $event->id)
+                            @foreach($categories as $category)
+                                @if($event_category->category_id == $category->id)
+                                    {{ $category->typical_food_images }}
+                                    <span class="badge rounded-pill text-bg-primary">{{ $category->name }}</span>
+                                @endif
+                            @endforeach
+                        @endif
+                    @endforeach
                 </p>
             </div>
             <div class="col-12 col-md-6 d-flex flex-column flex-lg-row justify-content-between gap-2 gap-md-0 mt-3 mt-lg-0">
@@ -91,27 +98,7 @@
                         <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                     </svg>
                     {{ $event->address }}, {{ $event->district }}
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mapModal">
-                        Abrir o Mapa
-                    </button>
-                    <div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="mapModalTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="mapModalLongTitle">Localização</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    {!! $event->renderMap($event->latitude, $event->longitude) !!}
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <p>mapa</p>
                 </div>
                 <div class="text-justify my-4"> {!!$event->description!!}</div>
 
@@ -127,61 +114,29 @@
                     <h4 class="text-center">Comidas Típicas</h4>
                     <div class="accordion accordion-flush" id="comidas-tipicas-loop-container">
                         <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#comidas-tipicas-loop-item-1" aria-expanded="false"
-                                        aria-controls="comidas-tipicas-loop-item-1">
-                                    Comida típica 1
-                                </button>
-                            </h2>
-                            <div id="comidas-tipicas-loop-item-1" class="accordion-collapse collapse"
-                                 aria-labelledby="panelsStayOpen-headingOne">
-                                <div class="accordion-body">
-                                    <img src="assets/img/interna-eventos/comida-tipica.jpg" class="img-fluid" alt="">
-                                    <p class="mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
-                                        condimentum eu dolor bibendum ultricies.
-                                        Donec molestie consectetur accumsan. Donec faucibus elit nec congue
-                                        ullamcorper.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#comidas-tipicas-loop-item-2" aria-expanded="false"
-                                        aria-controls="comidas-tipicas-loop-item-2">
-                                    Comida típica 2
-                                </button>
-                            </h2>
-                            <div id="comidas-tipicas-loop-item-2" class="accordion-collapse collapse"
-                                 aria-labelledby="panelsStayOpen-headingTwo">
-                                <div class="accordion-body">
-                                    <img src="assets/img/interna-eventos/comida-tipica.jpg" class="img-fluid" alt="">
-                                    <p class="mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
-                                        condimentum eu dolor bibendum ultricies.
-                                        Donec molestie consectetur accumsan. Donec faucibus elit nec congue
-                                        ullamcorper.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#comidas-tipicas-loop-item-3" aria-expanded="false"
-                                        aria-controls="comidas-tipicas-loop-item-3">
-                                    Comida típica 3
-                                </button>
-                            </h2>
-                            <div id="comidas-tipicas-loop-item-3" class="accordion-collapse collapse"
-                                 aria-labelledby="panelsStayOpen-headingThree">
-                                <div class="accordion-body">
-                                    <img src="assets/img/interna-eventos/comida-tipica.jpg" class="img-fluid" alt="">
-                                    <p class="mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
-                                        condimentum eu dolor bibendum ultricies.
-                                        Donec molestie consectetur accumsan. Donec faucibus elit nec congue
-                                        ullamcorper.</p>
-                                </div>
-                            </div>
+                            @foreach($typical_event_foods as $typical_event_food)
+                                @if($typical_event_food->event_id == $event->id)
+                                    @foreach($typical_foods as $typical_food)
+                                        @if($typical_event_food->typical_food_id == $typical_food->id)
+                                            <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                                    data-bs-target="#comidas-tipicas-loop-item-{{ $typical_food->id }}" aria-expanded="false"
+                                                    aria-controls="comidas-tipicas-loop-item-{{ $typical_food->id }}">
+                                                {{ $typical_food->name }}
+                                            </button>
+                                            </h2>
+                                            <div id="comidas-tipicas-loop-item-{{ $typical_food->id }}" class="accordion-collapse collapse"
+                                                 aria-labelledby="panelsStayOpen-headingOne">
+                                                <div class="accordion-body">
+                                                    <img src="assets/img/interna-eventos/comida-tipica.jpg" class="img-fluid" alt="">
+                                                    <p class="mt-2">{{ $typical_food->description }}</p>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                @endif
+                            @endforeach
+
                         </div>
                     </div>
                     <a href="{{ route('web.typicalfood') }}" class="mt-3 text-center"><small>Ver mais</small></a>
