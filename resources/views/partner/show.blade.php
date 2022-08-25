@@ -85,11 +85,3 @@
         </div>
     </div>
 @endsection
-<div class="form-group">
-    <label for="nome">ID: </label>
-    {{ $partner->id }}
-</div>
-<div class="form-group">
-    <label for="image">Imagem: </label>
-    {{ $partner->image }}
-</div>

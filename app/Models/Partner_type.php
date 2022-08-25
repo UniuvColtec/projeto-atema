@@ -20,6 +20,14 @@ class Partner_type extends Model
         return $bootgrid;
 
     }
+    public function partner()
+    {
+        return $this->belongsToMany(Partner::class);
+    }
+
+    public function partner_type(){
+        return $this->hasMany(Partner_type::class);
+    }
 }
 
 

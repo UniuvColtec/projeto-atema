@@ -8,11 +8,24 @@ use Illuminate\Http\Request;
 
 class FrontendPartnerController extends Controller
 {
-    function index(){
-        echo 'parceiro - listagem';
+    function index()
+    {
+        $partners = Partner::with('city', 'firstImage')->get();
+        //return 'parceiros - listagem';
+        return view('web.partner.list', compact('partners'));
     }
 
-    function show(Partner $partner){
-        dd($partner);
+    function show(int $id)
+    {
+        $partner =  Partner::findOrFail($id);
+        return view('web.partner.show', compact('partner'));
     }
+
+    function map()
+    {
+        return 'mapa - exibir todos as Geo Localização';
+    }
+
+
+
 }

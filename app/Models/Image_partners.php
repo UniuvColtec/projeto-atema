@@ -15,5 +15,9 @@ class Image_partners extends Model
     public function image(){
         return $this->belongsTo(Image::class);
     }
+    public function firstImage()
+    {
+        return $this->hasOne(Image::class)->latest();
+    }
 }
 
