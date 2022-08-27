@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-12 col-md-6">
                 <br>
-                <h2 style="color: #ffffff; text-align: center">ATEMA</h2>
+                <h2 style="color: #ffffff">ATEMA</h2>
             </div>
                 <p style="text-align: justify; color:#ffffff" class="my-4">
                         A Associação de Turismo e Meio Ambiente do Vale do Iguaçu – ATEMA, fundada aos 11 de julho de 2014 é uma associação de direito privado, sem fins lucrativos, com sede à Rua Dom Pedro II, n.º 303, centro, na cidade de União da Vitória – PR.<br>
