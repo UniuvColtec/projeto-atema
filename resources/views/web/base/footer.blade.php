@@ -25,9 +25,8 @@
                 <div>
                     <h2 class="text-white">Menu</h2>
                     <ul class="navbar-nav text-white">
-                        <li class="text-white">Cadastre um Evento</li>
+                        <li class="text-white">Sugira um Evento</li>
                         <li class="text-white">Mapa dos Eventos</li>
-                        <li class="text-white">Agenge uma Viagem</li>
                         <li class="text-white">Comidas Típicas</li>
                         <li class="text-white">Turismo Local</li>
                         <li class="text-white">Quem somos</li>

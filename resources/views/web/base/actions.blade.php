@@ -4,7 +4,7 @@
             <div class="card h-100 py-3">
                 <div class="card-body d-flex justify-content-evenly align-items-center flex-column flex-sm-row gap-3 gap-sm-0">
                     <img src="assets/img/botoes-home/calendario.svg" width="50">
-                    <p class="m-0 p-0">Cadastrar<br>Evento</p>
+                    <p class="m-0 p-0">Sugerir<br>Evento</p>
                 </div>
             </div>
         </a>
