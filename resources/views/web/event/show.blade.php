@@ -43,7 +43,7 @@
                             @foreach($categories as $category)
                                 @if($event_category->category_id == $category->id)
                                     {{ $category->typical_food_images }}
-                                    <span class="badge rounded-pill text-bg-primary">{{ $category->name }}</span>
+                                    <span class="badge rounded-pill text" style="background-color: var(--ci-color-green)" >{{ $category->name }}</span>
                                 @endif
                             @endforeach
                         @endif
@@ -128,7 +128,7 @@
                         <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                     </svg>
                     {{ $event->address }}, {{ $event->district }}
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mapModal">
+                    <button type="button" class="btn " style="color: var(--ci-color-green)"  data-toggle="modal" data-target="#mapModal">
                         Mapa
                     </button>
                     <div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="mapModalTitle" aria-hidden="true">
@@ -144,14 +144,14 @@
                                     {!! $event->renderMap($event->latitude, $event->longitude) !!}
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn " style="color: var(--ci-color-green)"  data-dismiss="modal">Close</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="text-justify my-4"> {!!$event->description!!}</div>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#imageModal">
+                <button type="button" class="btn "  style="color: var(--ci-color-green)"  data-toggle="modal" data-target="#imageModal">
                     Galeria de Imagens
                 </button>
                 <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalTitle" aria-hidden="true">
@@ -178,13 +178,13 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn " style="color: var(--ci-color-green)"  data-dismiss="modal">Close</button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <a href="#" class="btn-cta-contato py-2 px-3 my-2">Entre em contato com a organização</a>
+                <a href="#" class="btn-cta-contato py-2 px-3 my-2" style="color: var(--ci-color-green)" >Entre em contato com a organização</a>
             </div>
         </div>
 
@@ -331,7 +331,7 @@
                                 <button class="accordion-button collapsed d-flex gap-2" type="button"
                                         data-bs-toggle="collapse" data-bs-target="#parceiros-loop-item-1"
                                         aria-expanded="false" aria-controls="parceiros-loop-item-1">
-                                    Parceiro 1 <span class="badge rounded-pill text-bg-primary">Hotel</span>
+                                    Parceiro 1 <span class="badge rounded-pill text" style="background-color: var(--ci-color-green)" >Hotel</span>
                                 </button>
                             </h2>
                             <div id="parceiros-loop-item-1" class="accordion-collapse collapse"
@@ -376,7 +376,7 @@
                                 <button class="accordion-button collapsed d-flex gap-2" type="button"
                                         data-bs-toggle="collapse" data-bs-target="#parceiros-loop-item-2"
                                         aria-expanded="false" aria-controls="parceiros-loop-item-2">
-                                    Parceiro 2 <span class="badge rounded-pill text-bg-primary">Restaurante</span>
+                                    Parceiro 2 <span class="badge rounded-pill text" style="background-color: var(--ci-color-green)" >Restaurante</span>
                                 </button>
                             </h2>
                             <div id="parceiros-loop-item-2" class="accordion-collapse collapse"
@@ -421,7 +421,7 @@
                                 <button class="accordion-button collapsed d-flex gap-2" type="button"
                                         data-bs-toggle="collapse" data-bs-target="#parceiros-loop-item-3"
                                         aria-expanded="false" aria-controls="parceiros-loop-item-3">
-                                    Parceiro 3 <span class="badge rounded-pill text-bg-primary">Conveniência</span>
+                                    Parceiro 3 <span class="badge rounded-pill text" style="background-color: var(--ci-color-green)" >Conveniência</span>
                                 </button>
                             </h2>
                             <div id="parceiros-loop-item-3" class="accordion-collapse collapse"
