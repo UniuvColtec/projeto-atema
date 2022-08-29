@@ -3,6 +3,32 @@
 
 @push('css')
     {{--    <link rel="stylesheet" href="/css/iziToast.min.css">--}}
+    <style>
+
+
+        .btn-download-foto {
+            padding: 1px 5px;
+            font-size: 12px;
+            line-height: 1.5;
+            border-radius: 3px;
+            color: #333;
+            background-color: #fff;
+            border-color: #ccc;
+            text-decoration: none;
+        }
+        .gallery-item {
+            width: 100%;
+            max-width: 250px;
+        }
+        .grid-gallery {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-column-gap: 10px;
+            /*border: solid dimgray 3px;
+            border-radius: 5px;*/
+        }
+
+    </style>
 @endpush
 
 @push('js')
@@ -116,10 +142,18 @@
                                         <div class="form-group">
                                             <label for="image">Imagem:</label>
                                             <br>
+                                            <div class='grid-gallery'>
                                             @foreach($event->images as $image)
-                                                <img class="card-img-top w-100 h-auto" src="{{ asset('files/' . $image->image->address) }}"
-                                                     alt="{{ $event->name }}" style="max-width: 500px; max-height: 400px;">
+                                                    <div class='grid-gallery-item'>
+                                                        <a href='{{ asset('files/' . $image->image->address) }}' class='btn-download-foto' download>
+                                                            <small><span class='fas fa-download'></span></small>
+                                                        </a>
+                                                        <br>
+                                                        <img src='{{ asset('files/' . $image->image->address) }}' data-src='{{ asset('files/' . $image->image->address) }}' class='img-responsive mklbItem gallery-item' data-gallery='myGallery'>
+                                                        <br>
+                                                    </div>
                                             @endforeach
+                                            </div>
                                         </div>
                                         <div class="footer">
                                             <div style="display: flex; flex-direction: row; justify-content: space-evenly;">
