@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Bootgrid;
+use App\Maps;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
@@ -30,18 +31,28 @@ class Tourist_spot extends Model
         return $this->belongsTo(City::class);
 
     }
-    public function getCoordinates($link) {
-        $pos = strpos( $link, "!3d");
-        $latitude = substr($link, $pos+3, 11);
-
-        $pos = strpos( $link, "!4d");
-        $longitude = substr($link, $pos+3, 11);
-
-        $this->latitude = $latitude;
-        $this->longitude = $longitude;
-    }
     public function tourist_spot_image(){
         return $this->hasMany(Image_tourist_spots::class);
+    }
+    public function getCoordinates($link) {
+        $coordenadas = Maps::getCoordinates($link);
+
+        $this->latitude = $coordenadas->latitude;
+        $this->longitude = $coordenadas->longitude;
+    }
+
+    public function renderMap($latitude, $longitude) {
+        return Maps::renderMap($latitude, $longitude);
+    }
+
+    public function images()
+    {
+        return $this->hasMany(Image_tourist_spots::class)->with('image');
+    }
+
+    public function firstImage()
+    {
+        return $this->hasOne(Image_tourist_spots::class)->with('image');
     }
 }
 

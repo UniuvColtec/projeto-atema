@@ -24,6 +24,12 @@
             /*border: solid dimgray 3px;
             border-radius: 5px;*/
         }
+        .grid-gallery-item img:hover {
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%,-50%);
+            width: 1080px;
+        }
     </style>
 @endpush
 

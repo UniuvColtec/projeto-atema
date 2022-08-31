@@ -10,13 +10,19 @@ class FrontendTouristSpotController extends Controller
 {
     function index()
     {
-        return 'pontos turisticos - listagem';
+        $tourist_spots = tourist_spot::with('city', 'firstImage')->get();
+        //return 'parceiros - listagem';
+        return view('web.tourist_spot.list', compact('tourist_spots'));
     }
 
     function show(int $id)
     {
         $tourist_spot =  Tourist_spot::findOrFail($id);
-        echo $tourist_spot->tourist_spot_image;
-        dd($tourist_spot);
+        return view('web.tourist_spot.show', compact('tourist_spot'));
+    }
+
+    function map()
+    {
+        return 'mapa - exibir todos as Geo Localização';
     }
 }

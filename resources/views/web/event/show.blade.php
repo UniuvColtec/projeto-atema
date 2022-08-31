@@ -23,6 +23,12 @@
             /*border: solid dimgray 3px;
             border-radius: 5px;*/
         }
+        .grid-gallery-item img:hover {
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%,-50%);
+            width: 1080px;
+        }
     </style>
 @endpush
 @push('js')
@@ -112,7 +118,7 @@
                         {{ $event->contact }}
                     </div>
                 </div>
-                <a href="{{ $event->website }}" target="_blank" class="px-4">
+                <a href="//{{ $event->website }}" target="_blank" class="px-4">
                     <div class="d-flex align-items-center gap-1 text-nowrap">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#98B54D"
                              class="bi bi-globe" viewBox="0 0 16 16">
