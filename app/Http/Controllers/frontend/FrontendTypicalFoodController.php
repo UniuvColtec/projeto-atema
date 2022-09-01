@@ -4,6 +4,7 @@ namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\City;
 use App\Models\Event;
 use App\Models\Event_category;
 use App\Models\Partner;
@@ -22,7 +23,9 @@ class FrontendTypicalFoodController extends Controller
     function show(int $id)
    {
        $typical_food =  Typical_food::findOrFail($id);
-       return view('web.typicalfood.show', compact('typical_food'));
+       $city = City::all();
+       $typical_foods_cities = City::all();
+       return view('web.typicalfood.show', compact('typical_food','city','typical_foods_cities'));
     }
 
 

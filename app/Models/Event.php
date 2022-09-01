@@ -98,5 +98,9 @@ class Event extends Model
         return $this->hasOne(Image_events::class)->with('image');
     }
 
+    public function typical_food()
+    {
+        return $this->belongsToMany(Typical_food::class);
+    }
 }
 

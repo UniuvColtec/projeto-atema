@@ -26,4 +26,8 @@ class City extends Model
     {
         return $this->hasMany(User::class);
     }
+    public function typical_food()
+    {
+        return $this->belongsToMany(Typical_food::class);
+    }
 }
