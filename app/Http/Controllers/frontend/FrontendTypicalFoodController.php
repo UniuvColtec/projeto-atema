@@ -16,7 +16,7 @@ class FrontendTypicalFoodController extends Controller
 {
     function index()
     {
-        $typical_foods = Typical_food::with('city', 'firstImage')->get();
+        $typical_foods = Typical_food::with('city', 'firstImage')->Paginate(9);
         return view('web.typicalfood.list', compact('typical_foods'));
     }
 

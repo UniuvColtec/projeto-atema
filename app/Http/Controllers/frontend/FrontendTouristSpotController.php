@@ -10,7 +10,7 @@ class FrontendTouristSpotController extends Controller
 {
     function index()
     {
-        $tourist_spots = tourist_spot::with('city', 'firstImage')->get();
+        $tourist_spots = tourist_spot::with('city', 'firstImage')->Paginate(9);
         //return 'parceiros - listagem';
         return view('web.tourist_spot.list', compact('tourist_spots'));
     }
