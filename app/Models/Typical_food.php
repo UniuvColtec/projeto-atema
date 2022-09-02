@@ -38,7 +38,6 @@ class Typical_food extends Model
     }
     public function cities(){
         return $this->belongsToMany(City::class, 'typical_food_cities', 'typical_food_id', 'city_id');
-
     }
     public function event(){
         return $this->belongsToMany(Event::class);

@@ -55,14 +55,13 @@
 
     <div class="row my-5">
         <div class="col-12 col-xl-6">
-            <div id="sliderComidaTipica" class="carousel slide w-100 sliderComidaTipica" data-bs-ride="true">
+            <div id="sliderEvento" class="carousel slide w-100 sliderEvento" data-bs-ride="true">
                 <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#sliderComidaTipica" data-bs-slide-to="0" class="active"
+                    <button type="button" data-bs-target="#sliderEvento" data-bs-slide-to="0" class="active"
                             aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#sliderComidaTipica" data-bs-slide-to="1"
+                    <button type="button" data-bs-target="#sliderEvento" data-bs-slide-to="1"
                             aria-label="Slide 2"></button>
                 </div>
-                @if ($typical_food->firstImage)
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <img src="{{ asset('files/' . $typical_food->firstImage->image->address) }}" class="d-block w-100" alt="">
@@ -71,13 +70,12 @@
                         <img src="{{ asset('files/' . $typical_food->firstImage->image->address) }}" class="d-block w-100" alt="">
                     </div>
                 </div>
-                @endif
-                <button class="carousel-control-prev" type="button" data-bs-target="#sliderComidaTipica"
+                <button class="carousel-control-prev" type="button" data-bs-target="#sliderEvento"
                         data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#sliderComidaTipica"
+                <button class="carousel-control-next" type="button" data-bs-target="#sliderEvento"
                         data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
@@ -86,10 +84,14 @@
         </div>
 
 
-        <div class="text-justify my-4"> {!!$typical_food->description!!}</div>
-        <button type="button" class="btn "  style="color: var(--ci-color-green)"  data-toggle="modal" data-target="#imageModal">
-            Galeria de Imagens
-        </button>
+        <div class="text-justify my-4 col-12 col-xl-6">
+            {!!$typical_food->description!!}
+            <button type="button" class="btn "  style="color: var(--ci-color-green)"  data-toggle="modal" data-target="#imageModal">
+                Galeria de Imagens
+            </button>
+            <a href="#" class="btn-cta-contato py-2 px-3 my-2" style="color: var(--ci-color-green)" >Entre em contato com a organização</a>
+        </div>
+
         <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -101,8 +103,8 @@
                     </div>
                     <div class="modal-body">
                         <div class='grid-gallery'>
-                            @if($typical_food->images)
-                                @foreach($typical_food->images as $image)
+                            @if($typical_food->typical_food_images)
+                                @foreach($typical_food->typical_food_images as $image)
                                     <div class='grid-gallery-item'>
                                         <a href='{{ asset('files/' . $image->image->address) }}' class='btn-download-foto' download>
                                             <small><span class='fas fa-download'></span></small>
@@ -121,8 +123,6 @@
                 </div>
             </div>
         </div>
-
-        <a href="#" class="btn-cta-contato py-2 px-3 my-2" style="color: var(--ci-color-green)" >Entre em contato com a organização</a>
     </div>
 
 
