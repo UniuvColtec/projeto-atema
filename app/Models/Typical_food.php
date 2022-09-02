@@ -36,8 +36,8 @@ class Typical_food extends Model
     {
         return $this->hasOne(Image_typical_foods::class)->with('image');
     }
-    public function city(){
-        return $this->belongsToMany(City::class);
+    public function cities(){
+        return $this->belongsToMany(City::class, 'typical_food_cities', 'typical_food_id', 'city_id');
 
     }
     public function event(){

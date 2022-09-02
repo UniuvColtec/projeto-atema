@@ -45,15 +45,8 @@
                     <path fill-rule="evenodd"
                           d="M16 .5a.5.5 0 0 0-.598-.49L10.5.99 5.598.01a.5.5 0 0 0-.196 0l-5 1A.5.5 0 0 0 0 1.5v14a.5.5 0 0 0 .598.49l4.902-.98 4.902.98a.502.502 0 0 0 .196 0l5-1A.5.5 0 0 0 16 14.5V.5zM5 14.09V1.11l.5-.1.5.1v12.98l-.402-.08a.498.498 0 0 0-.196 0L5 14.09zm5 .8V1.91l.402.08a.5.5 0 0 0 .196 0L11 1.91v12.98l-.5.1-.5-.1z"/>
                 </svg>
-                @foreach($typical_foods_cities as $typical_food_city)
-                    @if($typical_food_city->city_id == $city->id)
-                        @foreach($cities as $city)
-                            @if($typical_food_city->city_id == $city->id)
-                                {{ $city->typical_food_images }}
-                                <span class="badge rounded-pill text" style="background-color: var(--ci-color-green)" >{{ $city->name }}</span>
-                            @endif
-                        @endforeach
-                    @endif
+                @foreach($typical_food->cities as $city)
+                    <span class="badge rounded-pill text" style="background-color: var(--ci-color-green)" >{{ $city->name }}</span>
                 @endforeach
             </div>
         </div>
@@ -69,6 +62,7 @@
                     <button type="button" data-bs-target="#sliderComidaTipica" data-bs-slide-to="1"
                             aria-label="Slide 2"></button>
                 </div>
+                @if ($typical_food->firstImage)
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <img src="{{ asset('files/' . $typical_food->firstImage->image->address) }}" class="d-block w-100" alt="">
@@ -77,6 +71,7 @@
                         <img src="{{ asset('files/' . $typical_food->firstImage->image->address) }}" class="d-block w-100" alt="">
                     </div>
                 </div>
+                @endif
                 <button class="carousel-control-prev" type="button" data-bs-target="#sliderComidaTipica"
                         data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -106,16 +101,18 @@
                     </div>
                     <div class="modal-body">
                         <div class='grid-gallery'>
-                            @foreach($typical_food->images as $image)
-                                <div class='grid-gallery-item'>
-                                    <a href='{{ asset('files/' . $image->image->address) }}' class='btn-download-foto' download>
-                                        <small><span class='fas fa-download'></span></small>
-                                    </a>
-                                    <br>
-                                    <img src='{{ asset('files/' . $image->image->address) }}' data-src='{{ asset('files/' . $image->image->address) }}' class='img-responsive mklbItem gallery-item' data-gallery='myGallery'>
-                                    <br>
-                                </div>
-                            @endforeach
+                            @if($typical_food->images)
+                                @foreach($typical_food->images as $image)
+                                    <div class='grid-gallery-item'>
+                                        <a href='{{ asset('files/' . $image->image->address) }}' class='btn-download-foto' download>
+                                            <small><span class='fas fa-download'></span></small>
+                                        </a>
+                                        <br>
+                                        <img src='{{ asset('files/' . $image->image->address) }}' data-src='{{ asset('files/' . $image->image->address) }}' class='img-responsive mklbItem gallery-item' data-gallery='myGallery'>
+                                        <br>
+                                    </div>
+                                @endforeach
+                            @endif
                         </div>
                     </div>
                     <div class="modal-footer">
