@@ -3,7 +3,7 @@
         <div class="container py-4 py-md-5">
             <div class="row row-cols-1 text-center row-cols-md-2 text-md-start">
                 <div>
-                    <img src="assets/img/calendario-integrado-logo-branca.png">
+                    <img src="/assets/img/calendario-integrado-logo-branca.png">
                     <p class="text-white py-3 font-light">
                         Desenvolvimento Regional:<br>
                         Plataforma de integração do<br>
@@ -43,11 +43,11 @@
                     <small class="font-light text-white">Site desenvolvido por</small>
                     <div class="footer-desenvolvido-por d-flex align-items-center justify-content-center justify-content-md-start gap-3 py-2">
                         <a href="https://uniuv.edu.br" target="_blank">
-                            <img src="assets/img/centro-universitario-de-uniao-da-vitoria-uniuv-logo.png"
+                            <img src="/assets/img/centro-universitario-de-uniao-da-vitoria-uniuv-logo.png"
                                  alt="Centro Universitário de União da Vitória - UNIUV" width="65">
                         </a>
                         <a href="https://coltec.uniuv.edu.br/" target="_blank">
-                            <img src="assets/img/colegio-tecnico-de-uniao-da-vitoria-coltec.png"
+                            <img src="/assets/img/colegio-tecnico-de-uniao-da-vitoria-coltec.png"
                                  alt="Colégio Técnico de União da Vitória - COLTEC" width="75">
                         </a>
                         <a href="https://linkedin.com/in/roobertorres" target="_blank">

@@ -15,7 +15,6 @@ class Image_typical_foods extends Model
     public function image(){
         return $this->belongsTo(Image::class);
     }
-
     public function firstImage()
     {
         return $this->hasOne(Image::class)->latest();
