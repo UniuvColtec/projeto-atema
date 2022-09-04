@@ -14,10 +14,15 @@ use Illuminate\Http\Request;
 
 class FrontendTypicalFoodController extends Controller
 {
-    function index()
+    function index(Request $request)
     {
+        $cities = City::orderBy('name')->get(['id', 'name']);
         $typical_foods = Typical_food::with('cities', 'firstImage')->Paginate(9);
-        return view('web.typicalfood.list', compact('typical_foods'));
+        if($request->city_id){
+            $typical_foods->where('city_id',$request->city_id);
+
+        }
+        return view('web.typicalfood.list', compact('typical_foods','cities'));
     }
 
     function show(int $id)

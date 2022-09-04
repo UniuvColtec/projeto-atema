@@ -3,16 +3,22 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\City;
 use App\Models\Tourist_spot;
 use Illuminate\Http\Request;
 
 class FrontendTouristSpotController extends Controller
 {
-    function index()
+    function index(Request $request)
     {
+        $cities = City::orderBy('name')->get(['id', 'name']);
         $tourist_spots = tourist_spot::with('city', 'firstImage')->Paginate(9);
         //return 'parceiros - listagem';
-        return view('web.tourist_spot.list', compact('tourist_spots'));
+        if($request->city_id){
+            $tourist_spots->where('city_id',$request->city_id);
+
+        }
+        return view('web.tourist_spot.list', compact('tourist_spots','cities'));
     }
 
     function show(int $id)

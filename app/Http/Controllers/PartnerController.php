@@ -43,6 +43,7 @@ class PartnerController extends Controller
         $cities = City::orderBy('name')->get(['id', 'name']);
         $partner_types = Partner_type::orderBy('name')->get(['id', 'name']);
         return view('partner.create', compact('partner_types', 'cities'));
+
     }
 
     /**

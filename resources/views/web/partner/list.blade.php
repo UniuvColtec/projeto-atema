@@ -1,6 +1,75 @@
 @extends('web.base.page')
+@push('js')
+    <script src=" {{ asset('js/bs-stepper.js') }}" type="text/javascript"></script>
+    <script src="/js/formAjaxAlterar.js" type="text/javascript"></script>
+    <script src="/js/iziToast.min.js" type="text/javascript"></script>
+    <script src="/js/jquery.form.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/js/jquery.mask.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+    <script>
+
+
+
+        var stepper;
+        $(document).ready(function(){
+            var stepperEl = document.getElementById("stepper");
+            stepper = new Stepper(stepperEl);
+            // // $('#information-part').validate();
+            //
+            stepperEl.addEventListener('show.bs-stepper', function (partner) {
+                if (!$('.jsonForm').valid()){
+                    event.preventDefault()
+                }
+            })
+            stepperEl.addEventListener('shown.bs-stepper', function(partner){
+                $(".select2").select2();
+            });
+
+            $('.jsonForm').validate({
+                errorClass: 'is-invalid',
+            });
+
+            $(".select2").select2();
+        })
+        $('#myModal').on('shown.bs.modal', function () {
+            $('#myInput').trigger('focus')
+        })
+
+    </script>
+@endpush
 @push('css')
     <style>
+        .btn-download-foto {
+            padding: 1px 5px;
+            font-size: 12px;
+            line-height: 1.5;
+            border-radius: 3px;
+            color: #333;
+            background-color: #fff;
+            border-color: #ccc;
+            text-decoration: none;
+        }
+        .gallery-item {
+            width: 100%;
+        }
+        .grid-gallery {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-column-gap: 10px;
+            /*border: solid dimgray 3px;
+            border-radius: 5px;*/
+        }
+        .grid-gallery-item img:hover {
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%,-50%);
+            width: 1080px;
+        }
 
         .imagem-list{
             max-height: 300px;
@@ -28,6 +97,64 @@
             <div class="row justify-content-between py-3">
                 <h3 class="w-auto" style="color: var(--ci-color-green)">Listagem dos Parceiros</h3>
             </div>
+
+            <button type="button" class="btn" style="color: var(--ci-color-green)" data-toggle="modal" data-target="#exampleModal">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-funnel" style="color: var(--ci-color-green)" viewBox="0 0 16 16">
+                    <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2zm1 .5v1.308l4.372 4.858A.5.5 0 0 1 7 8.5v5.306l2-.666V8.5a.5.5 0 0 1 .128-.334L13.5 3.308V2h-11z"/>
+                </svg>
+                filtro
+            </button>
+
+            <div class="modal  row justify-content-between py-3" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Filtros:</h5>
+                            <button type="button" class="close" style="color: var(--ci-color-green)" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="body">
+                                <section class="section">
+                                    <form action="" method="GET">
+                                        <div class="row valign-wrapper">
+                                            <div class="form-group">
+                                                <label for="cities">Cidade:</label>
+                                                <select name="cities" id="cities" class="form-control select2" required >
+                                                    <option value="">- Selecione uma Cidade -</option>
+                                                    @foreach($cities as $city)
+                                                        <option value="{{$city->id}}">{{$city->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="partner_type_id">Tipo:</label>
+                                                <select name="partner_type_id" id="partner_type_id" class="form-control select2"  >
+                                                    <option value="">- Selecione um tipo-</option>
+                                                    @foreach($partner_types as $partner_type)
+                                                        <option value="{{$partner_type->id}}">{{$partner_type->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+
+
+
+                                        </div>
+
+                                    </form>
+                                </section>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class=" btn" style="color: var(--ci-color-green)">
+                                Filtrar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="row row-cols-1 row-cols-md-3  px-3 px-md-0  ">
                 @foreach( $partners as $partner)
                     <a class="my-3 m-md-0 " href="{{ route('web.partner.show', $partner->id) }}">
@@ -52,6 +179,7 @@
             <div class="d-flex justify-content-center pagination" >
                 {!! $partners->links()  !!}
             </div>
+        </div>
         </div>
     @stop
 @section('post_content')

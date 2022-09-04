@@ -19,6 +19,12 @@ class Partner extends Model
         'created_at' => 'date:d/m/Y H:m:s', 'updated_at'=> 'date:d/m/Y H:m:s', 'deleted_at'=>'date:d/m/Y H:m:s'];
 
     public const PARTNER_LOGO = '/logo/partners/';
+    public function index()
+    {
+        $cities = City::join('name')->get(['id', 'name']);
+        $partner_types = Partner_type::join('name')->get(['id', 'name']);
+        return view('web.partner',compact('partner_types', 'cities'));
+    }
 
     public function bootgrid(object $request)
     {
