@@ -82,6 +82,9 @@
         .pagination{
            color:  var(--ci-color-green);
          }
+        .page-item.active{
+             background-color: var(--ci-color-green);
+        }
 
 
     </style>
@@ -117,11 +120,11 @@
                         <div class="modal-body">
                             <div class="body">
                                 <section class="section">
-                                    <form action="" method="GET">
+                                    <form action="{{route('web.partner')}}" method="GET">
                                         <div class="row valign-wrapper">
                                             <div class="form-group">
                                                 <label for="cities">Cidade:</label>
-                                                <select name="cities" id="cities" class="form-control select2" required >
+                                                <select name="cities" id="cities" class="form-control select2" >
                                                     <option value="">- Selecione uma Cidade -</option>
                                                     @foreach($cities as $city)
                                                         <option value="{{$city->id}}">{{$city->name}}</option>
@@ -129,28 +132,24 @@
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <label for="partner_type_id">Tipo:</label>
-                                                <select name="partner_type_id" id="partner_type_id" class="form-control select2"  >
+                                                <label for="partner_types">Tipo:</label>
+                                                <select name="partner_types" id="partner_types" class="form-control select2"  >
                                                     <option value="">- Selecione um tipo-</option>
                                                     @foreach($partner_types as $partner_type)
                                                         <option value="{{$partner_type->id}}">{{$partner_type->name}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
-
-
-
                                         </div>
+                                        <br>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
+                                        <button type="submit"  class=" btn" style="color: var(--ci-color-green)">
+                                            Filtrar
+                                        </button>
                                     </form>
                                 </section>
                             </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class=" btn" style="color: var(--ci-color-green)">
-                                Filtrar
-                            </button>
                         </div>
                     </div>
                 </div>
@@ -176,7 +175,7 @@
                     </a>
                 @endforeach
             </div>
-            <div class="d-flex justify-content-center pagination" >
+            <div class="d-flex justify-content-center pagination "  >
                 {!! $partners->links()  !!}
             </div>
         </div>

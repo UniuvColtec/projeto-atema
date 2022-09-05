@@ -12,12 +12,12 @@ class FrontendTouristSpotController extends Controller
     function index(Request $request)
     {
         $cities = City::orderBy('name')->get(['id', 'name']);
-        $tourist_spots = tourist_spot::with('city', 'firstImage')->Paginate(9);
+        $tourist_spots = tourist_spot::with('city', 'firstImage');
         //return 'parceiros - listagem';
-        if($request->city_id){
-            $tourist_spots->where('city_id',$request->city_id);
-
+        if ($request->cities) {
+            $tourist_spots->where('city_id', '=', $request->cities);
         }
+        $tourist_spots =$tourist_spots->Paginate(1);
         return view('web.tourist_spot.list', compact('tourist_spots','cities'));
     }
 

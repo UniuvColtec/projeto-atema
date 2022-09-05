@@ -189,8 +189,6 @@
                         </div>
                     </div>
                 </div>
-
-                <a href="#" class="btn-cta-contato py-2 px-3 my-2" style="color: var(--ci-color-green)" >Entre em contato com a organização</a>
             </div>
         </div>
 

@@ -42,6 +42,14 @@
         <img src="{{$partner->getUrlLogo()}}" alt="{{$partner->title}}" class="img-thumbnail" style="max-width: 200px; max-height: 200px;">
         <div class="col-12 col-md-6">
             <h2 class="display-4">{{ $partner->name }}</h2>
+            <p style="color: darkgray; margin: 0">
+                @foreach($partner_types as $partner_type)
+                    @if($partner_type->id == $partner->id)
+                        <span class="badge rounded-pill text" style="background-color: var(--ci-color-green)" >{{$partner_type->name}}</span>
+
+                    @endif
+                @endforeach
+            </p>
 
         </div>
         <div class="row">
@@ -88,7 +96,7 @@
                         {{ $partner->site }}
                     </div>
                 </a>
-                <a href="{{ $partner->email }}" target="_blank" class="px-4">
+                <a href="//{{ $partner->email }}" target="_blank" class="px-4">
                     <div class="d-flex align-items-center gap-1 text-nowrap">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#98B54D"
                              class="bi  bi-envelope" viewBox="0 0 16 16">
@@ -159,8 +167,6 @@
                         </div>
                     </div>
                 </div>
-
-                <a href="#" class="btn-cta-contato py-2 px-3 my-2" style="color: var(--ci-color-green)" >Entre em contato com a organização</a>
             </div>
         </div>
 
