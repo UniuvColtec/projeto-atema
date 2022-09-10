@@ -288,6 +288,7 @@
                             <div id="parceiros-loop-item-{{ $partner->id }}" class="accordion-collapse collapse"
                                  aria-labelledby="panelsStayOpen-headingOne">
                                 <div class="accordion-body">
+                                    <img src="{{$partner->getUrlLogo()}}" class="img-fluid"  alt="{{$partner->title}}">
                                     <div class="mt-2"> {!!$partner->description!!}</div>
                                     <p class="d-flex gap-2 align-items-center">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#98B54D" class="bi bi-geo-alt" viewBox="0 0 16 16">
