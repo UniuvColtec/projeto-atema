@@ -61,9 +61,3 @@ header {
 .footer-desenvolvido-por *:hover {
     filter: none;
 }
-.carousel-control-prev{
-    opacity: 1;
-}
-.carousel-control-next{
-    opacity: 1;
-}

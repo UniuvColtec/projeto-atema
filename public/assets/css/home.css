@@ -57,3 +57,11 @@ header {
 .footer-desenvolvido-por *:hover {
     filter: none;
 }
+.carousel-control-next{
+    opacity: 1;
+    filter: invert(1);
+}
+.carousel-control-prev{
+    opacity: 1;
+    filter: invert(1);
+}
