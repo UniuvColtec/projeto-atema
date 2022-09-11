@@ -194,6 +194,9 @@
                                                 <div class="accordion-body">
                                                     <img src="{{ asset('files/' . $typical_food->firstImage->image->address) }}" class="img-fluid" alt="">
                                                     <div class="mt-2"> {!!$typical_food->description!!}</div>
+                                                    <button type="button" class="btn " style="color: var(--ci-color-green)" >
+                                                        <a href="{{ route('web.typicalfood.show', $typical_food->id) }}" class="mt-3 text-center"><small>Saiba mais!</small></a>
+                                                    </button>
                                                 </div>
                                             </div>
                                         @endif
@@ -203,7 +206,7 @@
 
                         </div>
                     </div>
-                    <a href="{{ route('web.typicalfood') }}" class="mt-3 text-center"><small>Ver mais</small></a>
+                    <a href="{{ route('web.typicalfood') }}" class="mt-3 text-center"><small>Ver todos</small></a>
                 </div>
             </div>
 
@@ -258,6 +261,9 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <button type="button" class="btn " style="color: var(--ci-color-green)" >
+                                        <a href="{{ route('web.touristspot.show', $tourist_spot->id) }}" class="mt-3 text-center"><small>Saiba mais!</small></a>
+                                    </button>
                                     </p>
                                 </div>
                                      @endif
@@ -265,7 +271,7 @@
                             </div>
                         </div>
                     </div>
-                   <a href="{{ route('web.touristspot') }}" class="mt-3 text-center"><small>Ver mais</small></a>
+                   <a href="{{ route('web.touristspot') }}" class="mt-3 text-center"><small>Ver todos</small></a>
                 </div>
             </div>
 
@@ -277,12 +283,14 @@
                         <div class="accordion-item">
                             @foreach($partners as $partner)
                                 @if($partner->city_id == $event->city->id)
+                                    @foreach($partner_types as $partner_type)
+                                        @if($partner_type->id == $partner->id)
 
                             <h2 class="accordion-header">
                                 <button class="accordion-button collapsed d-flex gap-2" type="button"
                                         data-bs-toggle="collapse" data-bs-target="#parceiros-loop-item-{{ $partner->id }}"
                                         aria-expanded="false" aria-controls="parceiros-loop-item-{{ $partner->id }}">
-                                    {{ $partner->name }} <span class="badge rounded-pill text" style="background-color: var(--ci-color-green)" >Tipo parceiro</span>
+                                    {{ $partner->name }} <span class="badge rounded-pill text" style="background-color: var(--ci-color-green)" >{{ $partner_type->name }}</span>
                                 </button>
                             </h2>
                             <div id="parceiros-loop-item-{{ $partner->id }}" class="accordion-collapse collapse"
@@ -338,17 +346,23 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                        <button type="button" class="btn " style="color: var(--ci-color-green)" >
+                                            <a href="{{ route('web.partner.show', $partner->id) }}" class="mt-3 text-center"><small>Saiba mais!</small></a>
+                                        </button>
 
+                                    </a>
                                         </p>
                                     </a>
                                 </div>
                             </div>
                                         @endif
                                     @endforeach
+                                @endif
+                            @endforeach
 
                         </div>
                     </div>
-                    <a href="{{ route('web.partner') }}" class="mt-3 text-center"><small>Ver mais</small></a>
+                    <a href="{{ route('web.partner') }}" class="mt-3 text-center"><small>Ver todos</small></a>
                 </div>
             </div>
         </div>

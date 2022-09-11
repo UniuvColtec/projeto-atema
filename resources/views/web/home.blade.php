@@ -22,7 +22,6 @@
 @stop
 
 @section('content')
-
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
@@ -59,19 +58,22 @@
                                     </div>
                                 </div>
                             </a>
-                    </div>
                     @endforeach
+                    </div>
+                   </div>
+                  </div>
                 </div>
-            </div>
         <button class="carousel-control-prev" type="button" data-target="#carouselExampleControls" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <!--<span class="sr-only">Anterior</span>-->
         </button>
         <button class="carousel-control-next" type="button" data-target="#carouselExampleControls" data-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <!--<span class="sr-only">Próximo</span>-->
+            <!-- <span class="sr-only">Próximo</span>-->
         </button>
-        </div>
+    </div>
+
+
 
 
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
