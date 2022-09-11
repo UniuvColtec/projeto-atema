@@ -156,45 +156,18 @@
                                             <textarea name="description" id="description" class="form-control" placeholder="Descrição" required></textarea>
                                         </div>
                                         <div class="row">
-                                        <div class="col-3">
-                                            <div class="form-group">
-                                                <label for="start_date">Data de início:</label>
-                                                <input type="datetime-local" name="start_date" id="start_date" class="form-control" placeholder="Data de início" required value="{{ $todays_date }}" min="{{ $todays_date }}">
-                                            </div>
-                                        </div>
-                                        <div class="col-3">
-                                            <div class="form-group">
-                                                <label for="final_date">Data de encerramento:</label>
-                                                <input type="datetime-local" name="final_date" id="final_date" class="form-control" placeholder="Data de encerramento" required value="{{ \Carbon\Carbon::now()->addDay()->format('Y-m-d\TH:i:s') }}" min="{{ $todays_date }}">
-                                            </div>
-                                        </div>
-                                        <div class="col-3">
-                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mapModal" style="transform: translateY(82%)">
-                                                Datas de outros eventos
-                                            </button>
-                                        </div>
-                                        <div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="mapModalTitle" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="mapModalLongTitle">Datas</h5>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <div style="display: grid; grid-template-columns: 1fr 1fr;">
-                                                        @foreach($events as $event)
-                                                            <p>{{ $event->name }} - {{ $event->start_date }}</p>
-                                                        @endforeach
-                                                        </div>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                                                    </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="start_date">Data de início:</label>
+                                                    <input type="datetime-local" name="start_date" id="start_date" class="form-control" placeholder="Data de início" required value="{{ $todays_date }}" min="{{ $todays_date }}">
                                                 </div>
                                             </div>
-                                        </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="final_date">Data de encerramento:</label>
+                                                    <input type="datetime-local" name="final_date" id="final_date" class="form-control" placeholder="Data de encerramento" required value="{{ \Carbon\Carbon::now()->addDay()->format('Y-m-d\TH:i:s') }}" min="{{ $todays_date }}">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="card-footer">

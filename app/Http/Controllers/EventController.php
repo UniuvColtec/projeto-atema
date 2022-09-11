@@ -50,8 +50,7 @@ class EventController extends Controller
         $typical_foods = Typical_food::all();
         $categories = Category::all();
         $todays_date = date('Y-m-d\TH:i:s');
-        $events = Event::where('status', 'Aprovado')->whereDate('final_date', '>=', date('Y-m-d'))->orderBy('start_date')->get();
-        return view('event.create', compact('cities','typical_foods','categories','todays_date','events'));
+        return view('event.create', compact('cities','typical_foods','categories','todays_date'));
     }
 
     /**
