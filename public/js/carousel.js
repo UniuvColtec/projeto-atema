@@ -4,7 +4,7 @@ mountCarousel(document.querySelectorAll('.carouselAnual .carousel-item'))
 
 function mountCarousel(items) {
     items.forEach((el) => {
-        const minPerSlide = 4
+        const minPerSlide = 3
         let next = el.nextElementSibling
         for (var i=1; i<minPerSlide; i++) {
             if (!next) {

@@ -31,3 +31,10 @@
 .carousel-inner .carousel-item-start {
     transform: translateX(0);
 }
+
+
+.carousel-item {
+    column-gap: 30px;
+    background: #f1f1f1;
+}
+

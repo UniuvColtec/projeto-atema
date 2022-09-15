@@ -33,17 +33,18 @@
 @endpush
 @section('content')
 <div class="container pb-4">
-    <div class="row justify-content-between py-3">
+    <div class="row justify-content-between py-3 m-3">
         <h3 class="w-auto">Próximos Eventos</h3>
         <a href="{{ route('web.event') }}" class="w-auto" style="color: var(--ci-color-green)">Mostrar todos</a>
     </div>
-    <div class="container text-center my-3">
+    <div class="container text-center">
         <div class="row mx-auto my-auto justify-content-center">
-            <div id="recipeCarousel" class="carousel carouselAnual slide" data-bs-ride="carousel">
+            <div id="recipeCarouselNext" class="carousel carouselAnual slide" data-bs-ride="carousel">
                 <div class="carousel-inner" role="listbox">
-                    <div class="carousel-item active">
-                        <div class="row row-cols-1 row-cols-md-3 home-proximos-eventos px-3 px-md-0">
-                            @foreach( $events as $event)
+                    @php $firstEvent = true; @endphp
+                    @foreach( $events as $event)
+                    <div class="carousel-item  {{ $firstEvent ? 'active' : '' }}">
+                        <div class="w-100 px-3 px-md-0">
                                 <a class="my-3 m-md-0" href="{{ route('web.event.show', $event->id) }}">
                                     <div class="card h-100">
                                         <img class="card-img-top w-100 h-auto" src="{{ asset('files/' . $event->firstImage->image->address) }}"
@@ -70,113 +71,37 @@
                                         </div>
                                     </div>
                                 </a>
-                            @endforeach
                         </div>
                     </div>
+                        @php $firstEvent = false; @endphp
+                    @endforeach
                 </div>
-                <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="prev">
+                <a class="carousel-control-prev w-aut" href="#recipeCarouselNext" role="button" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 </a>
-                <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="next">
+                <a class="carousel-control-next w-aut" href="#recipeCarouselNext" role="button" data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 </a>
             </div>
         </div>
     </div>
 
+
+    <div class="row justify-content-between py-3 m-3">
+        <h3 class="w-auto">Calendário Anual</h3>
+    </div>
     <div class="container text-center my-3">
         <div class="row mx-auto my-auto justify-content-center">
-            <div id="recipeCarousel2" class="carousel carouselCalendario slide" data-bs-ride="carousel">
+            <div id="recipeCarouselAnual" class="carousel carouselAnual slide" data-bs-ride="carousel">
                 <div class="carousel-inner" role="listbox">
-                    <div class="carousel-item active">
-                        <div class="col-md-3">
-                            <div class="card">
-                                <div class="card-img">
-                                    <img src="https://via.placeholder.com/700x500.png/CB997E/333333?text=1" class="img-fluid">
-                                </div>
-                                <div class="card-img-overlay">Slide 1</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="col-md-3">
-                            <div class="card">
-                                <div class="card-img">
-                                    <img src="https://via.placeholder.com/700x500.png/DDBEA9/333333?text=2" class="img-fluid">
-                                </div>
-                                <div class="card-img-overlay">Slide 2</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="col-md-3">
-                            <div class="card">
-                                <div class="card-img">
-                                    <img src="https://via.placeholder.com/700x500.png/FFE8D6/333333?text=3" class="img-fluid">
-                                </div>
-                                <div class="card-img-overlay">Slide 3</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="col-md-3">
-                            <div class="card">
-                                <div class="card-img">
-                                    <img src="https://via.placeholder.com/700x500.png/B7B7A4/333333?text=4" class="img-fluid">
-                                </div>
-                                <div class="card-img-overlay">Slide 4</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="col-md-3">
-                            <div class="card">
-                                <div class="card-img">
-                                    <img src="https://via.placeholder.com/700x500.png/A5A58D/333333?text=5" class="img-fluid">
-                                </div>
-                                <div class="card-img-overlay">Slide 5</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="col-md-3">
-                            <div class="card">
-                                <div class="card-img">
-                                    <img src="https://via.placeholder.com/700x500.png/6B705C/eeeeee?text=6" class="img-fluid">
-                                </div>
-                                <div class="card-img-overlay">Slide 6</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel2" role="button" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                </a>
-                <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel2" role="button" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                </a>
-            </div>
-        </div>
-    </div>
-
-
-
-
-
-
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="container py-4">
-                        <div class="row justify-content-between py-3">
-                            <h3 class="w-auto">Calendário Anual</h3>
-                            <a href="{{ route('web.event') }}" class="w-auto" style="color: var(--ci-color-green)">Mostrar todos</a>
-                        </div>
-                        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-4 justify-content-evenly justify-content-lg-between calendario-anual-container">
-                            @foreach( $events as $event)
-                                <a class="" href="{{ route('web.event.show', $event->id) }}">
+                    @php $firstEvent = true; @endphp
+                    @foreach( $events as $event)
+                        <div class="carousel-item  {{ $firstEvent ? 'active' : '' }}">
+                            <div class="w-100 px-3 px-md-0">
+                                <a class="my-3 m-md-0" href="{{ route('web.event.show', $event->id) }}">
                                     <div class="card h-100">
-                                        <img class="card-img-top w-100 h-auto" src="{{ asset('files/' . $event->firstImage->image->address) }}" alt="{{ $event->name }}">
+                                        <img class="card-img-top w-100 h-auto" src="{{ asset('files/' . $event->firstImage->image->address) }}"
+                                             alt="{{ $event->name }}">
                                         <div class="card-body text-center d-flex flex-column justify-content-center">
                                             <h5 class="card-title">{{ $event->name }}</h5>
                                             <div class="mt-2">
@@ -199,20 +124,21 @@
                                         </div>
                                     </div>
                                 </a>
-                            @endforeach
+                            </div>
                         </div>
-                    </div>
+                        @php $firstEvent = false; @endphp
+                    @endforeach
                 </div>
+                <a class="carousel-control-prev w-aut" href="#recipeCarouselAnual" role="button" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </a>
+                <a class="carousel-control-next w-aut" href="#recipeCarouselAnual" role="button" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </a>
             </div>
-            <button class="carousel-control-prev" type="button" data-target="#carouselExampleControls" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <!--<span class="sr-only">Anterior</span>-->
-            </button>
-            <button class="carousel-control-next" type="button" data-target="#carouselExampleControls" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-               <!-- <span class="sr-only">Próximo</span>-->
-            </button>
         </div>
+    </div>
+
 @stop
 
 @section('post_content')
