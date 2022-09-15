@@ -17,6 +17,15 @@
                 grid-template-columns: repeat(2,1fr);
                 gap: 2rem;
             }
+            .types-display {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .type-itens {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+            }
         }
 
         /*Tela PC*/
@@ -32,9 +41,25 @@
                 grid-template-columns: repeat(4,1fr);
                 gap: 2rem;
             }
+            .types-display {
+                width: 100%;
+                display: grid;
+                grid-template-columns: 1fr 2fr;
+                gap: 2rem;
+            }
+            .type-itens {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+            }
         }
 
         /*Geral*/
+        .main-content, .more-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
         .title-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -56,6 +81,9 @@
             filter: brightness(60%);
             box-sizing: border-box;
         }
+        .type-itens .link:hover, type-itens .link:focus {
+            color: #444444;
+        }
     </style>
 
 
@@ -68,7 +96,7 @@
 @endpush
 @section('content')
     <div class="container my-5">
-        <div class="container">
+        <div class="container main-content">
             <div class="banner-n-info-grid">
                 <img src="{{ asset('files/' . $event->firstImage->image->address) }}" class="d-block w-100" alt="{{ $event->name }}">
                 <div class="info-flex">
@@ -105,6 +133,29 @@
                         <img src="{{ asset('files/' . $image->image->address) }}" class="d-block w-100" alt="">
                     </div>
                 @endforeach
+            </div>
+            <div class="more-info">
+                <div class="types-display">
+                    <label>Este evento está caracterizado como:</label>
+                    <div class="type-itens">
+                        @foreach($event->event_category as $category)
+                            <span class="badge rounded-pill text" style="background-color: var(--ci-color-green)"> {{ $category->category->name }}</span>
+                        @endforeach
+                    </div>
+                </div>
+                <div class="types-display">
+                    <label>Dentre suas comidas típicas estão:</label>
+                    <div class="type-itens">
+                        @foreach($event->event_typical_food as $typical_food)
+                            <a href="/comida-tipica/{{ $typical_food->typical_food->id }}" class="badge rounded-pill text link" style="background-color: var(--ci-color-green)"> {{ $typical_food->typical_food->name }}</a>
+                        @endforeach
+                    </div>
+                </div>
+                <div>
+                    <p for="endereco">Endereço: {{ $event->address }}, {{ $event->district }}</p>
+
+                    {!! $event->renderMap($event->latitude, $event->longitude) !!}
+                </div>
             </div>
         </div>
     </div>
