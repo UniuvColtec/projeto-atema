@@ -19,7 +19,7 @@ class FrontendEventController extends Controller
 {
     function index()
     {
-        $events = Event::where('status', 'Aprovado')->whereDate('final_date', '>=', date('Y-m-d'))->orderBy('start_date')->take(3)->with('city', 'firstImage')->get();
+        $events = Event::where('status', 'Aprovado')->whereDate('final_date', '>=', date('Y-m-d'))->orderBy('start_date')->with('city', 'firstImage')->Paginate(2);
         //return 'eventos - listagem';
         return view('web.event.list', compact('events'));
     }

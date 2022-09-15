@@ -82,6 +82,10 @@
         </div>
         @endforeach
 
+        <div class="d-flex justify-content-center pagination" >
+            {!! $events->appends(['filter' => 'variaveldofiltro'])->links()  !!}
+        </div>
+
 
 
 
