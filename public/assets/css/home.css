@@ -57,12 +57,16 @@ header {
 .footer-desenvolvido-por *:hover {
     filter: none;
 }
-.carousel-control-next{
-    opacity: 1;
-    filter: invert(1);
+.calendario-anual-container{
+    width: 100%;
+    display: compact;
+    column-gap: 20px;
 }
-.carousel-control-prev{
-    opacity: 1;
-    filter: invert(1);
+.carousel-control-prev,
+.carousel-control-next {
+    background-color: rgba(152, 181, 77, 0.66);
+    width: 6vh;
+    height: 6vh;
+    border-radius: 50%;
+    top: 50%;
 }
-
