@@ -79,12 +79,19 @@
         ;
 
         }
-        .pagination{
-           color:  var(--ci-color-green);
-         }
-        .page-item.active{
-             background-color: var(--ci-color-green);
+        .page-link{
+            color:  var(--ci-color-green);
+            background-color: white;
+            --bs-btn-active-bg: var(--ci-color-green);
+            !important;
+
         }
+        .active>.page-link, .page-link.active{
+            background-color: var(--ci-color-green);
+            border-color: var(--ci-color-green);
+        }
+
+
 
 
     </style>
