@@ -27,15 +27,9 @@ class FrontendEventController extends Controller
     function show(int $id)
     {
         $event =  Event::findOrFail($id);
-        $event_categories = Event_category::all();
-        $categories = Category::all();
-        $typical_event_foods = Typical_event_food::all();
-        $typical_foods = Typical_food::all();
         $tourist_spots = Tourist_spot::all();
         $city = City::all();
-        $partners = Partner::all();
-        $partner_types = Partner_type::all();
-        return view('web.event.show', compact('event','event_categories','categories','typical_event_foods','typical_foods','tourist_spots','city','partners','partner_types'));
+        return view('web.event.show', compact('event','tourist_spots','city'));
     }
 
     function map()

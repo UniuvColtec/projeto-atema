@@ -1,0 +1,70 @@
+/*Tela Celular*/
+@media screen and (max-width: 999px){
+    .banner-n-info-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .grid-gallery {
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        gap: 2rem;
+    }
+    .types-display {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .type-itens {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0.5rem;
+    }
+}
+
+/*Tela PC*/
+@media screen and (min-width: 1000px){
+    .banner-n-info-grid {
+        display: grid;
+        grid-template-columns: 2fr 2fr ;
+        gap: 4rem;
+    }
+    .grid-gallery {
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        gap: 2rem;
+    }
+    .types-display {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 2rem;
+    }
+    .type-itens {
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        gap: 1rem;
+    }
+}
+
+/*Geral*/
+.main-content, .more-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.title-grid {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+}
+
+.info-flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 1rem;
+}
+.type-itens .link:hover, type-itens .link:focus {
+    color: #444444;
+}
