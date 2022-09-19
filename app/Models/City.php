@@ -30,4 +30,12 @@ class City extends Model
     {
         return $this->belongsToMany(Typical_food::class);
     }
+    public function tourist_spots()
+    {
+        return $this->hasMany(Tourist_spot::class);
+    }
+    public function partners()
+    {
+        return $this->hasMany(Partner::class);
+    }
 }
