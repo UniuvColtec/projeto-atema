@@ -42,7 +42,6 @@ Route::get('/ponto-turistico', [FrontendTouristSpotController::class, 'index'])-
 
 
 Route::get('/quem-somos', [\App\Http\Controllers\frontend\AboutController::class, 'index'])->name('web.about');
-Route::get('/contato', [\App\Http\Controllers\frontend\ContactController::class, 'index'])->name('web.contact');
 
 Auth::routes();
 

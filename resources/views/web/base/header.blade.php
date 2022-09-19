@@ -20,7 +20,7 @@
                         <a class="nav-link" href="{{ route('web.about') }}">Quem Somos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('web.contact') }}">Contato</a>
+                        <a class="nav-link" href="#contato">Contato</a>
                     </li>
                 </ul>
             </div>
