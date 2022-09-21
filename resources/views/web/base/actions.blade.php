@@ -1,6 +1,6 @@
 <div class="container py-3 home-action-buttons">
     <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-4 text-center px-2 justify-content-evenly">
-        <a href="#">
+        <a href="{{ url('/contact') }}">
             <div class="card h-100 py-3">
                 <div class="card-body d-flex justify-content-evenly align-items-center flex-column flex-sm-row gap-3 gap-sm-0">
                     <img src="/assets/img/botoes-home/calendario.svg" width="50">
