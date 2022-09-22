@@ -6,6 +6,7 @@
     <link href="{{ asset('css/carousel.css') }}" rel="stylesheet">
     <link href="{{ asset('css/showPage.css') }}" rel="stylesheet">
     <style>
+
         .grid-gallery {
             position: relative;
         }
@@ -38,6 +39,7 @@
             transition: 1s;
             filter: brightness(60%);
         }
+
     </style>
 
 

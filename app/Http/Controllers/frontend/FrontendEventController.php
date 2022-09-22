@@ -17,19 +17,25 @@ use Illuminate\Http\Request;
 
 class FrontendEventController extends Controller
 {
-    function index()
+    function index(Request $request)
     {
-        $events = Event::where('status', 'Aprovado')->whereDate('final_date', '>=', date('Y-m-d'))->orderBy('start_date')->with('city', 'firstImage')->Paginate(2);
+        $cities = City::orderBy('name')->get(['id', 'name']);
+        $categories = Category::orderby('name')->get(['id','name']);
+        $events = Event::where('status', 'Aprovado')->whereDate('final_date', '>=', date('Y-m-d'))->orderBy('start_date')->with('city', 'firstImage')->Paginate(3);
         //return 'eventos - listagem';
-        return view('web.event.list', compact('events'));
+        if ($request->cities) {
+            $events->where('city_id', '=', $request->cities);
+        }
+        if($request->categories){
+            $events->where('category_id', '=' ,$request->categories);
+        }
+        return view('web.event.list', compact('events','cities','categories'));
     }
 
     function show(int $id)
     {
         $event =  Event::findOrFail($id);
-        $tourist_spots = Tourist_spot::all();
-        $city = City::all();
-        return view('web.event.show', compact('event','tourist_spots','city'));
+        return view('web.event.show', compact('event'));
     }
 
     function map()
