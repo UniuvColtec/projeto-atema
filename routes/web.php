@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CidadeController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\PartnerTypeController;
 use App\Http\Controllers\CategoryController;
@@ -39,7 +40,8 @@ Route::get('/comida-tipica/{typical_food}', [FrontendTypicalFoodController::clas
 Route::get('/comida-tipica', [FrontendTypicalFoodController::class, 'index'])->name('web.typicalfood');
 Route::get('/ponto-turistico/{tourist_spot}', [FrontendTouristSpotController::class, 'show'])->name('web.touristspot.show');
 Route::get('/ponto-turistico', [FrontendTouristSpotController::class, 'index'])->name('web.touristspot');
-
+Route::get('/contact', [ContactController::class, 'index'])->name('web.contact.index');
+Route::resource('/contact',ContactController::class);
 
 Route::get('/quem-somos', [\App\Http\Controllers\frontend\AboutController::class, 'index'])->name('web.about');
 
@@ -104,6 +106,7 @@ Route::prefix('admin')->middleware('auth')->group(function(){
 
     Route::get('password', [UserController::class, 'getPassword'])->name('password.index');
     Route::post('password', [UserController::class, 'postPassword'])->name('password.save');
+
 
 });
 
