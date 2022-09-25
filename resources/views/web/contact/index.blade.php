@@ -6,37 +6,19 @@
     <link href="{{ asset('css/carousel.css') }}" rel="stylesheet">
     <link href="{{ asset('css/showPage.css') }}" rel="stylesheet">
     <style>
-        .grid-gallery {
-            position: relative;
+        @media screen and (max-width: 999px){
+            .grid-inputs {
+                display: grid;
+                grid-template-rows: 1fr 1fr;
+                gap: 1rem;
+            }
         }
-
-        .btn-download-foto {
-            padding: 1px 5px;
-            font-size: 12px;
-            line-height: 1.5;
-            border-radius: 3px;
-            color: #333;
-            background-color: #fff;
-            border-color: #ccc;
-            text-decoration: none;
-        }
-
-        .et_builder_inner_content.has_et_pb_sticky {
-            z-index: 2 !important;
-        }
-
-        .grid-gallery-item {
-            margin:auto;
-        }
-
-        .grid-gallery-item img {
-            transition: 0.5s;
-            filter: brightness(100%);
-        }
-
-        .grid-gallery-item img:hover, .grid-gallery-item img:focus {
-            transition: 1s;
-            filter: brightness(60%);
+        @media screen and (min-width: 1000px){
+            .grid-inputs {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+            }
         }
     </style>
 
@@ -46,62 +28,56 @@
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
     <script src="{{ asset('js/bs-stepper.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/formAjaxAlterar.js') }}" type="text/javascript"></script>
-    
+
 @endpush
 @section('content')
     <div class="container my-5">
         <div class="container main-content">
-            <div class="banner-n-info-grid">
-                <h1>Sugestão de evento</h1>
-                <div class="col-md-6 jumbotron mx-auto">
+            <p class="h1 text-center">Sugestão de evento</p>
+                <div class="col-md-10 jumbotron mx-auto">
                     <form action="{{url('/contact')}}" method="post">
                         {{csrf_field()}}
-                        <div class="form-group">
-
+                        <div class="form-group main-content">
                             <div class="form-group">
-                                <label>nome do evento:</label>
+                                <label>Nome do evento:</label>
                                 <input type="text" name="name" class="form-control" placeholder="Insira o nome do evento">
                             </div>
-                            <div class="form-group">
-                                <label>nome do organizador:</label>
-                                <input type="text" name="name_org" class="form-control" placeholder="Insira o nome do organizador">
+                            <div class="grid-inputs">
+                                <div class="form-group">
+                                    <label>Nome do organizador:</label>
+                                    <input type="text" name="name_org" class="form-control" placeholder="Insira o nome do organizador">
+                                </div>
+                                <div class="form-group">
+                                    <label>Email:</label>
+                                    <input type="email" name="email" class="form-control" placeholder="Insira o email para contato">
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="city">Cidade:</label>
-                                <input name="city" id="name" class="form-control" placeholder="-Campo obrigatório-" required>
-                            </div>
-                            <div class="form-group">
-                                <label>email:</label>
-                                <input type="email" name="email" class="form-control" placeholder="Insira o email para contato">
-
+                            <div class="grid-inputs">
+                                <div class="form-group">
+                                    <label for="address">Endereço:</label>
+                                    <input type="text" name="address" id="address" class="form-control" placeholder="Endereço -Campo obrigatório-" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="city">Cidade:</label>
+                                    <input name="city" id="name" class="form-control" placeholder="-Campo obrigatório-" required>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label for="description">Descrição:</label>
                                 <textarea name="description" id="description" class="form-control" placeholder="Descrição do evento" required></textarea>
                             </div>
-                            <div class="form-group">
-                                <label for="address">Endereço:</label>
-                                <input type="text" name="address" id="address" class="form-control" placeholder="Endereço -Campo obrigatório-" required>
-                            </div>
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="start_date">Data de início:</label>
-                                        <input type="datetime-local" name="start_date" id="start_date" class="form-control" placeholder="Data de início" required>
-                                    </div>
+                            <div class="grid-inputs">
+                                <div class="form-group">
+                                    <label for="start_date">Data de início:</label>
+                                    <input type="datetime-local" name="start_date" id="start_date" class="form-control" placeholder="Data de início" required>
                                 </div>
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="final_date">Data de encerramento:</label>
-                                        <input type="datetime-local" name="final_date" id="final_date" class="form-control" placeholder="Data de encerramento" required >
-                                    </div>
+                                <div class="form-group">
+                                    <label for="final_date">Data de encerramento:</label>
+                                    <input type="datetime-local" name="final_date" id="final_date" class="form-control" placeholder="Data de encerramento" required >
                                 </div>
                             </div>
                         </div>
                         <button type="submit " class="btn " style="var(--ci-color-green)">Enviar</button>
-
-
-
                     </form>
                 </div>
 @stop
