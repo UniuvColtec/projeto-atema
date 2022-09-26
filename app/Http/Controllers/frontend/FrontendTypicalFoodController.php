@@ -10,6 +10,7 @@ use App\Models\Event_category;
 use App\Models\Partner;
 use App\Models\Typical_event_food;
 use App\Models\Typical_food;
+use App\Models\Typical_food_city;
 use Illuminate\Http\Request;
 
 class FrontendTypicalFoodController extends Controller
@@ -29,7 +30,9 @@ class FrontendTypicalFoodController extends Controller
    {
        $typical_food =  Typical_food::findOrFail($id); //->cities()->get();
        $events = Event::all();
-       return view('web.typicalfood.show', compact('typical_food','events'));
+       $typical_food_city = Typical_food_city::all();
+       $city = City::all();
+       return view('web.typicalfood.show', compact('typical_food','events','typical_food_city','city'));
     }
 
 

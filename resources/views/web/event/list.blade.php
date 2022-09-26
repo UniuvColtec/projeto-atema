@@ -80,10 +80,11 @@
                                                 @endforeach
                                             </select>
                                         </div>
+
                                         <div class="form-group">
-                                            <label for="cities">Categoria:</label>
-                                            <select name="cities" id="cities" class="form-control select2" >
-                                                <option value="">- Selecione uma Categoria -</option>
+                                            <label for="categories">Categoria:</label>
+                                            <select name="categories" id="categories" class="form-control select2" >
+                                                <option value="">- Selecione uma Categoria-</option>
                                                 @foreach($categories as $category)
                                                     <option value="{{$category->id}}">{{$category->name}}</option>
                                                 @endforeach
@@ -104,6 +105,11 @@
                 </div>
             </div>
         </div>
+
+
+
+
+
         <div class="row row-cols-1 row-cols-md-3  px-3 px-md-0  ">
             @foreach( $events as $event)
                 <a class="my-3 m-md-0 " href="{{ route('web.event.show', $event->id) }}">
@@ -124,10 +130,9 @@
                     </div>
                 </a>
             @endforeach
-
         </div>
-        <div class="d-flex justify-content-center pagination" >
-            {!! $events->appends(['filter' => 'variavelfiltro'])->links()  !!}
+        <div class="d-flex justify-content-center pagination "  >
+            {!! $events->links()  !!}
         </div>
     </div>
 @stop
