@@ -20,6 +20,7 @@
                 gap: 1rem;
             }
         }
+
     </style>
 
 
@@ -73,11 +74,12 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="final_date">Data de encerramento:</label>
-                                    <input type="datetime-local" name="final_date" id="final_date" class="form-control" placeholder="Data de encerramento" required >
+                                    <input type="datetime-local" name="final_date" id="final_date" class="form-control"   placeholder="Data de encerramento" required >
                                 </div>
                             </div>
                         </div>
-                        <button type="submit " class="btn " style="var(--ci-color-green)">Enviar</button>
+                        <br>
+                        <button type="submit " class="btn " style="color: var(--ci-color-green)"  >Enviar</button>
                     </form>
                 </div>
 @stop
