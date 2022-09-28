@@ -90,6 +90,10 @@
                                                 @endforeach
                                             </select>
                                         </div>
+                                        <div class="form-group">
+                                            <label for="categories">Data:</label>
+                                            <input type="date" name="dates" class="form-control select2">
+                                        </div>
                                     </div>
 
                                     <br>
