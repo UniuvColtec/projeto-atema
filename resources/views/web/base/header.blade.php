@@ -1,3 +1,13 @@
+<style>
+    @media screen and (min-width: 1000px) {
+        .a-bit-useless {
+            visibility: hidden;
+            opacity: 0;
+            position: fixed;
+            z-index: -222222;
+        }
+    }
+</style>
 <header>
     <nav class="navbar navbar-expand-lg py-4" id="header-navbar">
         <div class="container-md">
@@ -21,6 +31,12 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#contato">Contato</a>
+                    </li>
+                    <li class="nav-item a-bit-useless">
+                        <a class="nav-link" href="{{ url('/contact') }}">Sugerir Evento</a>
+                    </li>
+                    <li class="nav-item a-bit-useless">
+                        <a class="nav-link" href="{{ route('web.event.map') }}">Mapa de Eventos</a>
                     </li>
                 </ul>
             </div>

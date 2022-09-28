@@ -1,6 +1,16 @@
+<style>
+    @media screen and (max-width: 999px) {
+        .useless {
+            visibility: hidden;
+            opacity: 0;
+            position: fixed;
+            z-index: -222222;
+        }
+    }
+</style>
 <div class="container py-3 home-action-buttons">
     <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-4 text-center px-2 justify-content-evenly">
-        <a href="{{ url('/contact') }}">
+        <a href="{{ url('/contact') }}" class="useless">
             <div class="card h-100 py-3">
                 <div class="card-body d-flex justify-content-evenly align-items-center flex-column flex-sm-row gap-3 gap-sm-0">
                     <img src="/assets/img/botoes-home/calendario.svg" width="50">
@@ -8,7 +18,7 @@
                 </div>
             </div>
         </a>
-        <a href="{{ route('web.event.map') }}">
+        <a href="{{ route('web.event.map') }}" class="useless">
             <div class="card h-100 py-3">
                 <div class="card-body d-flex justify-content-evenly align-items-center flex-column flex-sm-row gap-3 gap-sm-0">
                     <img src="/assets/img/botoes-home/mapa-dos-eventos.svg" width="50">
