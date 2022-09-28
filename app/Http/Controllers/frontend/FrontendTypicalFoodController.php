@@ -18,11 +18,12 @@ class FrontendTypicalFoodController extends Controller
     function index(Request $request)
     {
         $cities = City::orderBy('name')->get(['id', 'name']);
-        $typical_foods = Typical_food::with('cities', 'firstImage')->Paginate(9);
-        if($request->city_id){
-            $typical_foods->where('city_id',$request->city_id);
+        $typical_foods = Typical_food::with('cities', 'firstImage');
+        if($request->name){
+            $typical_foods->where('name','like','%'.$request->name.'%');
 
         }
+        $typical_foods = $typical_foods->Paginate(9);
         return view('web.typicalfood.list', compact('typical_foods','cities'));
     }
 
