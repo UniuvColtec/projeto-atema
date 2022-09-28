@@ -21,9 +21,7 @@ class Typical_food extends Model
     {
         $bootgrid = new Bootgrid();
         $typical_foods = DB::table('typical_foods')
-            ->join('cities', 'typical_foods.city_id', '=', 'cities.id')
-            ->join('events', 'typical_foods.event_id', '=', 'events.id')
-            ->select("typical_foods.*", "cities.name as city_name", "events.name as event_name");
+            ->select("typical_foods.*");
 
         $bootgrid->query($typical_foods, $request, ['typical_foods.name','events.name', 'cities.name']);
         $bootgrid->query($this,$request,['name','description']);
