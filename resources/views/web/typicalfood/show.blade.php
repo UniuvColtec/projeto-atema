@@ -65,6 +65,7 @@
                             <p class="h4">{{ $typical_food->name }} </p>
                         </div>
                     </div>
+                    @if(count($typical_food->cities))
                     <div class="col-12 col-md-6 d-flex flex-column flex-lg-row justify-content-between gap-2 gap-md-0 mt-3 mt-lg-0">
                         <div class="d-flex align-items-center gap-3">
                             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#FFBB13" class="bi bi-map-fill"
@@ -77,6 +78,7 @@
                             @endforeach
                         </div>
                     </div>
+                    @endif
                     <div class="text-justify my-4">
                         {!!$typical_food->description!!}
                     </div>

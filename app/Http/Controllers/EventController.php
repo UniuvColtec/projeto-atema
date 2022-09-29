@@ -75,6 +75,7 @@ class EventController extends Controller
         $event->address = $request->address;
         $event->district= $request->district;
         $event->city_id = $request->cities;
+        $event->annual_calendar = $request->annual_calendar;
         $event->getCoordinates($request->localization);
         if ($request->hasFile('logo') && $request->file('logo')->isValid()) {
             $requestlogo = $request->logo;

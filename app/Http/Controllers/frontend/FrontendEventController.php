@@ -14,6 +14,7 @@ use App\Models\Tourist_spot;
 use App\Models\Typical_event_food;
 use App\Models\Typical_food;
 use Illuminate\Http\Request;
+use League\CommonMark\Extension\Strikethrough\StrikethroughDelimiterProcessor;
 
 class FrontendEventController extends Controller
 {
@@ -48,7 +49,14 @@ class FrontendEventController extends Controller
 
     function map()
     {
-        return 'mapa - exibir todos as Geo Localização';
+        $p = new \stdClass();
+        $p->lat = -1.4572002;
+        $p->long = -48.4653295;
+
+        $points[] = $p;
+
+//        return 'mapa - exibir todos as Geo Localização';
+        return view('web.event.map', compact('points'));
     }
 
 

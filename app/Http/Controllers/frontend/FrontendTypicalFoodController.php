@@ -28,11 +28,10 @@ class FrontendTypicalFoodController extends Controller
 
     function show(int $id)
    {
-       $typical_food =  Typical_food::findOrFail($id); //->cities()->get();
+       $typical_food =  Typical_food::with('cities')->findOrFail($id); //->cities()->get();
+       //$events = Event::with('typical_food')->where('typical_food_id', $id)->get(); // Corrigir
        $events = Event::all();
-       $typical_food_city = Typical_food_city::all();
-       $city = City::all();
-       return view('web.typicalfood.show', compact('typical_food','events','typical_food_city','city'));
+       return view('web.typicalfood.show', compact('typical_food','events'));
     }
 
 

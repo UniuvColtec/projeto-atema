@@ -139,6 +139,28 @@
                                             <label for="subtitle">Subtítulo:</label>
                                             <input type="text" name="subtitle" id="subtitle" class="form-control" placeholder="Subtítulo" value="{{ $event->subtitle }}" required>
                                         </div>
+
+                                        <div class="form-group">
+                                            <label for="contact">O evento ocorre anualmente:</label>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="annual_calendar" id="annual_calendar_s" value="{{$event->annual_calendar}}"  @if($event->annual_calendar == 1) checked @endif>
+                                                    <label class="form-check-label" for="annual_calendar_s">
+                                                        Sim
+                                                    </label>
+                                                </div>
+
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="annual_calendar" id="annual_calendar_n" value="{{$event->annual_calendar}}" @if($event->annual_calendar == 0) checked @endif>
+                                                    <label class="form-check-label" for="annual_calendar_n">
+                                                        Não
+                                                    </label>
+                                                </div>
+                                        </div>
+
+
+
+
+
                                         <div class="form-group">
                                             <label for="contact">Telefone:</label>
                                             <input type="text" name="contact" id="contact" class="form-control" placeholder="Contato" value="{{ $event->contact }}" required>

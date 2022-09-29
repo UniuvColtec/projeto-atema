@@ -143,6 +143,26 @@
                                             <label for="subtitle">Subtítulo:</label>
                                             <input name="subtitle" id="subtitle" class="form-control" placeholder="Subtítulo" required>
                                         </div>
+
+                                        <div class="form-group">
+                                            <label for="contact">O evento ocorre anualmente:</label>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="annual_calendar" id="annual_calendar_s" value="1" required>
+                                                <label class="form-check-label" for="annual_calendar_s">
+                                                    Sim
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="annual_calendar" id="annual_calendar_n" value="0" >
+                                                <label class="form-check-label" for="annual_calendar_n">
+                                                    Não
+                                                </label>
+                                            </div>
+                                        </div>
+                                            <br>
+
+
+
                                         <div class="form-group">
                                             <label for="contact">Telefone:</label>
                                             <input type="text" class="form-control" id="contact" name="contact" placeholder="EX: (DD) 00000-0000 -Campo obrigatório-" required >
