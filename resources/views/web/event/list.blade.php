@@ -91,8 +91,8 @@
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <label for="categories">Data:</label>
-                                            <input type="date" name="dates" class="form-control select2">
+                                            <label for="date">Data:</label>
+                                            <input type="date" name="dates" id="date" class="form-control">
                                         </div>
                                     </div>
 

@@ -71,19 +71,18 @@
                                 <form action="" method="GET">
                                     <div class="row valign-wrapper">
                                         <div class="form-group">
-                                            pesquisa aqui
+                                            <label for="name">Nome:</label>
+                                            <input type="text" class="form-control" id="name" name="name">
                                         </div>
                                     </div>
-
+                                    <br>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class=" btn" style="color: var(--ci-color-green)">
+                                        Filtrar
+                                    </button>
                                 </form>
                             </section>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class=" btn" style="color: var(--ci-color-green)">
-                            Filtrar
-                        </button>
                     </div>
                 </div>
             </div>

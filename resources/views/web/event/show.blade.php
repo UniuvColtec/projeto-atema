@@ -62,7 +62,11 @@
                             <p class="h4">{{ $event->name }} </p>
                             <p class="h6">{{ $event->subtitle}}</p>
                         </div>
-                        <img src="{{$event->getUrlLogo()}}" alt="{{ $event->name }}" class="img-thumbnail" style="max-width: 64px; max-height: 64px;">
+                        <div class='grid-gallery'>
+                            <div class="grid-gallery-item">
+                                <img src="{{$event->getUrlLogo()}}" alt="{{ $event->name }}" class="img-thumbnail mklbItem" style="max-width: 64px; max-height: 64px;" data-gallery='myGallery'>
+                            </div>
+                        </div>
                     </div>
                     <div class="d-flex align-items-center gap-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#FFBB13"

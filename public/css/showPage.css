@@ -68,3 +68,9 @@
 .type-itens .link:hover, type-itens .link:focus {
     color: #444444;
 }
+.carousel-control-prev {
+    transform: translateX(-100%);
+}
+.carousel-control-next {
+    transform: translateX(100%);
+}
