@@ -83,7 +83,21 @@
                             <label for="district">Distrito:</label>
                             {{ $tourist_spot->district }}
                         </div>
-                        </div>
+                            <p class="h2">Galeria de Imagens</p>
+                            <div class='grid-gallery'>
+                                @foreach($tourist_spot->images as $image)
+                                    <div class='grid-gallery-item'>
+                                        <a href='{{ asset('files/' . $image->image->address) }}' class='btn-download-foto' download>
+                                            <small>
+                                                <span class='fas fa-download'></span>
+                                            </small>
+                                        </a>
+                                        <br />
+                                        <img src='{{ asset('files/' . $image->image->address) }}' data-src='{{ asset('files/' . $image->image->address) }}' class='img-responsive mklbItem' data-gallery='myGallery'><br />
+                                    </div>
+                                @endforeach
+                            </div>
+
                     </div>
                 </div>
             </div>

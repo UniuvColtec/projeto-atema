@@ -17,7 +17,7 @@ class FrontendTouristSpotController extends Controller
         if ($request->cities) {
             $tourist_spots->where('city_id', '=', $request->cities);
         }
-        $tourist_spots =$tourist_spots->Paginate(1);
+        $tourist_spots =$tourist_spots->Paginate(9);
         return view('web.tourist_spot.list', compact('tourist_spots','cities'));
     }
 
