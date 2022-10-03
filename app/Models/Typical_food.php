@@ -30,6 +30,10 @@ class Typical_food extends Model
     public function typical_food_images(){
         return $this->hasMany(Image_typical_foods::class);
     }
+    public function images()
+    {
+        return $this->hasMany(Image_typical_foods::class)->with('image');
+    }
     public function firstImage()
     {
         return $this->hasOne(Image_typical_foods::class)->with('image');

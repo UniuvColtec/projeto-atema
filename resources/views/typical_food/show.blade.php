@@ -55,9 +55,19 @@
                                 <label for="description">Descrição: </label>
                                 {!!$typical_food->description!!}
                             </div>
-                            <div class="form-group">
-                                <label for="image">Imagem: </label>
-                                {{ $typical_food->image }}
+                            <p class="h2">Galeria de Imagens</p>
+                            <div class='grid-gallery'>
+                                @foreach($typical_food->images as $image)
+                                    <div class='grid-gallery-item'>
+                                        <a href='{{ asset('files/' . $image->image->address) }}' class='btn-download-foto' download>
+                                            <small>
+                                                <span class='fas fa-download'></span>
+                                            </small>
+                                        </a>
+                                        <br />
+                                        <img src='{{ asset('files/' . $image->image->address) }}' data-src='{{ asset('files/' . $image->image->address) }}' class='img-responsive mklbItem' data-gallery='myGallery'><br />
+                                    </div>
+                                @endforeach
                             </div>
                         </form>
                     </div>
