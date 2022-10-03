@@ -12,6 +12,7 @@ class HomeSiteController extends Controller
     public function index()
     {
         $events = Event::where('status', 'Aprovado')->whereDate('final_date', '>=', date('Y-m-d'))->orderBy('start_date')->take(3)->with('city', 'firstImage')->get();
-        return view('web.home', compact('events'));
+        $annualevents = Event::where('annual_calendar' , 1)->whereDate('start_date', '>=', date('Y-m-d'))->take('6')->orderBy('start_date')->with('city', 'firstImage')->get();
+        return view('web.home', compact('events','annualevents'));
     }
 }

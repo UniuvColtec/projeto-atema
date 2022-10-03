@@ -39,7 +39,7 @@
     </div>
     <div class="container text-center">
         <div class="row mx-auto my-auto justify-content-center">
-            <div id="recipeCarouselNext" class="carousel carouselAnual slide" data-bs-ride="carousel">
+            <div id="recipeCarouselNext" class="carousel carouselCalendario slide" data-bs-ride="carousel">
                 <div class="carousel-inner" role="listbox">
                     @php $firstEvent = true; @endphp
                     @foreach( $events as $event)
@@ -87,6 +87,7 @@
     </div>
 
 
+
     <div class="row justify-content-between py-3 m-3">
         <h3 class="w-auto">Calendário Anual</h3>
     </div>
@@ -95,7 +96,7 @@
             <div id="recipeCarouselAnual" class="carousel carouselAnual slide" data-bs-ride="carousel">
                 <div class="carousel-inner" role="listbox">
                     @php $firstEvent = true; @endphp
-                    @foreach( $events as $event)
+                    @foreach( $annualevents as $event)
                         <div class="carousel-item  {{ $firstEvent ? 'active' : '' }}">
                             <div class="w-100 px-3 px-md-0">
                                 <a class="my-3 m-md-0" href="{{ route('web.event.show', $event->id) }}">
@@ -128,6 +129,7 @@
                         </div>
                         @php $firstEvent = false; @endphp
                     @endforeach
+                    </select>
                 </div>
                 <a class="carousel-control-prev w-aut" href="#recipeCarouselAnual" role="button" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>

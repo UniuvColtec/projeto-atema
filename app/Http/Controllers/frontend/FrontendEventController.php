@@ -13,6 +13,7 @@ use App\Models\Partner_type;
 use App\Models\Tourist_spot;
 use App\Models\Typical_event_food;
 use App\Models\Typical_food;
+use Brick\Math\Exception\DivisionByZeroException;
 use Illuminate\Http\Request;
 use League\CommonMark\Extension\Strikethrough\StrikethroughDelimiterProcessor;
 
@@ -28,6 +29,7 @@ class FrontendEventController extends Controller
         } else {
             $events = Event::where('status', 'Aprovado')->whereDate('final_date', '>=', date('Y-m-d'))->orderBy('start_date')->with('city', 'firstImage');
         }
+
 
         //return 'eventos - listagem';
         if ($request->cities) {
