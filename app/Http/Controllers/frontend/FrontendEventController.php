@@ -33,6 +33,9 @@ class FrontendEventController extends Controller
         if ($request->cities) {
             $events->where('city_id', '=', $request->cities);
         }
+        if($request->name){
+            $events->where('name','like','%'.$request->name.'%');
+        }
         if ($request->categories) {
             $events->join('event_categories.*', 'events.id', '=', 'event_categories.event_id')->where('event_categories.category_id', '=', $request->categories);
         }

@@ -1,5 +1,6 @@
 mountCarousel(document.querySelectorAll('.carouselCalendario .carousel-item'))
 mountCarousel(document.querySelectorAll('.carouselAnual .carousel-item'))
+mountCarousel(document.querySelectorAll('.carouselThird .carousel-item'))
 
 
 function mountCarousel(items) {

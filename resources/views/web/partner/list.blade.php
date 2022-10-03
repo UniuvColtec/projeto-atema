@@ -104,58 +104,59 @@
 @endpush
 @section('content')
         <div class="container pb-4">
-            <div class="row justify-content-between py-3">
+            <div class="row justify-content-between py-3" style="display: grid; grid-template-columns: 4fr 1fr;">
                 <h3 class="w-auto" style="color: var(--ci-color-green)">Listagem dos Parceiros</h3>
-            </div>
 
-            <button type="button" class="btn" style="color: var(--ci-color-green)" data-toggle="modal" data-target="#exampleModal">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-funnel" style="color: var(--ci-color-green)" viewBox="0 0 16 16">
-                    <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2zm1 .5v1.308l4.372 4.858A.5.5 0 0 1 7 8.5v5.306l2-.666V8.5a.5.5 0 0 1 .128-.334L13.5 3.308V2h-11z"/>
-                </svg>
-                filtro
-            </button>
 
-            <div class="modal  row justify-content-between py-3" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Filtros:</h5>
-                            <button type="button" class="close" style="color: var(--ci-color-green)" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="body">
-                                <section class="section">
-                                    <form action="{{route('web.partner')}}" method="GET">
-                                        <div class="row valign-wrapper">
-                                            <div class="form-group">
-                                                <label for="cities">Cidade:</label>
-                                                <select name="cities" id="cities" class="form-control select2" >
-                                                    <option value="">- Selecione uma Cidade -</option>
-                                                    @foreach($cities as $city)
-                                                        <option value="{{$city->id}}">{{$city->name}}</option>
-                                                    @endforeach
-                                                </select>
+                <button type="button" class="btn" style="color: var(--ci-color-green);" data-toggle="modal" data-target="#exampleModal">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-funnel" style="color: var(--ci-color-green)" viewBox="0 0 16 16">
+                        <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2zm1 .5v1.308l4.372 4.858A.5.5 0 0 1 7 8.5v5.306l2-.666V8.5a.5.5 0 0 1 .128-.334L13.5 3.308V2h-11z"/>
+                    </svg>
+                    filtro
+                </button>
+
+                <div class="modal  row justify-content-between py-3" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Filtros:</h5>
+                                <button type="button" class="close" style="color: var(--ci-color-green)" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="body">
+                                    <section class="section">
+                                        <form action="{{route('web.partner')}}" method="GET">
+                                            <div class="row valign-wrapper">
+                                                <div class="form-group">
+                                                    <label for="cities">Cidade:</label>
+                                                    <select name="cities" id="cities" class="form-control select2" >
+                                                        <option value="">- Selecione uma Cidade -</option>
+                                                        @foreach($cities as $city)
+                                                            <option value="{{$city->id}}">{{$city->name}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="partner_types">Tipo:</label>
+                                                    <select name="partner_types" id="partner_types" class="form-control select2"  >
+                                                        <option value="">- Selecione um tipo-</option>
+                                                        @foreach($partner_types as $partner_type)
+                                                            <option value="{{$partner_type->id}}">{{$partner_type->name}}</option>
+                                                      @endforeach
+                                                    </select>
+                                                </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label for="partner_types">Tipo:</label>
-                                                <select name="partner_types" id="partner_types" class="form-control select2"  >
-                                                    <option value="">- Selecione um tipo-</option>
-                                                    @foreach($partner_types as $partner_type)
-                                                        <option value="{{$partner_type->id}}">{{$partner_type->name}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <br>
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <br>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
-                                        <button type="submit"  class=" btn" style="color: var(--ci-color-green)">
-                                            Filtrar
-                                        </button>
-                                    </form>
-                                </section>
+                                            <button type="submit"  class=" btn" style="color: var(--ci-color-green)">
+                                                Filtrar
+                                            </button>
+                                        </form>
+                                    </section>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -164,8 +165,17 @@
             <div class="row row-cols-1 row-cols-md-3  px-3 px-md-0  ">
                 @foreach( $partners as $partner)
                     <a class="my-3 m-md-0 " href="{{ route('web.partner.show', $partner->id) }}">
-                        <div class="card h-75 ">
+                        <div class="card h-75 " style="positon: relative;">
                             <img class="card-img-top  imagem-list " style="height: 300px;" src="{{ asset('files/' . $partner->firstImage->image->address) }}" alt="{{ $partner->name }}">
+                            <div class="mt-2" style="position:absolute; top: 2%; right: 2%;">
+                                <p>
+                                    @foreach($partner_types as $partner_type)
+                                        @if($partner_type->id == $partner->partner_type_id)
+                                            <span class="badge rounded-pill text" style="background-color: var(--ci-color-green)" >{{$partner_type->name}}</span>
+                                        @endif
+                                    @endforeach
+                                </p>
+                            </div>
                             <div class="card-body text-center d-flex flex-column justify-content-center">
                                 <h5 class="card-title">{{ $partner->name }}</h5>
                                 <div class="mt-2">
@@ -175,20 +185,6 @@
                                             <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                                         </svg>
                                         {{ $partner->city->name . ' - ' . $partner->city->state }}
-                                    </p>
-                                </div>
-                                <div class="mt-2">
-                                    <p>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#FFBB13" class="bi bi-tag" viewBox="0 0 16 16">
-                                            <path d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0z"/>
-                                            <path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1zm0 5.586 7 7L13.586 9l-7-7H2v4.586z"/>
-                                        </svg>
-                                        @foreach($partner_types as $partner_type)
-                                            @if($partner_type->id == $partner->partner_type_id)
-                                                <span class="badge rounded-pill text" style="background-color: var(--ci-color-green)" >{{$partner_type->name}}</span>
-
-                                            @endif
-                                        @endforeach
                                     </p>
                                 </div>
                             </div>
