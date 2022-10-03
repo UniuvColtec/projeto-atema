@@ -150,7 +150,7 @@
                 <p class="h2">Pontos Turisticos</p>
                 <div class="container text-center">
                     <div class="row mx-auto my-auto justify-content-center">
-                        <div id="recipeCarouselSpots" class="carousel carouselAnual slide" data-bs-ride="carousel">
+                        <div id="recipeCarouselSpots" class="carousel carouselCalendario slide" data-bs-ride="carousel">
                             <div class="carousel-inner" role="listbox">
                                 @php $firstSpot = true; @endphp
                                 @foreach( $event->city->tourist_spots as $tourist_spot)
@@ -182,7 +182,7 @@
                 <p class="h2">Parceiros</p>
                 <div class="container text-center">
                     <div class="row mx-auto my-auto justify-content-center">
-                        <div id="recipeCarouselPartners" class="carousel carouselAnual slide" data-bs-ride="carousel">
+                        <div id="recipeCarouselPartners" class="carousel carouselThird slide" data-bs-ride="carousel">
                             <div class="carousel-inner" role="listbox">
                                 @php $firstPartner = true; @endphp
                                 @foreach( $event->city->partners as $partner)
