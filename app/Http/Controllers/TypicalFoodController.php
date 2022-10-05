@@ -11,6 +11,7 @@ use App\UploadHandler;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use phpDocumentor\Reflection\Types\Boolean;
+Use Img;
 
 class TypicalFoodController extends Controller
 {
@@ -31,25 +32,6 @@ class TypicalFoodController extends Controller
     public function index()
     {
         return view('typical_food.index');
-    }
-    public function resizeImage(Request $request)
-    {
-        $this->validate($request, [
-            'file' => 'required|image|mimes:jpg,jpeg,png,gif,svg|max:2048',
-        ]);
-        $image = $request->file('file');
-        $input['file'] = time().'.'.$image->getClientOriginalExtension();
-
-        $destinationPath = public_path('/thumbnail');
-        $imgFile = Image::make($image->getRealPath());
-        $imgFile->resize(150, 150, function ($constraint) {
-            $constraint->aspectRatio();
-        })->save($destinationPath.'/'.$input['file']);
-        $destinationPath = public_path('/uploads');
-        $image->move($destinationPath, $input['file']);
-        return back()
-            ->with('success','Image has successfully uploaded.')
-            ->with('fileName',$input['file']);
     }
 
     /**
@@ -187,6 +169,10 @@ class TypicalFoodController extends Controller
                     $image_typical_food->image_id = $image->id;
                     $image_typical_food->save();
                 }
+
+                $resizedImage = Img::make(asset('/files', $image->address));
+                $resizedImage->resize(500,300);
+                $resizedImage->save(asset('/files', $image->address));
             }
         }
         return $return;
@@ -215,6 +201,7 @@ class TypicalFoodController extends Controller
 
         return ($return);
     }
+
 
     private function uploadJsonGet($imageName, $id){
         $jsonReturn = new \stdClass();
