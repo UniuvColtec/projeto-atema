@@ -116,11 +116,11 @@
                                 <div id="information-part" class="content" role="tabpanel" aria-labelledby="information-part-trigger">
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label for="name">Nome:</label>
-                                            <input type="text" class="form-control" id="name" name="name" placeholder="nome -Campo obrigatório-" required >
+                                            <label for="name">Nome:*</label>
+                                            <input type="text" class="form-control" id="name" name="name" placeholder="nome " required >
                                         </div>
                                         <div class="form-group">
-                                            <label for="description">Descrição:</label>
+                                            <label for="description">Descrição:*</label>
                                             <textarea id="description" name="description" aria-required="true"></textarea>
                                         </div>
                                         <div class="card-footer">
@@ -140,16 +140,16 @@
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <label for="address">RUA:</label>
-                                            <input type="text" class="form-control" id="address" name="address" placeholder="Rua exemplo 1111 -Campo obrigatório-" required >
+                                            <label for="address">RUA:*</label>
+                                            <input type="text" class="form-control" id="address" name="address" placeholder="Rua exemplo 1111 "  required >
                                         </div>
                                         <div class="form-group">
-                                            <label for="district">Localidade:</label>
-                                            <input type="text" class="form-control" id="district" name="district" placeholder="localidade -Campo obrigatório-" required >
+                                            <label for="district">Localidade:*</label>
+                                            <input type="text" class="form-control" id="district" name="district" placeholder="localidade " required >
                                         </div>
                                         <div class="form-group">
                                             <label for="localization">Localização:</label>
-                                            <input type="text" name="localization" id="localization" class="form-control" placeholder="Localização -Campo obrigatório-" required >
+                                            <input type="text" name="localization" id="localization" class="form-control" placeholder="Localização "  >
                                         </div>
                                         <div class="card-footer">
                                             <button type="button" class="btn btn-info" onclick="stepper.previous()">Anterior</button>
