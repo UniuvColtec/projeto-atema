@@ -7,6 +7,7 @@ use App\Models\City;
 use App\Models\Image;
 use App\Response;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ImageController extends Controller
 {
@@ -36,8 +37,12 @@ class ImageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+
     public function store(ImageRequest $request)
     {
+
+
         $image = new Image();
         $image->address = $request->address;
         $image->save();

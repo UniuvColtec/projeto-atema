@@ -73,6 +73,7 @@ class PartnerController extends Controller
         $partner->district = $request->district;
         //upload da logo
         if ($request->hasFile('logo') && $request->file('logo')->isValid()) {
+
             $requestlogo = $request->logo;
             $logoname = md5($requestlogo->getClientOriginalName() . strtotime("now")) . "." . $requestlogo->extension();
             $requestlogo->move(public_path(Partner::PARTNER_LOGO), $logoname);

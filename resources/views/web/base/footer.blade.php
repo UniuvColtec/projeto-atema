@@ -50,8 +50,9 @@
                             <img src="/assets/img/colegio-tecnico-de-uniao-da-vitoria-coltec.png"
                                  alt="Colégio Técnico de União da Vitória - COLTEC" width="75">
                         </a>
-                        <a href="https://linkedin.com/in/roobertorres" target="_blank">
-                            <p class="lh-1 m-0" style="color: #0051a8">Roberto<br>Torres</p>
+                        <a href="" target="_blank">
+                            <p class="lh-1 m-0" style="color: #0051a8"><br></p>
+
                         </a>
                     </div>
                 </div>

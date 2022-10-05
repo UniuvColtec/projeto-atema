@@ -9,6 +9,7 @@ use App\Models\Typical_food;
 use App\Response;
 use App\UploadHandler;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use phpDocumentor\Reflection\Types\Boolean;
 
 class TypicalFoodController extends Controller
@@ -30,6 +31,25 @@ class TypicalFoodController extends Controller
     public function index()
     {
         return view('typical_food.index');
+    }
+    public function resizeImage(Request $request)
+    {
+        $this->validate($request, [
+            'file' => 'required|image|mimes:jpg,jpeg,png,gif,svg|max:2048',
+        ]);
+        $image = $request->file('file');
+        $input['file'] = time().'.'.$image->getClientOriginalExtension();
+
+        $destinationPath = public_path('/thumbnail');
+        $imgFile = Image::make($image->getRealPath());
+        $imgFile->resize(150, 150, function ($constraint) {
+            $constraint->aspectRatio();
+        })->save($destinationPath.'/'.$input['file']);
+        $destinationPath = public_path('/uploads');
+        $image->move($destinationPath, $input['file']);
+        return back()
+            ->with('success','Image has successfully uploaded.')
+            ->with('fileName',$input['file']);
     }
 
     /**
@@ -55,13 +75,17 @@ class TypicalFoodController extends Controller
         $typical_food->description = $request->description;
         $typical_food->save();
         if($request->images){
-            foreach ($request->images as $image){
+            foreach ($request->images as $image) {
                 $typical_food_image = new Image_Typical_foods();
                 $typical_food_image->image_id = $image;
                 $typical_food_image->typical_food_id = $typical_food->id;
                 $typical_food_image->save();
+                $imagefile = \Intervention\Image\Facades\Image::make('public/file/'.$image)->resize(505, 505);
+                $imagefile = save($imagefile);
             }
+
         }
+
 
         return Response::responseOK('Comida Típica cadastrada');
     }

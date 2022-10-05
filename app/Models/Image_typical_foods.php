@@ -17,6 +17,7 @@ class Image_typical_foods extends Model
     }
     public function firstImage()
     {
+
         return $this->hasOne(Image::class)->latest();
     }
 }
