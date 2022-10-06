@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+set_time_limit(10);
 use App\Models\Image;
 use App\Models\Image_partners;
 use App\Http\Requests\PartnerRequest;
@@ -10,7 +11,8 @@ use App\Models\Partner_type;
 use App\Response;
 use App\UploadHandler;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+
+use \Intervention\Image\Facades\Image as Img;
 
 class PartnerController extends Controller
 {
@@ -86,6 +88,8 @@ class PartnerController extends Controller
                 $partner_image->image_id = $image;
                 $partner_image->partner_id = $partner->id;
                 $partner_image->save();
+                $imagefile = \Intervention\Image\Facades\Image::make('public/file/'.$image)->resize(505, 505);
+                $imagefile = save($imagefile);
             }
 
         }
@@ -200,6 +204,7 @@ class PartnerController extends Controller
                 $image = new Image();
                 $image->address = $item->name;
                 $image->save();
+                $image->imageCarrosel();
                 $item->id = $image->id;
 
                 if ($partner_id){

@@ -1,96 +1,73 @@
 @extends('web.base.page')
 
 @push('css')
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://uniuv.edu.br/css/mklb.css" />
+    <link href="{{ asset('css/mklb.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/galeria.css') }}" rel="stylesheet">
     <link href="{{ asset('css/carousel.css') }}" rel="stylesheet">
     <link href="{{ asset('css/showPage.css') }}" rel="stylesheet">
-    <style>
-
-        .grid-gallery {
-            position: relative;
-        }
-
-        .btn-download-foto {
-            padding: 1px 5px;
-            font-size: 12px;
-            line-height: 1.5;
-            border-radius: 3px;
-            color: #333;
-            background-color: #fff;
-            border-color: #ccc;
-            text-decoration: none;
-        }
-
-        .et_builder_inner_content.has_et_pb_sticky {
-            z-index: 2 !important;
-        }
-
-        .grid-gallery-item {
-            margin:auto;
-        }
-
-        .grid-gallery-item img {
-            transition: 0.5s;
-            filter: brightness(100%);
-        }
-
-        .grid-gallery-item img:hover, .grid-gallery-item img:focus {
-            transition: 1s;
-            filter: brightness(60%);
-        }
-
-    </style>
 
 
 @endpush
 @push('js')
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-    <script src="https://uniuv.edu.br/js/minimasonry.min.js"></script>
-    <script src="https://uniuv.edu.br/js/mklb.js"></script>
+
     <script src=" {{ asset('/js/carousel.js') }}" type="text/javascript"></script>
+    <script src=" {{ asset('/js/minimasonry.min.js') }}" type="text/javascript"></script>
+    <script src=" {{ asset('/js/mklb.js') }}" type="text/javascript"></script>
+    <script>
+        window.addEventListener("load", function(event) {
+            var myLayout = new MiniMasonry({
+                container: '.grid-gallery',
+            });
+        });
+    </script>
+
 @endpush
 @section('content')
     <div class="container my-5">
         <div class="container main-content">
             <div class="banner-n-info-grid">
-                <img src="{{ asset('files/' . $tourist_spot->firstImage->image->address) }}" class="d-block w-100" alt="{{ $tourist_spot->name }}">
+                <img src="{{ $tourist_spot->firstImage ? asset('files/' . $tourist_spot->firstImage->image->address) : '/images/none-image.png' }}" class="d-block w-100" alt="{{ $tourist_spot->name }}">
                 <div class="info-flex">
                     <div class="title-grid">
                         <div>
                             <p class="h4">{{ $tourist_spot->name }} </p>
                         </div>
                     </div>
-                    <div class="d-flex align-items-center gap-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#FFBB13" class="bi bi-map-fill"
-                             viewBox="0 0 16 16">
-                            <path fill-rule="evenodd"
-                                  d="M16 .5a.5.5 0 0 0-.598-.49L10.5.99 5.598.01a.5.5 0 0 0-.196 0l-5 1A.5.5 0 0 0 0 1.5v14a.5.5 0 0 0 .598.49l4.902-.98 4.902.98a.502.502 0 0 0 .196 0l5-1A.5.5 0 0 0 16 14.5V.5zM5 14.09V1.11l.5-.1.5.1v12.98l-.402-.08a.498.498 0 0 0-.196 0L5 14.09zm5 .8V1.91l.402.08a.5.5 0 0 0 .196 0L11 1.91v12.98l-.5.1-.5-.1z"/>
-                        </svg>
-                        <span>{{ $tourist_spot->city->name . ' - ' . $tourist_spot->city->state }}</span>
-                    </div>
+                    @if(count($tourist_spot->cities))
+                        <div class="col-12 col-md-6 d-flex flex-column flex-lg-row justify-content-between gap-2 gap-md-0 mt-3 mt-lg-0">
+                            <div class="d-flex align-items-center gap-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#FFBB13" class="bi bi-map-fill"
+                                     viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                          d="M16 .5a.5.5 0 0 0-.598-.49L10.5.99 5.598.01a.5.5 0 0 0-.196 0l-5 1A.5.5 0 0 0 0 1.5v14a.5.5 0 0 0 .598.49l4.902-.98 4.902.98a.502.502 0 0 0 .196 0l5-1A.5.5 0 0 0 16 14.5V.5zM5 14.09V1.11l.5-.1.5.1v12.98l-.402-.08a.498.498 0 0 0-.196 0L5 14.09zm5 .8V1.91l.402.08a.5.5 0 0 0 .196 0L11 1.91v12.98l-.5.1-.5-.1z"/>
+                                </svg>
+                                @foreach($tourist_spot->cities as $city)
+                                    <span class="badge rounded-pill text" style="background-color: var(--ci-color-green)" >{{ $city->name .' - '.$city->state}}</span>
+                                @endforeach
+                            </div>
+                        </div>
+                    @endif
                     <div class="text-justify my-4">
                         {!!$tourist_spot->description!!}
                     </div>
                 </div>
             </div>
-            <p class="h2">Galeria de Imagens</p>
-            <div class='grid-gallery'>
-                @foreach($tourist_spot->images as $image)
-                    <div class='grid-gallery-item'>
-                        <a href='{{ asset('files/' . $image->image->address) }}' class='btn-download-foto' download>
-                            <small>
-                                <span class='fas fa-download'></span>
-                            </small>
-                        </a>
-                        <br />
-                        <img src='{{ asset('files/' . $image->image->address) }}' data-src='{{ asset('files/' . $image->image->address) }}' class='img-responsive mklbItem' data-gallery='myGallery'><br />
-                    </div>
-                @endforeach
-            </div>
+            @if(count($tourist_spot->tourist_spot_images)>0)
+                <p class="h2">Galeria de Imagens</p>
+                <div class='grid-gallery'>
+                    @foreach($tourist_spot->tourist_spot_images as $image)
+                        <div class='grid-gallery-item'>
+                            <a href='{{ asset('files/' . $image->image->address) }}' class='btn-download-foto' download>
+                                <small>
+                                    <span class='fas fa-download'></span>
+                                </small>
+                            </a>
+                            <br />
+                            <img src='{{ asset('files/' . $image->image->address) }}' data-src='{{ asset('files/' . $image->image->address) }}' class='img-responsive mklbItem' data-gallery='myGallery'><br />
+                        </div>
+                    @endforeach
+                </div>
+            @endif
             <div class="more-info">
                 <p class="h2">Localização</p>
                 <div>

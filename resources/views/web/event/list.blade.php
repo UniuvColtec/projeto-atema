@@ -13,14 +13,6 @@
 @push('css')
     <style>
 
-        .imagem-list{
-            max-height: 300px;
-            min-height: 200px;
-            min-width: 200px;
-            max-width: 600px
-        ;
-
-        }
         .pagination{
             color:  var(--ci-color-green);
         }
@@ -118,7 +110,7 @@
             @foreach( $events as $event)
                 <a class="my-3 m-md-0 " href="{{ route('web.event.show', $event->id) }}">
                     <div class="card h-75 ">
-                        <img class="card-img-top  imagem-list " style="height: 300px;" src="{{ asset('files/' . $event->firstImage->image->address) }}" alt="{{ $event->name }}">
+                        <img class="card-img-top  imagem-list " src="{{ $event->firstImage ? asset('files/' . $event->firstImage->image->imageCapa()) : '/images/none-image.png' }}" alt="{{ $event->name }}">
                         <div class="card-body text-center d-flex flex-column justify-content-center">
                             <h5 class="card-title">{{ $event->name }}</h5>
                             <div class="mt-2">

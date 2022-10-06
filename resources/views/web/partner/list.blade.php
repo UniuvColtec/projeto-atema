@@ -1,106 +1,34 @@
 @extends('web.base.page')
 @push('js')
-    <script src=" {{ asset('js/bs-stepper.js') }}" type="text/javascript"></script>
-    <script src="/js/formAjaxAlterar.js" type="text/javascript"></script>
-    <script src="/js/iziToast.min.js" type="text/javascript"></script>
-    <script src="/js/jquery.form.min.js" type="text/javascript"></script>
-    <script type="text/javascript" src="/js/jquery.mask.js"></script>
+    {{--    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>--}}
+    {{--    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>--}}
+    {{--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>--}}
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-
-    <script>
-
-
-
-        var stepper;
-        $(document).ready(function(){
-            var stepperEl = document.getElementById("stepper");
-            stepper = new Stepper(stepperEl);
-            // // $('#information-part').validate();
-            //
-            stepperEl.addEventListener('show.bs-stepper', function (partner) {
-                if (!$('.jsonForm').valid()){
-                    event.preventDefault()
-                }
-            })
-            stepperEl.addEventListener('shown.bs-stepper', function(partner){
-                $(".select2").select2();
-            });
-
-            $('.jsonForm').validate({
-                errorClass: 'is-invalid',
-            });
-
-            $(".select2").select2();
-        })
-        $('#myModal').on('shown.bs.modal', function () {
-            $('#myInput').trigger('focus')
-        })
-
-    </script>
+    {{--    <script>--}}
+    {{--        $('#myModal').on('shown.bs.modal', function () {--}}
+    {{--            $('#myInput').trigger('focus')--}}
+    {{--        })--}}
+    {{--    </script>--}}
 @endpush
 @push('css')
     <style>
-        .btn-download-foto {
-            padding: 1px 5px;
-            font-size: 12px;
-            line-height: 1.5;
-            border-radius: 3px;
-            color: #333;
-            background-color: #fff;
-            border-color: #ccc;
-            text-decoration: none;
-        }
-        .gallery-item {
-            width: 100%;
-        }
-        .grid-gallery {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-column-gap: 10px;
-            /*border: solid dimgray 3px;
-            border-radius: 5px;*/
-        }
-        .grid-gallery-item img:hover {
-            position: fixed;
-            top: 50%; left: 50%;
-            transform: translate(-50%,-50%);
-            width: 1080px;
-        }
 
-        .imagem-list{
-            max-height: 300px;
-            min-height: 200px;
-            min-width: 200px;
-            max-width: 600px
-        ;
-
+        .pagination{
+            color:  var(--ci-color-green);
         }
         .page-link{
             color:  var(--ci-color-green);
             background-color: white;
             --bs-btn-active-bg: var(--ci-color-green);
-            !important;
+        !important;
 
         }
         .active>.page-link, .page-link.active{
             background-color: var(--ci-color-green);
-            border-color: var(--ci-color-green);
+            border-color:var(--ci-color-green);
         }
 
-
-
-
     </style>
-@endpush
-@push('js')
-    <script src="/js/jquery.bootgrid.js"></script>
-    <script src="/js/jquery.bootgrid.fa.js"></script>
-    <script src="/js/iziToast.min.js" type="text/javascript"></script>
-    <script src="/js/bootgrid.js"></script>
 @endpush
 @section('content')
         <div class="container pb-4">
@@ -166,7 +94,7 @@
                 @foreach( $partners as $partner)
                     <a class="my-3 m-md-0 " href="{{ route('web.partner.show', $partner->id) }}">
                         <div class="card h-75 " style="positon: relative;">
-                            <img class="card-img-top  imagem-list " style="height: 300px;" src="{{ asset('files/' . $partner->firstImage->image->address) }}" alt="{{ $partner->name }}">
+                            <img class="card-img-top  imagem-list " src="{{ $partner->firstImage ? asset('files/' . $partner->firstImage->image->imageCapa()) : '/images/none-image.png' }}" alt="{{ $partner->name }}">
                             <div class="mt-2" style="position:absolute; top: 2%; right: 2%;">
                                 <p>
                                     @foreach($partner_types as $partner_type)

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+set_time_limit(10);
 
 use App\Http\Requests\EventRequest;
 use App\Models\Category;
@@ -16,7 +17,7 @@ use App\Response;
 use App\UploadHandler;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use \Intervention\Image\Facades\Image as Img;
 
 class EventController extends Controller
 {
@@ -103,6 +104,8 @@ class EventController extends Controller
                 $event_image->image_id = $image;
                 $event_image->event_id = $event->id;
                 $event_image->save();
+                $imagefile = \Intervention\Image\Facades\Image::make('public/file/'.$image)->resize(505, 505);
+                $imagefile = save($imagefile);
             }
         }
 
@@ -245,6 +248,7 @@ class EventController extends Controller
                 $image = new Image();
                 $image->address = $item->name;
                 $image->save();
+                $image->imageCarrosel();
                 $item->id = $image->id;
 
                 if ($event_id){

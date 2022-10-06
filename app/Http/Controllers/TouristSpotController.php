@@ -1,15 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
+set_time_limit(10);
 use App\Models\City;
 use App\Models\Image;
 use App\Models\Image_tourist_spots;
-use App\Models\Image_tourist_spotss;
 use App\Models\Tourist_spot;
 use App\Response;
 use App\UploadHandler;
 use Illuminate\Http\Request;
 use App\Http\Requests\TouristSpotRequest;
+use \Intervention\Image\Facades\Image as Img;
 
 class TouristSpotController extends Controller
 {
@@ -65,6 +66,8 @@ class TouristSpotController extends Controller
                 $tourist_spot_image->image_id = $image;
                 $tourist_spot_image->tourist_spot_id = $tourist_spot->id;
                 $tourist_spot_image->save();
+                $imagefile = \Intervention\Image\Facades\Image::make('public/file/'.$image)->resize(505, 505);
+                $imagefile = save($imagefile);
             }
         }
         return Response::responseOK('Ponto Turistico cadastrado com sucesso');
@@ -157,6 +160,7 @@ class TouristSpotController extends Controller
                 $image = new Image();
                 $image->address = $item->name;
                 $image->save();
+                $image->imageCarrosel();
                 $item->id = $image->id;
 
                 if ($tourist_spot_id){
