@@ -1,64 +1,31 @@
 @extends('web.base.page')
 
 @push('css')
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://uniuv.edu.br/css/mklb.css" />
+    <link href="{{ asset('css/mklb.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/galeria.css') }}" rel="stylesheet">
     <link href="{{ asset('css/carousel.css') }}" rel="stylesheet">
     <link href="{{ asset('css/showPage.css') }}" rel="stylesheet">
-    <style>
-        .grid-gallery {
-            position: relative;
-        }
-
-        .btn-download-foto {
-            padding: 1px 5px;
-            font-size: 12px;
-            line-height: 1.5;
-            border-radius: 3px;
-            color: #333;
-            background-color: #fff;
-            border-color: #ccc;
-            text-decoration: none;
-        }
-
-        .et_builder_inner_content.has_et_pb_sticky {
-            z-index: 2 !important;
-        }
-
-        .grid-gallery-item {
-            margin:auto;
-        }
-
-        .grid-gallery-item img {
-            transition: 0.5s;
-            filter: brightness(100%);
-        }
-
-        .grid-gallery-item img:hover, .grid-gallery-item img:focus {
-            transition: 1s;
-            filter: brightness(60%);
-        }
-    </style>
 
 
 @endpush
 @push('js')
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-    <script src="https://uniuv.edu.br/js/minimasonry.min.js"></script>
-    <script src="https://uniuv.edu.br/js/mklb.js"></script>
+    <script src=" {{ asset('/js/minimasonry.min.js') }}" type="text/javascript"></script>
+    <script src=" {{ asset('/js/mklb.js') }}" type="text/javascript"></script>
     <script src=" {{ asset('/js/carousel.js') }}" type="text/javascript"></script>
-
+    <script>
+        window.addEventListener("load", function(event) {
+            var myLayout = new MiniMasonry({
+                container: '.grid-gallery',
+            });
+        });
+    </script>
 @endpush
-
 
 @section('content')
     <div class="container my-5">
         <div class="container main-content">
             <div class="banner-n-info-grid">
-                <img src="{{ asset('files/' . $typical_food->firstImage->image->address) }}" class="d-block w-100" alt="{{ $typical_food->name }}">
+                <img src="{{ $typical_food->firstImage ? asset('files/' . $typical_food->firstImage->image->address) : '/images/none-image.png' }}" class="d-block w-100" alt="{{ $typical_food->name }}">
                 <div class="info-flex">
                     <div class="title-grid">
                         <div>
@@ -84,9 +51,9 @@
                     </div>
                 </div>
             </div>
+            @if(count($typical_food->typical_food_images)>0)
             <p class="h2">Galeria de Imagens</p>
             <div class='grid-gallery'>
-                @if($typical_food->typical_food_images)
                     @foreach($typical_food->typical_food_images as $image)
                         <div class='grid-gallery-item'>
                             <a href='{{ asset('files/' . $image->image->address) }}' class='btn-download-foto' download>
@@ -98,8 +65,8 @@
                             <img src='{{ asset('files/' . $image->image->address) }}' data-src='{{ asset('files/' . $image->image->address) }}' class='img-responsive mklbItem' data-gallery='myGallery'><br />
                         </div>
                     @endforeach
-                @endif
             </div>
+            @endif
                 <div class="more-info">
                     <p class="h2">Eventos</p>
                     <div class="container text-center">

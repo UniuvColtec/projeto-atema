@@ -1,0 +1,27 @@
+.grid-gallery {
+    position: relative;
+}
+.grid-gallery-item {
+    position: absolute;
+}
+
+.btn-download-foto {
+    padding: 1px 5px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 3px;
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+    text-decoration: none;
+}
+
+.grid-gallery-item img {
+    transition: 0.5s;
+    filter: brightness(100%);
+}
+
+.grid-gallery-item img:hover, .grid-gallery-item img:focus {
+    transition: 1s;
+    filter: brightness(60%);
+}

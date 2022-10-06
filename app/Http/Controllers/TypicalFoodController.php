@@ -1,17 +1,14 @@
 <?php
-
 namespace App\Http\Controllers;
+set_time_limit(10);
 
-use App\Bootgrid;
 use App\Models\Image;
 use App\Models\Image_typical_foods;
 use App\Models\Typical_food;
 use App\Response;
 use App\UploadHandler;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-use phpDocumentor\Reflection\Types\Boolean;
-Use Img;
+use \Intervention\Image\Facades\Image as Img;
 
 class TypicalFoodController extends Controller
 {
@@ -161,6 +158,8 @@ class TypicalFoodController extends Controller
                 $image = new Image();
                 $image->address = $item->name;
                 $image->save();
+                $image->imageCarrosel();
+
                 $item->id = $image->id;
 
                 if ($typical_food_id){
@@ -170,9 +169,6 @@ class TypicalFoodController extends Controller
                     $image_typical_food->save();
                 }
 
-                $resizedImage = Img::make(asset('/files', $image->address));
-                $resizedImage->resize(500,300);
-                $resizedImage->save(asset('/files', $image->address));
             }
         }
         return $return;

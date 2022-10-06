@@ -4,9 +4,9 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
-
 window.$ = window.jQuery = require('jquery');
+
+require('../../vendor/almasaeed2010/adminlte/plugins/bootstrap/js/bootstrap.bundle');
 
 require('overlayscrollbars');
 require('../../vendor/almasaeed2010/adminlte/dist/js/adminlte');

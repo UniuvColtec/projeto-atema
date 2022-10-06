@@ -1,26 +1,18 @@
 @extends('web.base.page')
 @push('js')
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+{{--    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>--}}
+{{--    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>--}}
+{{--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>--}}
 
-    <script>
-        $('#myModal').on('shown.bs.modal', function () {
-            $('#myInput').trigger('focus')
-        })
-    </script>
+{{--    <script>--}}
+{{--        $('#myModal').on('shown.bs.modal', function () {--}}
+{{--            $('#myInput').trigger('focus')--}}
+{{--        })--}}
+{{--    </script>--}}
 @endpush
 @push('css')
     <style>
 
-        .imagem-list{
-            max-height: 300px;
-            min-height: 200px;
-            min-width: 200px;
-            max-width: 600px
-        ;
-
-        }
         .pagination{
             color:  var(--ci-color-green);
         }
@@ -37,12 +29,6 @@
         }
 
     </style>
-@endpush
-@push('js')
-    <script src="/js/jquery.bootgrid.js"></script>
-    <script src="/js/jquery.bootgrid.fa.js"></script>
-    <script src="/js/iziToast.min.js" type="text/javascript"></script>
-    <script src="/js/bootgrid.js"></script>
 @endpush
 @section('content')
     <div class="container pb-4">
@@ -97,7 +83,7 @@
             @foreach( $typical_foods as $typical_food)
                 <a class="my-3 m-md-0 " href="{{ route('web.typicalfood.show', $typical_food->id) }}">
                     <div class="card h-75 ">
-                        <img class="card-img-top  imagem-list " style="height: 300px;" src="{{ asset('files/' . $typical_food->firstImage->image->address) }}" alt="{{ $typical_food->name }}">
+                        <img class="card-img-top  imagem-list " src="{{ $typical_food->firstImage ? asset('files/' . $typical_food->firstImage->image->imageCapa()) : '/images/none-image.png' }}" alt="{{ $typical_food->name }}">
                         <div class="card-body text-center d-flex flex-column justify-content-center">
                             <h5 class="card-title">{{ $typical_food->name }}</h5>
                         </div>
