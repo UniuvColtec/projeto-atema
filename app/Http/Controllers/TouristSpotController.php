@@ -66,8 +66,7 @@ class TouristSpotController extends Controller
                 $tourist_spot_image->image_id = $image;
                 $tourist_spot_image->tourist_spot_id = $tourist_spot->id;
                 $tourist_spot_image->save();
-                $imagefile = \Intervention\Image\Facades\Image::make('public/file/'.$image)->resize(505, 505);
-                $imagefile = save($imagefile);
+
             }
         }
         return Response::responseOK('Ponto Turistico cadastrado com sucesso');

@@ -88,8 +88,6 @@ class PartnerController extends Controller
                 $partner_image->image_id = $image;
                 $partner_image->partner_id = $partner->id;
                 $partner_image->save();
-                $imagefile = \Intervention\Image\Facades\Image::make('public/file/'.$image)->resize(505, 505);
-                $imagefile = save($imagefile);
             }
 
         }

@@ -30,12 +30,6 @@
 
     </style>
 @endpush
-@push('js')
-    <script src="/js/jquery.bootgrid.js"></script>
-    <script src="/js/jquery.bootgrid.fa.js"></script>
-    <script src="/js/iziToast.min.js" type="text/javascript"></script>
-    <script src="/js/bootgrid.js"></script>
-@endpush
 @section('content')
     <div class="container pb-4">
         <div class="row justify-content-between py-3" style="display: grid; grid-template-columns: 4fr 1fr;">
