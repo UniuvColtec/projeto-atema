@@ -92,16 +92,14 @@
             </div>
             <div class="row row-cols-1 row-cols-md-3  px-3 px-md-0  ">
                 @foreach( $partners as $partner)
+
                     <a class="my-3 m-md-0 " href="{{ route('web.partner.show', $partner->id) }}">
                         <div class="card h-75 " style="positon: relative;">
-                            <img class="card-img-top  imagem-list " src="{{ $partner->firstImage ? asset('files/' . $partner->firstImage->image->imageCapa()) : '/images/none-image.png' }}" alt="{{ $partner->name }}">
+
+                            <x-image altName="{{ $partner->name }}" idImage="{{ $partner->firstImage->image->id }}" />
                             <div class="mt-2" style="position:absolute; top: 2%; right: 2%;">
                                 <p>
-                                    @foreach($partner_types as $partner_type)
-                                        @if($partner_type->id == $partner->partner_type_id)
-                                            <span class="badge rounded-pill text" style="background-color: var(--ci-color-green)" >{{$partner_type->name}}</span>
-                                        @endif
-                                    @endforeach
+                                    <span class="badge rounded-pill text" style="background-color: var(--ci-color-green)" >{{ $partner->partner_type->name }}</span>
                                 </p>
                             </div>
                             <div class="card-body text-center d-flex flex-column justify-content-center">

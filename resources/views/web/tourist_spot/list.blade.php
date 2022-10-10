@@ -84,7 +84,7 @@
             @foreach( $tourist_spots as $tourist_spot)
                 <a class="my-3 m-md-0 " href="{{ route('web.touristspot.show', $tourist_spot->id) }}">
                     <div class="card h-75 ">
-                        <img class="card-img-top  imagem-list " src="{{ $tourist_spot->firstImage ? asset('files/' . $tourist_spot->firstImage->image->imageCapa()) : '/images/none-image.png' }}" alt="{{ $tourist_spot->name }}">
+                        <x-image idImage="{{ $tourist_spot->firstImage->image->id }}" altName="{{ $tourist_spot->name }}" />
                         <div class="card-body text-center d-flex flex-column justify-content-center">
                             <h5 class="card-title">{{ $tourist_spot->name }}</h5>
                             <div class="mt-2">

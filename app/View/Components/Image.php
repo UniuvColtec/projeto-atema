@@ -6,14 +6,22 @@ use Illuminate\View\Component;
 
 class Image extends Component
 {
+
+    public $image;
+
+    public $altName;
+
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+
+    public function __construct($idImage, $altName)
     {
-        //
+        $image = \App\Models\Image::find($idImage);
+        $this->image = ($image && is_file($image->uploadDirImageCapa()) ? asset('files/' . $image->imageCapa()) : '/images/none-image.png' );
+        $this->altName = $altName;
     }
 
     /**

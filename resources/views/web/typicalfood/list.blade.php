@@ -83,7 +83,7 @@
             @foreach( $typical_foods as $typical_food)
                 <a class="my-3 m-md-0 " href="{{ route('web.typicalfood.show', $typical_food->id) }}">
                     <div class="card h-75 ">
-                        <img class="card-img-top  imagem-list " src="{{ $typical_food->firstImage ? asset('files/' . $typical_food->firstImage->image->imageCapa()) : '/images/none-image.png' }}" alt="{{ $typical_food->name }}">
+                        <x-image idImage="{{ $typical_food->firstImage->image->id }}" altName="{{ $typical_food->name }}" />
                         <div class="card-body text-center d-flex flex-column justify-content-center">
                             <h5 class="card-title">{{ $typical_food->name }}</h5>
                         </div>

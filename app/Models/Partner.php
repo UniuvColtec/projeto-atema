@@ -69,7 +69,7 @@ class Partner extends Model
 
     }
     public function partner_type(){
-        return $this->hasMany(Partner_type::class);
+        return $this->belongsTo(Partner_type::class);
     }
     public function validar_cnpj($cnpj)
     {

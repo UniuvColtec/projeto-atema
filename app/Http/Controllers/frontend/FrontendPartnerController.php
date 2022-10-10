@@ -27,9 +27,8 @@ class FrontendPartnerController extends Controller
     }
     function show(int $id)
     {
-        $partner_types = Partner_type::orderBy('name')->get(['id', 'name']);
         $partner =  Partner::findOrFail($id);
-        return view('web.partner.show', compact('partner','partner_types'));
+        return view('web.partner.show', compact('partner'));
     }
 
     function map()

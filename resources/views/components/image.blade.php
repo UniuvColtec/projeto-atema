@@ -1,3 +1,1 @@
-<div>
-    <!-- Do what you can, with what you have, where you are. - Theodore Roosevelt -->
-</div>
+<img class="card-img-top  imagem-list " src="{{ $image }}" alt="{{ $altName }}">

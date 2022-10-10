@@ -51,6 +51,10 @@ class Image extends Model
     {
         return base_path('public/' . env('FILE_UPLOAD')) . '/';
     }
+    public function uploadDirImageCapa()
+    {
+        return $this->upload_dir() . $this->imageCapa();
+    }
     public function delete()
     {
         unlink($this->upload_dir() . $this->imageCapa());
