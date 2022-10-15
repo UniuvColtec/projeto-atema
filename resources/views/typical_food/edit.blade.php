@@ -67,7 +67,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="description">Descrição:</label>
-                                <input type="text" class="form-control" id="description" name="description" placeholder="Descrição" value="{{ $typical_food->description }}">
+                                <textarea name="description" id="description" class="form-control" placeholder="Descrição" required>{{ $typical_food->description }}</textarea>
                             </div>
                             <div class="card-body">
                                 <h3>Imagens</h3>

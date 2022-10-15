@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'tipo de parceiro - Alterar')
+@section('title', 'Tipo de parceiro - Alterar')
 
 @push('css')
     <link rel="stylesheet" href="/css/iziToast.min.css">
@@ -20,7 +20,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>tipo de parceiro
+                <h1>Tipo de parceiro
                     <small>Alterar</small>
                 </h1>
 
@@ -36,11 +36,10 @@
     </div>
 @endsection
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-12">
                 <div class="card card-primary">
-                    <h1>Tipo parceiro - Alterar </h1>
                     <form role="form" action="{{ route('partner_type.update', $partner_type->id)}}" method="post" class="jsonForm">
                         {{ csrf_field() }}
                         {{ method_field('PUT') }}

@@ -86,7 +86,8 @@
         <div class="row">
             <div class="col-12">
                 <div class="card card-primary">
-                    <form role="form" action="{{ route('event.store') }}" method="post" class="jsonForm">
+                    <div class="card-body">
+                      <form role="form" action="{{ route('event.store') }}" method="post" class="jsonForm">
                         {{ csrf_field() }}
                         {{ method_field('DELETE') }}
                                     <div class="card-body">
@@ -169,6 +170,7 @@
                                         </div>
                                     </div>
                     </form>
+                    </div>
                 </div>
             </div>
         </div>

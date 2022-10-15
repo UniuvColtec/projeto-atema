@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Comidas Típicas - Exibir')
+@section('title', 'Comidas Típicas - Visualizar')
 
 @push('css')
     <link rel="stylesheet" href="/css/iziToast.min.css">
@@ -21,7 +21,7 @@
         <div class="row mb-2">
             <div class="col-sm-6">
                 <h1>Comidas Típicas
-                    <small>Exibir</small>
+                    <small>Visualizar</small>
                 </h1>
 
             </div>
@@ -29,7 +29,7 @@
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fa fa-home"></i> Home</a></li>
                     <li class="breadcrumb-item"><a href="{{ route('typical_food.index') }}"> Comidas Típicas</a></li>
-                    <li class="breadcrumb-item active">Exibir</li>
+                    <li class="breadcrumb-item active">Visualizar</li>
                 </ol>
             </div>
         </div>
@@ -43,14 +43,10 @@
                 <div class="card card-primary">
                     <div class="card-body">
                         <form>
-                            <div class="form-group">
-                                <label for="id">ID: </label>
-                                {{ $typical_food->id }}
-                            </div>
-                            <div class="form-group">
-                                <label for="nome">Nome: </label>
-                                {{ $typical_food->name }}
-                            </div>
+                            <div class="card-body">
+                                <div class="form-group" style="text-align: center">
+                                    <p class="h1">{{ $typical_food->name }}</p>
+                                </div>
                             <div class="form-group">
                                 <label for="description">Descrição: </label>
                                 {!!$typical_food->description!!}

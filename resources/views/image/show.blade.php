@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Imagem - Exibir')
+@section('title', 'Imagem - Visualizar')
 
 @push('css')
     <link rel="stylesheet" href="/css/iziToast.min.css">
@@ -21,7 +21,7 @@
         <div class="row mb-2">
             <div class="col-sm-6">
                 <h1>Imagem
-                    <small>Exibir</small>
+                    <small>Visualizar</small>
                 </h1>
 
             </div>
@@ -29,7 +29,7 @@
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fa fa-home"></i> Home</a></li>
                     <li class="breadcrumb-item"><a href="{{ route('image.index') }}"> Imagem</a></li>
-                    <li class="breadcrumb-item active">Exibir</li>
+                    <li class="breadcrumb-item active">Visualizar</li>
                 </ol>
             </div>
         </div>

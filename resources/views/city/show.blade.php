@@ -1,8 +1,8 @@
 @extends('adminlte::page')
-@section('title', 'Cidade - Exibir')
+@section('title', 'Cidade - Visualizar')
 
 @push('css')
-    <link rel="stylesheet" href="/css/iziToast.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 @endpush
 
 @push('js')
@@ -21,7 +21,7 @@
         <div class="row mb-2">
             <div class="col-sm-6">
                 <h1>Cidade
-                    <small>Exibir</small>
+                    <small>Visualizar</small>
                 </h1>
 
             </div>
@@ -29,7 +29,7 @@
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fa fa-home"></i> Home</a></li>
                     <li class="breadcrumb-item"><a href="{{ route('city.index') }}"> Cidade</a></li>
-                    <li class="breadcrumb-item active">Exibir</li>
+                    <li class="breadcrumb-item active">Visualizar</li>
                 </ol>
             </div>
         </div>

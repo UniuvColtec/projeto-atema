@@ -1,8 +1,8 @@
 @extends('adminlte::page')
-@section('title', 'Cidade - Exibir')
+@section('title', 'Tipo de Parceiros - Visualizar')
 
 @push('css')
-    <link rel="stylesheet" href="/css/iziToast.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 @endpush
 
 @push('js')
@@ -20,8 +20,8 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>tipo de parceiro
-                    <small>Exibir</small>
+                <h1>Tipo de parceiro
+                    <small>Visualizar</small>
                 </h1>
 
             </div>
@@ -29,7 +29,7 @@
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fa fa-home"></i> Home</a></li>
                     <li class="breadcrumb-item"><a href="{{ route('partner_type.index') }}"> tipo de parceiro</a></li>
-                    <li class="breadcrumb-item active">Exibir</li>
+                    <li class="breadcrumb-item active">Visualizar</li>
                 </ol>
             </div>
         </div>
@@ -41,9 +41,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="card card-primary">
-                    <h1>Tipo de parceiro - exibir</h1>
                     <div class="card-body">
-                        <div class="card-body">
                             <div class="form-group">
                                 <label for="id">ID: </label>
                                 {{ $partner_type->id }}

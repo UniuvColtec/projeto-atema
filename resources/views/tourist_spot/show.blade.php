@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Pontos Turístico - Exibir')
+@section('title', 'Pontos Turístico - Visualizar')
 
 @push('css')
     <link rel="stylesheet" href="/css/iziToast.min.css">
@@ -20,8 +20,8 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Pontos Turistico
-                    <small>Exibir</small>
+                <h1>Pontos Turísticos
+                    <small>Visualizar</small>
                 </h1>
 
             </div>
@@ -29,7 +29,7 @@
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fa fa-home"></i> Home</a></li>
                     <li class="breadcrumb-item"><a href="{{ route('tourist_spot.index') }}"> Pontos Turístico</a></li>
-                    <li class="breadcrumb-item active">Exibir</li>
+                    <li class="breadcrumb-item active">Visualizar</li>
                 </ol>
             </div>
         </div>
@@ -37,52 +37,33 @@
 @endsection
 
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-12">
                 <div class="card card-primary">
-                    <h1> Pontos Turísticos - Exibir</h1>
                     <div class="card-body">
                         <form action="{{ route('tourist_spot.destroy', ['tourist_spot' =>$tourist_spot->id]) }}" method="post">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
 
-                        <div class="form-group">
-                            <label for="id">ID: </label>
-                            {{ $tourist_spot->id }}
-                            </div>
-                        <div class="form-group">
-                            <label for="nome">Nome:</label>
-                            {{ $tourist_spot->name }}
-                            </div>
-                        <div class="form-group">
-                            <label for="cities">Cidade:</label>
-                            {{ $tourist_spot->city->name}}
-                        </div>
+                            <div class="card-body">
+                                <div class="form-group" style="text-align: center">
+                                    <p class="h1">{{ $tourist_spot->name }}</p>
+                                </div>
+
                         <div class="form-group">
                             <label for="description">Descrição:</label>
                             {!!$tourist_spot->description!!}
                         </div>
                         <div class="form-group">
-                            <label for="address">Endereço:</label>
-                            {{ $tourist_spot->address }}
-                        </div>
-                            <div class="form-group">
-                                <label for="localization">Localização:</label>
-                                <br>
-                                <iframe src="https://maps.google.com/maps?q={{ $tourist_spot->latitude }},{{ $tourist_spot->longitude }}&hl=pt-br&z=17&amp;output=embed"
-                                        width="600"
-                                        height="450"
-                                        style="border:0;"
-                                        allowfullscreen=""
-                                        loading="lazy"
-                                        referrerpolicy="no-referrer-when-downgrade">
-                                </iframe>
-                            </div>
-                        <div class="form-group">
-                            <label for="district">Distrito:</label>
-                            {{ $tourist_spot->district }}
-                        </div>
+                             <label for="address">Endereço:</label>
+                            {{ $tourist_spot->city->name}}, {{ $tourist_spot->address }}, {{ $tourist_spot->district }}
+                         </div>
+
+                         <div class="form-group">
+                             {!! $tourist_spot->renderMap($tourist_spot->latitude, $tourist_spot->longitude) !!}
+                         </div>
+
                             <p class="h2">Galeria de Imagens</p>
                             <div class='grid-gallery'>
                                 @foreach($tourist_spot->images as $image)
