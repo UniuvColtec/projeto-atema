@@ -62,11 +62,11 @@
                         {{ csrf_field() }}
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="name">Nome</label>
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Nome -Campo obrigatório-" required>
+                                <label for="name">Nome*</label>
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Nome " required>
                             </div>
                             <div class="form-group">
-                                <label for="description">Descrição:</label>
+                                <label for="description">Descrição:*</label>
                                 <textarea id="description" name="description" aria-required="true"></textarea>
                             </div>
                             <div class="card-body">

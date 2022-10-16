@@ -131,7 +131,7 @@
                                 <div id="localization-part" class="content" role="tabpanel" aria-labelledby="localization-part-trigger">
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label for="cities">Cidade:</label>
+                                            <label for="cities">Cidade:*</label>
                                             <select name="cities" id="cities" class="form-control select2 " required >
                                                 <option value="">- Selecione uma Cidade -</option>
                                                 @foreach($cities as $city)

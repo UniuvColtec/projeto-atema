@@ -45,8 +45,8 @@
                         {{ csrf_field() }}
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="name">Nome</label>
-                                <input type="text" class="form-control" id="nome" name="name" placeholder="Nome">
+                                <label for="name">Nome:*</label>
+                                <input type="text" class="form-control" id="nome" name="name" placeholder="Nome" required>
                             </div>
                         </div>
                         <div class="card-footer">

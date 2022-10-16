@@ -28,9 +28,10 @@
             attribution: 'Map data &copy; ' + mapLink,
             maxZoom: 20,
         }).addTo(map);
-{{--    @foreach($points as $point)--}}
-{{--    L.marker([{{ $point->lat }}, {{ $point->long }}]).addTo(map);--}}
-{{--    @@endforeach--}}
+    @foreach($points as $point)
+    L.marker([{{ $point->lat }}, {{ $point->long }},{{ $point->id }}]).addTo(map);
+    @endforeach
+
     L.marker([-26.2419993, -51.0913358]).addTo(map);
 </script>
 

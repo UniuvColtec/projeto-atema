@@ -83,7 +83,7 @@
         <div class="row row-cols-1 row-cols-md-3  px-3 px-md-0  ">
             @foreach( $tourist_spots as $tourist_spot)
                 <a class="my-3 m-md-0 " href="{{ route('web.touristspot.show', $tourist_spot->id) }}">
-                    <div class="card h-75 ">
+                    <div class="card h-80 ">
                         <x-image idImage="{{ $tourist_spot->firstImage->image->id }}" altName="{{ $tourist_spot->name }}" />
                         <div class="card-body text-center d-flex flex-column justify-content-center">
                             <h5 class="card-title">{{ $tourist_spot->name }}</h5>

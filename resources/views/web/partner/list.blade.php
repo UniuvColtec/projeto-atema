@@ -94,7 +94,7 @@
                 @foreach( $partners as $partner)
 
                     <a class="my-3 m-md-0 " href="{{ route('web.partner.show', $partner->id) }}">
-                        <div class="card h-75 " style="positon: relative;">
+                        <div class="card h-80 " style="positon: relative;">
 
                             <x-image altName="{{ $partner->name }}" idImage="{{ $partner->firstImage->image->id }}" />
                             <div class="mt-2" style="position:absolute; top: 2%; right: 2%;">
@@ -102,8 +102,8 @@
                                     <span class="badge rounded-pill text" style="background-color: var(--ci-color-green)" >{{ $partner->partner_type->name }}</span>
                                 </p>
                             </div>
-                            <div class="card-body text-center d-flex flex-column justify-content-center">
-                                <h5 class="card-title">{{ $partner->name }}</h5>
+                            <div class="card-body  text-center d-flex flex-column justify-content-center">
+                                <h5 class="card-title ">{{ $partner->name }}</h5>
                                 <div class="mt-2">
                                     <p>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#FFBB13" class="bi bi-geo-alt" viewBox="0 0 16 16">

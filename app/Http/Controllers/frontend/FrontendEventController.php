@@ -54,11 +54,14 @@ class FrontendEventController extends Controller
 
     function map()
     {
-        $p = new \stdClass();
-        $p->lat = -1.4572002;
-        $p->long = -48.4653295;
-
-        $points[] = $p;
+        $events=Event::all(['latitude','longitude']);
+        foreach($events as $event) {
+            $p = new \stdClass();
+            $p->id= $event->id;
+            $p->lat = $event->latitude;
+            $p->long = $event->longitude;
+            $points[] = $p;
+        }
 
 //        return 'mapa - exibir todos as Geo Localização';
         return view('web.event.map', compact('points'));

@@ -42,12 +42,12 @@
                         {{ csrf_field() }}
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="nome">Nome</label>
+                                <label for="nome">Nome*</label>
                                 <input type="text" class="form-control" id="nome" name="name" placeholder="Nome">
                             </div>
                             <div class="form-group">
-                                <label for="estado">Estado</label>
-                                <select id="estado" name="state" class="form-control select2">
+                                <label for="estado">Estado*</label>
+                                <select id="estado" name="state" class="form-control select2" required>
                                     <option value="">Selecione um estado</option>
                                     <option value="PR">Paraná</option>
                                     <option value="SC">Santa Catarina</option>

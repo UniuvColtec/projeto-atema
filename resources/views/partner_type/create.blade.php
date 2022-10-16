@@ -45,7 +45,7 @@
                         {{ csrf_field() }}
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="name">Nome do tipo :</label>
+                                <label for="name">Nome do tipo:*</label>
                                 <input type="text" class="form-control" id="name"
                                           name="name" placeholder="nome" value="{{ old('name') }}" required>
                                 </div>

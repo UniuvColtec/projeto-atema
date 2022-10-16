@@ -136,16 +136,16 @@
                                 <div id="information-part" class="content" role="tabpanel" aria-labelledby="information-part-trigger">
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label for="name">Nome:</label>
-                                            <input name="name" id="name" class="form-control" placeholder="Nome -Campo obrigatório-" required>
+                                            <label for="name">Nome:*</label>
+                                            <input name="name" id="name" class="form-control" placeholder="Nome " required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="subtitle">Subtítulo:</label>
+                                            <label for="subtitle">Subtítulo:*</label>
                                             <input name="subtitle" id="subtitle" class="form-control" placeholder="Subtítulo" required>
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="contact">O evento ocorre anualmente:</label>
+                                            <label for="contact">O evento ocorre anualmente:*</label>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="annual_calendar" id="annual_calendar_s" value="1" required>
                                                 <label class="form-check-label" for="annual_calendar_s">
@@ -164,27 +164,27 @@
 
 
                                         <div class="form-group">
-                                            <label for="contact">Telefone:</label>
-                                            <input type="text" class="form-control" id="contact" name="contact" placeholder="EX: (DD) 00000-0000 -Campo obrigatório-" required >
+                                            <label for="contact">Telefone:*</label>
+                                            <input type="text" class="form-control" id="contact" name="contact" placeholder="EX: (DD) 00000-0000 " required >
                                         </div>
                                         <div class="form-group">
                                             <label for="website">Url do site do evento:</label>
                                             <input type="text" name="website" id="website" class="form-control" placeholder="Url">
                                         </div>
                                         <div class="form-group">
-                                            <label for="description">Descrição:</label>
+                                            <label for="description">Descrição:*</label>
                                             <textarea name="description" id="description" class="form-control" placeholder="Descrição" required></textarea>
                                         </div>
                                         <div class="row">
                                             <div class="col-6">
                                                 <div class="form-group">
-                                                    <label for="start_date">Data de início:</label>
+                                                    <label for="start_date">Data de início:*</label>
                                                     <input type="datetime-local" name="start_date" id="start_date" class="form-control" placeholder="Data de início" required value="{{ $todays_date }}" min="{{ $todays_date }}">
                                                 </div>
                                             </div>
                                             <div class="col-6">
                                                 <div class="form-group">
-                                                    <label for="final_date">Data de encerramento:</label>
+                                                    <label for="final_date">Data de encerramento:*</label>
                                                     <input type="datetime-local" name="final_date" id="final_date" class="form-control" placeholder="Data de encerramento" required value="{{ \Carbon\Carbon::now()->addDay()->format('Y-m-d\TH:i:s') }}" min="{{ $todays_date }}">
                                                 </div>
                                             </div>
@@ -197,7 +197,7 @@
                                 <div id="localization-part" class="content" role="tabpanel" aria-labelledby="localization-part-trigger">
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label for="cities">Cidade</label>
+                                            <label for="cities">Cidade*</label>
                                             <select name="cities" id="cities" class="form-control select2" required>
                                                 <option value="">- Selecione uma Cidade -</option>
                                                 @foreach($cities as $city)
@@ -206,16 +206,16 @@
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <label for="address">Endereço:</label>
-                                            <input type="text" name="address" id="address" class="form-control" placeholder="Endereço -Campo obrigatório-" required>
+                                            <label for="address">Endereço:*</label>
+                                            <input type="text" name="address" id="address" class="form-control" placeholder="Endereço " required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="district">Localidade:</label>
-                                            <input type="text" name="district" id="district" class="form-control" placeholder="localidade -Campo obrigatório-" required>
+                                            <label for="district">Localidade:*</label>
+                                            <input type="text" name="district" id="district" class="form-control" placeholder="localidade " required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="localization">Localização:</label>
-                                            <input type="text" name="localization" id="localization" class="form-control" placeholder="Localização -Campo obrigatório-" required>
+                                            <label for="localization">Localização:*</label>
+                                            <input type="text" name="localization" id="localization" class="form-control" placeholder="Localização " required>
                                         </div>
                                     </div>
                                     <div class="card-footer">
@@ -226,7 +226,7 @@
                                 <div id="other-part" class="content" role="tabpanel" aria-labelledby="other-part-trigger">
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label for="typical_foods">Comidas Típicas</label>
+                                            <label for="typical_foods">Comidas Típicas*</label>
                                             <select name="typical_foods[]" id="typical_foods" class="form-control select2" multiple required data-placeholder="Selecione uma ou mais comidas típicas" >
                                                 @foreach($typical_foods as $typical_food)
                                                     <option value="{{$typical_food->id}}">{{$typical_food->name}}</option>
@@ -234,7 +234,7 @@
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <label for="categories">Categorias</label>
+                                            <label for="categories">Categorias*</label>
                                             <select name="categories[]" id="categories" class="form-control select2 " multiple required data-placeholder="Selecione uma ou mais categorias" >
                                                 @foreach($categories as $category)
                                                     <option value="{{$category->id}}">{{$category->name}}</option>
