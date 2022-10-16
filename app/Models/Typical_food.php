@@ -23,7 +23,7 @@ class Typical_food extends Model
         $typical_foods = DB::table('typical_foods')
             ->select("typical_foods.*");
 
-        $bootgrid->query($typical_foods, $request, ['typical_foods.name','events.name', 'cities.name']);
+        $bootgrid->query($typical_foods, $request, ['typical_foods.name']);
         $bootgrid->query($this,$request,['name','description']);
         return $bootgrid;
     }
