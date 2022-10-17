@@ -59,8 +59,6 @@ class TypicalFoodController extends Controller
                 $typical_food_image->image_id = $image;
                 $typical_food_image->typical_food_id = $typical_food->id;
                 $typical_food_image->save();
-                $imagefile = \Intervention\Image\Facades\Image::make('public/file/'.$image)->resize(505, 505);
-                $imagefile = save($imagefile);
             }
 
         }
