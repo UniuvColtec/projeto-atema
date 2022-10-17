@@ -69,7 +69,7 @@ class EventController extends Controller
                 $carbon_start_date = Carbon::create($request->start_date);
                 if($carbon_event_date->day == $carbon_start_date->day and $carbon_event_date->month == $carbon_start_date->month and $carbon_event_date->year == $carbon_start_date->year) {
                     return Response::responseError("Existe um evento nesta mesma data. Clique aqui para liberar o cadastro.
-                           <button style='border: none; background-color: lightcyan; border-radius: 10px; padding: 5px; margin: 0 2px' onclick='permit()'>Permitr</button>
+                           <button style='border: none; background-color: lightcyan; border-radius: 10px; padding: 5px; margin: 0 2px' onclick='permit()'>Permitir</button>
                            <a target='_blank' style='border: none; background-color: lightyellow; border-radius: 10px; padding: 5px; margin: 0 2px; text-decoration: none; color: black;' href='/evento?dates=$carbon_event_date->year-$carbon_event_date->month-$carbon_event_date->day'>Ver Eventos</a>");
                 }
             }
@@ -172,7 +172,7 @@ class EventController extends Controller
                 $carbon_start_date = Carbon::create($request->start_date);
                 if($carbon_event_date->day == $carbon_start_date->day and $carbon_event_date->month == $carbon_start_date->month and $carbon_event_date->year == $carbon_start_date->year) {
                     return Response::responseError("Existe um evento nesta mesma data. Clique aqui para liberar o cadastro.
-                           <button style='border: none; background-color: lightcyan; border-radius: 10px; padding: 5px; margin: 0 2px' onclick='permit()'>Permitr</button>
+                           <button style='border: none; background-color: lightcyan; border-radius: 10px; padding: 5px; margin: 0 2px' onclick='permit()'>Permitir</button>
                            <a target='_blank' style='border: none; background-color: lightyellow; border-radius: 10px; padding: 5px; margin: 0 2px; text-decoration: none; color: black;' href='/evento?dates=$carbon_event_date->year-$carbon_event_date->month-$carbon_event_date->day'>Ver Eventos</a>");
                 }
             }

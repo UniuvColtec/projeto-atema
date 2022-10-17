@@ -1,9 +1,6 @@
 .grid-gallery {
     position: relative;
 }
-.grid-gallery-item {
-    position: absolute;
-}
 
 .btn-download-foto {
     padding: 1px 5px;

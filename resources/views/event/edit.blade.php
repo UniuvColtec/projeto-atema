@@ -64,6 +64,7 @@
         })
         function permit() {
             document.getElementById('permit').value = 1;
+            alert("Cadastro do evento liberado.");
         }
     </script>
 
