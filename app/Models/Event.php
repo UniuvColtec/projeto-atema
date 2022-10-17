@@ -100,7 +100,7 @@ class Event extends Model
 
     public function typical_food()
     {
-        return $this->belongsToMany(Typical_food::class);
+        return $this->hasMany(Typical_event_food::class);
     }
 }
 

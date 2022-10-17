@@ -14,7 +14,7 @@ class Typical_event_food extends Model
 
     public function event()
     {
-        return $this->belongsToMany(Event::class);
+        return $this->belongsTo(Event::class);
     }
 
     public function typical_food(){

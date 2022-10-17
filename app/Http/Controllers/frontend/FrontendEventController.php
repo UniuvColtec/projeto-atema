@@ -54,7 +54,7 @@ class FrontendEventController extends Controller
 
     function map()
     {
-        $events=Event::all(['latitude','longitude']);
+        $events=Event::all(['latitude','longitude','id']);
         foreach($events as $event) {
             $p = new \stdClass();
             $p->id= $event->id;

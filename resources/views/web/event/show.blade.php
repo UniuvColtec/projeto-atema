@@ -83,38 +83,38 @@
                 </div>
             @endif
             <div class="more-info">
-{{--                <p class="h2">Comidas Típicas</p>--}}
-{{--                <div class="container text-center">--}}
-{{--                    <div class="row mx-auto my-auto justify-content-center">--}}
-{{--                        <div id="recipeCarouselNext" class="carousel carouselAnual slide" data-bs-ride="carousel">--}}
-{{--                            <div class="carousel-inner" role="listbox">--}}
-{{--                                @php $firstImageEvent = true; @endphp--}}
-{{--                                @foreach( $event->typical_food as $event)--}}
-{{--                                    <div class="carousel-item  {{ $firstImageEvent ? 'active' : '' }}">--}}
-{{--                                        <div class="w-100 px-3 px-md-0">--}}
-{{--                                            <a class="my-3 m-md-0" href="{{ route('web.typicalfood.show', $event->event->id) }}">--}}
-{{--                                                <div class="card h-100">--}}
-{{--                                                    <img class="card-img-top w-100 h-auto" src="{{ asset('files/' . $event->event->firstImage->image->address) }}"--}}
-{{--                                                         alt="{{ $event->event->name }}">--}}
-{{--                                                    <div class="card-body text-center d-flex flex-column justify-content-center">--}}
-{{--                                                        <h5 class="card-title">{{ $event->event->name }}</h5>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                            </a>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                    @php $firstImageEvent = false; @endphp--}}
-{{--                                @endforeach--}}
-{{--                            </div>--}}
-{{--                            <a class="carousel-control-prev w-aut" href="#recipeCarouselNext" role="button" data-bs-slide="prev">--}}
-{{--                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>--}}
-{{--                            </a>--}}
-{{--                            <a class="carousel-control-next w-aut" href="#recipeCarouselNext" role="button" data-bs-slide="next">--}}
-{{--                                <span class="carousel-control-next-icon" aria-hidden="true"></span>--}}
-{{--                            </a>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
+                <p class="h2">Comidas Típicas</p>
+                <div class="container text-center">
+                    <div class="row mx-auto my-auto justify-content-center">
+                        <div id="recipeCarouselNext" class="carousel carouselAnual slide" data-bs-ride="carousel">
+                            <div class="carousel-inner" role="listbox">
+                                @php $firstImageFood = true; @endphp
+                                @foreach( $event->typical_food as $typical_food)
+                                    <div class="carousel-item  {{ $firstImageFood ? 'active' : '' }}">
+                                        <div class="w-100 px-3 px-md-0">
+                                            <a class="my-3 m-md-0" href="{{ route('web.typicalfood.show', $typical_food->typical_food->id) }}">
+                                                <div class="card h-100">
+                                                    <img class="card-img-top w-100 h-auto" src="{{ asset('files/' . $typical_food->typical_food->firstImage->image->address) }}"
+                                                         alt="{{ $typical_food->typical_food->name }}">
+                                                    <div class="card-body text-center d-flex flex-column justify-content-center">
+                                                        <h5 class="card-title">{{ $typical_food->typical_food->name }}</h5>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    @php $firstImageFood = false; @endphp
+                                @endforeach
+                            </div>
+                            <a class="carousel-control-prev w-aut" href="#recipeCarouselNext" role="button" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            </a>
+                            <a class="carousel-control-next w-aut" href="#recipeCarouselNext" role="button" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
                 <p class="h2">Localização</p>
                 <div>
                     <p>{{ $event->address }}, {{ $event->district }}</p>
