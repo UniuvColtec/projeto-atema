@@ -68,6 +68,10 @@
                 stepper.next();
             }
         }
+        function permit() {
+            document.getElementById('permit').value = 1;
+            alert("Cadastro do evento liberado.");
+        }
 
 
     </script>
@@ -258,6 +262,7 @@
                                         <label for="logo">logo</label>
                                         <input type="file" id="logo" name="logo" class="form-control-file btn btn-outline-secondary">
                                     </div>
+                                    <input type="hidden" id="permit" name="permit">
                                     <div class="card-footer">
                                         <button type="button" class="btn btn-info" onclick="stepper.previous()">Anterior</button>
                                         <button type="submit" id="buttonload" name="buttonload" class="btn btn-success btn-submit">Salvar</button>

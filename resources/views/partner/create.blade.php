@@ -133,7 +133,7 @@
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="name">Nome:*</label>
-                                        <input type="text" class="form-control" id="name" name="name" placeholder="nome " required >
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="Nome " required >
                                     </div>
                                     <div class="form-group">
                                         <label for="partner_type_id">Tipo:*</label>

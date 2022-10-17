@@ -62,6 +62,10 @@
         $('#myModal').on('shown.bs.modal', function () {
             $('#myInput').trigger('focus')
         })
+        function permit() {
+            document.getElementById('permit').value = 1;
+            alert("Cadastro do evento liberado.");
+        }
     </script>
 
 
@@ -311,6 +315,7 @@
                                         <label for="logo">Logo</label>
                                         <input type="file" id="logo" name="logo" class="form-control-file" value="{{ $event->logo}}" >
                                     </div>
+                                    <input type="hidden" id="permit" name="permit">
                                     <div class="card-footer">
                                         <button type="button" class="btn btn-info" onclick="stepper.previous()">Anterior</button>
                                         <button type="submit" class="btn btn-success btn-submit">Salvar</button>
