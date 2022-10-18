@@ -140,7 +140,7 @@
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <label for="address">RUA:*</label>
+                                            <label for="address">Rua:*</label>
                                             <input type="text" class="form-control" id="address" name="address" placeholder="Rua exemplo 1111 "  required >
                                         </div>
                                         <div class="form-group">

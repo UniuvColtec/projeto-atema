@@ -144,8 +144,8 @@
                                             <input name="name" id="name" class="form-control" placeholder="Nome " required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="subtitle">Subtítulo:*</label>
-                                            <input name="subtitle" id="subtitle" class="form-control" placeholder="Subtítulo" required>
+                                            <label for="subtitle">Subtítulo:</label>
+                                            <input name="subtitle" id="subtitle" class="form-control" placeholder="Subtítulo">
                                         </div>
 
                                         <div class="form-group">

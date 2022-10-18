@@ -24,11 +24,100 @@
     </style>
 
 
+
 @endpush
 @push('js')
+    <script src=" {{ asset('js/bs-stepper.js') }}" type="text/javascript"></script>
+    <script src="/js/formAjaxAlterar.js" type="text/javascript"></script>
+    <script src="/js/iziToast.min.js" type="text/javascript"></script>
+    <script src="/js/jquery.form.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/js/jquery.mask.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
     <script src="{{ asset('js/bs-stepper.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/formAjaxAlterar.js') }}" type="text/javascript"></script>
+    <script>
+        $(document).ready(function(){
+            var options = {
+                onKeyPress: function (phone, e, field, options) {
+                    var masks = ['(00) 0000-00000', '(00) 00000-0000'];
+                    var mask = (phone.length > 14) ? masks[1] : masks[0];
+                    $('#telephone').mask(mask, options);
+                }
+            };
+            $('#cnpj').mask('00.000.000/0000-00', options);
+            $('#telephone').mask('(00) 0000-00000', options);
+
+
+            $('#description').summernote({
+                placeholder: 'Insira a descrição aqui',
+                tabsize: 2,
+                height: 120,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture', 'video']],
+                    ['view', ['fullscreen', 'codeview', 'help']]
+                ]
+            });
+
+        })
+
+        var stepper;
+        $(document).ready(function(){
+            var stepperEl = document.getElementById("stepper");
+            stepper = new Stepper(stepperEl);
+            // // $('#information-part').validate();
+            //
+            stepperEl.addEventListener('show.bs-stepper', function (partner) {
+                if (!$('.jsonForm').valid()){
+                    event.preventDefault()
+                }
+            })
+            stepperEl.addEventListener('shown.bs-stepper', function(partner){
+                $(".select2").select2();
+            });
+
+            $('.jsonForm').validate({
+                errorClass: 'is-invalid',
+            });
+
+            $(".select2").select2();
+        })
+
+        function verify() {
+            if(document.getElementById('description').value == ''){
+                alert("Descrição deve ser preenchida");
+            } else {
+                stepper.next();
+            }
+        }
+
+    </script> <script src=" {{ asset('js/bs-stepper.js') }}" type="text/javascript"></script>
+    <script src="/js/formAjaxAlterar.js" type="text/javascript"></script>
+    <script src="/js/iziToast.min.js" type="text/javascript"></script>
+    <script src="/js/jquery.form.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/js/jquery.mask.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            var options = {
+                onKeyPress: function (phone, e, field, options) {
+                    var masks = ['(00) 0000-00000', '(00) 00000-0000'];
+                    var mask = (phone.length > 14) ? masks[1] : masks[0];
+                    $('#telephone').mask(mask, options);
+                }
+            };
+            $('#cnpj').mask('00.000.000/0000-00', options);
+            $('#telephone').mask('(00) 0000-00000', options);
+        })
+
+    </script>
 
 @endpush
 @section('content')
@@ -43,14 +132,18 @@
                                 <label>Nome do evento:</label>
                                 <input type="text" name="name" class="form-control" placeholder="Insira o nome do evento">
                             </div>
+                            <div class="form-group">
+                                <label for="telephone">Telefone:</label>
+                                <input type="text" class="form-control  telephone" id="telephone" name="telephone" placeholder="EX: (DD) 00000-0000 " required >
+                            </div>
                             <div class="grid-inputs">
                                 <div class="form-group">
                                     <label>Nome do organizador:</label>
-                                    <input type="text" name="name_org" class="form-control" placeholder="Insira o nome do organizador">
+                                    <input type="text" name="name_org" class="form-control" placeholder="Insira o nome do organizador"required>
                                 </div>
                                 <div class="form-group">
                                     <label>Email:</label>
-                                    <input type="email" name="email" class="form-control" placeholder="Insira o email para contato">
+                                    <input type="email" name="email" class="form-control" placeholder="Insira o email para contato" required>
                                 </div>
                             </div>
                             <div class="grid-inputs">
