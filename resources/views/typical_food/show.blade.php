@@ -3,6 +3,33 @@
 
 @push('css')
     <link rel="stylesheet" href="/css/iziToast.min.css">
+    {{--    <link rel="stylesheet" href="/css/iziToast.min.css">--}}
+    <style>
+
+
+        .btn-download-foto {
+            padding: 1px 5px;
+            font-size: 12px;
+            line-height: 1.5;
+            border-radius: 3px;
+            color: #333;
+            background-color: #fff;
+            border-color: #ccc;
+            text-decoration: none;
+        }
+        .gallery-item {
+            width: 100%;
+            max-width: 250px;
+        }
+        .grid-gallery {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-column-gap: 10px;
+            /*border: solid dimgray 3px;
+            border-radius: 5px;*/
+        }
+
+    </style>
 @endpush
 
 @push('js')

@@ -27,7 +27,7 @@ class Image extends Model
     public function imageCarrosel()
     {
         $resizedImage = Img::make($this->upload_dir() . $this->address);
-        if ($resizedImage->getWidth() > $resizedImage->getHeight()){
+        if ( ($resizedImage->getWidth()/$resizedImage->getHeight()) > 1.67 ){
             $resizedImage->resize(null, 300, function ($constraint) {
                 $constraint->aspectRatio();
                 $constraint->upsize();

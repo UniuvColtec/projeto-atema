@@ -1,34 +1,27 @@
 @extends('web.base.page')
 
 @push('css')
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://uniuv.edu.br/css/mklb.css" />
-    <link href="{{ asset('css/carousel.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/showPage.css') }}" rel="stylesheet">
-    <style>
-        @media screen and (max-width: 999px){
-            .grid-inputs {
-                display: grid;
-                grid-template-rows: 1fr 1fr;
-                gap: 1rem;
-            }
-        }
-        @media screen and (min-width: 1000px){
-            .grid-inputs {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 1rem;
-            }
-        }
-
-    </style>
-
 
 @endpush
 @push('js')
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-    <script src="{{ asset('js/bs-stepper.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('js/formAjaxAlterar.js') }}" type="text/javascript"></script>
+    <script src="/js/jquery.min.js" type="text/javascript"></script>
+    <script src="/js/iziToast.min.js" type="text/javascript"></script>
+    <script src="/js/jquery.form.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/js/jquery.mask.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            var options = {
+                onKeyPress: function (phone, e, field, options) {
+                    var masks = ['(00) 0000-00000', '(00) 00000-0000'];
+                    var mask = (phone.length > 14) ? masks[1] : masks[0];
+                    $('#telephone').mask(mask, options);
+                }
+            };
+            $('#telephone').mask('(00) 0000-00000', options);
+        })
+
+    </script>
 
 @endpush
 @section('content')
@@ -43,14 +36,18 @@
                                 <label>Nome do evento:</label>
                                 <input type="text" name="name" class="form-control" placeholder="Insira o nome do evento">
                             </div>
+                            <div class="form-group">
+                                <label for="telephone">Telefone:</label>
+                                <input type="text" class="form-control  telephone" id="telephone" name="telephone" placeholder="EX: (DD) 00000-0000 " required >
+                            </div>
                             <div class="grid-inputs">
                                 <div class="form-group">
                                     <label>Nome do organizador:</label>
-                                    <input type="text" name="name_org" class="form-control" placeholder="Insira o nome do organizador">
+                                    <input type="text" name="name_org" class="form-control" placeholder="Insira o nome do organizador"required>
                                 </div>
                                 <div class="form-group">
                                     <label>Email:</label>
-                                    <input type="email" name="email" class="form-control" placeholder="Insira o email para contato">
+                                    <input type="email" name="email" class="form-control" placeholder="Insira o email para contato" required>
                                 </div>
                             </div>
                             <div class="grid-inputs">

@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\Mail\SendMail;
+use App\Models\Event;
+use App\Response;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Mail;
 use App\Http\Requests\ContactRequest;
@@ -37,8 +40,21 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-       $request->validate([
+        if($request->permit == 0) {
+            $event_dates = Event::all('start_date');
+            foreach ($event_dates as $event_date) {
+                $carbon_event_date = Carbon::create($event_date->start_date);
+                $carbon_start_date = Carbon::create($request->start_date);
+                if($carbon_event_date->day == $carbon_start_date->day and $carbon_event_date->month == $carbon_start_date->month and $carbon_event_date->year == $carbon_start_date->year) {
+                    return Response::responseError("Existe um evento nesta mesma data. Clique aqui para liberar o cadastro.
+                           <button style='border: none; background-color: lightcyan; border-radius: 10px; padding: 5px; margin: 0 2px' onclick='permit()'>Permitir</button>
+                           <a target='_blank' style='border: none; background-color: lightyellow; border-radius: 10px; padding: 5px; margin: 0 2px; text-decoration: none; color: black;' href='/evento?dates=$carbon_event_date->year-$carbon_event_date->month-$carbon_event_date->day'>Ver Eventos</a>");
+                }
+            }
+        }
+        $request->validate([
            'name' =>'required',
+               'telephone'=>'required',
                'email'=>'required|email',
                'name_org' =>'required',
                'address'=>'required',
@@ -50,6 +66,7 @@ class ContactController extends Controller
        );
        $data= array(
            'name'=>$request->name,
+           'telephone'=>$request->telephone,
            'email'=>$request->email,
            'name_org'=>$request->name_org,
            'address'=>$request->address,

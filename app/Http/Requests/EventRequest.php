@@ -25,7 +25,6 @@ class EventRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'subtitle' => 'required',
             'description' => 'required',
             'contact' => 'required',
             'start_date' => 'required|date',
@@ -40,7 +39,6 @@ class EventRequest extends FormRequest
     {
         return [
             'name.required' => 'Nome é obrigatório',
-            'subtitle.required' => 'Subtitulo é obrigatorio',
             'description.required' => 'Descrição é obrigatória',
             'contact.required' => 'Contato é obrigatório',
             'address.required' => 'Endereço é obrigatório',
