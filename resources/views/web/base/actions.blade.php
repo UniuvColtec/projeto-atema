@@ -3,8 +3,13 @@
         <a href="{{ url('/contact') }}" class="useless">
             <div class="card h-100 py-3">
                 <div class="card-body d-flex justify-content-evenly align-items-center flex-column flex-sm-row gap-3 gap-sm-0">
+<<<<<<< HEAD
                     <img src="/assets/img/botoes-home/calendario.svg">
                     <p class="m-0 p-0">Sugerir<br>Evento</p>
+=======
+                    <img src="/assets/img/botoes-home/calendario.svg" width="50">
+                    <p class="m-0 p-0">Cadastrar<br>Evento</p>
+>>>>>>> 5ba7eabbb2cc2b48faba95791f8468d283b65a08
                 </div>
             </div>
         </a>
