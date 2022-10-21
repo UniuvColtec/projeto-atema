@@ -4,32 +4,11 @@
 @push('css')
     <link rel="stylesheet" href="/css/iziToast.min.css">
     {{--    <link rel="stylesheet" href="/css/iziToast.min.css">--}}
-    <style>
+    <link href="{{ asset('css/mklb.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/galeria.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/carousel.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/showPage.css') }}" rel="stylesheet">
 
-
-        .btn-download-foto {
-            padding: 1px 5px;
-            font-size: 12px;
-            line-height: 1.5;
-            border-radius: 3px;
-            color: #333;
-            background-color: #fff;
-            border-color: #ccc;
-            text-decoration: none;
-        }
-        .gallery-item {
-            width: 100%;
-            max-width: 250px;
-        }
-        .grid-gallery {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            grid-column-gap: 10px;
-            /*border: solid dimgray 3px;
-            border-radius: 5px;*/
-        }
-
-    </style>
 @endpush
 
 @push('js')
@@ -40,6 +19,16 @@
         $(document).ready(function(){
             $(".select2").select2();
         })
+    </script>
+    <script src=" {{ asset('/js/minimasonry.min.js') }}" type="text/javascript"></script>
+    <script src=" {{ asset('/js/mklb.js') }}" type="text/javascript"></script>
+    <script src=" {{ asset('/js/carousel.js') }}" type="text/javascript"></script>
+    <script>
+        window.addEventListener("load", function(event) {
+            var myLayout = new MiniMasonry({
+                container: '.grid-gallery',
+            });
+        });
     </script>
 @endpush
 
@@ -78,19 +67,22 @@
                                 <label for="description">Descrição: </label>
                                 {!!$typical_food->description!!}
                             </div>
-                            <p class="h2">Galeria de Imagens</p>
-                            <div class='grid-gallery'>
-                                @foreach($typical_food->images as $image)
-                                    <div class='grid-gallery-item'>
-                                        <a href='{{ asset('files/' . $image->image->address) }}' class='btn-download-foto' download>
-                                            <small>
-                                                <span class='fas fa-download'></span>
-                                            </small>
-                                        </a>
-                                        <br />
-                                        <img src='{{ asset('files/' . $image->image->address) }}' data-src='{{ asset('files/' . $image->image->address) }}' class='img-responsive mklbItem' data-gallery='myGallery'><br />
+                                @if(count($typical_food->images)>0)
+                                    <p class="h2">Galeria de Imagens</p>
+                                    <div class='grid-gallery'>
+                                        @foreach($typical_food->images as $image)
+                                            <div class='grid-gallery-item'>
+                                                <a href='{{ asset('files/' . $image->image->address) }}' class='btn-download-foto' download>
+                                                    <small>
+                                                        <span class='fas fa-download'></span>
+                                                    </small>
+                                                </a>
+                                                <br />
+                                                <img src='{{ asset('files/' . $image->image->address) }}' data-src='{{ asset('files/' . $image->image->address) }}' class='img-responsive mklbItem' data-gallery='myGallery'><br />
+                                            </div>
+                                        @endforeach
                                     </div>
-                                @endforeach
+                                @endif
                             </div>
                         </form>
                     </div>

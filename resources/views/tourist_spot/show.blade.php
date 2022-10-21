@@ -4,32 +4,10 @@
 @push('css')
     <link rel="stylesheet" href="/css/iziToast.min.css">
     {{--    <link rel="stylesheet" href="/css/iziToast.min.css">--}}
-    <style>
-
-
-        .btn-download-foto {
-            padding: 1px 5px;
-            font-size: 12px;
-            line-height: 1.5;
-            border-radius: 3px;
-            color: #333;
-            background-color: #fff;
-            border-color: #ccc;
-            text-decoration: none;
-        }
-        .gallery-item {
-            width: 100%;
-            max-width: 250px;
-        }
-        .grid-gallery {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            grid-column-gap: 10px;
-            /*border: solid dimgray 3px;
-            border-radius: 5px;*/
-        }
-
-    </style>
+    <link href="{{ asset('css/mklb.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/galeria.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/carousel.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/showPage.css') }}" rel="stylesheet">
 @endpush
 
 @push('js')
@@ -40,6 +18,16 @@
         $(document).ready(function(){
             $(".select2").select2();
         })
+    </script>
+    <script src=" {{ asset('/js/minimasonry.min.js') }}" type="text/javascript"></script>
+    <script src=" {{ asset('/js/mklb.js') }}" type="text/javascript"></script>
+    <script src=" {{ asset('/js/carousel.js') }}" type="text/javascript"></script>
+    <script>
+        window.addEventListener("load", function(event) {
+            var myLayout = new MiniMasonry({
+                container: '.grid-gallery',
+            });
+        });
     </script>
 @endpush
 
@@ -72,42 +60,42 @@
                         <form action="{{ route('tourist_spot.destroy', ['tourist_spot' =>$tourist_spot->id]) }}" method="post">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
-
                             <div class="card-body">
                                 <div class="form-group" style="text-align: center">
                                     <p class="h1">{{ $tourist_spot->name }}</p>
                                 </div>
-
-                        <div class="form-group">
-                            <label for="description">Descrição:</label>
-                            {!!$tourist_spot->description!!}
-                        </div>
-                        <div class="form-group">
-                             <label for="address">Endereço:</label>
-                            {{ $tourist_spot->city->name}}, {{ $tourist_spot->address }}, {{ $tourist_spot->district }}
-                         </div>
-
-                         <div class="form-group">
-                             {!! $tourist_spot->renderMap($tourist_spot->latitude, $tourist_spot->longitude) !!}
-                         </div>
-
-                            <p class="h2">Galeria de Imagens</p>
-                            <div class='grid-gallery'>
-                                @foreach($tourist_spot->images as $image)
-                                    <div class='grid-gallery-item'>
-                                        <a href='{{ asset('files/' . $image->image->address) }}' class='btn-download-foto' download>
-                                            <small>
-                                                <span class='fas fa-download'></span>
-                                            </small>
-                                        </a>
-                                        <br />
-                                        <img src='{{ asset('files/' . $image->image->address) }}' data-src='{{ asset('files/' . $image->image->address) }}' class='img-responsive mklbItem' data-gallery='myGallery'><br />
+                                <div class="form-group">
+                                    <label for="description">Descrição:</label>
+                                    {!!$tourist_spot->description!!}
+                                </div>
+                                <div class="form-group">
+                                    <label for="address">Endereço:</label>
+                                    {{ $tourist_spot->city->name}}, {{ $tourist_spot->address }}, {{ $tourist_spot->district }}
+                                </div>
+                                <div class="form-group">
+                                    {!! $tourist_spot->renderMap($tourist_spot->latitude, $tourist_spot->longitude) !!}
+                                </div>
+                                @if(count($tourist_spot->images)>0)
+                                    <p class="h2">Galeria de Imagens</p>
+                                    <div class='grid-gallery'>
+                                        @foreach($tourist_spot->images as $image)
+                                            <div class='grid-gallery-item'>
+                                                <a href='{{ asset('files/' . $image->image->address) }}' class='btn-download-foto' download>
+                                                    <small>
+                                                        <span class='fas fa-download'></span>
+                                                    </small>
+                                                </a>
+                                                <br />
+                                                <img src='{{ asset('files/' . $image->image->address) }}' data-src='{{ asset('files/' . $image->image->address) }}' class='img-responsive mklbItem' data-gallery='myGallery'><br />
+                                            </div>
+                                        @endforeach
                                     </div>
-                                @endforeach
+                                @endif
                             </div>
-
+                        </form>
                     </div>
                 </div>
+
             </div>
         </div>
 @endsection
