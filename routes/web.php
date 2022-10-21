@@ -45,7 +45,7 @@ Route::resource('/contact',ContactController::class);
 
 Route::get('/quem-somos', [\App\Http\Controllers\frontend\AboutController::class, 'index'])->name('web.about');
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
 
 Route::prefix('admin')->middleware('auth')->group(function(){

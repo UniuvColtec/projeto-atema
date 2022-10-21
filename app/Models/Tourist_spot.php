@@ -23,7 +23,7 @@ class Tourist_spot extends Model
             ->join('cities', 'tourist_spots.city_id', '=', 'cities.id')
             ->select("tourist_spots.*", "cities.name as city_name");
 
-        $bootgrid->query($tourist_spots, $request, ['address','district','cities.name', 'name']);
+        $bootgrid->query($tourist_spots, $request, ['address','district','cities.name', 'tourist_spots.name']);
         return $bootgrid;
 
     }

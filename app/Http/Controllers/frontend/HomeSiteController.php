@@ -16,3 +16,22 @@ class HomeSiteController extends Controller
         return view('web.home', compact('events','annualevents'));
     }
 }
+
+use Spatie\Searchable\Search;
+use Spatie\Searchable\Searchable;
+use Spatie\Searchable\SearchResult;
+
+class BlogPost extends Search implements Searchable
+{
+    public function getSearchResult(): SearchResult
+    {
+        $url = route('blogPost.show', $this->slug);
+
+        return new \Spatie\Searchable\SearchResult(
+            $this,
+            $this->title,
+            $urlnj
+
+        );
+    }
+}

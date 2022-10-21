@@ -28,7 +28,7 @@ class Event extends Model
             ->join('cities','events.city_id','=','cities.id')
             ->select("events.*","cities.name as city_name");
 
-        $bootgrid->query($events, $request, ['name','contact','start_date','final_date', 'city_name', 'address','district','status']);
+        $bootgrid->query($events, $request, ['events.name','contact','start_date','final_date', 'cities.name', 'address','district','status']);
         return $bootgrid;
 
     }

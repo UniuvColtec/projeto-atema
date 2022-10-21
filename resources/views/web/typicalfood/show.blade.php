@@ -67,39 +67,23 @@
                     @endforeach
             </div>
             @endif
-                <div class="more-info">
-                    <p class="h2">Eventos</p>
-                    <div class="container text-center">
-                        <div class="row mx-auto my-auto justify-content-center">
-                            <div id="recipeCarouselSpots" class="carousel carouselAnual slide" data-bs-ride="carousel">
-                                <div class="carousel-inner" role="listbox">
-                                    @php $firstEvent= true; @endphp
-                                    @foreach( $events as $event)
-                                        <div class="carousel-item  {{ $firstEvent ? 'active' : '' }}">
-                                            <div class="w-100 px-3 px-md-0">
-                                                <a class="my-3 m-md-0" href="{{ route('web.event.show', $event->id) }}">
-                                                    <div class="card h-100">
-                                                        <img class="card-img-top w-100 h-auto" src="{{ asset('files/' . $event->firstImage->image->address) }}"
-                                                             alt="{{ $event->name }}">
-                                                        <div class="card-body text-center d-flex flex-column justify-content-center">
-                                                            <h5 class="card-title">{{ $event->name }}</h5>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        @php $firstEvent = false; @endphp
-                                    @endforeach
+
+            <div class="more-info">
+                <p class="h2">Eventos</p>
+                    <div class="row row-cols-1 row-cols-md-3  px-3 px-md-0  ">
+                        @foreach( $events as $event)
+                            <a class="my-3 m-md-8 " href="{{ route('web.event.show', $event->id) }}">
+                                <div class="card h-80 ">
+                                    <x-image idImage="{{ $event->firstImage->image->id }}" altName="{{ $event->name }}" />
+                                    <div class="card-body text-center d-flex flex-column justify-content-center">
+                                        <h5 class="card-title">{{ $event->name }}</h5>
+                                    </div>
                                 </div>
-                                <a class="carousel-control-prev w-aut" href="#recipeCarouselSpots" role="button" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                </a>
-                                <a class="carousel-control-next w-aut" href="#recipeCarouselSpots" role="button" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                </a>
-                            </div>
-                        </div>
+                            </a>
+                            <br>
+                        @endforeach
                     </div>
+            </div>
 
                 @stop
                 @section('post_content')
