@@ -1,108 +1,13 @@
 @extends('web.base.page')
 
 @push('css')
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://uniuv.edu.br/css/mklb.css" />
-    <link href="{{ asset('css/carousel.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/showPage.css') }}" rel="stylesheet">
-    <style>
-        @media screen and (max-width: 999px){
-            .grid-inputs {
-                display: grid;
-                grid-template-rows: 1fr 1fr;
-                gap: 1rem;
-            }
-        }
-        @media screen and (min-width: 1000px){
-            .grid-inputs {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 1rem;
-            }
-        }
-
-    </style>
-
-
 
 @endpush
 @push('js')
-    <script src=" {{ asset('js/bs-stepper.js') }}" type="text/javascript"></script>
-    <script src="/js/formAjaxAlterar.js" type="text/javascript"></script>
+    <script src="/js/jquery.min.js" type="text/javascript"></script>
     <script src="/js/iziToast.min.js" type="text/javascript"></script>
     <script src="/js/jquery.form.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="/js/jquery.mask.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-    <script src="{{ asset('js/bs-stepper.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('js/formAjaxAlterar.js') }}" type="text/javascript"></script>
-    <script>
-        $(document).ready(function(){
-            var options = {
-                onKeyPress: function (phone, e, field, options) {
-                    var masks = ['(00) 0000-00000', '(00) 00000-0000'];
-                    var mask = (phone.length > 14) ? masks[1] : masks[0];
-                    $('#telephone').mask(mask, options);
-                }
-            };
-            $('#cnpj').mask('00.000.000/0000-00', options);
-            $('#telephone').mask('(00) 0000-00000', options);
-
-
-            $('#description').summernote({
-                placeholder: 'Insira a descrição aqui',
-                tabsize: 2,
-                height: 120,
-                toolbar: [
-                    ['style', ['style']],
-                    ['font', ['bold', 'underline', 'clear']],
-                    ['color', ['color']],
-                    ['para', ['ul', 'ol', 'paragraph']],
-                    ['table', ['table']],
-                    ['insert', ['link', 'picture', 'video']],
-                    ['view', ['fullscreen', 'codeview', 'help']]
-                ]
-            });
-
-        })
-
-        var stepper;
-        $(document).ready(function(){
-            var stepperEl = document.getElementById("stepper");
-            stepper = new Stepper(stepperEl);
-            // // $('#information-part').validate();
-            //
-            stepperEl.addEventListener('show.bs-stepper', function (partner) {
-                if (!$('.jsonForm').valid()){
-                    event.preventDefault()
-                }
-            })
-            stepperEl.addEventListener('shown.bs-stepper', function(partner){
-                $(".select2").select2();
-            });
-
-            $('.jsonForm').validate({
-                errorClass: 'is-invalid',
-            });
-
-            $(".select2").select2();
-        })
-
-        function verify() {
-            if(document.getElementById('description').value == ''){
-                alert("Descrição deve ser preenchida");
-            } else {
-                stepper.next();
-            }
-        }
-
-    </script> <script src=" {{ asset('js/bs-stepper.js') }}" type="text/javascript"></script>
-    <script src="/js/formAjaxAlterar.js" type="text/javascript"></script>
-    <script src="/js/iziToast.min.js" type="text/javascript"></script>
-    <script src="/js/jquery.form.min.js" type="text/javascript"></script>
-    <script type="text/javascript" src="/js/jquery.mask.js"></script>
-
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 
     <script>
         $(document).ready(function(){
@@ -113,7 +18,6 @@
                     $('#telephone').mask(mask, options);
                 }
             };
-            $('#cnpj').mask('00.000.000/0000-00', options);
             $('#telephone').mask('(00) 0000-00000', options);
         })
 

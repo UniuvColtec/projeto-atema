@@ -2,8 +2,10 @@
 @section('title', 'Parceiro - Visualizar')
 
 @push('css')
-    <link rel="stylesheet" href="/css/iziToast.min.css">
+    {{--    <link rel="stylesheet" href="/css/iziToast.min.css">--}}
     <style>
+
+
         .btn-download-foto {
             padding: 1px 5px;
             font-size: 12px;
@@ -16,20 +18,16 @@
         }
         .gallery-item {
             width: 100%;
+            max-width: 250px;
         }
         .grid-gallery {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr;
             grid-column-gap: 10px;
             /*border: solid dimgray 3px;
             border-radius: 5px;*/
         }
-        .grid-gallery-item img:hover {
-            position: fixed;
-            top: 50%; left: 50%;
-            transform: translate(-50%,-50%);
-            width: 1080px;
-        }
+
     </style>
 @endpush
 
