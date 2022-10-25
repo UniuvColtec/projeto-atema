@@ -39,7 +39,7 @@
         @foreach($points as $point)
 
         L.marker([{{ $point->lat }}, {{ $point->long }}]).addTo(map)
-            .bindPopup('<a href="/evento/{{ $point->id }}" style="text-decoration:none;">Ir para o evento</a>');
+            .bindPopup('<a href="/admin/event/{{ $point->id }}" style="text-decoration:none;">Ir para o evento</a>');
         @endforeach
 
         L.marker([-26.2419993, -51.0913358]).addTo(map);
