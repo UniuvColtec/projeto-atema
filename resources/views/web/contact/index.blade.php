@@ -76,7 +76,7 @@
                             </div>
                         </div>
                         <br>
-                        <button type="submit " class="btn " style="color: var(--ci-color-green)"  >Enviar</button>
+                        <button type="submit " class="btn" style="background-color: var(--ci-color-green); color: white">Enviar</button>
                     </form>
                 </div>
 @stop

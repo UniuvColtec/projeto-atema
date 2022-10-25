@@ -262,6 +262,10 @@
                                         <label for="logo">logo</label>
                                         <input type="file" id="logo" name="logo" class="form-control-file btn btn-outline-secondary">
                                     </div>
+                                    <div class="form-group">
+                                            <label for="video">Video</label>
+                                            <input type="text" id="video" name="video" class="form-control" placeholder="Envie o link de um víeo para introduzir seu evento">
+                                    </div>
                                     <input type="hidden" id="permit" name="permit">
                                     <div class="card-footer">
                                         <button type="button" class="btn btn-info" onclick="stepper.previous()">Anterior</button>

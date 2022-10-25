@@ -89,6 +89,7 @@ class EventController extends Controller
         $event->district= $request->district;
         $event->city_id = $request->cities;
         $event->annual_calendar = $request->annual_calendar;
+        $event->video = $request->video;
         $event->getCoordinates($request->localization);
         if ($request->hasFile('logo') && $request->file('logo')->isValid()) {
             $requestlogo = $request->logo;
@@ -185,6 +186,7 @@ class EventController extends Controller
         $event->start_date = $request->start_date;
         $event->final_date = $request->final_date;
         $event->address = $request->address;
+        $event->video = $request->video;
         $event->district = $request->district;
         $event->city_id = $request->cities;
         if($request->localization != ''){

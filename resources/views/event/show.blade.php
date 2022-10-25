@@ -2,10 +2,10 @@
 @section('title', 'Eventos - Visualizar')
 
 @push('css')
-    {{--    <link rel="stylesheet" href="/css/iziToast.min.css">--}}
+    <link rel="stylesheet" href="/css/iziToast.min.css">
     <link href="{{ asset('css/mklb.css') }}" rel="stylesheet">
     <link href="{{ asset('css/galeria.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/carousel.css') }}" rel="stylesheet">
+
     <link href="{{ asset('css/showPage.css') }}" rel="stylesheet">
 @endpush
 
@@ -34,19 +34,17 @@
                 errorClass: 'is-invalid',
 
             });
+            window.addEventListener("load", function(event) {
+            var myLayout = new MiniMasonry({
+                container: '.grid-gallery',
+            });
+        });
         })
 
     </script>
     <script src=" {{ asset('/js/minimasonry.min.js') }}" type="text/javascript"></script>
     <script src=" {{ asset('/js/mklb.js') }}" type="text/javascript"></script>
     <script src=" {{ asset('/js/carousel.js') }}" type="text/javascript"></script>
-    <script>
-        window.addEventListener("load", function(event) {
-            var myLayout = new MiniMasonry({
-                container: '.grid-gallery',
-            });
-        });
-    </script>
 @endpush
 
 @section('content_header')
@@ -128,11 +126,10 @@
                                 <div class="form-group">
                                     {!! $event->renderMap($event->latitude, $event->longitude) !!}
                                 </div>
-                                <div class="form-group">
                                     @if(count($event->images)>0)
                                         <p class="h2">Galeria de Imagens</p>
                                         <div class='grid-gallery'>
-                                            @foreach($event->images as $image)
+                                        @foreach($event->images as $image)
                                                 <div class='grid-gallery-item'>
                                                     <a href='{{ asset('files/' . $image->image->address) }}' class='btn-download-foto' download>
                                                         <small>
@@ -141,11 +138,10 @@
                                                     </a>
                                                     <br />
                                                     <img src='{{ asset('files/' . $image->image->address) }}' data-src='{{ asset('files/' . $image->image->address) }}' class='img-responsive mklbItem' data-gallery='myGallery'><br />
-                                                        </div>
+                                                </div>
                                             @endforeach
                                         </div>
                                     @endif
-                                </div>
                                 <div class="footer">
                                     <div style="display: flex; flex-direction: row; justify-content: space-evenly;">
                                         <div>
