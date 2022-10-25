@@ -30,7 +30,7 @@ class BlogPost extends Search implements Searchable
         return new \Spatie\Searchable\SearchResult(
             $this,
             $this->title,
-            $urlnj
+            $url
 
         );
     }

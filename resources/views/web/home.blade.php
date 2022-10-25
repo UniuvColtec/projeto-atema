@@ -22,6 +22,7 @@
 @stop
 @push('css')
     <link href="{{ asset('css/carousel.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/showPage.css') }}" rel="stylesheet">
 @endpush
 
 @push('js')
@@ -47,8 +48,7 @@
                         <div class="w-100 px-3 px-md-0">
                                 <a class="my-3 m-md-0" href="{{ route('web.event.show', $event->id) }}">
                                     <div class="card h-100">
-                                        <img class="card-img-top w-100 h-auto" src="{{ asset('files/' . $event->firstImage->image->address) }}"
-                                             alt="{{ $event->name }}">
+                                        <x-image  class="card-img-top w-100 h-auto" idImage="{{ $event->firstImage->image->id }}" altName="{{ $event->name }}" />
                                         <div class="card-body text-center d-flex flex-column justify-content-center">
                                             <h5 class="card-title">{{ $event->name }}</h5>
                                             <div class="mt-2">
@@ -101,8 +101,7 @@
                             <div class="w-100 px-3 px-md-0">
                                 <a class="my-3 m-md-0" href="{{ route('web.event.show', $event->id) }}">
                                     <div class="card h-100">
-                                        <img class="card-img-top w-100 h-auto" src="{{ asset('files/' . $event->firstImage->image->address) }}"
-                                             alt="{{ $event->name }}">
+                                        <x-image  class="card-img-top w-100 h-auto" idImage="{{ $event->firstImage->image->id }}" altName="{{ $event->name }}" />
                                         <div class="card-body text-center d-flex flex-column justify-content-center">
                                             <h5 class="card-title">{{ $event->name }}</h5>
                                             <div class="mt-2">

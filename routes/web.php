@@ -49,9 +49,7 @@ Auth::routes(['register' => false]);
 
 
 Route::prefix('admin')->middleware('auth')->group(function(){
-    Route::get('/', function() {
-        return view('home');
-    })->name('home');
+    Route::get('/', [\App\Http\Controllers\HomeController::class,'map'])->name('home');
 
 
     Route::post('partner/bootgrid', [PartnerController::class, 'bootgrid'])->name('partner.bootgrid');
