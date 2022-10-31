@@ -68,6 +68,13 @@ class Event extends Model
         $this->latitude = $coordenadas->latitude;
         $this->longitude = $coordenadas->longitude;
     }
+    public function getVideoId($videoLink) {
+        $url = $videoLink;
+
+        parse_str( parse_url( $url, PHP_URL_QUERY ), $videoLinkParsed );
+
+        $this->video = $videoLinkParsed['v'];
+    }
 
     public function renderMap($latitude, $longitude) {
         return Maps::renderMap($latitude, $longitude);
