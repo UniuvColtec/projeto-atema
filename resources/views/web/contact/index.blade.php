@@ -50,14 +50,19 @@
                                     <input type="email" name="email" class="form-control" placeholder="Insira o email para contato" required>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label for="city">Cidade*</label>
+                                <select name="city" id="city" class="form-control select2" required>
+                                    <option value="">- Selecione uma Cidade -</option>
+                                    @foreach($cities as $city)
+                                        <option value="{{$city->name}}">{{$city->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                             <div class="grid-inputs">
                                 <div class="form-group">
                                     <label for="address">Endereço:</label>
                                     <input type="text" name="address" id="address" class="form-control" placeholder="Endereço -Campo obrigatório-" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="city">Cidade:</label>
-                                    <input name="city" id="name" class="form-control" placeholder="-Campo obrigatório-" required>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -67,11 +72,11 @@
                             <div class="grid-inputs">
                                 <div class="form-group">
                                     <label for="start_date">Data de início:</label>
-                                    <input type="datetime-local" name="start_date" id="start_date" class="form-control" placeholder="Data de início" required>
+                                    <input type="datetime-local" name="start_date" id="start_date" class="form-control" placeholder="Data de início" required value="{{ $todays_date }}" min="{{$todays_date}}">
                                 </div>
                                 <div class="form-group">
                                     <label for="final_date">Data de encerramento:</label>
-                                    <input type="datetime-local" name="final_date" id="final_date" class="form-control"   placeholder="Data de encerramento" required >
+                                    <input type="datetime-local" name="final_date" id="final_date" class="form-control" placeholder="Data de encerramento" required value="{{ $todays_date }}" min="{{$todays_date}}">
                                 </div>
                             </div>
                         </div>

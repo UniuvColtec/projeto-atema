@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Mail\SendMail;
+use App\Models\City;
 use App\Models\Event;
 use App\Response;
 use Carbon\Carbon;
@@ -19,7 +20,11 @@ class ContactController extends Controller
      */
     public function index()
     {
-        return view('web.contact.index');
+        $cities = City::all();
+        $todays_date = date('Y-m-d\TH:i:s');
+        $todays_date=date('Y-m-d\TH:i:s', strtotime($todays_date.'+3days'));
+        return view('web.contact.index', compact('cities','todays_date'));
+
     }
 
     /**
@@ -29,7 +34,7 @@ class ContactController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -40,6 +45,8 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
+        return Response::responseOK('obrigado por nos contactar');
+
         $request->validate([
            'name' =>'required',
                'telephone'=>'required',
@@ -68,7 +75,6 @@ class ContactController extends Controller
            ->send(new SendMail($data));
        return back()
            ->with('success',' obrigado por nos contactar');
-
     }
 
     /**
