@@ -23,7 +23,6 @@ class FrontendEventController extends Controller
     {
         $cities = City::orderBy('name')->get(['id', 'name']);
         $categories = Category::orderby('name')->get(['id','name']);
-        $eventcategories = Event_category::orderby('id')->get(['id']);
         if($request->dates) {
             $events = Event::where('status', 'Aprovado')->whereDate('start_date', '=', $request->dates)->orderBy('start_date')->with('city', 'firstImage');
         } else {
@@ -39,7 +38,9 @@ class FrontendEventController extends Controller
             $events->where('name','like','%'.$request->name.'%');
         }
         if ($request->categories) {
-            $events->join('event_categories.*', 'events.id', '=', 'event_categories.event_id')->where('event_categories.category_id', '=', $request->categories);
+            $events->whereHas('event_category', function($q) use($request) {
+                $q->where('category_id', '=', $request->categories);
+            });
         }
 
         $events = $events->Paginate(9);

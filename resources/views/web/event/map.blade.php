@@ -3,6 +3,9 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" integrity="sha512-07I2e+7D8p6he1SIM+1twR5TIrhUQn9+I6yjqD53JQjFiMf8EtC93ty0/5vJTZGF8aAocvHYNEDJajGdNx1IsQ==" crossorigin=""/>
 
     <style>
+        body {
+            margin: 0; padding: ;
+        }
         #location-map{
             background: #fff;
             border: none;
@@ -33,8 +36,6 @@
         L.marker([{{ $point->lat }}, {{ $point->long }}]).addTo(map)
         .bindPopup('<a href="/evento/{{ $point->id }}" style="text-decoration:none;">Ir para o evento</a>');
     @endforeach
-
-    L.marker([-26.2419993, -51.0913358]).addTo(map);
 </script>
 
 </body>
