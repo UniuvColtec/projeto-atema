@@ -69,9 +69,9 @@
             @endif
 
             <div class="more-info">
-                <p class="h2">Eventos</p>
                     <div class="row row-cols-1 row-cols-md-3  px-3 px-md-0  ">
                         @foreach( $events as $event)
+                            <p class="h2">Eventos</p>
                             <a class="my-3 m-md-8 " href="{{ route('web.event.show', $event->id) }}">
                                 <div class="card h-80 ">
                                     <x-image idImage="{{ $event->firstImage->image->id }}" altName="{{ $event->name }}" />
