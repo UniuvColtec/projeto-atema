@@ -14,7 +14,7 @@
     <script src=" {{ asset('/js/mklb.js') }}" type="text/javascript"></script>
     <script src=" {{ asset('/js/carousel.js') }}" type="text/javascript"></script>
     <script>
-        window.addEventListener("load", function(event) {
+        window.addtourist_spotListener("load", function(tourist_spot) {
             var myLayout = new MiniMasonry({
                 container: '.grid-gallery',
             });
@@ -64,7 +64,6 @@
                     @endforeach
                 </div>
             @endif
-            <div class="more-info">
                 <p class="h2">Localização</p>
                 <div>
                     <p>{{ $tourist_spot->address }}, {{ $tourist_spot->district }}</p>
@@ -72,8 +71,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    </div>
 @stop
 @section('post_content')
     <div id="contato" class="container-fluid" style="background: var(--ci-color-green)">
