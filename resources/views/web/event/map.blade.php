@@ -13,6 +13,9 @@
             -webkit-box-sizing: border-box;
             -moz-box-sizing: border-box;
         }
+        body {
+            margin: 0;
+        }
     </style>
 </head>
 <body>

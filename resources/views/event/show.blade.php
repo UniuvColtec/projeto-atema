@@ -82,11 +82,22 @@
                                     <p class="h6">{{ $event->subtitle }}</p>
                                     <img src="{{$event->getUrlLogo()}}" alt="{{$event->title}}" class="img-thumbnail" style="max-height: 64px;">
                                 </div>
+                                <div style="display: flex; flex-direction: row; justify-content: space-evenly;">
+                                    <div>
+                                        <a href="{{ $event->website }}" target="_blank" ><label class="fa-solid fa-globe"></label>
+                                        {{ $event->website }}
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <label class="fa-solid fa-phone"></label>
+                                        {{ $event->contact }}
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     {!!$event->description!!}
                                     <label>Detalhes:</label>
                                     <p>
-                                        O evento ocorrera de {{ $event->show_date }}
+                                        O evento ocorrerá de {{ $event->show_date }}
                                     </p>
                                     <p>Dentre as comidas tipicas estão:
                                         @foreach($typical_event_foods as $typical_event_food)
@@ -143,16 +154,6 @@
                                         </div>
                                     @endif
                                 <div class="footer">
-                                    <div style="display: flex; flex-direction: row; justify-content: space-evenly;">
-                                        <div>
-                                            <label class="fa-solid fa-globe"></label>
-                                            {{ $event->website }}
-                                        </div>
-                                        <div>
-                                            <label class="fa-solid fa-phone"></label>
-                                            {{ $event->contact }}
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </form>
