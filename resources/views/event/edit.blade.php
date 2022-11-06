@@ -179,11 +179,11 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="start_date">Data de início:</label>
-                                            <input type="datetime-local" name="start_date" id="start_date" class="form-control" placeholder="Data de início" value="{{ $event->start_date->format('Y-m-d\TH:i:s') }}" required  min="{{ $event->start_date->format('Y-m-d\TH:i:s') }}">
+                                            <input type="datetime-local" name="start_date" id="start_date" class="form-control" placeholder="Data de início" value="{{ $event->start_date->format('Y-m-d\TH:i:s') }}" required  min="{{ $event->start_date->sub(1, 'second')->format('Y-m-d\TH:i:s') }}">
                                         </div>
                                         <div class="form-group">
                                             <label for="final_date">Data de encerramento:</label>
-                                            <input type="datetime-local" name="final_date" id="final_date" class="form-control" placeholder="Data de encerramento" value="{{ $event->final_date->format('Y-m-d\TH:i:s') }}" required min="{{ $event->start_date->format('Y-m-d\TH:i:s') }}">
+                                            <input type="datetime-local" name="final_date" id="final_date" class="form-control" placeholder="Data de encerramento" value="{{ $event->final_date->format('Y-m-d\TH:i:s') }}" required min="{{ $event->start_date->sub(1, 'second')->format('Y-m-d\TH:i:s') }}">
                                         </div>
                                     </div>
                                     <div class="card-footer">

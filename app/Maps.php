@@ -12,8 +12,8 @@ class Maps
         $pos = strpos( $link, "!4d");
         $longitude = substr($link, $pos+3, 11);
 
-        $coordenadas->latitude = $latitude;
-        $coordenadas->longitude = $longitude;
+        $coordenadas->latitude = (is_numeric($latitude)?$latitude:'');
+        $coordenadas->longitude = (is_numeric($longitude)?$longitude:'');
 
         return $coordenadas;
     }
