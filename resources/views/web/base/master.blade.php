@@ -31,7 +31,7 @@
     {{-- Custom Stylesheets (post AdminLTE) --}}
     @yield('css')
 
-    <link rel="icon" type="image/x-icon" href="favicon.svg">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
 </head>
 <body>
 
