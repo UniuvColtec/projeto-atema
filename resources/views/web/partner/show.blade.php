@@ -109,38 +109,41 @@
                     <p>{{ $partner->address }}, {{ $partner->district }}</p>
                     {!! $partner->renderMap($partner->latitude, $partner->longitude) !!}
                 </div>
-                <p class="h2">Pontos Turisticos</p>
-                <div class="container text-center">
-                    <div class="row mx-auto my-auto justify-content-center">
-                        <div id="recipeCarouselSpots" class="carousel carouselCalendario slide" data-bs-ride="carousel">
-                            <div class="carousel-inner" role="listbox">
-                                @php $firstSpot = true; @endphp
-                                @foreach( $partner->city->tourist_spots as $tourist_spot)
-                                    <div class="carousel-item  {{ $firstSpot ? 'active' : '' }}">
-                                        <div class="w-100 px-3 px-md-0">
-                                            <a class="my-3 m-md-0" href="{{ route('web.touristspot.show', $tourist_spot->id) }}">
-                                                <div class="card h-100">
-                                                    <img class="card-img-top w-100 h-auto" src="{{ asset('files/' . $tourist_spot->firstImage->image->address) }}"
-                                                         alt="{{ $tourist_spot->name }}">
-                                                    <div class="card-body text-center d-flex flex-column justify-content-center">
-                                                        <h5 class="card-title">{{ $tourist_spot->name }}</h5>
-                                                    </div>
+
+                @if(count($partner->city->tourist_spots)>0)
+                        <p class="h2">Pontos Turisticos</p>
+                        <div class="container text-center">
+                            <div class="row mx-auto my-auto justify-content-center">
+                                <div id="recipeCarouselSpots" class="carousel carouselCalendario slide" data-bs-ride="carousel">
+                                    <div class="carousel-inner" role="listbox">
+                                        @php $firstSpot = true; @endphp
+                                        @foreach( $partner->city->tourist_spots as $tourist_spot)
+                                            <div class="carousel-item  {{ $firstSpot ? 'active' : '' }}">
+                                                <div class="w-100 px-3 px-md-0">
+                                                    <a class="my-3 m-md-0" href="{{ route('web.touristspot.show', $tourist_spot->id) }}">
+                                                        <div class="card h-100">
+                                                            <img class="card-img-top w-100 h-auto" src="{{ asset('files/' . $tourist_spot->firstImage->image->address) }}"
+                                                                 alt="{{ $tourist_spot->name }}">
+                                                            <div class="card-body text-center d-flex flex-column justify-content-center">
+                                                                <h5 class="card-title">{{ $tourist_spot->name }}</h5>
+                                                            </div>
+                                                        </div>
+                                                    </a>
                                                 </div>
-                                            </a>
-                                        </div>
+                                            </div>
+                                            @php $firstSpot = false; @endphp
+                                        @endforeach
                                     </div>
-                                    @php $firstSpot = false; @endphp
-                                @endforeach
+                                    <a class="carousel-control-prev w-aut" href="#recipeCarouselSpots" role="button" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    </a>
+                                    <a class="carousel-control-next w-aut" href="#recipeCarouselSpots" role="button" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    </a>
+                                </div>
                             </div>
-                            <a class="carousel-control-prev w-aut" href="#recipeCarouselSpots" role="button" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            </a>
-                            <a class="carousel-control-next w-aut" href="#recipeCarouselSpots" role="button" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            </a>
                         </div>
-                    </div>
-                </div>
+                    @endif
             </div>
         </div>
     </div>

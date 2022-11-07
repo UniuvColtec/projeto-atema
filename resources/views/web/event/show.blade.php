@@ -124,70 +124,75 @@
                     <p>{{ $event->address }}, {{ $event->district }}</p>
                     {!! $event->renderMap($event->latitude, $event->longitude) !!}
                 </div>
-                <p class="h2">Pontos Turisticos</p>
-                <div class="container text-center">
-                    <div class="row mx-auto my-auto justify-content-center">
-                        <div id="recipeCarouselSpots" class="carousel carouselCalendario slide" data-bs-ride="carousel">
-                            <div class="carousel-inner" role="listbox">
-                                @php $firstSpot = true; @endphp
-                                @foreach( $event->city->tourist_spots as $tourist_spot)
-                                    <div class="carousel-item  {{ $firstSpot ? 'active' : '' }}">
-                                        <div class="w-100 px-3 px-md-0">
-                                            <a class="my-3 m-md-0" href="{{ route('web.touristspot.show', $tourist_spot->id) }}">
-                                                <div class="card h-100">
-                                                    <img class="card-img-top w-100 h-auto" src="{{ asset('files/' . $tourist_spot->firstImage->image->address) }}"
-                                                         alt="{{ $tourist_spot->name }}">
-                                                    <div class="card-body text-center d-flex flex-column justify-content-center">
-                                                        <h5 class="card-title">{{ $tourist_spot->name }}</h5>
+                @if(count($event->city->tourist_spots)>0)
+                    <p class="h2">Pontos Turisticos</p>
+                    <div class="container text-center">
+                        <div class="row mx-auto my-auto justify-content-center">
+                            <div id="recipeCarouselSpots" class="carousel carouselCalendario slide" data-bs-ride="carousel">
+                                <div class="carousel-inner" role="listbox">
+                                    @php $firstSpot = true; @endphp
+                                    @foreach( $event->city->tourist_spots as $tourist_spot)
+                                        <div class="carousel-item  {{ $firstSpot ? 'active' : '' }}">
+                                            <div class="w-100 px-3 px-md-0">
+                                                <a class="my-3 m-md-0" href="{{ route('web.touristspot.show', $tourist_spot->id) }}">
+                                                    <div class="card h-100">
+                                                        <img class="card-img-top w-100 h-auto" src="{{ asset('files/' . $tourist_spot->firstImage->image->address) }}"
+                                                             alt="{{ $tourist_spot->name }}">
+                                                        <div class="card-body text-center d-flex flex-column justify-content-center">
+                                                            <h5 class="card-title">{{ $tourist_spot->name }}</h5>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </a>
+                                                </a>
+                                            </div>
                                         </div>
-                                    </div>
-                                    @php $firstSpot = false; @endphp
-                                @endforeach
+                                        @php $firstSpot = false; @endphp
+                                    @endforeach
+                                </div>
+                                <a class="carousel-control-prev w-aut" href="#recipeCarouselSpots" role="button" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                </a>
+                                <a class="carousel-control-next w-aut" href="#recipeCarouselSpots" role="button" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                </a>
                             </div>
-                            <a class="carousel-control-prev w-aut" href="#recipeCarouselSpots" role="button" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            </a>
-                            <a class="carousel-control-next w-aut" href="#recipeCarouselSpots" role="button" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            </a>
                         </div>
                     </div>
-                </div>
-                <p class="h2">Parceiros</p>
-                <div class="container text-center">
-                    <div class="row mx-auto my-auto justify-content-center">
-                        <div id="recipeCarouselPartners" class="carousel carouselThird slide" data-bs-ride="carousel">
-                            <div class="carousel-inner" role="listbox">
-                                @php $firstPartner = true; @endphp
-                                @foreach( $event->city->partners as $partner)
-                                    <div class="carousel-item  {{ $firstPartner ? 'active' : '' }}">
-                                        <div class="w-100 px-3 px-md-0">
-                                            <a class="my-3 m-md-0" href="{{ route('web.touristspot.show', $partner->id) }}">
-                                                <div class="card h-100">
-                                                    <img class="card-img-top w-100 h-auto" src="{{ asset('files/' . $partner->firstImage->image->address) }}"
-                                                         alt="{{ $partner->name }}">
-                                                    <div class="card-body text-center d-flex flex-column justify-content-center">
-                                                        <h5 class="card-title">{{ $partner->name }}</h5>
+                @endif
+
+                @if(count($event->city->partners)>0)
+                    <p class="h2">Parceiros</p>
+                    <div class="container text-center">
+                        <div class="row mx-auto my-auto justify-content-center">
+                            <div id="recipeCarouselPartners" class="carousel carouselThird slide" data-bs-ride="carousel">
+                                <div class="carousel-inner" role="listbox">
+                                    @php $firstPartner = true; @endphp
+                                    @foreach( $event->city->partners as $partner)
+                                        <div class="carousel-item  {{ $firstPartner ? 'active' : '' }}">
+                                            <div class="w-100 px-3 px-md-0">
+                                                <a class="my-3 m-md-0" href="{{ route('web.touristspot.show', $partner->id) }}">
+                                                    <div class="card h-100">
+                                                        <img class="card-img-top w-100 h-auto" src="{{ asset('files/' . $partner->firstImage->image->address) }}"
+                                                             alt="{{ $partner->name }}">
+                                                        <div class="card-body text-center d-flex flex-column justify-content-center">
+                                                            <h5 class="card-title">{{ $partner->name }}</h5>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </a>
+                                                </a>
+                                            </div>
                                         </div>
-                                    </div>
-                                    @php $firstPartner = false; @endphp
-                                @endforeach
+                                        @php $firstPartner = false; @endphp
+                                    @endforeach
+                                </div>
+                                <a class="carousel-control-prev w-aut" href="#recipeCarouselSpots" role="button" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                </a>
+                                <a class="carousel-control-next w-aut" href="#recipeCarouselSpots" role="button" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                </a>
                             </div>
-                            <a class="carousel-control-prev w-aut" href="#recipeCarouselSpots" role="button" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            </a>
-                            <a class="carousel-control-next w-aut" href="#recipeCarouselSpots" role="button" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            </a>
                         </div>
                     </div>
-                </div>
+                @endif
             </div>
         </div>
 @stop
