@@ -23,7 +23,6 @@ class FrontendEventController extends Controller
     {
         $cities = City::orderBy('name')->get(['id', 'name']);
         $categories = Category::orderby('name')->get(['id','name']);
-        $eventcategories = Event_category::orderby('id')->get(['id']);
         if($request->dates) {
             $events = Event::where('status', 'Aprovado')->whereDate('start_date', '=', $request->dates)->orderBy('start_date')->with('city', 'firstImage');
         } else {
