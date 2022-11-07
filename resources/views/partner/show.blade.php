@@ -5,7 +5,6 @@
     {{--    <link rel="stylesheet" href="/css/iziToast.min.css">--}}
     <link href="{{ asset('css/mklb.css') }}" rel="stylesheet">
     <link href="{{ asset('css/galeria.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/carousel.css') }}" rel="stylesheet">
     <link href="{{ asset('css/showPage.css') }}" rel="stylesheet">
 @endpush
 
@@ -19,19 +18,16 @@
     <script>
         $(document).ready(function(){
             $(".select2").select2();
+            window.addEventListener("load", function(event) {
+                var myLayout = new MiniMasonry({
+                    container: '.grid-gallery',
+                });
+            });
         })
     </script>
     <script src=" {{ asset('/js/minimasonry.min.js') }}" type="text/javascript"></script>
     <script src=" {{ asset('/js/mklb.js') }}" type="text/javascript"></script>
     <script src=" {{ asset('/js/carousel.js') }}" type="text/javascript"></script>
-    <script>
-        window.addEventListener("load", function(event) {
-            var myLayout = new MiniMasonry({
-                container: '.grid-gallery',
-            });
-        });
-    </script>
-
 @endpush
 
 @section('content_header')
