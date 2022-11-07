@@ -316,8 +316,14 @@
                                         <input type="file" id="logo" name="logo" class="form-control-file" value="{{ $event->logo}}" >
                                     </div>
                                     <div class="form-group">
-                                            <label for="video">Video</label>
-                                            <input type="text" id="video" name="video" class="form-control" placeholder="Envie o link de um víeo para introduzir seu evento">
+                                        <label for="video">Video</label>
+                                        <input type="text" id="video" name="video" class="form-control" placeholder="Envie o link de um víeo para introduzir seu evento">
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-check" style="align-items: center;">
+                                            <input class="form-check-input" type="checkbox" id="deleteVideo" name="deleteVideo">
+                                            <label class="form-check-label" for="deleteVideo"> Deletar Video</label>
+                                        </div>
                                     </div>
                                     <input type="hidden" id="permit" name="permit">
                                     <div class="card-footer">

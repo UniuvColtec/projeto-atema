@@ -25,7 +25,12 @@
         <div class="container main-content">
             <div class="banner-n-info-grid">
                 @if($event->video != "")
-                    <iframe width="560" height="315" src="{{ $event->video }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe width="100%" src="https://www.youtube.com/embed/{{ $event->video }}"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            style="aspect-ratio: 16 / 9;"
+                            allowfullscreen>
+                    </iframe>
                 @else
                 <img src="{{ $event->firstImage ? asset('files/' . $event->firstImage->image->address) : '/images/none-image.png' }}" class="d-block w-100" alt="{{ $event->name }}">
                 @endif
