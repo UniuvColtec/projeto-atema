@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Mail\SendMail;
+use App\Models\City;
 use App\Models\Event;
 use App\Response;
 use Carbon\Carbon;
@@ -19,6 +20,10 @@ class ContactController extends Controller
      */
     public function index()
     {
+        $cities = City::all();
+        $todays_date = date('Y-m-d\TH:i:s');
+        $todays_date=date('Y-m-d\TH:i:s', strtotime($todays_date.'+3days'));
+        return view('web.contact.index', compact('cities','todays_date'));
         return view('web.contact.index');
     }
 
