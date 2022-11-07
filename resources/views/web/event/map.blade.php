@@ -16,10 +16,28 @@
         body {
             margin: 0;
         }
+        .logo {
+            position: fixed;
+            top: 1rem; left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+        }
+        .logo {
+            background-color: whitesmoke;
+            border: lightgray 0.1rem solid;
+            border-radius: 10px;
+            padding: 0.5rem;
+        }
     </style>
 </head>
 <body>
-<div id="location-map"></div>
+<div id="location-map">
+    <div class="logo">
+        <a href="/">
+            <img src="{{ asset('assets/img/calendario-integrado-logo.png') }}" alt="Calendário Integrado" class="img-fluid">
+        </a>
+    </div>
+</div>
 
 <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js" integrity="sha512-A7vV8IFfih/D732iSSKi20u/ooOfj/AGehOKq0f4vLT1Zr2Y+RX7C+w8A1gaSasGtRUZpF/NZgzSAu4/Gc41Lg==" crossorigin=""></script>
 
