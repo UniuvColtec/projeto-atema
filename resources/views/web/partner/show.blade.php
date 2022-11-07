@@ -13,7 +13,7 @@
     <script src=" {{ asset('/js/mklb.js') }}" type="text/javascript"></script>
     <script src=" {{ asset('/js/carousel.js') }}" type="text/javascript"></script>
     <script>
-        window.addEventListener("load", function(event) {
+        window.addpartnerListener("load", function(event) {
             var myLayout = new MiniMasonry({
                 container: '.grid-gallery',
             });
@@ -30,20 +30,22 @@
                         <div>
                             <p class="h4">{{ $partner->name }} </p>
                         </div>
-                        <img src="{{$partner->getUrlLogo()}}" alt="{{ $partner->name }}" class="img-thumbnail" style="max-width: 64px; max-height: 64px;">
-                    </div>
-                        <div class="col-12 col-md-6 d-flex flex-column flex-lg-row justify-content-between gap-2 gap-md-0 mt-3 mt-lg-0">
-                            <div class="d-flex align-items-center gap-3">
-                                <a href="#localizacao">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#FFBB13" class="bi bi-map-fill"
-                                     viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd"
-                                          d="M16 .5a.5.5 0 0 0-.598-.49L10.5.99 5.598.01a.5.5 0 0 0-.196 0l-5 1A.5.5 0 0 0 0 1.5v14a.5.5 0 0 0 .598.49l4.902-.98 4.902.98a.502.502 0 0 0 .196 0l5-1A.5.5 0 0 0 16 14.5V.5zM5 14.09V1.11l.5-.1.5.1v12.98l-.402-.08a.498.498 0 0 0-.196 0L5 14.09zm5 .8V1.91l.402.08a.5.5 0 0 0 .196 0L11 1.91v12.98l-.5.1-.5-.1z"/>
-                                </svg>
-                                <span class="badge rounded-pill text" style="background-color: var(--ci-color-green)" >{{ $partner->city->name .' - '.$partner->city->state}}</span>
-                                </a>
+                        <div class='grid-gallery'>
+                            <div class="grid-gallery-item">
+                                <img src="{{$partner->getUrlLogo()}}" alt="{{ $partner->name }}" class="img-thumbnail mklbItem" style="max-width: 64px; max-height: 64px;" data-gallery='myGallery'>
                             </div>
                         </div>
+                    </div>
+                    <div class="col-12 col-md-6 d-flex flex-column flex-lg-row justify-content-between gap-2 gap-md-0 mt-3 mt-lg-0">
+                        <div class="d-flex align-items-center gap-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#FFBB13" class="bi bi-map-fill"
+                                 viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                      d="M16 .5a.5.5 0 0 0-.598-.49L10.5.99 5.598.01a.5.5 0 0 0-.196 0l-5 1A.5.5 0 0 0 0 1.5v14a.5.5 0 0 0 .598.49l4.902-.98 4.902.98a.502.502 0 0 0 .196 0l5-1A.5.5 0 0 0 16 14.5V.5zM5 14.09V1.11l.5-.1.5.1v12.98l-.402-.08a.498.498 0 0 0-.196 0L5 14.09zm5 .8V1.91l.402.08a.5.5 0 0 0 .196 0L11 1.91v12.98l-.5.1-.5-.1z"/>
+                            </svg>
+                            <span class="badge rounded-pill text" style="background-color: var(--ci-color-green)" >{{ $partner->city->name .' - '.$partner->city->state}}</span>
+                        </div>
+                    </div>
                     <div class="types-display">
                         <div class="type-itens">
                             <span class="badge rounded-pill text" style="background-color: var(--ci-color-green)" >{{$partner->partner_type->name}}</span>
@@ -102,7 +104,6 @@
                 </div>
             @endif
             <div class="more-info">
-                <a name="localizacao"></a>
                 <p class="h2">Localização</p>
                 <div>
                     <p>{{ $partner->address }}, {{ $partner->district }}</p>
@@ -111,7 +112,7 @@
                 <p class="h2">Pontos Turisticos</p>
                 <div class="container text-center">
                     <div class="row mx-auto my-auto justify-content-center">
-                        <div id="recipeCarouselSpots" class="carousel carouselAnual slide" data-bs-ride="carousel">
+                        <div id="recipeCarouselSpots" class="carousel carouselCalendario slide" data-bs-ride="carousel">
                             <div class="carousel-inner" role="listbox">
                                 @php $firstSpot = true; @endphp
                                 @foreach( $partner->city->tourist_spots as $tourist_spot)
@@ -143,7 +144,6 @@
             </div>
         </div>
     </div>
-    </div>
 @stop
 @section('post_content')
     <div id="contato" class="container-fluid" style="background: var(--ci-color-green)">
@@ -172,7 +172,7 @@
         <div class="container py-5">
             <div class="row row-cols-1 row-cols-lg-2">
                 <h4 class="text-white my-3 my-md-4 my-lg-5">Cadastre-se na newsletter para ficar<br>informado sobre os
-                    próximos eventos
+                    próximos partneros
                 </h4>
                 <form class="d-flex my-3 my-md-4 my-lg-5" role="search">
                     <input class="form-control rounded-5 bg-gray" type="search" placeholder="deixe seu e-mail aqui"
@@ -183,3 +183,4 @@
     </div>
     -->
 @stop
+
