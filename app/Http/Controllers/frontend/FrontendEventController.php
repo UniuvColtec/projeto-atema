@@ -39,7 +39,9 @@ class FrontendEventController extends Controller
             $events->where('name','like','%'.$request->name.'%');
         }
         if ($request->categories) {
-            $events->join('event_categories.*', 'events.id', '=', 'event_categories.event_id')->where('event_categories.category_id', '=', $request->categories);
+            $events->whereHas('event_category', function($q) use($request) {
+                $q->where('category_id', '=', $request->categories);
+            });
         }
 
         $events = $events->Paginate(9);
