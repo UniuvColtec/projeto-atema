@@ -55,6 +55,7 @@
             @endif
             <div class="more-info">
                 @if(count($events)>0)
+                    <p class="h2">Eventos</p>
                     <div class="row row-cols-1 row-cols-md-3  px-3 px-md-0  ">
                         @foreach( $events as $event)
                             <a class="my-3 m-md-8 " href="{{ route('web.event.show', $event->id) }}">
