@@ -4,11 +4,21 @@
 
 @endpush
 @push('js')
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script src="/js/jquery.min.js" type="text/javascript"></script>
     <script src="/js/iziToast.min.js" type="text/javascript"></script>
     <script src="/js/jquery.form.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="/js/jquery.mask.js"></script>
 
+    <script type="text/javascript">
+        function valida(){
+            if(grecaptcha.getField()==""){
+                alert("Você precisa validar o captcha")
+                return false;
+            }
+        }
+    </script>
+  
     <script>
         $(document).ready(function(){
             var options = {
@@ -78,8 +88,10 @@
                                     <input type="datetime-local" name="final_date" id="final_date" class="form-control" placeholder="Data de encerramento" required value="{{ $todays_date }}" min="{{$todays_date}}"></div>
                             </div>
                         </div>
+
                         <br>
-                        <button type="submit " class="btn" style="background-color: var(--ci-color-green); color: white">Enviar</button>
+                        <div class="g-recaptcha" data-sitekey="6LcFoPIiAAAAAMqTpQh-0ScWAQ_3966MlrHYY5VL"></div>
+                        <button type="submit " class="btn" name="Enviar"  style="background-color: var(--ci-color-green); color: white" onclick="return valida()">Enviar</button>
                     </form>
                 </div>
 @stop
