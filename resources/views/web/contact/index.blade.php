@@ -23,6 +23,17 @@
         })
 
     </script>
+    <script type="text/javascript">
+        $('#reload').click(function () {
+            $.ajax({
+                type: 'GET',
+                url: 'reload-captcha',
+                success: function (data) {
+                    $(".captcha span").html(data.captcha);
+                }
+            });
+        });
+    </script>
 
 @endpush
 @section('content')
@@ -103,17 +114,6 @@
                         <button type="submit " class="btn" name="Enviar"  style="background-color: #0a8f72; color: white" >Enviar</button>
                     </form>
                 </div>
-            <script type="text/javascript">
-                $('#reload').click(function () {
-                    $.ajax({
-                        type: 'GET',
-                        url: 'reload-captcha',
-                        success: function (data) {
-                            $(".captcha span").html(data.captcha);
-                        }
-                    });
-                });
-            </script>
 @stop
 @section('post_content')
     <div id="contato" class="container-fluid" style="background: #0a8f72">
