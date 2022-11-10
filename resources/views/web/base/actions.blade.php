@@ -12,9 +12,9 @@
         </a>
         <a href="{{ route('web.event.map') }}" class="useless">
             <div class="card h-100 py-3">
-                <div class="card-body d-flex justify-content-evenly align-items-center flex-column flex-sm-row gap-3 gap-sm-0">
-                    <img src="/assets/img/botoes-home/mapa-dos-eventos.svg">
-                    <p class="m-0 p-0">Mapa dos<br>Eventos</p>
+                <div class="card-body d-flex justify-content-evenly align-items-center flex-column flex-sm-row gap-3 gap-sm-0" >
+                    <img src="/assets/img/botoes-home/mapa-dos-eventos.svg" >
+                    <p class="m-0 p-0"  >Mapa dos<br>Eventos</p>
                 </div>
             </div>
         </a>

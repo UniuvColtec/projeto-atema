@@ -54,6 +54,7 @@ class ContactController extends Controller
                'city'=>'required',
                'description' =>'required',
                'start_date'=>'required',
+                'captcha' => 'required|captcha',
                'final_date' =>'required'
            ]
        );
@@ -82,6 +83,10 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function reloadCaptcha()
+    {
+        return response()->json(['captcha'=> captcha_img()]);
+    }
     public function show($id)
     {
         //

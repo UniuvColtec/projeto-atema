@@ -42,6 +42,7 @@ Route::get('/ponto-turistico/{tourist_spot}', [FrontendTouristSpotController::cl
 Route::get('/ponto-turistico', [FrontendTouristSpotController::class, 'index'])->name('web.touristspot');
 Route::get('/contact', [ContactController::class, 'index'])->name('web.contact.index');
 Route::resource('/contact',ContactController::class);
+Route::get('/reload-captcha', [ContactController::class, 'reloadCaptcha']);
 
 Route::get('/quem-somos', [\App\Http\Controllers\frontend\AboutController::class, 'index'])->name('web.about');
 

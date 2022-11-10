@@ -14,18 +14,18 @@
     <style>
 
         .pagination{
-            color:  var(--ci-color-green);
+            color:  #0a8f72;
         }
         .page-link{
-            color:  var(--ci-color-green);
+            color:  #0a8f72;
             background-color: white;
-            --bs-btn-active-bg: var(--ci-color-green);
+            --bs-btn-active-bg: #0a8f72;
         !important;
 
         }
         .active>.page-link, .page-link.active{
-            background-color: var(--ci-color-green);
-            border-color:var(--ci-color-green);
+            background-color: #0a8f72;
+            border-color:#0a8f72;
         }
 
     </style>
@@ -33,10 +33,10 @@
 @section('content')
     <div class="container pb-4">
         <div class="row justify-content-between py-3" style="display: grid; grid-template-columns: 4fr 1fr;">
-            <h3 class="w-auto" style="color: var(--ci-color-green)">Listagem dos Pontos Turísticos</h3>
+            <h3 class="w-auto" style="color: #0a8f72">Listagem dos Pontos Turísticos</h3>
 
-        <button type="button" class="btn" style="color: var(--ci-color-green)" data-toggle="modal" data-target="#exampleModal">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-funnel" style="color: var(--ci-color-green)" viewBox="0 0 16 16">
+        <button type="button" class="btn" style="color: #0a8f72" data-toggle="modal" data-target="#exampleModal">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-funnel" style="color: #0a8f72" viewBox="0 0 16 16">
                 <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2zm1 .5v1.308l4.372 4.858A.5.5 0 0 1 7 8.5v5.306l2-.666V8.5a.5.5 0 0 1 .128-.334L13.5 3.308V2h-11z"/>
             </svg>
             filtro
@@ -47,7 +47,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Filtros:</h5>
-                        <button type="button" class="close" style="color: var(--ci-color-green)" data-dismiss="modal" aria-label="Close">
+                        <button type="button" class="close" style="color: #0a8f72" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -69,7 +69,7 @@
                                     <br>
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
-                                    <button type="submit"  class=" btn" style="color: var(--ci-color-green)">
+                                    <button type="submit"  class=" btn" style="background-color: #0a8f72;color:white">
                                         Filtrar
                                     </button>
                                 </form>
@@ -89,7 +89,7 @@
                             <h5 class="card-title">{{ $tourist_spot->name }}</h5>
                             <div class="mt-2">
                                 <p>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#FFBB13" class="bi bi-geo-alt" viewBox="0 0 16 16">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#dc8825" class="bi bi-geo-alt" viewBox="0 0 16 16">
                                         <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
                                         <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                                     </svg>
@@ -107,10 +107,11 @@
     </div>
     @stop
 @section('post_content')
-    <div id="contato" class="container-fluid" style="background: var(--ci-color-green)">
+    <div id="contato" class="container-fluid" style="background: #0a8f72">
         <div class="container py-5">
             <div class="row mt-4">
                 <div class="col-6">
+                    <img src="/assets/img/SulPR_logo_horizontal_transparente.png" class="img-fluid w-25">
                     <img src="assets/img/atema-logo.png" class="img-fluid w-25">
                 </div>
                 <div class="col-6">
