@@ -26,6 +26,7 @@ class ContactRequest extends FormRequest
         return [
             'name' => 'required',
             'email' => 'required|email:rfc,dns',
+            'captcha' => 'required',
             'mensagem' => 'required'
 
         ];
@@ -35,6 +36,7 @@ class ContactRequest extends FormRequest
     {
         return [
             'name.required' => 'Nome obrigatório',
+            'captcha.required' => 'captcha obrigatório',
             'email.required' => 'Email obrigatório',
             'email.email' => 'Email inválido',
             'mensagem.required'=>'mensagem obrigatória'

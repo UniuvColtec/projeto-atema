@@ -1,5 +1,5 @@
 <footer>
-    <div class="container-fluid py-4 py-md-5" style="background: var(--ci-color-orange)">
+    <div class="container-fluid py-4 py-md-5" style="background: #8f111f">
         <div class="container py-4 py-md-5">
             <div class="row row-cols-1 text-center row-cols-md-2 text-md-start">
                 <div>

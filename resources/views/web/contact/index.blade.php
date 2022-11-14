@@ -4,6 +4,7 @@
 
 @endpush
 @push('js')
+
     <script src="/js/jquery.min.js" type="text/javascript"></script>
     <script src="/js/iziToast.min.js" type="text/javascript"></script>
     <script src="/js/jquery.form.min.js" type="text/javascript"></script>
@@ -22,6 +23,17 @@
         })
 
     </script>
+    <script type="text/javascript">
+        $('#reload').click(function () {
+            $.ajax({
+                type: 'GET',
+                url: 'reload-captcha',
+                success: function (data) {
+                    $(".captcha span").html(data.captcha);
+                }
+            });
+        });
+    </script>
 
 @endpush
 @section('content')
@@ -29,6 +41,15 @@
         <div class="container main-content">
             <p class="h1 text-center">Sugestão de evento</p>
                 <div class="col-md-10 jumbotron mx-auto">
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div><br />
+                    @endif
                     <form action="{{url('/contact')}}" method="post">
                         {{csrf_field()}}
                         <div class="form-group main-content">
@@ -78,16 +99,28 @@
                                     <input type="datetime-local" name="final_date" id="final_date" class="form-control" placeholder="Data de encerramento" required value="{{ $todays_date }}" min="{{$todays_date}}"></div>
                             </div>
                         </div>
+                        <div class="form-group mt-4 mb-4">
+                            <div class="captcha">
+                                <span>{!! captcha_img() !!}</span>
+                                <button type="button" class="btn btn-danger" class="reload" id="reload">
+                                    &#x21bb;
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-group mb-4">
+                            <input id="captcha" type="text" class="form-control" placeholder="Enter Captcha" name="captcha">
+                        </div>
                         <br>
-                        <button type="submit " class="btn" style="background-color: var(--ci-color-green); color: white">Enviar</button>
+                        <button type="submit " class="btn" name="Enviar"  style="background-color: #0a8f72; color: white" >Enviar</button>
                     </form>
                 </div>
 @stop
 @section('post_content')
-    <div id="contato" class="container-fluid" style="background: var(--ci-color-green)">
+    <div id="contato" class="container-fluid" style="background: #0a8f72">
         <div class="container py-5">
             <div class="row mt-4">
                 <div class="col-6">
+                    <img src="/assets/img/SulPR_logo_horizontal_transparente.png" class="img-fluid w-25">
                     <img src="/assets/img/atema-logo.png" class="img-fluid w-25">
                 </div>
                 <div class="col-6">
