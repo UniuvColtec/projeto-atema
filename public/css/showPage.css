@@ -74,3 +74,20 @@
 .carousel-control-next {
     transform: translateX(100%);
 }
+.color1{
+    background: #0a8f72;
+}
+.color1_svg{
+    fill: #0a8f72;
+}
+.color1_button{
+   background:  #0a8f72;
+    color: white;
+}
+
+.color2_svg{
+    fill: #8f111F;
+}
+.color2{
+    background: #8f111F;;
+}

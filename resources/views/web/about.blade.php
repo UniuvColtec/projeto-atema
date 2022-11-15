@@ -88,7 +88,7 @@
         <div class="container py-5">
             <div class="row mt-4">
                 <div class="col-6">
-                    <img src="/assets/img/SulPR_logo_horizontal_transparente.png" class="img-fluid w-25">
+                    <img src="/assets/img/SulPR_logo_h_branca_transp.png" class="img-fluid w-25">
                     <img src="assets/img/atema-logo.png" class="img-fluid w-25">
                 </div>
                 <div class="col-6">

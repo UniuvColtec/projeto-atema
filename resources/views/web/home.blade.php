@@ -53,16 +53,16 @@
                                             <h5 class="card-title">{{ $event->name }}</h5>
                                             <div class="mt-2">
                                                 <p>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#8f111F"
-                                                         class="bi bi-geo-alt" viewBox="0 0 16 16">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+                                                         class="bi bi-geo-alt color2_svg" viewBox="0 0 16 16">
                                                         <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
                                                         <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                                                     </svg>
                                                     {{ $event->city->name . ' - ' . $event->city->state }}
                                                 </p>
                                                 <p>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#8f111F"
-                                                         class="bi bi-calendar" viewBox="0 0 16 16">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                         class="bi bi-calendar color2_svg" viewBox="0 0 16 16">
                                                         <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
                                                     </svg>
                                                     {{ $event->show_date }}
@@ -76,10 +76,10 @@
                         @php $firstEvent = false; @endphp
                     @endforeach
                 </div>
-                <a class="carousel-control-prev w-aut" href="#recipeCarouselNext" role="button" data-bs-slide="prev"  style="color:white;background-color:black">
+                <a class="carousel-control-prev w-aut color_next_prev" href="#recipeCarouselNext" role="button" data-bs-slide="prev"  >
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 </a>
-                <a class="carousel-control-next w-aut" href="#recipeCarouselNext" role="button" data-bs-slide="next"  style="color:white;background-color:black">
+                <a class="carousel-control-next w-aut color_next_prev" href="#recipeCarouselNext" role="button" data-bs-slide="next"  >
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 </a>
             </div>
@@ -106,16 +106,16 @@
                                             <h5 class="card-title">{{ $event->name }}</h5>
                                             <div class="mt-2">
                                                 <p>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#8f111F"
-                                                         class="bi bi-geo-alt" viewBox="0 0 16 16">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+                                                         class="bi bi-geo-alt color2_svg" viewBox="0 0 16 16">
                                                         <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
                                                         <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                                                     </svg>
                                                     {{ $event->city->name . ' - ' . $event->city->state }}
                                                 </p>
                                                 <p>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#8f111F"
-                                                         class="bi bi-calendar" viewBox="0 0 16 16">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                         class="bi bi-calendar color2_svg" viewBox="0 0 16 16">
                                                         <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
                                                     </svg>
                                                     {{ $event->show_date }}
@@ -130,10 +130,10 @@
                     @endforeach
                     </select>
                 </div>
-                <a class="carousel-control-prev w-aut" href="#recipeCarouselAnual" role="button" data-bs-slide="prev"  style="color:white;background-color:black">
+                <a class="carousel-control-prev w-aut color_next_prev" href="#recipeCarouselAnual" role="button" data-bs-slide="prev"  >
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 </a>
-                <a class="carousel-control-next w-aut" href="#recipeCarouselAnual" role="button" data-bs-slide="next" style="color:white;background-color:black">
+                <a class="carousel-control-next w-aut color_next_prev" href="#recipeCarouselAnual" role="button" data-bs-slide="next" >
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 </a>
             </div>
@@ -143,11 +143,11 @@
 @stop
 
 @section('post_content')
-    <div id="contato" class="container-fluid" style="background: #0a8f72">
+    <div id="contato" class="container-fluid color1" >
         <div class="container py-5">
             <div class="row mt-4">
                 <div class="col-6">
-                    <img src="/assets/img/SulPR_logo_horizontal_transparente.png" class="img-fluid w-25">
+                    <img src="/assets/img/SulPR_logo_h_branca_transp.png" class="img-fluid w-25">
                     <img src="assets/img/atema-logo.png" class="img-fluid w-25">
                 </div>
                 <div class="col-6">

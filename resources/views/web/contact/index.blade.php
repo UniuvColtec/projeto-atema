@@ -8,6 +8,7 @@
     <script src="/js/jquery.min.js" type="text/javascript"></script>
     <script src="/js/jquery.form.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="/js/jquery.mask.js"></script>
+    <link href="{{ asset('css/showPage.css') }}" rel="stylesheet">
 
     <script>
         $(document).ready(function(){
@@ -103,7 +104,7 @@
                             @endif
                         </div>
                         <br>
-                        <button id="buttonload" type="submit" name="buttonload" class="btn btn-success btn-submit"  style="background-color: #0a8f72; color: white" >Enviar</button>
+                        <button id="buttonload" type="submit" name="buttonload" class="btn btn-success btn-submit color1_button"  >Enviar</button>
                     </form>
                 </div>
         </div>
@@ -112,11 +113,11 @@
 
 @stop
 @section('post_content')
-    <div id="contato" class="container-fluid" style="background: #0a8f72">
+    <div id="contato" class="container-fluid color1" >
         <div class="container py-5">
             <div class="row mt-4">
                 <div class="col-6">
-                    <img src="/assets/img/SulPR_logo_horizontal_transparente.png" class="img-fluid w-25">
+                    <img src="/assets/img/SulPR_logo_h_branca_transp.png" class="img-fluid w-25">
                     <img src="/assets/img/atema-logo.png" class="img-fluid w-25">
                 </div>
                 <div class="col-6">

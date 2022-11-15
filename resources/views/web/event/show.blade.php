@@ -47,26 +47,26 @@
                         </div>
                     </div>
                     <div class="d-flex align-items-center gap-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#8f111F"
-                             class="bi bi-calendar2-week-fill" viewBox="0 0 16 16">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26"
+                             class="bi bi-calendar2-week-fill color2_svg" viewBox="0 0 16 16">
                             <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zm9.954 3H2.545c-.3 0-.545.224-.545.5v1c0 .276.244.5.545.5h10.91c.3 0 .545-.224.545-.5v-1c0-.276-.244-.5-.546-.5zM8.5 7a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zM3 10.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5zm3.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z"/>
                         </svg>
                         <span>O evento ocorrerá de {{ $event->show_date}}</span>
                     </div>
                     <div class="col-12 col-md-6 d-flex flex-column flex-lg-row justify-content-between gap-2 gap-md-0 mt-3 mt-lg-0">
                         <div class="d-flex align-items-center gap-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#8f111F" class="bi bi-map-fill"
+                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26"  class="bi bi-map-fill color2_svg"
                                  viewBox="0 0 16 16">
                                 <path fill-rule="evenodd"
                                       d="M16 .5a.5.5 0 0 0-.598-.49L10.5.99 5.598.01a.5.5 0 0 0-.196 0l-5 1A.5.5 0 0 0 0 1.5v14a.5.5 0 0 0 .598.49l4.902-.98 4.902.98a.502.502 0 0 0 .196 0l5-1A.5.5 0 0 0 16 14.5V.5zM5 14.09V1.11l.5-.1.5.1v12.98l-.402-.08a.498.498 0 0 0-.196 0L5 14.09zm5 .8V1.91l.402.08a.5.5 0 0 0 .196 0L11 1.91v12.98l-.5.1-.5-.1z"/>
                             </svg>
-                            <span class="badge rounded-pill text" style="background-color: #0a8f72" >{{ $event->city->name .' - '.$event->city->state}}</span>
+                            <span class="badge rounded-pill text color1"  >{{ $event->city->name .' - '.$event->city->state}}</span>
                         </div>
                     </div>
                     <div class="types-display">
                         <div class="type-itens">
                             @foreach($event->event_category as $category)
-                                <span class="badge rounded-pill text" style="background-color: #0a8f72"> {{ $category->category->name }}</span>
+                                <span class="badge rounded-pill text color1" > {{ $category->category->name }}</span>
                             @endforeach
                         </div>
                     </div>
@@ -115,10 +115,10 @@
                                     @php $firstImageFood = false; @endphp
                                 @endforeach
                             </div>
-                            <a class="carousel-control-prev w-aut" href="#recipeCarouselNext" role="button" data-bs-slide="prev" style="color:white;background-color:black">
+                            <a class="carousel-control-prev w-aut color_next_prev" href="#recipeCarouselNext" role="button" data-bs-slide="prev" >
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             </a>
-                            <a class="carousel-control-next w-aut" href="#recipeCarouselNext" role="button" data-bs-slide="next" style="color:white;background-color:black">
+                            <a class="carousel-control-next w-aut color_next_prev" href="#recipeCarouselNext" role="button" data-bs-slide="next" >
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             </a>
                         </div>
@@ -153,10 +153,10 @@
                                         @php $firstSpot = false; @endphp
                                     @endforeach
                                 </div>
-                                <a class="carousel-control-prev w-aut" href="#recipeCarouselSpots" role="button" data-bs-slide="prev" style="color:white;background-color:black">
+                                <a class="carousel-control-prev w-aut color_next_prev" href="#recipeCarouselSpots" role="button" data-bs-slide="prev" >
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                 </a>
-                                <a class="carousel-control-next w-aut" href="#recipeCarouselSpots" role="button" data-bs-slide="next" style="color:white;background-color:black">
+                                <a class="carousel-control-next w-aut color_next_prev" href="#recipeCarouselSpots" role="button" data-bs-slide="next" >
                                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                 </a>
                             </div>
@@ -188,10 +188,10 @@
                                         @php $firstPartner = false; @endphp
                                     @endforeach
                                 </div>
-                                <a class="carousel-control-prev w-aut" href="#recipeCarouselSpots" role="button" data-bs-slide="prev" style="color:white;background-color:black">
+                                <a class="carousel-control-prev w-aut color_next_prev" href="#recipeCarouselSpots" role="button" data-bs-slide="prev" >
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                 </a>
-                                <a class="carousel-control-next w-aut" href="#recipeCarouselSpots" role="button" data-bs-slide="next" style="color:white;background-color:black">
+                                <a class="carousel-control-next w-aut color_next_prev" href="#recipeCarouselSpots" role="button" data-bs-slide="next" >
                                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                 </a>
                             </div>
@@ -202,11 +202,11 @@
         </div>
 @stop
 @section('post_content')
-    <div id="contato" class="container-fluid" style="background: #0a8f72">
+    <div id="contato" class="container-fluid color1" >
         <div class="container py-5">
             <div class="row mt-4">
                 <div class="col-6">
-                    <img src="/assets/img/SulPR_logo_horizontal_transparente.png" class="img-fluid w-25">
+                    <img src="/assets/img/SulPR_logo_h_branca_transp.png" class="img-fluid w-25">
                     <img src="/assets/img/atema-logo.png" class="img-fluid w-25">
                 </div>
                 <div class="col-6">

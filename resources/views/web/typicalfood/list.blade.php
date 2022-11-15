@@ -4,6 +4,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
+
     <script>
         $('#myModal').on('shown.bs.modal', function () {
             $('#myInput').trigger('focus')
@@ -11,32 +12,15 @@
     </script>
 @endpush
 @push('css')
-    <style>
-
-        .pagination{
-            color:  #0a8f72;
-        }
-        .page-link{
-            color:  #0a8f72;
-            background-color: white;
-            --bs-btn-active-bg: #0a8f72;
-        !important;
-
-        }
-        .active>.page-link, .page-link.active{
-            background-color: #0a8f72;
-            border-color:#0a8f72;
-        }
-
-    </style>
+    <link href="{{ asset('css/listPage.css') }}" rel="stylesheet">
 @endpush
 @section('content')
     <div class="container pb-4">
         <div class="row justify-content-between py-3" style="display: grid; grid-template-columns: 4fr 1fr;">
-            <h3 class="w-auto" style="color: #0a8f72">Listagem das Comidas Típicas</h3>
+            <h3 class="w-auto color1_text" >Listagem das Comidas Típicas</h3>
 
-        <button type="button" class="btn" style="color: #0a8f72" data-toggle="modal" data-target="#exampleModal">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-funnel" style="color: #0a8f72" viewBox="0 0 16 16">
+        <button type="button" class="btn color1_text"  data-toggle="modal" data-target="#exampleModal">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-funnel color1_svg"  viewBox="0 0 16 16">
                 <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2zm1 .5v1.308l4.372 4.858A.5.5 0 0 1 7 8.5v5.306l2-.666V8.5a.5.5 0 0 1 .128-.334L13.5 3.308V2h-11z"/>
             </svg>
             filtro
@@ -47,7 +31,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Filtros:</h5>
-                        <button type="button" class="close" style="color: #0a8f72" data-dismiss="modal" aria-label="Close">
+                        <button type="button" class="close color1_text" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -68,7 +52,7 @@
                                     </div>
                                     <br>
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="submit" class=" btn" style="background-color: #0a8f72;color:white">
+                                    <button type="submit" class=" btn color1_button" >
                                         Filtrar
                                     </button>
                                 </form>
@@ -98,11 +82,11 @@
     </div>
 @stop
 @section('post_content')
-    <div id="contato" class="container-fluid" style="background: #0a8f72">
+    <div id="contato" class="container-fluid color1" >
         <div class="container py-5">
             <div class="row mt-4">
                 <div class="col-6">
-                    <img src="/assets/img/SulPR_logo_horizontal_transparente.png" class="img-fluid w-25">
+                    <img src="/assets/img/SulPR_logo_h_branca_transp.png" class="img-fluid w-25">
                     <img src="assets/img/atema-logo.png" class="img-fluid w-25">
                 </div>
                 <div class="col-6">

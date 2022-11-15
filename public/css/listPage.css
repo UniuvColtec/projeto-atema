@@ -1,0 +1,61 @@
+
+/*Geral*/
+.main-content, .more-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.title-grid {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+}
+
+.info-flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 1rem;
+}
+.type-itens .link:hover, type-itens .link:focus {
+    color: #444444;
+}
+.carousel-control-prev {
+    transform: translateX(-100%);
+}
+.carousel-control-next {
+    transform: translateX(100%);
+}
+.color1_text{
+    color: #0a8f72;
+}
+.color1{
+    background: #0a8f72;
+}
+.color1_svg{
+    fill: #0a8f72;
+}
+.color2_svg{
+    fill: #8f111F;
+}
+.color2{
+    background: #8f111F;;
+}
+
+.pagination{
+    color:  #0a8f72;
+}
+.page-link{
+    color:  #0a8f72;
+    background-color: white;
+    --bs-btn-active-bg: #0a8f72;
+!important;
+
+}
+.color1_button{
+    background:  #0a8f72;
+    color: white;
+}
+.active>.page-link, .page-link.active{
+    background-color: #0a8f72;
+    border-color:#0a8f72;
+}
