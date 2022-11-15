@@ -79,7 +79,7 @@
                 type: 'GET',
                 url: 'reload-captcha',
                 success: function (data) {
-                    $(".captcha span").html(data.captcha);
+                    $("span.captcha").html(data.captcha);
                 }
             });
         });
@@ -138,7 +138,7 @@
                                 <input id="captcha" name="captcha" type="text" class="form-control" placeholder="Insira o Captcha" name="captcha" required>
                             </div>
                             <div class="col">
-                                <span>{!! captcha_img() !!}</span>
+                                <span class="captcha">{!! captcha_img() !!}</span>
                                 <button type="button" class="btn btn-danger" class="reload" id="reload">&#x21bb;
                                 </button>
                             </div>
