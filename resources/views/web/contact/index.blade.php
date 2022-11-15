@@ -1,17 +1,29 @@
 @extends('web.base.page')
 
 @push('css')
+    <link href="{{ asset('css/showPage.css') }}" rel="stylesheet">
 @endpush
 @push('js')
 
-    <script src="/js/iziToast.min.js" type="text/javascript"></script>
     <script src="/js/jquery.min.js" type="text/javascript"></script>
     <script src="/js/jquery.form.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="/js/jquery.mask.js"></script>
-    <link href="{{ asset('css/showPage.css') }}" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
         $(document).ready(function(){
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'bottom-end',
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
             var options = {
                 onKeyPress: function (phone, e, field, options) {
                     var masks = ['(00) 0000-00000', '(00) 00000-0000'];
@@ -20,10 +32,48 @@
                 }
             };
             $('#telephone').mask('(00) 0000-00000', options);
+
+
+            $('.jsonForm').ajaxForm({
+                dataType:  'json',
+
+                success:   function(d){
+                    if (d.status==0){
+                        Toast.fire({
+                            icon: 'error',
+                            title: d.message
+                        })
+                    }else{
+                        Toast.fire({
+                            icon: 'success',
+                            title: d.message
+                        })
+                        $('.jsonForm').trigger("reset");
+                    }
+                },
+                error: function(d){
+                    if (d.status===422){
+                        var message = '';
+                        var errors = d.responseJSON.errors
+
+                        $.each(errors, function(key, value){
+                            message += '- ' + value + '<br>'
+                        })
+
+                        Toast.fire({
+                            icon: 'error',
+                            title: message
+                        })
+                    }
+
+                    $('#captcha').val('');
+                    $('#reload').trigger('click');
+                }
+
+            })
+
         })
 
-    </script>
-    <script type="text/javascript">
         $('#reload').click(function () {
             $.ajax({
                 type: 'GET',
@@ -40,70 +90,59 @@
         <div class="container main-content">
             <p class="h1 text-center">Sugestão de evento</p>
                 <div class="col-md-10 jumbotron mx-auto">
-                    <form  action="{{url('/contact')}}" class="jsonForm" method="post" enctype="multipart/form-data">
+                    <form action="{{url('/contact')}}" method="post" class="jsonForm">
                         {{csrf_field()}}
-                        <div class="form-group main-content">
-                            <div class="form-group">
-                                <label>Nome do evento:</label>
-                                <input type="text" name="name" class="form-control" placeholder="Insira o nome do evento">
-                            </div>
-                            <div class="form-group">
-                                <label for="telephone">Telefone:</label>
-                                <input type="text" class="form-control  telephone" id="telephone" name="telephone" placeholder="EX: (DD) 00000-0000 " required >
-                            </div>
-                            <div class="grid-inputs">
-                                <div class="form-group">
-                                    <label>Nome do organizador:</label>
-                                    <input type="text" name="name_org" class="form-control" placeholder="Insira o nome do organizador"required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Email:</label>
-                                    <input type="email" name="email" class="form-control" placeholder="Insira o email para contato" required>
-                                </div>
-                            </div>
-                            <div class="grid-inputs">
-                                <div class="form-group">
-                                    <label for="address">Endereço:</label>
-                                    <input type="text" name="address" id="address" class="form-control" placeholder="Endereço -Campo obrigatório-" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="city">Cidade*</label>
-                                    <select name="city" id="city" class="form-control select2" required>
-                                        <option value="">- Selecione uma Cidade -</option>
-                                        @foreach($cities as $city)
-                                            <option value="{{$city->name}}">{{$city->name}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="description">Descrição:</label>
-                                <textarea name="description" id="description" class="form-control" placeholder="Descrição do evento" required></textarea>
-                            </div>
-                            <div class="grid-inputs">
-                                <div class="form-group">
-                                    <label for="start_date">Data de início:</label>
-                                    <input type="datetime-local" name="start_date" id="start_date" class="form-control" placeholder="Data de início" required value="{{ $todays_date }}" min="{{$todays_date}}"></div>
-                                <div class="form-group">
-                                    <label for="final_date">Data de encerramento:</label>
-                                    <input type="datetime-local" name="final_date" id="final_date" class="form-control" placeholder="Data de encerramento" required value="{{ $todays_date }}" min="{{$todays_date}}"></div>
-                            </div>
+                        <div class="form-group">
+                            <label>Nome do evento:</label>
+                            <input type="text" name="name" class="form-control" placeholder="Insira o nome do evento" required>
                         </div>
-                        <div class="form-group mt-4 mb-4">
-                            <div class="captcha {{$errors->has('captcha') ? :""}}">
-                                    <span>{!! captcha_img() !!}</span>
+                        <div class="form-group">
+                            <label for="telephone">Telefone:</label>
+                            <input type="text" class="form-control  telephone" id="telephone" name="telephone" placeholder="EX: (DD) 00000-0000 " required >
+                        </div>
+                        <div class="form-group">
+                            <label>Nome do organizador:</label>
+                            <input type="text" name="name_org" class="form-control" placeholder="Insira o nome do organizador" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email:</label>
+                            <input type="email" name="email" class="form-control" placeholder="Insira o email para contato" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Endereço:</label>
+                            <input type="text" name="address" id="address" class="form-control" placeholder="Endereço -Campo obrigatório-" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="city">Cidade*</label>
+                            <select name="city" id="city" class="form-control select2" required>
+                                <option value="">- Selecione uma Cidade -</option>
+                                @foreach($cities as $city)
+                                    <option value="{{$city->name}}">{{$city->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Descrição:</label>
+                            <textarea name="description" id="description" class="form-control" placeholder="Descrição do evento" required></textarea>
+                        </div>
+                        <div class="grid-inputs">
+                            <div class="form-group">
+                                <label for="start_date">Data de início:</label>
+                                <input type="datetime-local" name="start_date" id="start_date" class="form-control" placeholder="Data de início" required value="{{ $todays_date }}" min="{{$todays_date}}"></div>
+                            <div class="form-group">
+                                <label for="final_date">Data de encerramento:</label>
+                                <input type="datetime-local" name="final_date" id="final_date" class="form-control" placeholder="Data de encerramento" required value="{{ $todays_date }}" min="{{$todays_date}}"></div>
+                        </div>
+                        <div class="row mt-3 mb-3">
+                            <div class="col">
+                                <input id="captcha" name="captcha" type="text" class="form-control" placeholder="Insira o Captcha" name="captcha" required>
+                            </div>
+                            <div class="col">
+                                <span>{!! captcha_img() !!}</span>
                                 <button type="button" class="btn btn-danger" class="reload" id="reload">&#x21bb;
                                 </button>
                             </div>
-                            <br>
-                            <input id="captcha" type="text" class="form-control" placeholder="insira o Captcha" name="captcha">
-                            @if ($errors->has('captcha'))
-                                <div class="alert alert-danger">
-                                    {{$errors->first('captcha')}}
-                                </div><br />
-                            @endif
                         </div>
-                        <br>
                         <button id="buttonload" type="submit" name="buttonload" class="btn btn-success btn-submit color1_button"  >Enviar</button>
                     </form>
                 </div>

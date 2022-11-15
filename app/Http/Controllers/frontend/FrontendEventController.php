@@ -65,7 +65,6 @@ class FrontendEventController extends Controller
             $points[] = $p;
         }
 
-//        return 'mapa - exibir todos as Geo Localização';
         return view('web.event.map', compact('points'));
     }
 

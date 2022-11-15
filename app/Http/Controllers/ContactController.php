@@ -24,7 +24,6 @@ class ContactController extends Controller
         $todays_date = date('Y-m-d\TH:i:s');
         $todays_date=date('Y-m-d\TH:i:s', strtotime($todays_date.'+3days'));
         return view('web.contact.index', compact('cities','todays_date'));
-        return view('web.contact.index');
     }
 
     /**
@@ -46,19 +45,41 @@ class ContactController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-           'name' =>'required',
-               'telephone'=>'required',
-               'email'=>'required|email',
-               'name_org' =>'required',
-               'address'=>'required',
-               'city'=>'required',
-               'description' =>'required',
-               'start_date'=>'required',
-                'captcha' => 'required|captcha',
-               'final_date' =>'required'
-           ]
-       );
-       $data= array(
+            'name' =>'required',
+            'telephone'=>'required',
+            'email'=>'required|email',
+            'name_org' =>'required',
+            'address'=>'required',
+            'city'=>'required',
+            'description' =>'required',
+            'start_date'=>'required',
+            'captcha' => 'required',
+            'final_date' =>'required'
+        ],
+        [
+            'name' => "Nome não preenchido",
+            'telephone'=>'Telefone não preenchido',
+            'email'=> [
+                'required' => 'Email não preenchido',
+                'email' => 'Email inválido'
+            ],
+            'name_org' => 'Nome organizador não preenchido',
+            'address'=>'Endereço não preenchido',
+            'city'=>'Cidade não preenchida',
+            'description' =>'Descrição não preenchida',
+            'start_date'=>'Informe a data de início',
+            'captcha' => 'Captcha não informado',
+            'final_date' =>'Informe a data de encerramento'
+        ]);
+        if ( captcha_check($request->captcha) == false ) {
+            return response()->json([
+                'message' => 'Captcha inválido',
+                'errors' => [
+                    'captcha' => ['Captcha inválido']
+                ]
+            ])->setStatusCode(422);
+        }
+        $data= array(
            'name'=>$request->name,
            'telephone'=>$request->telephone,
            'email'=>$request->email,
@@ -68,12 +89,12 @@ class ContactController extends Controller
            'description'=>$request->description,
            'start_date'=>$request->start_date,
            'final_date'=>$request->final_date
-
-       );
-       Mail::to(config('mail.from.address'))
-           ->send(new SendMail($data));
-       return back()
-           ->with('success',' obrigado por nos contactar');
+        );
+        Mail::to(config('mail.from.address'))
+            ->send(new SendMail($data));
+       return response()->json([
+           'message' => 'Obrigado por enviar a sugestão, estaremos analisando e em breve entraremos em contato'
+       ]);
 
     }
 
