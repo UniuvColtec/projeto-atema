@@ -83,6 +83,19 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function captchaFormValidate(Request $request)
+    {
+        $rules = ['captcha' => 'required|captcha_api:'. request('captcha') . ',math'];
+        $validator = validator()->make(request()->all(), $rules);
+        if ($validator->fails()) {
+            return response()->json([
+                'message' => 'invalid captcha',
+            ]);
+
+        } else {
+            //do the job
+        }
+    }
     public function reloadCaptcha()
     {
         return response()->json(['captcha'=> captcha_img()]);

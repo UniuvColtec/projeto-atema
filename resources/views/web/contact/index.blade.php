@@ -1,12 +1,11 @@
 @extends('web.base.page')
 
 @push('css')
-
 @endpush
 @push('js')
 
-    <script src="/js/jquery.min.js" type="text/javascript"></script>
     <script src="/js/iziToast.min.js" type="text/javascript"></script>
+    <script src="/js/jquery.min.js" type="text/javascript"></script>
     <script src="/js/jquery.form.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="/js/jquery.mask.js"></script>
 
@@ -34,23 +33,13 @@
             });
         });
     </script>
-
 @endpush
 @section('content')
     <div class="container my-5">
         <div class="container main-content">
             <p class="h1 text-center">Sugestão de evento</p>
                 <div class="col-md-10 jumbotron mx-auto">
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div><br />
-                    @endif
-                    <form action="{{url('/contact')}}" method="post">
+                    <form  action="{{url('/contact')}}" class="jsonForm" method="post" enctype="multipart/form-data">
                         {{csrf_field()}}
                         <div class="form-group main-content">
                             <div class="form-group">
@@ -100,20 +89,27 @@
                             </div>
                         </div>
                         <div class="form-group mt-4 mb-4">
-                            <div class="captcha">
-                                <span>{!! captcha_img() !!}</span>
-                                <button type="button" class="btn btn-danger" class="reload" id="reload">
-                                    &#x21bb;
+                            <div class="captcha {{$errors->has('captcha') ? :""}}">
+                                    <span>{!! captcha_img() !!}</span>
+                                <button type="button" class="btn btn-danger" class="reload" id="reload">&#x21bb;
                                 </button>
                             </div>
-                        </div>
-                        <div class="form-group mb-4">
-                            <input id="captcha" type="text" class="form-control" placeholder="Enter Captcha" name="captcha">
+                            <br>
+                            <input id="captcha" type="text" class="form-control" placeholder="insira o Captcha" name="captcha">
+                            @if ($errors->has('captcha'))
+                                <div class="alert alert-danger">
+                                    {{$errors->first('captcha')}}
+                                </div><br />
+                            @endif
                         </div>
                         <br>
-                        <button type="submit " class="btn" name="Enviar"  style="background-color: #0a8f72; color: white" >Enviar</button>
+                        <button id="buttonload" type="submit" name="buttonload" class="btn btn-success btn-submit"  style="background-color: #0a8f72; color: white" >Enviar</button>
                     </form>
                 </div>
+        </div>
+        </div>
+    </div>
+
 @stop
 @section('post_content')
     <div id="contato" class="container-fluid" style="background: #0a8f72">
