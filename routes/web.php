@@ -32,7 +32,7 @@ use App\Http\Controllers\frontend\SearchController;
 */
 
 Route::get('/', [HomeSiteController::class, 'index'])->name('web.index');
-Route::get('/parceiro/{partner}', [FrontendPartnerController::class, 'show'])->name('web.partner.show');
+Route::get('/parceiro/{partner}/{name?}', [FrontendPartnerController::class, 'show'])->name('web.partner.show');
 Route::get('/parceiro', [FrontendPartnerController::class, 'index'])->name('web.partner');
 Route::get('/evento/mapa', [FrontendEventController::class, 'map'])->name('web.event.map');
 Route::get('/evento/{event}/{name?}', [FrontendEventController::class, 'show'])->name('web.event.show');

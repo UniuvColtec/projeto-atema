@@ -174,19 +174,4 @@
             </div>
         </div>
     </div>
-    <!--
-    <div class="container-fluid" style="background: var(--ci-color-green)">
-        <div class="container py-5">
-            <div class="row row-cols-1 row-cols-lg-2">
-                <h4 class="text-white my-3 my-md-4 my-lg-5">Cadastre-se na newsletter para ficar<br>informado sobre os
-                    próximos eventos
-                </h4>
-                <form class="d-flex my-3 my-md-4 my-lg-5" role="search">
-                    <input class="form-control rounded-5 bg-gray" type="search" placeholder="deixe seu e-mail aqui"
-                           aria-label="Search">
-                </form>
-            </div>
-        </div>
-    </div>
-    -->
 @stop

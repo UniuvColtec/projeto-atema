@@ -7,6 +7,13 @@
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
+            <div class="collapse navbar-collapse py-3 py-lg-0 justify-content-lg-between" id="navbarSupportedContent">
+                <form class="d-flex m-auto" role="search" action="{{url('/buscar/{search}')}}" method="get" >
+                      <input name="search" class="form-control rounded-5 bg-gray" type="search" placeholder="&#128269; Busque aqui!" aria-label="Search">
+                </form>
+            </div>
+
            <div class="collapse navbar-collapse py-3 py-lg-0 justify-content-lg-end" id="navbarSupportedContent">
                 <ul class="navbar-nav d-flex">
                     <li class="nav-item">
@@ -29,3 +36,5 @@
         </div>
     </nav>
 </header>
+
+

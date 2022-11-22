@@ -26,11 +26,15 @@ class Search
     {
         return $this->queryEvents()
             ->union($this->queryTypicalFoods())
+            ->union($this->queryPartners())
+            ->union($this->queryTouristSpots())
             ->get()
             ->map(function ($result) {
                 $result->url = match($result->type) {
                     'Eventos' => route('web.event.show', [$result->id, Str::slug($result->name)]),
                     'Comidas Típicas' => route('web.typicalfood.show', [$result->id, Str::slug($result->name)]),
+                    'Parceiros' => route('web.partner.show', [$result->id, Str::slug($result->name)]),
+                    'Pontos Turísticos' => route('web.touristspot.show', [$result->id, Str::slug($result->name)]),
                 };
 
                 return $result;
@@ -63,6 +67,32 @@ class Search
                     DB::raw('"Comidas Típicas" as type')
                 ),
             ['name', 'description']
+        );
+    }
+    private function queryPartners(): Builder
+    {
+        return $this->appendSearchTermsTo(
+            DB::table('partners')
+                ->select(
+                    'id',
+                    DB::raw('name as title'),
+                    DB::raw('description as body'),
+                    DB::raw('"Parceiros" as type')
+                ),
+            ['name', 'description', 'address']
+        );
+    }
+    private function queryTouristSpots(): Builder
+    {
+        return $this->appendSearchTermsTo(
+            DB::table('tourist_spots')
+                ->select(
+                    'id',
+                    DB::raw('name as title'),
+                    DB::raw('description as body'),
+                    DB::raw('"Pontos Turísticos" as type')
+                ),
+            ['name', 'description', 'address']
         );
     }
 
