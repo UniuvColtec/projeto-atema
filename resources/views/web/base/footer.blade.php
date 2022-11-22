@@ -32,12 +32,12 @@
                 <div>
                     <h2 class="text-white">Menu</h2>
                     <ul class="navbar-nav text-white">
-                        <li class="text-white">Sugira um Evento</li>
-                        <li class="text-white">Mapa dos Eventos</li>
-                        <li class="text-white">Comidas Típicas</li>
-                        <li class="text-white">Turismo Local</li>
-                        <li class="text-white">Quem somos</li>
-                        <li class="text-white">Contato</li>
+                        <li class="text-white"><a class="text-white" href="{{ url('/contact') }}">Sugira um Evento</a></li>
+                        <li class="text-white"><a class="text-white" href="{{ route('web.event.map') }}">Mapa dos Eventos</a></li>
+                        <li class="text-white"><a class="text-white" href="{{ route('web.typicalfood') }}">Comidas Típicas</a></li>
+                        <li class="text-white"><a class="text-white" href="{{ route('web.touristspot') }}">Turismo Local</a></li>
+                        <li class="text-white"><a class="text-white" href="{{ route('web.about') }}">Quem somos</a></li>
+                        <li class="text-white"><a class="text-white" href="#contato">Contato</a></li>
                     </ul>
                 </div>
             </div>
