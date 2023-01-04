@@ -2,12 +2,31 @@
 
 @section('slider')
     <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img src="assets/img/slider-home/banner.png" class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item">
-            <img src="assets/img/slider-home/banner.png" class="d-block w-100" alt="...">
-        </div>
+        @if($banner[0]->images)
+            @php $ThereIsImages = false @endphp
+            @php $firstImage = true @endphp
+            @foreach($banner[0]->images as $image)
+                @php $ThereIsImages = true @endphp
+                @if($firstImage)
+                    <div class="carousel-item active">
+                        <img src="{{ $image->image ? asset('files/' . $image->image->address) : '/images/none-image.png' }}" class="d-block w-100" alt="...">
+                    </div>
+                    @php $firstImage = false @endphp
+                @else
+                    <div class="carousel-item">
+                        <img src="{{ $image->image ? asset('files/' . $image->image->address) : '/images/none-image.png' }}" class="d-block w-100" alt="...">
+                    </div>
+                @endif
+            @endforeach
+        @endif
+        @if($ThereIsImages == false)
+            <div class="carousel-item active">
+                <img src="assets/img/slider-home/banner.png" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="assets/img/slider-home/banner.png" class="d-block w-100" alt="...">
+            </div>
+        @endif
     </div>
     <!--
     <button class="carousel-control-prev" type="button" data-bs-target="#home-banner-slider" data-bs-slide="prev">

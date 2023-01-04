@@ -395,6 +395,11 @@ return [
                         ],
                     ],
                 ],
+                [
+                    'text'    => 'Imagens do banner',
+                    'url'     => '/admin/banner/1/edit',
+                    'icon'    => 'fas fa-address-card',
+                ],
             ],
         ],
     ],

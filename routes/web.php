@@ -104,6 +104,13 @@ Route::prefix('admin')->middleware('auth')->group(function(){
     Route::post('tourist_spot/bootgrid', [TouristSpotController::class, 'bootgrid'])->name('tourist_spot.bootgrid');
     Route::resource('tourist_spot', TouristSpotController::class);
 
+    Route::get('banner/image', [\App\Http\Controllers\BannerController::class, 'image'])->name('banner.image');
+    Route::get('banner/uploadimage/{partner_id?}', [\App\Http\Controllers\BannerController::class, 'uploadImageGet'])->name('banner.uploadImageGet');
+    Route::post('banner/uploadimage/{partner_id?}', [\App\Http\Controllers\BannerController::class, 'uploadImagePost'])->name('banner.uploadImagePost');
+    Route::put('banner/uploadimage/{partner_id?}', [\App\Http\Controllers\BannerController::class, 'uploadImagePost'])->name('banner.uploadImagePost');
+    Route::delete('banner/uploadimage/{partner_id?}', [\App\Http\Controllers\BannerController::class, 'uploadImageDelete'])->name('banner.uploadImageDelete');
+    Route::resource('banner', \App\Http\Controllers\BannerController::class);
+
     Route::get('settings', [UserController::class, 'getProfile'])->name('profile.index');
     Route::post('settings', [UserController::class, 'postProfile'])->name('profile.save');
 
