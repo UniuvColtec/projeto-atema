@@ -73,11 +73,8 @@ Route::prefix('admin')->middleware('auth')->group(function(){
     Route::post('partner_type/bootgrid', [PartnerTypeController::class, 'bootgrid'])->name('partner_type.bootgrid');
     Route::resource('partner_type',PartnerTypeController::class);
 
-
-    Route::post('banner/bootgrid', [\App\Http\Controllers\BannerController::class, 'bootgrid'])->name('banner.bootgrid');
-    Route::resource('banner', \App\Http\Controllers\BannerController::class);
-
-
+    Route::post('category/bootgrid', [CategoryController::class, 'bootgrid'])->name('category.bootgrid');
+    Route::resource('category', CategoryController::class);
 
     Route::get('typical_food/image', [TypicalFoodController::class, 'image'])->name('typical_food.image');
     Route::get('typical_food/uploadimage/{typical_food_id?}', [TypicalFoodController::class, 'uploadImageGet'])->name('typical_food.uploadImageGet');

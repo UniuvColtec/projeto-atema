@@ -21,7 +21,6 @@ class DatabaseSeeder extends Seeder
             PartnerTypeSeeder::class,
             TypicalFoodSeeder::class,
             CategorySeeder::class,
-            ImageBannerSeeder::class,
         ]);
     }
 }
