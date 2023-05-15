@@ -16,7 +16,7 @@
 @section('content')
         <div class="container pb-4">
             <div class="row justify-content-between py-3" style="display: grid; grid-template-columns: 4fr 1fr;">
-                <h3 class="w-auto color1_text" >Listagem dos Parceiros</h3>
+                <h3 class="w-auto color1_text" >Parceiros</h3>
 
 
                 <button type="button" class="btn color1_text" data-toggle="modal" data-target="#exampleModal">

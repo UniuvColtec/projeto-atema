@@ -1,7 +1,9 @@
 <header>
     <nav class="navbar navbar-expand-lg py-4" id="header-navbar">
         <div class="container-md ">
-            <a class="navbar-brand " href="/"><img src="{{ asset('assets/img/calendario-integrado-logo.png') }}" alt="Calendário Integrado" class="img-fluid"></a>
+            <a class="navbar-brand " href="/">
+                <img src="{{ asset('assets/img/logo-site.png') }}" alt="Calendário de eventos" class="img-fluid" style="max-height: 400px;max-width: 300px">
+                </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
