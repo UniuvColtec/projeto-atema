@@ -11,12 +11,12 @@
 :root {
     --ci-color-orange: #FFBB13;
     --ci-color-green: #98b54d;
-    --ci-color-gray: #7C7C7C;
+    --ci-color-gray: #000000;
 }
 
 * {
     font-family: "Montserrat Bold";
-    color: var(--ci-color-gray);
+    color: var(--bs-black);
     text-decoration: none !important;
 }
 
